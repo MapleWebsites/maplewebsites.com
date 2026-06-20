@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================= -->
+  <!-- SEO + Social meta for the portfolio gallery page.             -->
+  <!-- ============================================================= -->
+  <title>Portfolio — Maple Web Design Vancouver | Custom Website Gallery</title>
+  <meta name="description" content="Browse Maple's portfolio of custom website designs for Vancouver businesses — e-commerce, booking, restaurants, SaaS and more. Filter by industry to see the style, speed, and growth tools (AI chatbots, analytics, SEO) we build into every site." />
+  <meta name="keywords" content="web design portfolio Vancouver, custom website examples, web design gallery, ecommerce website design, booking website, restaurant website, SaaS marketing site" />
+  <meta name="author" content="Maple" />
+  <link rel="canonical" href="https://www.maplewebsites.com/portfolio.html" />
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Maple" />
+  <meta property="og:url" content="https://www.maplewebsites.com/portfolio.html" />
+  <meta property="og:title" content="Portfolio — Maple Web Design Vancouver | Custom Website Gallery" />
+  <meta property="og:description" content="Filter through Maple's gallery of custom website concepts by industry — and see the growth tools we bake into every Vancouver-area build." />
+  <meta property="og:image" content="https://www.maplewebsites.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Portfolio — Maple Web Design Vancouver | Custom Website Gallery" />
+  <meta name="twitter:description" content="Filter through Maple's gallery of custom website concepts by industry — and see the growth tools we bake into every Vancouver-area build." />
+  <meta name="twitter:image" content="https://www.maplewebsites.com/og-image.png" />
+
+  <!-- Favicon (SVG, with emoji fallback for older browsers) -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       Maple — Portfolio gallery page
+       Reuses the brand design tokens from the main site so this
+       page feels like a native part of maplewebsites.com.
+       ============================================================ */
+    :root {
+      --bg: #f3f1ea;
+      --bg-alt: #e9e6db;
+      --surface: #fbfaf4;
+      --surface-2: #e9e6db;
+      --text: #14211b;
+      --muted: #626c62;
+      --border: rgba(20,33,27,0.15);
+      --brand: #18583e;
+      --brand-2: #18717a;
+      --accent: #e9b949;
+      --grad: linear-gradient(120deg, #18583e 0%, #3f9268 100%);
+      --shadow: 0 30px 64px -34px rgba(11,42,34,0.5);
+      --radius: 16px;
+      --container: 1140px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, .brand { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; line-height: 1.15; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--brand-2);
+      margin-bottom: 14px;
+    }
+    .grad-text {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.98rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: #bd5026;
+      color: #fff;
+      box-shadow: 0 16px 30px -14px rgba(158,63,28,0.7);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 22px 38px -16px rgba(158,63,28,0.78); }
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text);
+    }
+    .btn-ghost:hover { background: var(--surface-2); transform: translateY(-2px); }
+
+    /* ---------- Header / Nav ---------- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.25rem;
+    }
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      flex: none;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+    .brand:hover .brand-mark { transform: rotate(-8deg); }
+    .brand-name { display: inline; }
+    .brand-accent { color: var(--brand-2); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      list-style: none;
+    }
+    .nav-links a { color: var(--muted); font-weight: 500; transition: color 0.15s; }
+    .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--text); }
+    .nav-cta {
+      background: var(--surface-2);
+      color: var(--text) !important;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+    }
+    .nav-cta:hover { background: #bd5026; border-color: #bd5026; color: #fff !important; }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      padding: 6px;
+    }
+    .nav-toggle span { width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.25s; }
+
+    /* ---------- Page hero ---------- */
+    .page-hero {
+      position: relative;
+      padding: 76px 0 56px;
+      text-align: center;
+      background:
+        radial-gradient(900px 460px at 80% -20%, rgba(123, 167, 140, 0.16), transparent 60%),
+        radial-gradient(700px 460px at 8% 0%, rgba(24, 88, 62, 0.12), transparent 55%);
+    }
+    .crumbs { font-size: 0.85rem; color: var(--muted); margin-bottom: 18px; }
+    .crumbs a { color: var(--brand-2); }
+    .crumbs a:hover { text-decoration: underline; }
+    .page-hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 800; margin-bottom: 18px; }
+    .page-hero .lead { font-size: 1.12rem; color: var(--muted); max-width: 640px; margin: 0 auto 26px; }
+    .hero-mini-stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px 34px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+    .hero-mini-stats strong { color: var(--text); font-family: 'Fraunces'; }
+
+    /* ---------- Gallery section ---------- */
+    .gallery-section { padding: 36px 0 90px; }
+
+    /* Filter bar */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+    .filter-btn {
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 9px 18px;
+      cursor: pointer;
+      transition: color 0.15s, background 0.15s, border-color 0.15s, transform 0.12s;
+    }
+    .filter-btn .count {
+      font-size: 0.78rem;
+      opacity: 0.7;
+      margin-left: 6px;
+    }
+    .filter-btn:hover { transform: translateY(-2px); border-color: rgba(24, 88, 62, 0.45); color: var(--text); }
+    .filter-btn[aria-pressed="true"] {
+      background: var(--grad);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 10px 26px -12px rgba(24, 88, 62, 0.75);
+    }
+    .filter-btn[aria-pressed="true"] .count { opacity: 0.9; }
+
+    .result-meta {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 34px;
+      min-height: 1.2em;
+    }
+
+    /* Work grid (same card style as the home page work section) */
+    .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .work-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, opacity 0.3s ease;
+    }
+    .work-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(24, 88, 62, 0.5);
+      box-shadow: var(--shadow);
+    }
+    /* Hide/show animation when filtering */
+    .work-card.is-hidden { display: none; }
+    .work-card.is-entering { opacity: 0; transform: translateY(16px); }
+
+    .work-thumb {
+      position: relative;
+      display: block;
+      aspect-ratio: 16 / 10;
+      padding: 30px 22px 0;
+      overflow: hidden;
+    }
+    /* A rotating palette of gradients keyed by data-shot */
+    .work-thumb[data-shot="1"] .work-shot { background: linear-gradient(135deg, #18583e 0%, #7ba78c 100%); }
+    .work-thumb[data-shot="2"] .work-shot { background: linear-gradient(135deg, #3f9268 0%, #e9b949 100%); }
+    .work-thumb[data-shot="3"] .work-shot { background: linear-gradient(135deg, #e9b949 0%, #18583e 100%); }
+    .work-thumb[data-shot="4"] .work-shot { background: linear-gradient(135deg, #e9b949 0%, #3f9268 100%); }
+    .work-thumb[data-shot="5"] .work-shot { background: linear-gradient(135deg, #103b30 0%, #18583e 100%); }
+    .work-thumb[data-shot="6"] .work-shot { background: linear-gradient(135deg, #0b2a22 0%, #103b30 100%); }
+    .work-thumb[data-shot="7"] .work-shot { background: linear-gradient(135deg, #18583e 0%, #0b2a22 100%); }
+    .work-thumb[data-shot="8"] .work-shot { background: linear-gradient(135deg, #7ba78c 0%, #18583e 100%); }
+    .work-thumb[data-shot="9"] .work-shot { background: linear-gradient(135deg, #e9b949 0%, #e9b949 100%); }
+
+    .work-window {
+      position: absolute;
+      top: 12px; left: 16px;
+      display: flex; gap: 6px;
+      z-index: 2;
+    }
+    .work-window .dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.55); }
+    .work-shot {
+      position: absolute;
+      inset: 30px 22px 0;
+      border-radius: 10px 10px 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 22px 20px;
+      box-shadow: 0 14px 30px -16px rgba(11, 42, 34, 0.5);
+    }
+    .ws-line { height: 10px; border-radius: 6px; background: rgba(255,255,255,0.45); width: 100%; }
+    .ws-line.ws-title { height: 16px; width: 60%; background: rgba(255,255,255,0.8); }
+    .ws-line.short { width: 40%; }
+    .work-body { padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .work-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .work-head h3 { font-size: 1.15rem; }
+    .work-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--brand-2);
+      background: var(--surface-2);
+      border-radius: 999px;
+      padding: 4px 10px;
+      white-space: nowrap;
+    }
+    .work-body p { color: var(--muted); font-size: 0.95rem; flex: 1; }
+    .work-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+    .work-chip {
+      font-size: 0.72rem;
+      color: var(--muted);
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 3px 9px;
+    }
+    .work-link { color: var(--brand-2); font-weight: 600; font-size: 0.92rem; transition: color 0.15s; margin-top: 4px; }
+    .work-link:hover { color: var(--brand); }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted);
+      display: none;
+    }
+    .empty-state.show { display: block; }
+    .empty-state h3 { color: var(--text); margin-bottom: 8px; font-size: 1.3rem; }
+
+    /* ---------- CTA band ---------- */
+    .cta-band {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .cta-inner {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 76px 0;
+    }
+    .cta-inner h2 { font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 700; margin-bottom: 14px; }
+    .cta-inner p { color: var(--muted); font-size: 1.05rem; margin-bottom: 28px; }
+    .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ---------- Footer ---------- */
+    .site-footer { background: var(--bg-alt); border-top: 1px solid var(--border); padding: 56px 0 28px; }
+    .footer-grid { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 36px; }
+    .brand-footer { margin-bottom: 14px; }
+    .footer-blurb { color: var(--muted); max-width: 280px; }
+    .footer-cols { display: flex; gap: 70px; flex-wrap: wrap; }
+    .footer-cols h4 { margin-bottom: 12px; font-size: 1rem; }
+    .footer-cols a { display: block; color: var(--muted); padding: 4px 0; transition: color 0.15s; }
+    .footer-cols a:hover { color: var(--text); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+      padding-top: 24px; border-top: 1px solid var(--border);
+      color: var(--muted); font-size: 0.88rem;
+    }
+
+    /* ============================================================
+       AI Chatbot widget (same as the main site)
+       ============================================================ */
+    .chatbot { position: fixed; right: 22px; bottom: 22px; z-index: 100; }
+    .chatbot-launch {
+      position: relative;
+      width: 62px; height: 62px;
+      border-radius: 50%;
+      border: 0;
+      background: var(--grad);
+      color: #fff;
+      font-size: 1.6rem;
+      cursor: pointer;
+      box-shadow: 0 14px 34px -10px rgba(24, 88, 62, 0.8);
+      transition: transform 0.18s ease;
+    }
+    .chatbot-launch:hover { transform: scale(1.07); }
+    .chat-launch-pulse {
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      background: var(--brand);
+      opacity: 0.55;
+      animation: pulse 2.4s ease-out infinite;
+      z-index: -1;
+    }
+    @keyframes pulse { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(1.8); opacity: 0; } }
+    .chatbot-panel {
+      position: absolute;
+      right: 0; bottom: 78px;
+      width: 350px;
+      max-width: calc(100vw - 44px);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      animation: slideUp 0.25s ease;
+    }
+    .chatbot-panel[hidden] { display: none; }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .chatbot-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 18px;
+      background: var(--grad);
+      color: #fff;
+    }
+    .chatbot-title { font-family: 'Fraunces'; font-weight: 700; }
+    .chatbot-status { font-size: 0.78rem; opacity: 0.9; display: flex; align-items: center; gap: 6px; }
+    .chatbot-status .dot { width: 8px; height: 8px; border-radius: 50%; background: #7ed9a6; display: inline-block; }
+    .chatbot-close { background: none; border: 0; color: #fff; font-size: 1.1rem; cursor: pointer; opacity: 0.85; }
+    .chatbot-close:hover { opacity: 1; }
+    .chatbot-messages {
+      padding: 16px;
+      height: 300px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: var(--bg);
+    }
+    .msg { padding: 10px 13px; border-radius: 14px; font-size: 0.9rem; max-width: 82%; line-height: 1.4; }
+    .msg.bot { background: var(--surface-2); align-self: flex-start; border-bottom-left-radius: 4px; }
+    .msg.user { background: var(--brand); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+    .msg.typing { display: inline-flex; gap: 4px; }
+    .msg.typing span { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); animation: blink 1.2s infinite; }
+    .msg.typing span:nth-child(2) { animation-delay: 0.2s; }
+    .msg.typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes blink { 0%, 60%, 100% { opacity: 0.25; } 30% { opacity: 1; } }
+    .chatbot-quick { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 14px 6px; background: var(--bg); }
+    .quick-btn {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.8rem;
+      padding: 7px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .quick-btn:hover { background: var(--brand); border-color: var(--brand); color: #fff; }
+    .chatbot-input { display: flex; gap: 8px; padding: 12px 14px; border-top: 1px solid var(--border); background: var(--surface); }
+    .chatbot-input input {
+      flex: 1;
+      padding: 10px 14px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text);
+      font-family: inherit;
+    }
+    .chatbot-input input:focus { outline: none; border-color: var(--brand); }
+    .chatbot-input button {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      border: 0;
+      background: var(--grad);
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    /* ---------- Scroll reveal ---------- */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* Visible focus ring for keyboard users */
+    a:focus-visible, button:focus-visible, input:focus-visible {
+      outline: 2px solid var(--brand);
+      outline-offset: 2px;
+    }
+
+    /* ============================================================
+       Responsive
+       ============================================================ */
+    @media (max-width: 900px) {
+      .work-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: absolute;
+        top: 72px; left: 0; right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: var(--bg-alt);
+        border-bottom: 1px solid var(--border);
+        padding: 10px 24px 20px;
+        display: none;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; padding: 8px 0; }
+      .nav-cta { display: inline-block; margin-top: 6px; }
+      .work-grid { grid-template-columns: 1fr; }
+      .gallery-section { padding: 28px 0 64px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ===================== HEADER / NAV ===================== -->
+  <header class="site-header" id="top">
+    <nav class="nav container">
+      <a href="index.html" class="brand" aria-label="Maple home">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#103b30"/><path d="M20 7 C22.5 13 27 14.5 27 19.5 a7 7 0 0 1-14 0 C13 14.5 17.5 13 20 7 Z" fill="#f4ede0"/><rect x="19" y="18" width="2" height="13" rx="1" fill="#f4ede0"/><circle cx="20" cy="12" r="1.6" fill="#e9b949"/></svg>
+        <span class="brand-name">Map<span class="brand-accent">le</span></span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html" aria-current="page">Work</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" class="nav-cta">Get a Free Quote</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ===================== PAGE HERO ===================== -->
+    <section class="page-hero">
+      <div class="container">
+        <p class="crumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; Work</p>
+        <p class="eyebrow">Our work</p>
+        <h1>The full <span class="grad-text">Maple portfolio</span></h1>
+        <p class="lead">
+          A growing gallery of custom website concepts across every kind of business we build for.
+          Each one shows the style, speed, and growth tools — AI chatbots, analytics, and SEO — we
+          bake into every project. Filter by industry to find work that looks like yours.
+        </p>
+        <div class="hero-mini-stats">
+          <span><strong>9+</strong> sample concepts</span>
+          <span><strong>6</strong> industries</span>
+          <span><strong>100%</strong> custom-built</span>
+          <span><strong>~2&nbsp;wk</strong> typical launch</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== GALLERY ===================== -->
+    <section class="gallery-section">
+      <div class="container">
+        <!-- Filter controls -->
+        <div class="filter-bar" role="group" aria-label="Filter portfolio by category">
+          <button class="filter-btn" data-filter="all" aria-pressed="true">All work</button>
+          <button class="filter-btn" data-filter="ecommerce" aria-pressed="false">E-commerce</button>
+          <button class="filter-btn" data-filter="booking" aria-pressed="false">Booking</button>
+          <button class="filter-btn" data-filter="restaurant" aria-pressed="false">Restaurant</button>
+          <button class="filter-btn" data-filter="saas" aria-pressed="false">SaaS</button>
+          <button class="filter-btn" data-filter="portfolio" aria-pressed="false">Portfolio</button>
+          <button class="filter-btn" data-filter="education" aria-pressed="false">Education</button>
+        </div>
+        <p class="result-meta" id="result-meta" role="status" aria-live="polite"></p>
+
+        <!-- Cards -->
+        <div class="work-grid" id="work-grid">
+
+          <!-- 1 -->
+          <article class="work-card" data-category="education" data-title="TeachingGrandma">
+            <div class="work-thumb" data-shot="1">
+              <span class="work-window" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+              <span class="work-shot" aria-hidden="true"><span class="ws-line ws-title"></span><span class="ws-line"></span><span class="ws-line short"></span></span>
+            </div>
+            <div class="work-body">
+              <div class="work-head"><h3>TeachingGrandma</h3><span class="work-tag">Education</span></div>
+              <p>Friendly, large-type tutorials that help seniors get comfortable with everyday tech. Built for accessibility, high contrast, and dead-simple navigation.</p>
+              <div class="work-chips"><span class="work-chip">Accessibility-first</span><span class="work-chip">SEO</span><span class="work-chip">AI chatbot</span></div>
+              <a class="work-link" href="case-study.html">View case study →</a>
+            </div>
+          </article>
+
+          <!-- 2 -->
+          <article class="work-card" data-category="booking" data-title="Pawsome Groomers">
+            <div class="work-thumb" data-shot="2">
+              <span class="work-window" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+              <span class="work-shot" aria-hidden="true"><span class="ws-line ws-title"></span><span class="ws-line"></span><span class="ws-line short"></span></span>
+            </div>
+            <div class="work-body">
+              <div class="work-head"><h3>Pawsome Groomers</h3><span class="work-tag">Booking</span></div>
+              <p>An online booking concept for a pet-grooming studio, with automated reminders and an AI chatbot that answers common questions and fills the calendar.</p>
+              <div class="work-chips"><span class="work-chip">Online booking</span><span class="work-chip">AI chatbot</span><span class="work-chip">Reminders</span></div>
+              <a class="work-link" href="case-study.html">View case study →</a>
+            </div>
+          </article>
+
+          <!-- 3 -->
+          <article class="work-card" data-category="saas" data-title="BrightLedger">
+            <div class="work-thumb" data-shot="3">
+              <span class="work-window" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+              <span class="work-shot" aria-hidden="true"><span class="ws-line ws-title"></span><span class="ws-line"></span><span class="ws-line short"></span></span>
+            </div>
+            <div class="work-body">
+              <div class="work-head"><h3>BrightLedger</h3><span class="work-tag">SaaS</span></div>
+              <p>A crisp marketing-site concept for a bookkeeping startup, with conversion tracking and a clear, sign-up-focused pricing page designed to grow trials.</p>
+              <div class="work-chips"><span class="work-chip">Conversion tracking</span><span class="work-chip">Google Analytics</span><span class="work-chip">Pricing page</span></div>
+              <a class="work-link" href="case-study.html">View case study →</a>
+            </div>
+          </article>
+
+          <!-- 4 -->
+          <article class="work-card" data-category="restaurant" data-title="Harvest Moon Bistro">
+            <div class="work-thumb" data-shot="4">
+              <span class="work-window" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+              <span class="work-shot" aria-hidden="true"><span class="ws-line ws-title"></span><span class="ws-line"></span><span class="ws-line short"></span></span>
+            </div>
+            <div class="work-body">
+              <div class="work-head"><h3>Harvest Moon Bistro</h3><span class="work-tag">Restaurant</span></div>
+              <p>A mouth-watering restaurant concept with online reservations, a live menu, and local SEO structured to rank for "best dinner near me" in its city.</p>
+              <div class="work-chips"><span class="work-chip">Reservations</span><span class="work-chip">Local SEO</span><span class="work-chip">Live menu</span></div>
+              <a class="work-link" href="case-study.html">View case study →</a>
+            </div>
+          </article>
+
+          <!-- 5 -->
+          <article class="work-card" data-category="ecommerce" data-title="Summit Peak Fitness">
+            <div class="work-thumb" data-shot="5">
+              <span class="work-window" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+              <span class="work-shot" aria-hidden="true"><span class="ws-line ws-title"></span><span class="ws-line"></span><span class="ws-line short"></span></span>
+            </div>
+            <div class="work-body">
+              <div class="work-head"><h3>Summit Peak Fitness</h3><span class="work-tag">E-commerce</span></div>
+              <p>A bold gym concept selling memberships and class packs online, with a member portal, integrated payments, and abandoned-cart email automations.</p>
+              <div class="work-chips"><span class="work-chip">Secure checkout</span><span class="work-chip">Memberships</span><span class="work-chip">Email automation</span></div>
+              <a class="work-link" href="case-study.html">View case study →</a>
+            </div>
+          </article>
+
+          <!-- 6 -->
+          <article class="work-card" data-category="portfolio" data-title="Lumen Architects">
+            <div class="work-thumb" data-shot="6">
+              <span class="work-window" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+              <span class="work-shot" aria-hidden="true"><span class="ws-line ws-title"></span><span class="ws-line"></span><span class="ws-line short"></span></span>
+            </div>
+            <div class="work-body">
+              <div class="work-head"><h3>Lumen Architects</h3><span class="work-tag">Portfolio</span></div>
+              <p>A minimal, image-forward portfolio concept for a design firm, with lazy-loaded imagery and a relentless focus on top Core Web Vitals scores.</p>
+              <div class="work-chips"><span class="work-chip">Image-forward</span><span class="work-chip">Core Web Vitals</span><span class="work-chip">Performance</span></div>
+              <a class="work-link" href="case-study.html">View case study →</a>
+            </div>
+          </article>
+
+          <!-- 7 -->
+          <article class="work-card" data-category="ecommerce" data-title="Maple &amp; Thread">
+            <div class="work-thumb" data-shot="7">
+              <span class="work-window" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+              <span class="work-shot" aria-hidden="true"><span class="ws-line ws-title"></span><span class="ws-line"></span><span class="ws-line short"></span></span>
+            </div>
+            <div class="work-body">
+              <div class="work-head"><h3>Maple &amp; Thread</h3><span class="work-tag">E-commerce</span></div>
+              <p>A boutique apparel store concept with product filtering, a fast cart, and a quiz-style AI assistant that recommends pieces and nudges shoppers to buy.</p>
+              <div class="work-chips"><span class="work-chip">Product filtering</span><span class="work-chip">AI assistant</span><span class="work-chip">Inventory</span></div>
+              <a class="work-link" href="case-study.html">View case study →</a>
+            </div>
+          </article>
+
+          <!-- 8 -->
+          <article class="work-card" data-category="booking" data-title="Clearview Dental">
+            <div class="work-thumb" data-shot="8">
+              <span class="work-window" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+              <span class="work-shot" aria-hidden="true"><span class="ws-line ws-title"></span><span class="ws-line"></span><span class="ws-line short"></span></span>
+            </div>
+            <div class="work-body">
+              <div class="work-head"><h3>Clearview Dental</h3><span class="work-tag">Booking</span></div>
+              <p>A calm, trust-building dental practice concept with new-patient online booking, insurance FAQs handled by the AI chatbot, and local SEO baked in.</p>
+              <div class="work-chips"><span class="work-chip">Appointment booking</span><span class="work-chip">AI chatbot</span><span class="work-chip">Local SEO</span></div>
+              <a class="work-link" href="case-study.html">View case study →</a>
+            </div>
+          </article>
+
+          <!-- 9 -->
+          <article class="work-card" data-category="saas" data-title="FlowMetric">
+            <div class="work-thumb" data-shot="9">
+              <span class="work-window" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+              <span class="work-shot" aria-hidden="true"><span class="ws-line ws-title"></span><span class="ws-line"></span><span class="ws-line short"></span></span>
+            </div>
+            <div class="work-body">
+              <div class="work-head"><h3>FlowMetric</h3><span class="work-tag">SaaS</span></div>
+              <p>A high-contrast analytics-platform concept with an interactive feature tour, analytics-tracked CTAs, and an SEO-friendly blog structure built to compound traffic.</p>
+              <div class="work-chips"><span class="work-chip">Feature tour</span><span class="work-chip">Google Analytics</span><span class="work-chip">SEO blog</span></div>
+              <a class="work-link" href="case-study.html">View case study →</a>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Empty state (shown only if a filter has no matches) -->
+        <div class="empty-state" id="empty-state">
+          <h3>Nothing here yet</h3>
+          <p>We don't have a sample in this category on display — but we'd love to build one for you. <a href="contact.html" style="color: var(--brand-2); font-weight: 600;">Get a free quote →</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CTA BAND ===================== -->
+    <section class="cta-band">
+      <div class="container">
+        <div class="cta-inner reveal">
+          <p class="eyebrow">Like what you see?</p>
+          <h2>Let's build the one that's <span class="grad-text">yours</span></h2>
+          <p>Every Maple site is custom-built with transparent, upfront pricing, design revisions until you love it, and growth tools included — not pricey add-ons. Most projects launch in about two weeks.</p>
+          <div class="cta-actions">
+            <a href="contact.html" class="btn btn-primary" data-cta="portfolio-cta">Get a Free Quote</a>
+            <a href="pricing.html" class="btn btn-ghost">See pricing</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="brand brand-footer">
+          <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#103b30"/><path d="M20 7 C22.5 13 27 14.5 27 19.5 a7 7 0 0 1-14 0 C13 14.5 17.5 13 20 7 Z" fill="#f4ede0"/><rect x="19" y="18" width="2" height="13" rx="1" fill="#f4ede0"/><circle cx="20" cy="12" r="1.6" fill="#e9b949"/></svg>
+          <span class="brand-name">Map<span class="brand-accent">le</span></span>
+        </a>
+        <p class="footer-blurb">Custom websites that drive traffic and grow your business — based in Vancouver, BC.</p>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h4>Company</h4>
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Work</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="about.html">About</a>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <a href="blog.html">Blog</a>
+          <a href="faq.html">FAQ</a>
+          <a href="case-study.html">Case study</a>
+          <a href="contact.html">Get a free quote</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <a href="mailto:info@maplewebsites.com">info@maplewebsites.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> Maple. All rights reserved.</p>
+      <p>Built with ❤️ and modern web tools.</p>
+    </div>
+  </footer>
+
+  <!-- ===================== AI CHATBOT WIDGET ===================== -->
+  <div class="chatbot" id="chatbot">
+    <button class="chatbot-launch" id="chat-launch" aria-label="Open chat">
+      <span class="chat-launch-icon" aria-hidden="true">💬</span>
+      <span class="chat-launch-pulse" aria-hidden="true"></span>
+    </button>
+    <div class="chatbot-panel" id="chat-panel" hidden>
+      <div class="chatbot-header">
+        <div>
+          <p class="chatbot-title">Maple Assistant</p>
+          <p class="chatbot-status"><span class="dot"></span> Online — typically replies instantly</p>
+        </div>
+        <button class="chatbot-close" id="chat-close" aria-label="Close chat">✕</button>
+      </div>
+      <div class="chatbot-messages" id="chat-messages"></div>
+      <div class="chatbot-quick" id="chat-quick"></div>
+      <form class="chatbot-input" id="chat-form">
+        <input type="text" id="chat-text" placeholder="Type your message…" autocomplete="off" aria-label="Type your message" />
+        <button type="submit" aria-label="Send">➤</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    /* ============================================================
+       Maple — portfolio page interactions
+       Self-contained: filtering, nav toggle, reveal, chatbot.
+       ============================================================ */
+    (function () {
+      'use strict';
+
+      function track(name, params) {
+        if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+      }
+
+      /* ---------- Footer year ---------- */
+      var yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      /* ---------- Mobile nav toggle ---------- */
+      var navToggle = document.querySelector('.nav-toggle');
+      var navLinks = document.querySelector('.nav-links');
+      if (navToggle && navLinks) {
+        navToggle.addEventListener('click', function () {
+          var open = navLinks.classList.toggle('open');
+          navToggle.setAttribute('aria-expanded', String(open));
+        });
+        navLinks.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            navLinks.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      /* ---------- Portfolio filtering ---------- */
+      var filterBtns = Array.prototype.slice.call(document.querySelectorAll('.filter-btn'));
+      var cards = Array.prototype.slice.call(document.querySelectorAll('.work-card'));
+      var grid = document.getElementById('work-grid');
+      var emptyState = document.getElementById('empty-state');
+      var resultMeta = document.getElementById('result-meta');
+
+      // Pre-compute how many cards live in each category for the button counts.
+      function countFor(filter) {
+        if (filter === 'all') return cards.length;
+        return cards.filter(function (c) { return c.getAttribute('data-category') === filter; }).length;
+      }
+      filterBtns.forEach(function (btn) {
+        var n = countFor(btn.getAttribute('data-filter'));
+        var label = document.createElement('span');
+        label.className = 'count';
+        label.textContent = '(' + n + ')';
+        btn.appendChild(label);
+      });
+
+      function applyFilter(filter) {
+        var shown = 0;
+        cards.forEach(function (card) {
+          var match = (filter === 'all') || (card.getAttribute('data-category') === filter);
+          if (match) {
+            card.classList.remove('is-hidden');
+            // Tiny enter animation so the regrid feels intentional.
+            card.classList.add('is-entering');
+            // Force reflow then release so the transition runs.
+            void card.offsetWidth;
+            card.classList.remove('is-entering');
+            shown++;
+          } else {
+            card.classList.add('is-hidden');
+          }
+        });
+
+        if (emptyState) emptyState.classList.toggle('show', shown === 0);
+        if (resultMeta) {
+          var label = (filter === 'all') ? 'all categories' : '"' + filter + '"';
+          resultMeta.textContent = shown === 0
+            ? 'No concepts in this category yet.'
+            : 'Showing ' + shown + ' ' + (shown === 1 ? 'concept' : 'concepts') + ' in ' + label + '.';
+        }
+      }
+
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var filter = btn.getAttribute('data-filter');
+          filterBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+          applyFilter(filter);
+          track('portfolio_filter', { category: filter });
+        });
+      });
+
+      // Support deep-linking like portfolio.html#ecommerce
+      var initial = (window.location.hash || '').replace('#', '').toLowerCase();
+      var hashBtn = filterBtns.filter(function (b) { return b.getAttribute('data-filter') === initial; })[0];
+      if (hashBtn) {
+        filterBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b === hashBtn)); });
+        applyFilter(initial);
+      } else {
+        applyFilter('all');
+      }
+
+      /* ---------- Scroll reveal ---------- */
+      var revealTargets = Array.prototype.slice.call(document.querySelectorAll('.work-card, .cta-inner'));
+      revealTargets.forEach(function (el) { el.classList.add('reveal'); });
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
+          });
+        }, { threshold: 0.12 });
+        revealTargets.forEach(function (el) { io.observe(el); });
+      } else {
+        revealTargets.forEach(function (el) { el.classList.add('in'); });
+      }
+
+      /* ============================================================
+         AI Chatbot widget (rule-based, same behavior as home page)
+         ============================================================ */
+      var launch = document.getElementById('chat-launch');
+      var panel = document.getElementById('chat-panel');
+      var closeBtn = document.getElementById('chat-close');
+      var messages = document.getElementById('chat-messages');
+      var quickWrap = document.getElementById('chat-quick');
+      var chatForm = document.getElementById('chat-form');
+      var chatText = document.getElementById('chat-text');
+
+      var quickReplies = ['What do you build?', 'How much does it cost?', 'Do you do SEO?', 'Get a quote'];
+
+      var knowledge = [
+        { match: ['price', 'cost', 'how much', 'pricing', 'budget'],
+          reply: 'Pricing is transparent: Starter from $499 one-time (up to 5 pages), Growth from $1,500 one-time (most popular — up to 12 pages, AI chatbot, advanced SEO), and Scale is custom for e-commerce and ongoing growth. These are starting prices — we tailor an exact quote in a free consult. Want one?' },
+        { match: ['seo', 'rank', 'google', 'traffic', 'search'],
+          reply: 'Yes! Every site ships with technical SEO, fast load times, and Google Analytics built in — not as a pricey add-on. 📈' },
+        { match: ['chatbot', 'ai', 'bot', 'assistant'],
+          reply: 'You\'re chatting with one right now 🤖. We build AI chatbots that answer questions and capture leads 24/7 — included on the Growth plan and up.' },
+        { match: ['ecommerce', 'store', 'shop', 'sell', 'product'],
+          reply: 'Absolutely — see the E-commerce filter above for examples like Summit Peak Fitness and Maple & Thread. Online stores fall under our Scale plan.' },
+        { match: ['portfolio', 'work', 'example', 'sample', 'gallery'],
+          reply: 'You\'re on our portfolio page! Use the filters up top to view work by industry — e-commerce, booking, restaurant, SaaS, portfolio, and education.' },
+        { match: ['time', 'long', 'fast', 'launch', 'when'],
+          reply: 'Most sites launch in about 2 weeks depending on scope. Starter sites can go live even faster!' },
+        { match: ['what', 'build', 'do', 'service', 'offer'],
+          reply: 'We design custom websites and wire in the tools that grow traffic: AI chatbots, Google Analytics, SEO, and fast hosting. What kind of site do you need?' },
+        { match: ['quote', 'contact', 'talk', 'call', 'email', 'hire', 'start'],
+          reply: 'Love it! Hit "Get a Free Quote" up top, or email info@maplewebsites.com and we\'ll reply within one business day. 🚀' },
+        { match: ['hi', 'hello', 'hey', 'yo'],
+          reply: 'Hey there! 👋 I\'m the Maple Assistant. Ask me about our work, pricing, SEO, or AI chatbots.' }
+      ];
+
+      function replyTo(text) {
+        var t = text.toLowerCase();
+        for (var i = 0; i < knowledge.length; i++) {
+          var entry = knowledge[i];
+          for (var j = 0; j < entry.match.length; j++) {
+            if (t.indexOf(entry.match[j]) !== -1) return entry.reply;
+          }
+        }
+        return 'Great question! The fastest way to a real answer is a free quote — hit "Get a Free Quote" up top or email info@maplewebsites.com and a human will follow up. 😊';
+      }
+
+      function scrollDown() { if (messages) messages.scrollTop = messages.scrollHeight; }
+      function addMessage(text, who) {
+        var el = document.createElement('div');
+        el.className = 'msg ' + who;
+        el.textContent = text;
+        messages.appendChild(el);
+        scrollDown();
+      }
+      function showTyping() {
+        var el = document.createElement('div');
+        el.className = 'msg bot typing';
+        el.innerHTML = '<span></span><span></span><span></span>';
+        messages.appendChild(el);
+        scrollDown();
+        return el;
+      }
+      function botRespond(userText) {
+        var typing = showTyping();
+        var delay = 600 + Math.min(userText.length * 25, 900);
+        setTimeout(function () { typing.remove(); addMessage(replyTo(userText), 'bot'); }, delay);
+      }
+      function renderQuickReplies() {
+        if (!quickWrap) return;
+        quickWrap.innerHTML = '';
+        quickReplies.forEach(function (q) {
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'quick-btn';
+          b.textContent = q;
+          b.addEventListener('click', function () { handleUserText(q); });
+          quickWrap.appendChild(b);
+        });
+      }
+      function handleUserText(text) {
+        text = (text || '').trim();
+        if (!text) return;
+        addMessage(text, 'user');
+        track('chat_message', {});
+        botRespond(text);
+      }
+
+      var chatInitialized = false;
+      function openChat() {
+        panel.hidden = false;
+        launch.setAttribute('aria-label', 'Close chat');
+        track('chat_open', {});
+        if (!chatInitialized) {
+          chatInitialized = true;
+          setTimeout(function () {
+            addMessage('Hi! 👋 I\'m the Maple Assistant. Browsing our work? Ask me about any project, pricing, or how we\'d build yours.', 'bot');
+            renderQuickReplies();
+          }, 250);
+        }
+        setTimeout(function () { if (chatText) chatText.focus(); }, 300);
+      }
+      function closeChat() {
+        panel.hidden = true;
+        launch.setAttribute('aria-label', 'Open chat');
+      }
+      if (launch && panel) {
+        launch.addEventListener('click', function () { if (panel.hidden) openChat(); else closeChat(); });
+      }
+      if (closeBtn) closeBtn.addEventListener('click', closeChat);
+      if (chatForm) {
+        chatForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          handleUserText(chatText.value);
+          chatText.value = '';
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

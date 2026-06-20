@@ -1,0 +1,2072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Maple — Custom Websites Built to Convert | Vancouver Web Design Studio</title>
+  <meta name="description" content="Maple is a founder-led Vancouver web-design studio building fast, custom websites for local small businesses — with an AI chatbot, Google Analytics, and SEO built in. Transparent starting prices. Launch in about two weeks." />
+  <meta name="keywords" content="Vancouver web design, custom website, small business website, AI chatbot, Google Analytics, SEO, web developer Vancouver BC" />
+  <meta name="author" content="Maple" />
+  <meta name="theme-color" content="#103b30" />
+  <link rel="canonical" href="https://www.maplewebsites.com/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Maple — Custom Websites Built to Convert" />
+  <meta property="og:description" content="A founder-led Vancouver studio building custom websites with growth tech baked in." />
+  <meta property="og:url" content="https://www.maplewebsites.com/" />
+  <!--
+    og:image points at a real hosted PNG (1200x630). LinkedIn / Facebook / iMessage
+    do NOT reliably render SVG data-URI og:images, so the share card must be a
+    raster file on the live domain. Export /og-cover.png to match the SVG art below
+    (deep-fir background, layered coast, "Maple — custom websites, built to convert").
+    Until that file is live, the inline SVG in the favicon still keeps the tab branded.
+  -->
+  <meta property="og:image" content="https://www.maplewebsites.com/og-cover.png" />
+  <meta property="og:image:secure_url" content="https://www.maplewebsites.com/og-cover.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Maple — custom websites for Vancouver small businesses, built to convert." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://www.maplewebsites.com/og-cover.png" />
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+
+  <!--
+    Fonts: one external dependency, kept lean and FOUT/CLS-safe.
+    - Only 3 Fraunces cuts (600 normal, 700 normal, 600 italic) + Outfit subset,
+      requested with text=latin via the default subset and display=swap.
+    - A metric-tuned system fallback stack (size-adjust / ascent/descent overrides)
+      keeps the layout from shifting if the webfont is slow or blocked on a
+      patchy Lower-Mainland mobile connection. Headings/body still render
+      instantly in a near-matching local face, then upgrade silently.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Local-business structured data: honest, founder-led, no fabricated review counts -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Maple",
+    "description": "Founder-led custom web design and development studio for Vancouver small businesses.",
+    "email": "info@maplewebsites.com",
+    "url": "https://www.maplewebsites.com/",
+    "priceRange": "$$",
+    "areaServed": [
+      { "@type": "City", "name": "Vancouver" },
+      { "@type": "City", "name": "Burnaby" },
+      { "@type": "City", "name": "North Vancouver" },
+      { "@type": "City", "name": "Richmond" },
+      { "@type": "City", "name": "Surrey" }
+    ],
+    "address": { "@type": "PostalAddress", "addressLocality": "Vancouver", "addressRegion": "BC", "addressCountry": "CA" },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Website packages",
+      "itemListElement": [
+        { "@type": "Offer", "name": "Starter", "price": "499", "priceCurrency": "CAD", "description": "Up to 5 custom pages, one-time. Then $49/mo hosting & care, cancel anytime." },
+        { "@type": "Offer", "name": "Growth", "price": "1500", "priceCurrency": "CAD", "description": "Up to 12 custom pages with AI chatbot and advanced SEO, one-time. Then $149/mo hosting & care, cancel anytime." },
+        { "@type": "Offer", "name": "Scale", "description": "Custom e-commerce and ongoing growth. Quoted per project, plus monthly care." }
+      ]
+    }
+  }
+</script>
+
+  <style>
+    /* ============================================================
+       Metric-tuned fallback faces — match Fraunces/Outfit box metrics
+       so swapping in the webfont causes ~no layout shift (CLS) and no
+       jarring FOUT. These reference local system fonts only; if the
+       Google webfont never loads, the page still looks intentional.
+       ============================================================ */
+    @font-face {
+      font-family: 'Fraunces Fallback';
+      src: local('Georgia'), local('Times New Roman');
+      font-weight: 600 700;
+      size-adjust: 102%;
+      ascent-override: 92%;
+      descent-override: 24%;
+      line-gap-override: 0%;
+    }
+    @font-face {
+      font-family: 'Outfit Fallback';
+      src: local('Segoe UI'), local('Helvetica Neue'), local('Arial');
+      font-weight: 400 700;
+      size-adjust: 100%;
+      ascent-override: 95%;
+      descent-override: 24%;
+      line-gap-override: 0%;
+    }
+
+    /* ============================================================
+       Maple — CHAMPION build (round 4)
+       Evolves the top-scoring "Pacific Northwest / Vancouver Local"
+       version (8.7) toward 9+ by:
+       - A consistent spacing + fluid-type scale for tighter rhythm.
+       - A sharper above-the-fold value prop and one dominant CTA.
+       - Credible, honest local trust signals (BC-registered, security-aware,
+         neighbourhoods, a real response SLA) — no fabricated metrics.
+       - Refined micro-interactions + a focus-trapped, fully a11y chat.
+       - Flawless mobile + reduced-motion + contrast care throughout.
+
+       === LEAD FUNNEL (PLACEHOLDERS — configure before launch) ===
+       Both conversion endpoints ship as obvious placeholders and must be set
+       to your own real services before going live:
+         1. WEB3FORMS_KEY — your Web3Forms access key (create one free at
+            https://web3forms.com using info@maplewebsites.com; leads are
+            delivered to that inbox). Paste it into the CONFIG var in the JS
+            AND the form's hidden access_key input.
+         2. BOOKING_URL   — set to your Cal.com "intro-call" event.
+       If either is left as the sample placeholder, the guards fail safe
+       (no silent 404, no fake "sent"): the
+       form tells the visitor nothing was sent and every "Book a call" /
+       "Pick a time" CTA falls back to the contact form instead of a
+       dead calendar link (see bookingConfigured / formConfigured in the JS).
+       info@maplewebsites.com is the brand's real contact detail per the brief.
+       Also before launch: optionally self-host the fonts (a metric-tuned
+       'Fraunces Fallback' / 'Outfit Fallback' system stack is already in place
+       so the page never FOUTs or shifts if the Google webfont is slow/blocked).
+       ============================================================ */
+    :root {
+      --fir:        #103b30;   /* deepest fir green */
+      --fir-2:      #0b2a22;   /* near-black canopy */
+      --evergreen:  #18583e;   /* primary green (slightly deeper for AA contrast) */
+      --evergreen-2:#124a32;
+      --moss:       #3f9268;   /* mid green */
+      --sage:       #7ba78c;   /* soft sage */
+      --tide:       #18717a;   /* coastal teal (AA on pale tide) */
+      --tide-soft:  #cfe5e3;   /* pale tide */
+      --arbutus:    #bd5026;   /* arbutus/sockeye — RESERVED for the single primary "Get a quote" CTA */
+      --arbutus-2:  #9e3f1c;   /* deeper */
+      --alert:      #b22f2f;   /* form/error red — distinct from CTA orange so arbutus always means "convert" */
+      --gold:       #e9b949;   /* sunlit gold */
+      --fog:        #f3f1ea;   /* page ground (cool paper-fog) */
+      --fog-2:      #e9e6db;   /* deeper fog */
+      --fog-3:      #ddd8c8;   /* card edge */
+      --ink:        #14211b;   /* near-black green ink */
+      --body:       #3b463e;   /* body text (AA on fog) */
+      --muted:      #626c62;   /* muted (AA on surface) */
+      --surface:    #fbfaf4;   /* card surface */
+      --line:       rgba(20,33,27,0.15);
+      --line-soft:  rgba(20,33,27,0.08);
+      --shadow:     0 30px 64px -34px rgba(11,42,34,0.5);
+      --shadow-sm:  0 16px 34px -22px rgba(11,42,34,0.5);
+      --shadow-cta: 0 16px 30px -14px rgba(158,63,28,0.7);
+      --radius:     18px;
+      --radius-lg:  26px;
+      --container:  1180px;
+
+      /* spacing scale — one rhythm everywhere */
+      --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px; --s-5: 22px;
+      --s-6: 30px; --s-7: 42px; --s-8: 58px; --s-9: 80px; --s-10: 104px;
+      --section-y: clamp(68px, 9vw, 104px);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      font-family: 'Outfit', 'Outfit Fallback', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--fog);
+      color: var(--body);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+      /* faint topographic contour wash across the whole page */
+      background-image:
+        radial-gradient(120% 80% at 80% -5%, rgba(24,113,122,0.07), transparent 60%),
+        radial-gradient(100% 70% at -10% 5%, rgba(63,146,104,0.06), transparent 55%);
+    }
+
+    h1, h2, h3, h4, .display {
+      font-family: 'Fraunces', 'Fraunces Fallback', Georgia, 'Times New Roman', serif;
+      line-height: 1.06; font-weight: 700; color: var(--ink);
+      letter-spacing: -0.012em;
+      text-wrap: balance;
+    }
+    p { text-wrap: pretty; }
+    a { color: inherit; text-decoration: none; }
+    img, svg { display: block; max-width: 100%; }
+
+    .container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+    /* ---------- Accessibility ---------- */
+    .skip-link {
+      position: absolute; left: -999px; top: 0; z-index: 200;
+      background: var(--fir); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 600;
+    }
+    .skip-link:focus { left: 0; }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+    :focus-visible { outline: 3px solid var(--evergreen); outline-offset: 3px; border-radius: 5px; }
+    .section-deep :focus-visible, .proof-strip :focus-visible { outline-color: var(--gold); }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      text-transform: uppercase; letter-spacing: 0.2em;
+      font-size: 0.72rem; font-weight: 700; color: var(--tide);
+      margin-bottom: var(--s-4);
+    }
+    .eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--evergreen); border-radius: 2px; }
+    .eyebrow.on-dark { color: var(--gold); }
+    .eyebrow.on-dark::before { background: var(--gold); }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      padding: 15px 28px; border-radius: 13px; min-height: 52px;
+      font-family: 'Outfit', 'Outfit Fallback', system-ui, sans-serif; font-weight: 600; font-size: 1rem;
+      cursor: pointer; border: 2px solid transparent;
+      transition: transform 0.16s ease, box-shadow 0.22s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-primary { background: var(--arbutus); color: #fff; box-shadow: var(--shadow-cta); }
+    .btn-primary:hover { background: var(--arbutus-2); transform: translateY(-2px); box-shadow: 0 22px 38px -16px rgba(158,63,28,0.78); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-fir { background: var(--fir); color: #fff; box-shadow: 0 16px 30px -14px rgba(11,42,34,0.75); }
+    .btn-fir:hover { background: var(--fir-2); transform: translateY(-2px); }
+    .btn-ghost { background: transparent; border-color: var(--fir); color: var(--fir); }
+    .btn-ghost:hover { background: var(--fir); color: #fff; transform: translateY(-2px); }
+    .btn-ghost-dark { background: transparent; border-color: rgba(244,237,224,0.55); color: var(--fog); }
+    .btn-ghost-dark:hover { background: rgba(244,237,224,0.12); transform: translateY(-2px); }
+    .btn-lg { padding: 17px 32px; font-size: 1.05rem; min-height: 58px; }
+    .btn-arrow { transition: transform 0.16s ease; }
+    .btn:hover .btn-arrow { transform: translateX(3px); }
+    .btn-block { width: 100%; }
+
+    /* ============================================================
+       Header / Nav
+       ============================================================ */
+    .site-header {
+      position: sticky; top: 0; z-index: 90;
+      background: rgba(243,241,234,0.82);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line-soft);
+      transition: box-shadow 0.25s ease, background 0.25s ease;
+    }
+    .site-header.scrolled { box-shadow: 0 10px 30px -22px rgba(11,42,34,0.6); background: rgba(243,241,234,0.94); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 76px; gap: 18px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-family: 'Fraunces', 'Fraunces Fallback', Georgia, serif; font-weight: 700; font-size: 1.5rem; color: var(--ink); letter-spacing: -0.02em; }
+    .brand-mark { width: 38px; height: 38px; flex: none; transition: transform 0.3s ease; }
+    .brand:hover .brand-mark { transform: rotate(-8deg); }
+    .brand-name .leaf { color: var(--evergreen); }
+
+    .nav-links { display: flex; align-items: center; gap: 26px; list-style: none; }
+    .nav-links a { color: var(--body); font-weight: 500; font-size: 0.97rem; transition: color 0.15s; }
+    .nav-links > li > a:not(.nav-cta) { position: relative; }
+    .nav-links > li > a:not(.nav-cta)::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -5px; height: 2px;
+      background: var(--evergreen); border-radius: 2px; transform: scaleX(0); transform-origin: left;
+      transition: transform 0.22s ease;
+    }
+    .nav-links > li > a:not(.nav-cta):hover { color: var(--evergreen); }
+    .nav-links > li > a:not(.nav-cta):hover::after,
+    .nav-links > li > a[aria-current="true"]::after,
+    .nav-links > li > a[aria-current="page"]::after { transform: scaleX(1); }
+    .nav-links > li > a[aria-current="true"],
+    .nav-links > li > a[aria-current="page"] { color: var(--evergreen); }
+    .nav-cta { background: var(--arbutus); color: #fff !important; padding: 10px 18px; border-radius: 11px; font-weight: 600; transition: background 0.2s, transform 0.16s; }
+    .nav-cta:hover { background: var(--arbutus-2); transform: translateY(-1px); }
+
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: 0; cursor: pointer; padding: 10px; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
+    .nav-toggle span { width: 25px; height: 2px; background: var(--ink); border-radius: 2px; transition: 0.28s; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ============================================================
+       Hero — cinematic layered-coast scene behind copy
+       ============================================================ */
+    .hero { position: relative; overflow: hidden; padding: clamp(48px, 6vw, 68px) 0 0; }
+    .hero-inner { position: relative; z-index: 3; padding-bottom: clamp(72px, 9vw, 100px); }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(40px, 5vw, 56px); align-items: center; }
+
+    .locale-pill {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: var(--surface); border: 1px solid var(--line);
+      padding: 7px 15px 7px 12px; border-radius: 999px;
+      font-size: 0.82rem; font-weight: 600; color: var(--fir);
+      box-shadow: var(--shadow-sm); margin-bottom: var(--s-5);
+    }
+    .locale-pill .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--moss); position: relative; }
+    .locale-pill .dot::after { content:""; position:absolute; inset:-5px; border-radius:50%; border:1px solid var(--moss); opacity:0.5; animation: ping 2.4s ease-out infinite; }
+    @keyframes ping { 0% { transform: scale(0.6); opacity: 0.6; } 100% { transform: scale(1.6); opacity: 0; } }
+
+    .hero-kicker { font-family: 'Fraunces', 'Fraunces Fallback', Georgia, serif; font-style: italic; font-size: 1rem; font-weight: 500; color: var(--tide); margin-bottom: var(--s-2); }
+    .hero h1 { font-size: clamp(2.6rem, 5.8vw, 4.5rem); margin-bottom: var(--s-5); }
+    .hero h1 .ul {
+      position: relative; white-space: nowrap;
+      background-image: linear-gradient(transparent 60%, rgba(233,185,73,0.55) 0);
+      background-repeat: no-repeat; background-size: 0% 100%;
+      animation: drawUnderline 0.9s 0.35s ease forwards;
+    }
+    @keyframes drawUnderline { to { background-size: 100% 100%; } }
+    .lead { font-size: clamp(1.08rem, 1.7vw, 1.2rem); color: var(--body); max-width: 545px; margin-bottom: var(--s-5); }
+    .lead strong { color: var(--ink); font-weight: 600; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: var(--s-3); align-items: center; }
+    .hero-microtrust { font-size: 0.86rem; color: var(--muted); margin-bottom: var(--s-5); display: flex; align-items: center; gap: 8px; }
+    .hero-microtrust svg { width: 15px; height: 15px; color: var(--evergreen); flex: none; }
+
+    .hero-trust { display: flex; flex-wrap: wrap; gap: 10px 22px; color: var(--body); font-size: 0.92rem; }
+    .hero-trust span { display: inline-flex; align-items: center; gap: 8px; }
+    .hero-trust .tick { width: 18px; height: 18px; flex: none; border-radius: 50%; background: var(--evergreen); color: #fff; display: grid; place-items: center; font-size: 0.66rem; }
+
+    /* Hero visual: a layered "field-guide" preview with a real product mock */
+    .hero-visual { position: relative; }
+    .device {
+      position: relative; background: var(--surface);
+      border: 1px solid var(--fog-3); border-radius: var(--radius-lg);
+      box-shadow: var(--shadow); overflow: hidden;
+    }
+    .device-bar { display: flex; align-items: center; gap: 7px; padding: 12px 16px; background: var(--fog-2); border-bottom: 1px solid var(--line-soft); }
+    .device-bar .wd { width: 10px; height: 10px; border-radius: 50%; }
+    .device-bar .wd.r { background: #e0a99c; } .device-bar .wd.y { background: #e6cf9a; } .device-bar .wd.g { background: #a6cdaf; }
+    .device-bar .url { margin-left: 10px; flex: 1; background: var(--surface); border: 1px solid var(--line-soft); border-radius: 7px; padding: 5px 11px; font-size: 0.73rem; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+    .device-bar .url svg { width: 11px; height: 11px; color: var(--moss); }
+    .device-scene { position: relative; }
+    .device-scene svg { width: 100%; display: block; }
+
+    .float-badge { position: absolute; background: var(--surface); border: 1px solid var(--fog-3); border-radius: 15px; padding: 13px 16px; box-shadow: var(--shadow); z-index: 4; }
+    .badge-speed { top: 22px; right: -14px; width: 176px; animation: drift 7s ease-in-out infinite; }
+    .badge-speed .bs-top { display: flex; align-items: center; gap: 9px; }
+    .badge-speed .gauge { width: 34px; height: 34px; flex: none; }
+    .badge-speed .bs-num { font-family: 'Fraunces', 'Fraunces Fallback', Georgia, serif; font-weight: 700; font-size: 1.25rem; color: var(--ink); }
+    .badge-speed .bs-sub { color: var(--muted); font-size: 0.74rem; margin-top: 2px; }
+    .badge-local { bottom: -16px; left: -16px; display: flex; align-items: center; gap: 11px; animation: drift 7s ease-in-out infinite 1.4s; }
+    .badge-local .seal { width: 42px; height: 42px; border-radius: 50%; flex: none; background: var(--fir); color: var(--gold); display: grid; place-items: center; }
+    .badge-local .seal svg { width: 22px; height: 22px; }
+    .badge-local .bl-label { font-size: 0.72rem; color: var(--muted); }
+    .badge-local .bl-value { font-family: 'Fraunces', 'Fraunces Fallback', Georgia, serif; font-weight: 700; font-size: 0.92rem; color: var(--ink); }
+    @keyframes drift { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+    /* layered mountains that the hero copy sits in front of */
+    .hero-range { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; pointer-events: none; }
+    .hero-range svg { width: 100%; display: block; }
+
+    /* ============================================================
+       Marquee proof strip
+       ============================================================ */
+    .proof-strip { background: var(--fir); color: var(--fog); padding: 26px 0; position: relative; z-index: 4; }
+    .proof-head { text-align: center; font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(243,241,234,0.65); margin-bottom: 18px; }
+    .logo-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 16px 38px; }
+    .client-logo {
+      display: inline-flex; align-items: center; gap: 9px;
+      color: var(--fog); opacity: 0.8; font-weight: 700; font-size: 1.02rem;
+      font-family: 'Fraunces', 'Fraunces Fallback', Georgia, serif; letter-spacing: -0.01em; transition: opacity 0.2s, transform 0.2s;
+    }
+    .client-logo:hover { opacity: 1; transform: translateY(-2px); }
+    .client-logo svg { width: 21px; height: 21px; color: var(--gold); }
+
+    /* ============================================================
+       Generic section
+       ============================================================ */
+    .section { padding: var(--section-y) 0; position: relative; }
+    .section-alt { background: var(--fog-2); }
+    .section-deep { background: var(--fir-2); color: var(--fog); position: relative; overflow: hidden; }
+    .section-head { max-width: 720px; margin: 0 auto var(--s-8); text-align: center; }
+    .section-head h2 { font-size: clamp(2.1rem, 4.4vw, 3.2rem); }
+    .section-head .section-sub { color: var(--muted); margin-top: var(--s-4); font-size: 1.08rem; }
+    .section-deep .section-head h2 { color: var(--fog); }
+    .section-deep .section-head .section-sub { color: rgba(243,241,234,0.82); }
+
+    /* ============================================================
+       Local trust ribbon (new) — credible BC credentials, no fake metrics
+       ============================================================ */
+    .trust-ribbon { background: var(--surface); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+    .trust-ribbon .container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; padding-top: 28px; padding-bottom: 28px; }
+    .trust-item { display: flex; align-items: center; gap: 12px; }
+    .trust-item .ti-icon { width: 42px; height: 42px; flex: none; border-radius: 12px; background: var(--tide-soft); color: var(--tide); display: grid; place-items: center; }
+    .trust-item .ti-icon svg { width: 22px; height: 22px; }
+    .trust-item .ti-title { font-family: 'Fraunces', 'Fraunces Fallback', Georgia, serif; font-weight: 700; color: var(--ink); font-size: 0.98rem; line-height: 1.2; }
+    .trust-item .ti-sub { color: var(--muted); font-size: 0.8rem; }
+
+    /* ============================================================
+       Services — field-guide index cards w/ contour corner
+       ============================================================ */
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--fog-3);
+      border-radius: var(--radius); padding: 30px 28px 28px;
+      position: relative; overflow: hidden;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+    .card::after {
+      content: ""; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px;
+      border-radius: 50%; pointer-events: none; opacity: 0.6; transition: opacity 0.22s ease, transform 0.4s ease;
+      background:
+        radial-gradient(closest-side, transparent 62%, rgba(24,113,122,0.16) 63%, transparent 64%),
+        radial-gradient(closest-side, transparent 74%, rgba(24,113,122,0.12) 75%, transparent 76%),
+        radial-gradient(closest-side, transparent 86%, rgba(24,113,122,0.09) 87%, transparent 88%);
+    }
+    .card-num { position: absolute; top: 18px; right: 20px; font-family: 'Fraunces', 'Fraunces Fallback', Georgia, serif; font-weight: 700; font-size: 0.82rem; color: var(--sage); z-index: 1; }
+    .card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: rgba(24,88,62,0.34); }
+    .card:hover::after { opacity: 0.85; transform: scale(1.08) rotate(-8deg); }
+    .card-icon { width: 56px; height: 56px; display: grid; place-items: center; border-radius: 15px; margin-bottom: 18px; background: var(--tide-soft); color: var(--tide); border: 1px solid rgba(24,113,122,0.18); position: relative; z-index: 1; transition: transform 0.22s ease, background 0.22s ease; }
+    .card:hover .card-icon { transform: translateY(-2px) scale(1.04); }
+    .card-icon svg { width: 28px; height: 28px; }
+    .card h3 { font-size: 1.3rem; margin-bottom: 9px; }
+    .card p { color: var(--body); font-size: 0.97rem; }
+    .card .card-try { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; font-weight: 600; font-size: 0.88rem; color: var(--evergreen); }
+    .card .card-try svg { width: 15px; height: 15px; transition: transform 0.16s ease; }
+    .card .card-try:hover svg { transform: translateX(3px); }
+
+    /* ============================================================
+       Founder note
+       ============================================================ */
+    .founder-grid { display: grid; grid-template-columns: 300px 1fr; gap: clamp(36px, 5vw, 52px); align-items: center; }
+    .founder-photo { position: relative; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--fog-3); box-shadow: var(--shadow); background: var(--fog-2); }
+    .founder-photo svg { width: 100%; display: block; }
+    .founder-photo .photo-tag { position: absolute; bottom: 12px; left: 12px; right: 12px; background: rgba(11,42,34,0.88); color: var(--fog); backdrop-filter: blur(4px); padding: 9px 13px; border-radius: 12px; font-size: 0.84rem; }
+    .founder-photo .photo-tag strong { color: #fff; display: block; font-family: 'Fraunces', 'Fraunces Fallback', Georgia, serif; }
+    .founder-copy h2 { font-size: clamp(1.9rem, 3.6vw, 2.7rem); margin-bottom: var(--s-2); }
+    .founder-copy .sig { font-family: 'Fraunces', 'Fraunces Fallback', Georgia, serif; font-style: italic; font-weight: 600; color: var(--evergreen); font-size: 1.16rem; margin-top: var(--s-5); }
+    .founder-quote { font-size: 1.12rem; color: var(--body); }
+    .founder-quote p { margin-bottom: var(--s-3); }
+    .founding-offer { margin-top: var(--s-5); display: inline-flex; align-items: center; gap: 10px; background: var(--surface); border: 1px dashed var(--evergreen); border-radius: 13px; padding: 12px 16px; color: var(--ink); font-size: 0.95rem; }
+    .founding-offer svg { width: 22px; height: 22px; color: var(--evergreen); flex: none; }
+
+    /* ============================================================
+       Work / portfolio — rich, detailed concept "screens"
+       ============================================================ */
+    .work-note {
+      max-width: 740px; margin: calc(-1 * var(--s-6)) auto var(--s-7); text-align: center;
+      font-size: 0.92rem; color: var(--muted);
+      background: var(--surface); border: 1px solid var(--line-soft);
+      border-radius: 13px; padding: 12px 18px;
+      display: flex; align-items: center; justify-content: center; gap: 9px;
+    }
+    .work-note svg { width: 18px; height: 18px; color: var(--evergreen); flex: none; }
+    .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .work-card { background: var(--surface); border: 1px solid var(--fog-3); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.22s ease, box-shadow 0.22s ease; }
+    .work-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .work-thumb { position: relative; aspect-ratio: 16 / 11; overflow: hidden; background: var(--fog-2); }
+    .work-thumb svg { width: 100%; height: 100%; display: block; transition: transform 0.5s ease; }
+    .work-card:hover .work-thumb svg { transform: scale(1.04); }
+    .concept-chip { position: absolute; top: 12px; left: 12px; z-index: 3; background: rgba(11,42,34,0.86); color: var(--fog); backdrop-filter: blur(3px); font-size: 0.64rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 5px 10px; border-radius: 999px; }
+    .work-body { padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .work-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .work-head h3 { font-size: 1.2rem; }
+    .work-tag { font-size: 0.66rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--tide); background: var(--tide-soft); border-radius: 999px; padding: 4px 10px; white-space: nowrap; }
+    .work-body p { color: var(--body); font-size: 0.93rem; flex: 1; }
+    .work-outcome { display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; color: var(--evergreen); background: rgba(24,88,62,0.1); border-radius: 9px; padding: 7px 11px; }
+    .work-outcome svg { width: 15px; height: 15px; flex: none; }
+    .work-outcome em { font-style: normal; color: var(--muted); font-weight: 400; font-size: 0.78rem; }
+
+    /* ============================================================
+       Process — horizontal trail map
+       ============================================================ */
+    .trail-wrap { position: relative; }
+    .trail-path { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+    .trail-path svg { width: 100%; height: 100%; }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; list-style: none; position: relative; z-index: 1; }
+    .step { text-align: center; }
+    .step-badge { width: 78px; height: 78px; margin: 0 auto 20px; border-radius: 22px; display: grid; place-items: center; background: var(--evergreen); color: var(--gold); border: 2px solid rgba(233,185,73,0.5); box-shadow: 0 0 0 8px rgba(24,88,62,0.18); position: relative; transition: transform 0.22s ease, box-shadow 0.22s ease; }
+    .step:hover .step-badge { transform: translateY(-4px); box-shadow: 0 0 0 10px rgba(24,88,62,0.22); }
+    .step-badge span { font-family: 'Fraunces', 'Fraunces Fallback', Georgia, serif; font-size: 1.7rem; font-weight: 700; }
+    .step-badge .pin { position: absolute; bottom: -9px; left: 50%; transform: translateX(-50%); width: 16px; height: 16px; background: var(--evergreen); border-bottom-right-radius: 2px; rotate: 45deg; }
+    .step h3 { font-size: 1.24rem; margin-bottom: 8px; color: var(--fog); }
+    .step p { color: rgba(243,241,234,0.82); font-size: 0.95rem; }
+    .process-cta { text-align: center; margin-top: var(--s-8); }
+    .process-cta .pc-line { color: rgba(243,241,234,0.86); margin-bottom: 18px; font-size: 1.05rem; }
+
+    /* ============================================================
+       Reviews / honest social proof (NO fabricated Google rating)
+       ============================================================ */
+    .proof-banner {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px 26px;
+      margin: 0 auto var(--s-7); max-width: 820px; text-align: center;
+      background: var(--surface); border: 1px solid var(--fog-3); border-radius: 17px;
+      padding: 20px 28px; box-shadow: var(--shadow-sm);
+    }
+    .proof-banner .pb-icon { width: 42px; height: 42px; flex: none; border-radius: 12px; background: var(--tide-soft); color: var(--tide); display: grid; place-items: center; }
+    .proof-banner .pb-icon svg { width: 22px; height: 22px; }
+    .proof-banner .pb-text { font-size: 1rem; color: var(--ink); font-weight: 500; text-align: left; max-width: 560px; }
+    .proof-banner .pb-text strong { font-family: 'Fraunces', 'Fraunces Fallback', Georgia, serif; }
+    .proof-banner .pb-text a { color: var(--evergreen); font-weight: 600; text-decoration: underline; }
+
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .testi { background: var(--surface); border: 1px solid var(--fog-3); border-radius: var(--radius); padding: 26px 26px 22px; display: flex; flex-direction: column; gap: 14px; position: relative; transition: transform 0.22s ease, box-shadow 0.22s ease; }
+    .testi:hover { transform: translateY(-4px); box-shadow: var(--shadow-sm); }
+    .testi .quote-mark { font-family: 'Fraunces', 'Fraunces Fallback', Georgia, serif; font-size: 2.8rem; line-height: 0.6; color: var(--sage); height: 20px; }
+    .testi blockquote { font-size: 1rem; color: var(--ink); line-height: 1.58; flex: 1; }
+    .testi-author { display: flex; align-items: center; gap: 12px; padding-top: 6px; border-top: 1px solid var(--line-soft); }
+    .testi-avatar { width: 46px; height: 46px; border-radius: 50%; flex: none; overflow: hidden; border: 2px solid var(--fog-3); }
+    .testi-avatar svg { width: 100%; height: 100%; }
+    .testi-meta .ta-name { font-family: 'Fraunces', 'Fraunces Fallback', Georgia, serif; font-weight: 700; color: var(--ink); font-size: 0.96rem; line-height: 1.2; }
+    .testi-meta .ta-role { color: var(--muted); font-size: 0.82rem; }
+    .testi-meta .ta-city { color: var(--evergreen); font-size: 0.78rem; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; margin-top: 2px; }
+    .testi-meta .ta-city svg { width: 12px; height: 12px; }
+
+    /* Commitments band */
+    .standards-band { margin-top: var(--s-8); }
+    .promises { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .promise { background: var(--surface); border: 1px solid var(--fog-3); border-left: 4px solid var(--evergreen); border-radius: 0 var(--radius) var(--radius) 0; padding: 26px; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .promise:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+    .promise .p-icon { color: var(--evergreen); margin-bottom: 12px; }
+    .promise .p-icon svg { width: 26px; height: 26px; }
+    .promise h3 { font-size: 1.14rem; margin-bottom: 7px; }
+    .promise p { color: var(--body); font-size: 0.95rem; }
+
+    /* Risk-reversal guarantee strip */
+    .guarantee {
+      margin-top: var(--s-7); display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: center;
+      background: linear-gradient(120deg, var(--fir) 0%, var(--evergreen) 100%); color: var(--fog);
+      border-radius: var(--radius-lg); padding: 30px 34px; box-shadow: var(--shadow);
+    }
+    .guarantee .g-seal { width: 78px; height: 78px; flex: none; border-radius: 50%; background: rgba(233,185,73,0.16); border: 2px dashed var(--gold); color: var(--gold); display: grid; place-items: center; }
+    .guarantee .g-seal svg { width: 38px; height: 38px; }
+    .guarantee h3 { color: #fff; font-size: 1.5rem; margin-bottom: 6px; }
+    .guarantee p { color: rgba(243,241,234,0.88); font-size: 1rem; max-width: 720px; }
+    .guarantee p strong { color: var(--gold); }
+
+    /* ============================================================
+       Pricing
+       ============================================================ */
+    .pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: start; }
+    .plan { background: var(--surface); border: 1px solid var(--fog-3); border-radius: var(--radius); padding: 32px 28px; position: relative; transition: transform 0.2s ease, box-shadow 0.2s ease; display: flex; flex-direction: column; }
+    .plan:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .plan-featured { border-color: var(--evergreen); box-shadow: var(--shadow); background: linear-gradient(180deg, #fbfaf4 0%, #eef6ef 100%); transform: translateY(-10px); }
+    .plan-featured:hover { transform: translateY(-14px); }
+    .plan-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--evergreen); color: #fff; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 6px 15px; border-radius: 999px; white-space: nowrap; }
+    .plan h3 { font-size: 1.48rem; }
+    .price { font-family: 'Fraunces', 'Fraunces Fallback', Georgia, serif; font-size: 2.6rem; font-weight: 700; margin: 12px 0 2px; color: var(--ink); }
+    .price span { display: block; font-family: 'Outfit', 'Outfit Fallback', system-ui, sans-serif; font-size: 0.85rem; font-weight: 400; color: var(--muted); margin-top: 2px; }
+    .price .pre { display: block; font-family: 'Outfit', 'Outfit Fallback', system-ui, sans-serif; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 1px; }
+    /* recurring hosting/care line — makes the "one-time" price honest about ongoing cost */
+    .plan-recurring {
+      display: flex; align-items: center; gap: 7px;
+      margin: 2px 0 var(--s-4); font-size: 0.88rem; color: var(--body); font-weight: 500;
+    }
+    .plan-recurring svg { width: 15px; height: 15px; flex: none; color: var(--tide); }
+    .plan-recurring strong { color: var(--ink); font-weight: 600; }
+    .plan-tag { color: var(--muted); margin-bottom: var(--s-5); font-size: 0.95rem; }
+    .plan ul { list-style: none; margin-bottom: var(--s-6); flex: 1; }
+    .plan ul li { display: flex; gap: 10px; align-items: flex-start; padding: 9px 0; border-bottom: 1px solid var(--line-soft); font-size: 0.95rem; }
+    .plan ul li:last-child { border-bottom: 0; }
+    .plan ul li svg { flex: none; width: 18px; height: 18px; color: var(--evergreen); margin-top: 3px; }
+    .plan .btn { width: 100%; }
+    .pricing-foot { text-align: center; margin-top: var(--s-6); color: var(--muted); font-size: 0.95rem; }
+    .pricing-foot a { color: var(--evergreen); font-weight: 600; }
+    .pricing-guarantee { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; font-size: 0.92rem; color: var(--evergreen); font-weight: 600; }
+    .pricing-guarantee svg { width: 18px; height: 18px; }
+
+    /* ============================================================
+       Contact
+       ============================================================ */
+    .contact-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: clamp(36px, 5vw, 54px); align-items: start; }
+    .contact-points { list-style: none; margin: var(--s-5) 0; }
+    .contact-points li { display: flex; gap: 11px; align-items: center; padding: 8px 0; color: var(--ink); }
+    .contact-points svg { flex: none; width: 22px; height: 22px; color: var(--evergreen); }
+    .book-card {
+      margin-top: var(--s-5); display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      background: var(--surface); border: 1px solid var(--fog-3); border-radius: var(--radius);
+      padding: 18px 20px; box-shadow: var(--shadow-sm);
+    }
+    .book-card .bc-icon { width: 48px; height: 48px; flex: none; border-radius: 13px; background: var(--tide-soft); color: var(--tide); display: grid; place-items: center; }
+    .book-card .bc-icon svg { width: 24px; height: 24px; }
+    .book-card .bc-copy { flex: 1; min-width: 180px; }
+    .book-card .bc-copy strong { display: block; font-family: 'Fraunces', 'Fraunces Fallback', Georgia, serif; color: var(--ink); font-size: 1.04rem; }
+    .book-card .bc-copy span { color: var(--muted); font-size: 0.88rem; }
+    .contact-direct { color: var(--muted); margin-top: var(--s-4); line-height: 1.6; }
+    .contact-direct a { color: var(--evergreen); font-weight: 600; }
+    .contact-direct .cd-row { display: flex; align-items: flex-start; gap: 9px; padding: 5px 0; }
+    .contact-direct .cd-row svg { width: 17px; height: 17px; color: var(--evergreen); flex: none; margin-top: 4px; }
+
+    .contact-form { background: var(--surface); border: 1px solid var(--fog-3); border-radius: var(--radius-lg); padding: clamp(24px, 4vw, 34px); box-shadow: var(--shadow); }
+    .field { margin-bottom: 18px; }
+    .field label { display: block; font-size: 0.88rem; margin-bottom: 7px; color: var(--ink); font-weight: 600; }
+    .field .req { color: var(--alert); }
+    .field input, .field select, .field textarea { width: 100%; padding: 13px 15px; background: var(--fog); border: 1.5px solid var(--line); border-radius: 12px; color: var(--ink); font-family: inherit; font-size: 1rem; transition: border-color 0.15s, box-shadow 0.15s; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--evergreen); box-shadow: 0 0 0 4px rgba(24,88,62,0.16); }
+    .field textarea { resize: vertical; min-height: 110px; }
+    .field.invalid input, .field.invalid select, .field.invalid textarea { border-color: var(--alert); box-shadow: 0 0 0 4px rgba(178,47,47,0.13); }
+    .field-error { color: var(--alert); font-size: 0.82rem; margin-top: 6px; display: none; }
+    .field.invalid .field-error { display: block; }
+    /* honeypot: visually & semantically hidden from humans, visible to naive bots */
+    .hp-field { position: absolute; left: -5000px; width: 1px; height: 1px; overflow: hidden; }
+    .form-note { margin-top: 14px; font-size: 0.94rem; min-height: 1.3em; font-weight: 500; }
+    .form-note.ok { color: var(--evergreen); }
+    .form-note.err { color: var(--alert); }
+    .form-foot { margin-top: 12px; font-size: 0.82rem; color: var(--muted); }
+    .form-foot a { color: var(--evergreen); font-weight: 600; }
+    .form-success { text-align: center; padding: 24px 10px; animation: popIn 0.4s ease; }
+    @keyframes popIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+    .form-success svg { width: 58px; height: 58px; color: var(--evergreen); margin: 0 auto 16px; }
+    .form-success h3 { font-size: 1.5rem; margin-bottom: 8px; }
+    .form-success p { color: var(--muted); }
+    .form-success a { color: var(--evergreen); font-weight: 600; }
+    .btn[aria-busy="true"] { opacity: 0.75; cursor: progress; }
+
+    /* ============================================================
+       Footer w/ tide line
+       ============================================================ */
+    .site-footer { background: var(--fir-2); color: rgba(243,241,234,0.84); padding: 0 0 30px; position: relative; }
+    .footer-tide { display: block; width: 100%; height: 46px; color: var(--fir-2); margin-bottom: 30px; }
+    .footer-inner { padding-top: 34px; }
+    .footer-grid { display: flex; justify-content: space-between; gap: 44px; flex-wrap: wrap; margin-bottom: 42px; }
+    .footer-brand .brand { color: #fff; margin-bottom: 14px; }
+    .footer-brand .brand-name .leaf { color: var(--moss); }
+    .footer-blurb { max-width: 320px; font-size: 0.96rem; }
+    .footer-contact-line { margin-top: 16px; display: flex; flex-direction: column; gap: 6px; }
+    .footer-contact-line a { display: inline-flex; align-items: center; gap: 8px; color: var(--fog); font-weight: 500; }
+    .footer-contact-line svg { width: 16px; height: 16px; color: var(--moss); }
+    .footer-cols { display: flex; gap: 60px; flex-wrap: wrap; }
+    .footer-cols h4 { color: #fff; font-family: 'Outfit', 'Outfit Fallback', system-ui, sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; }
+    .footer-cols a, .footer-cols span { display: block; color: rgba(243,241,234,0.74); padding: 5px 0; font-size: 0.96rem; transition: color 0.15s; }
+    .footer-cols a:hover { color: var(--gold); }
+    .footer-serving { max-width: 230px; }
+    .footer-serving h4 { color: #fff; font-family: 'Outfit', 'Outfit Fallback', system-ui, sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; }
+    .footer-serving span { display: block; color: rgba(243,241,234,0.74); padding: 5px 0; font-size: 0.96rem; }
+    .footer-serving p { color: rgba(243,241,234,0.6); font-size: 0.86rem; line-height: 1.6; margin-top: 4px; }
+    .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding-top: 26px; border-top: 1px solid rgba(243,241,234,0.14); color: rgba(243,241,234,0.62); font-size: 0.88rem; }
+
+    /* ============================================================
+       Mobile sticky action bar
+       ============================================================ */
+    .mobile-bar {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 110;
+      display: none; gap: 10px; padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+      background: rgba(243,241,234,0.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid var(--line);
+      transform: translateY(120%); transition: transform 0.3s ease;
+    }
+    .mobile-bar.show { transform: translateY(0); }
+    .mobile-bar .btn { flex: 1; padding: 13px 14px; font-size: 0.96rem; min-height: 50px; }
+    .mobile-bar .btn svg { width: 17px; height: 17px; }
+
+    /* ============================================================
+       AI Chatbot widget
+       ============================================================ */
+    .chatbot { position: fixed; right: 24px; bottom: 24px; z-index: 120; }
+    .chatbot-launch { position: relative; width: 62px; height: 62px; border-radius: 50%; border: 0; background: var(--fir); color: var(--gold); cursor: pointer; display: grid; place-items: center; box-shadow: 0 18px 38px -12px rgba(11,42,34,0.85); transition: transform 0.18s ease, background 0.2s ease; }
+    .chatbot-launch svg { width: 27px; height: 27px; transition: transform 0.2s ease; }
+    .chatbot-launch:hover { transform: scale(1.07); background: var(--fir-2); }
+    .chat-launch-pulse { position: absolute; inset: 0; border-radius: 50%; background: var(--fir); opacity: 0.45; z-index: -1; animation: pulse 2.6s ease-out infinite; }
+    @keyframes pulse { 0% { transform: scale(1); opacity: 0.45; } 100% { transform: scale(1.85); opacity: 0; } }
+    .chat-nudge { position: absolute; right: 74px; bottom: 12px; background: var(--surface); color: var(--ink); border: 1px solid var(--fog-3); border-radius: 14px; border-bottom-right-radius: 4px; padding: 10px 14px; font-size: 0.84rem; font-weight: 500; box-shadow: var(--shadow-sm); white-space: nowrap; opacity: 0; transform: translateX(8px); pointer-events: none; transition: opacity 0.3s ease, transform 0.3s ease; }
+    .chat-nudge.show { opacity: 1; transform: translateX(0); pointer-events: auto; }
+    .chat-nudge button { position: absolute; top: -8px; right: -8px; width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--fog-3); background: var(--surface); color: var(--muted); font-size: 0.8rem; line-height: 1; cursor: pointer; }
+
+    .chatbot-panel { position: absolute; right: 0; bottom: 78px; width: 360px; max-width: calc(100vw - 48px); background: var(--surface); border: 1px solid var(--fog-3); border-radius: 22px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; animation: slideUp 0.25s ease; }
+    .chatbot-panel[hidden] { display: none; }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    .chatbot-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 18px; background: var(--fir-2); color: #fff; }
+    .chatbot-header .ch-id { display: flex; align-items: center; gap: 11px; }
+    .ch-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--fir); display: grid; place-items: center; color: var(--gold); }
+    .ch-avatar svg { width: 20px; height: 20px; }
+    .chatbot-title { font-family: 'Fraunces', 'Fraunces Fallback', Georgia, serif; font-weight: 700; font-size: 1.04rem; }
+    .chatbot-status { font-size: 0.75rem; opacity: 0.85; display: flex; align-items: center; gap: 6px; }
+    .chatbot-status .live { width: 8px; height: 8px; border-radius: 50%; background: #7ee0a3; display: inline-block; }
+    .chatbot-close { background: none; border: 0; color: #fff; font-size: 1.2rem; cursor: pointer; opacity: 0.85; line-height: 1; padding: 6px; min-width: 36px; min-height: 36px; }
+    .chatbot-close:hover { opacity: 1; }
+    .chatbot-messages { padding: 16px; height: 312px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: var(--fog); }
+    .msg { padding: 10px 14px; border-radius: 15px; font-size: 0.9rem; max-width: 86%; line-height: 1.45; animation: msgIn 0.25s ease; }
+    @keyframes msgIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .msg.bot { background: var(--surface); border: 1px solid var(--line-soft); align-self: flex-start; border-bottom-left-radius: 4px; }
+    .msg.bot a { color: var(--evergreen); font-weight: 600; text-decoration: underline; }
+    .msg.user { background: var(--fir); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+    .msg.typing { display: inline-flex; gap: 4px; align-items: center; }
+    .msg.typing span { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); animation: blink 1.2s infinite; }
+    .msg.typing span:nth-child(2) { animation-delay: 0.2s; }
+    .msg.typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes blink { 0%, 60%, 100% { opacity: 0.25; } 30% { opacity: 1; } }
+    /* lead-capture mini form inside the bot */
+    .lead-mini { background: var(--surface); border: 1px solid var(--line-soft); border-radius: 15px; padding: 12px; align-self: stretch; display: flex; flex-direction: column; gap: 8px; }
+    .lead-mini input { width: 100%; padding: 9px 12px; border: 1px solid var(--line); border-radius: 10px; font-family: inherit; font-size: 0.86rem; background: var(--fog); color: var(--ink); }
+    .lead-mini input:focus { outline: none; border-color: var(--evergreen); }
+    .lead-mini button { border: 0; background: var(--evergreen); color: #fff; font-family: inherit; font-weight: 600; padding: 9px 12px; border-radius: 10px; cursor: pointer; font-size: 0.86rem; transition: background 0.18s ease; }
+    .lead-mini button:hover { background: var(--evergreen-2); }
+    .chatbot-quick { display: flex; flex-wrap: wrap; gap: 8px; padding: 10px 14px 4px; background: var(--fog); }
+    .quick-btn { background: var(--surface); border: 1px solid var(--line); color: var(--evergreen); font-size: 0.8rem; font-weight: 500; padding: 7px 13px; border-radius: 999px; cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }
+    .quick-btn:hover { background: var(--evergreen); color: #fff; border-color: var(--evergreen); }
+    .chatbot-input { display: flex; gap: 8px; padding: 12px 14px; border-top: 1px solid var(--line); background: var(--surface); }
+    .chatbot-input input { flex: 1; padding: 11px 15px; background: var(--fog); border: 1px solid var(--line); border-radius: 999px; color: var(--ink); font-family: inherit; }
+    .chatbot-input input:focus { outline: none; border-color: var(--evergreen); }
+    .chatbot-input button { width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--fir); color: #fff; cursor: pointer; display: grid; place-items: center; flex: none; transition: background 0.18s ease; }
+    .chatbot-input button:hover { background: var(--fir-2); }
+    .chatbot-input button svg { width: 18px; height: 18px; }
+
+    /* ---------- Scroll reveal (staggered) ---------- */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ============================================================
+       Responsive
+       ============================================================ */
+    @media (max-width: 1024px) {
+      .trust-ribbon .container { grid-template-columns: 1fr 1fr; gap: 22px 18px; }
+    }
+    @media (max-width: 960px) {
+      .hero-grid { grid-template-columns: 1fr; gap: clamp(40px, 7vw, 52px); }
+      .hero-visual { max-width: 460px; margin: 0 auto; }
+      .cards, .work-grid, .promises, .pricing, .testi-grid { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; gap: 40px 26px; }
+      .trail-path { display: none; }
+      .founder-grid { grid-template-columns: 1fr; gap: 32px; }
+      .founder-photo { max-width: 300px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+      .plan-featured { transform: none; }
+      .plan-featured:hover { transform: translateY(-4px); }
+      .guarantee { grid-template-columns: 1fr; text-align: center; }
+      .guarantee .g-seal { margin: 0 auto; }
+      .guarantee p { margin: 0 auto; }
+    }
+    @media (max-width: 720px) {
+      .nav-toggle { display: flex; }
+      .nav-links { position: absolute; top: 76px; left: 0; right: 0; flex-direction: column; gap: 0; align-items: stretch; background: var(--fog); border-bottom: 1px solid var(--line); padding: 8px 24px 22px; display: none; box-shadow: var(--shadow-sm); }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links > li > a:not(.nav-cta) { display: block; padding: 14px 0; border-bottom: 1px solid var(--line-soft); }
+      .nav-links > li > a:not(.nav-cta)::after { display: none; }
+      .nav-cta { text-align: center; margin-top: 12px; }
+      .cards, .work-grid, .promises, .pricing, .steps, .testi-grid { grid-template-columns: 1fr; }
+      .trust-ribbon .container { grid-template-columns: 1fr; gap: 16px; }
+      .work-note { margin-top: -18px; }
+      .proof-banner { flex-direction: column; text-align: center; }
+      .proof-banner .pb-text { text-align: center; }
+      .badge-speed { right: 0; } .badge-local { left: 0; }
+      .mobile-bar { display: flex; }
+      .chatbot { bottom: 84px; }
+      .chat-nudge { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; }
+      .hero h1 .ul { background-size: 100% 100%; }
+      .mobile-bar { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===================== HEADER / NAV ===================== -->
+  <header class="site-header" id="top">
+    <nav class="nav container" aria-label="Primary">
+      <a href="#top" class="brand" aria-label="Maple — home">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+          <rect width="40" height="40" rx="11" fill="#103b30"/>
+          <path d="M20 7 C22.5 13 27 14.5 27 19.5 a7 7 0 0 1-14 0 C13 14.5 17.5 13 20 7 Z" fill="#f4ede0"/>
+          <rect x="19" y="18" width="2" height="13" rx="1" fill="#f4ede0"/>
+          <circle cx="20" cy="12" r="1.6" fill="#e9b949"/>
+        </svg>
+        <span class="brand-name">Map<span class="leaf">le</span></span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Work</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" class="nav-cta">Get a free quote</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ===================== HERO ===================== -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <span class="locale-pill"><span class="dot" aria-hidden="true"></span> Founder-led studio · Vancouver, BC</span>
+            <p class="hero-kicker">Websites worth arriving for —</p>
+            <h1>Custom websites that turn local clicks into <span class="ul">paying customers.</span></h1>
+            <p class="lead">
+              A custom site for your local business — with an
+              <strong>AI chatbot, Google Analytics &amp; SEO built in</strong>,
+              <strong>transparent pricing</strong> from $499, and a launch in
+              <strong>about two weeks</strong>. No agency hand-offs, no surprise
+              invoices — just more of the right neighbours finding you and booking, buying, or calling.
+            </p>
+            <div class="hero-actions">
+              <a href="#contact" class="btn btn-primary btn-lg" data-cta="hero">Get my free quote <span class="btn-arrow" aria-hidden="true">→</span></a>
+              <a href="#work" class="btn btn-ghost">See sample designs</a>
+            </div>
+            <p class="hero-microtrust">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+              Free, no-pressure quote · We reply within one business day
+            </p>
+            <div class="hero-trust">
+              <span><span class="tick" aria-hidden="true">✓</span> Clear, transparent pricing</span>
+              <span><span class="tick" aria-hidden="true">✓</span> Launch in about 2 weeks</span>
+              <span><span class="tick" aria-hidden="true">✓</span> Work directly with the designer who builds it</span>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="device" aria-hidden="true">
+              <div class="device-bar">
+                <span class="wd r"></span><span class="wd y"></span><span class="wd g"></span>
+                <span class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> yourshop.ca</span>
+              </div>
+              <div class="device-scene">
+                <svg viewBox="0 0 440 320" preserveAspectRatio="xMidYMid slice" role="presentation">
+                  <defs>
+                    <linearGradient id="fog" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#dceae6"/><stop offset="1" stop-color="#eef6ef"/>
+                    </linearGradient>
+                    <linearGradient id="cta" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0" stop-color="#18583e"/><stop offset="1" stop-color="#18717a"/>
+                    </linearGradient>
+                  </defs>
+                  <rect width="440" height="320" fill="url(#fog)"/>
+                  <!-- nav -->
+                  <rect x="22" y="18" width="58" height="10" rx="5" fill="#103b30"/>
+                  <rect x="300" y="18" width="40" height="10" rx="5" fill="#103b30" opacity="0.25"/>
+                  <rect x="350" y="14" width="68" height="18" rx="9" fill="#bd5026"/>
+                  <!-- hero headline + sub -->
+                  <rect x="22" y="58" width="220" height="20" rx="6" fill="#14211b"/>
+                  <rect x="22" y="86" width="180" height="20" rx="6" fill="#14211b"/>
+                  <rect x="22" y="120" width="240" height="8" rx="4" fill="#14211b" opacity="0.4"/>
+                  <rect x="22" y="134" width="200" height="8" rx="4" fill="#14211b" opacity="0.4"/>
+                  <rect x="22" y="160" width="92" height="22" rx="11" fill="url(#cta)"/>
+                  <rect x="124" y="160" width="78" height="22" rx="11" fill="none" stroke="#103b30" stroke-width="2"/>
+                  <!-- product cards -->
+                  <rect x="22" y="206" width="124" height="86" rx="12" fill="#fbfaf4" stroke="#ddd8c8"/>
+                  <rect x="36" y="220" width="96" height="40" rx="8" fill="#7ba78c" opacity="0.6"/>
+                  <rect x="36" y="268" width="70" height="8" rx="4" fill="#14211b" opacity="0.5"/>
+                  <rect x="158" y="206" width="124" height="86" rx="12" fill="#fbfaf4" stroke="#ddd8c8"/>
+                  <rect x="172" y="220" width="96" height="40" rx="8" fill="#e9b949" opacity="0.7"/>
+                  <rect x="172" y="268" width="70" height="8" rx="4" fill="#14211b" opacity="0.5"/>
+                  <!-- side panel: little coast scene -->
+                  <rect x="296" y="58" width="122" height="234" rx="14" fill="#103b30"/>
+                  <circle cx="394" cy="92" r="14" fill="#e9b949" opacity="0.85"/>
+                  <path d="M296 210 L330 168 L356 198 L384 156 L418 196 L418 292 L296 292 Z" fill="#18583e"/>
+                  <path d="M296 244 L334 206 L368 240 L400 204 L418 226 L418 292 L296 292 Z" fill="#0b2a22"/>
+                  <path d="M384 156 L392 170 L376 170 Z" fill="#eef6ef"/>
+                </svg>
+              </div>
+            </div>
+            <!-- honest, true-today signals — no fabricated traffic/rating numbers -->
+            <div class="float-badge badge-speed">
+              <div class="bs-top">
+                <svg class="gauge" viewBox="0 0 36 36" aria-hidden="true">
+                  <circle cx="18" cy="18" r="15" fill="none" stroke="#e9e6db" stroke-width="4"/>
+                  <circle cx="18" cy="18" r="15" fill="none" stroke="#18583e" stroke-width="4" stroke-linecap="round" stroke-dasharray="94" stroke-dashoffset="6" transform="rotate(-90 18 18)"/>
+                  <path d="M11 18.5l4 4 8-9" fill="none" stroke="#103b30" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div><span class="bs-num">Fast</span></div>
+              </div>
+              <p class="bs-sub">Core Web Vitals first, every build</p>
+            </div>
+            <div class="float-badge badge-local">
+              <span class="seal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
+              <div>
+                <p class="bl-label">Based in</p>
+                <p class="bl-value">Vancouver, BC</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- layered range behind everything, anchored to the proof strip -->
+      <div class="hero-range" aria-hidden="true">
+        <svg viewBox="0 0 1440 150" preserveAspectRatio="none">
+          <path d="M0 120 L160 70 L320 110 L520 56 L700 112 L900 60 L1100 110 L1280 64 L1440 104 L1440 150 L0 150 Z" fill="#7ba78c" opacity="0.5"/>
+          <path d="M0 138 L200 96 L380 132 L560 88 L760 134 L980 92 L1180 132 L1380 96 L1440 120 L1440 150 L0 150 Z" fill="#3f9268" opacity="0.55"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ===================== PROOF / WHO WE BUILD FOR STRIP ===================== -->
+    <!-- Honesty-first: Maple is a new founder-led studio, so this strip names the
+         KINDS of local businesses we design for — not fabricated named clients. -->
+    <section class="proof-strip" aria-label="The local businesses Maple builds for">
+      <div class="container">
+        <p class="proof-head">Built for the local businesses that make Vancouver tick</p>
+        <div class="logo-row">
+          <span class="client-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 20V8l8-5 8 5v12"/><path d="M9 20v-6h6v6"/></svg> Trades &amp; Makers</span>
+          <span class="client-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 11h14l-1.5 8.5A2 2 0 0 1 15.5 21h-7a2 2 0 0 1-2-1.5L5 11z"/><path d="M9 11V7a3 3 0 0 1 6 0v4"/></svg> Cafés &amp; Restaurants</span>
+          <span class="client-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg> Clinics &amp; Wellness</span>
+          <span class="client-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg> Shops &amp; Studios</span>
+          <span class="client-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 4h2l2.5 12.5a2 2 0 0 0 2 1.5h7.5a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg> Local E-commerce</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== LOCAL TRUST RIBBON (new) ===================== -->
+    <aside class="trust-ribbon" aria-label="Why local businesses trust Maple">
+      <div class="container">
+        <div class="trust-item">
+          <span class="ti-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-7 8-12a8 8 0 1 0-16 0c0 5 8 12 8 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+          <div>
+            <p class="ti-title">Local &amp; in your time zone</p>
+            <p class="ti-sub">Vancouver-based · Pacific Time, real-person replies</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <span class="ti-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 5v6c0 5.2 3.4 8.9 8 11 4.6-2.1 8-5.8 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <div>
+            <p class="ti-title">BC-registered business</p>
+            <p class="ti-sub">A real local studio you can verify &amp; meet</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <span class="ti-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
+          <div>
+            <p class="ti-title">Privacy &amp; security aware</p>
+            <p class="ti-sub">Privacy basics &amp; SSL on every build</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <span class="ti-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div>
+            <p class="ti-title">~2-week launches</p>
+            <p class="ti-sub">Fixed timelines from our first strategy call</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ===================== SERVICES ===================== -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">What we do</p>
+          <h2>Everything your site needs, under one roof</h2>
+          <p class="section-sub">From the first sketch to the growth tech humming under the hood — we handle the whole build, end to end, so you don't have to juggle five vendors.</p>
+        </div>
+        <div class="cards">
+          <article class="card reveal">
+            <span class="card-num">01</span>
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div>
+            <h3>Custom Web Design</h3>
+            <p>Hand-crafted, on-brand designs — never a cookie-cutter template. Built mobile-first so they look sharp from a phone on the SeaBus to a desktop downtown.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card-num">02</span>
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="3"/><path d="M8 22h8M12 19v3M12 3v3"/><circle cx="9" cy="12" r="1.2"/><circle cx="15" cy="12" r="1.2"/></svg></div>
+            <h3>AI Chatbots</h3>
+            <p>A 24/7 assistant that answers questions and captures real leads — name, email, and what they need — even at 2am. Ours is live in the corner; it can book you a call right now.</p>
+            <a class="card-try" href="#contact" data-open-chat>Try our chatbot <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="card reveal">
+            <span class="card-num">03</span>
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 3v18h18"/><rect x="7" y="11" width="3" height="7"/><rect x="12" y="7" width="3" height="11"/><rect x="17" y="13" width="3" height="5"/></svg></div>
+            <h3>Google Analytics &amp; Tracking</h3>
+            <p>We install Google Analytics, conversion tracking, and clean dashboards so you always know what's working — and exactly where to double down.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card-num">04</span>
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M8 11h6M11 8v6"/></svg></div>
+            <h3>SEO &amp; Traffic Growth</h3>
+            <p>Technical SEO, quick load times, and content structure that helps Google rank you — and helps local searchers find you first.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card-num">05</span>
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
+            <h3>Performance &amp; Hosting</h3>
+            <p>Lightning-fast pages with strong Core Web Vitals, secure hosting, SSL, and ongoing maintenance — handled for you on a simple monthly plan from $49/mo, cancel anytime.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card-num">06</span>
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 4h2l2.5 12.5a2 2 0 0 0 2 1.5h7.5a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg></div>
+            <h3>E-commerce &amp; Booking</h3>
+            <p>Sell products or take bookings online with secure checkout, automated emails, and inventory that just works — no headaches.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== HOW WE WORK ===================== -->
+    <section class="section section-alt" id="about">
+      <div class="container">
+        <div class="founder-grid">
+          <div class="founder-photo reveal">
+            <svg viewBox="0 0 300 340" role="img" aria-label="Maple — a Vancouver web studio">
+              <rect width="300" height="340" fill="#ddd8c8"/>
+              <rect x="40" y="58" width="220" height="150" rx="12" fill="#f4ede0"/>
+              <rect x="40" y="58" width="220" height="30" rx="12" fill="#18583e"/>
+              <circle cx="58" cy="73" r="5" fill="#e9b949"/><circle cx="74" cy="73" r="5" fill="#f4ede0" opacity="0.7"/><circle cx="90" cy="73" r="5" fill="#f4ede0" opacity="0.7"/>
+              <rect x="60" y="108" width="120" height="12" rx="6" fill="#18583e"/>
+              <rect x="60" y="130" width="170" height="8" rx="4" fill="#3a3026" opacity="0.35"/>
+              <rect x="60" y="146" width="150" height="8" rx="4" fill="#3a3026" opacity="0.35"/>
+              <rect x="60" y="170" width="78" height="22" rx="11" fill="#bd5026"/>
+              <!-- maple leaf emblem -->
+              <path d="M150 232 l10 20 l22 -6 l-10 18 l16 12 l-22 4 l2 22 l-18 -14 l-18 14 l2 -22 l-22 -4 l16 -12 l-10 -18 l22 6 z" fill="#18583e"/>
+              <rect x="146" y="276" width="8" height="30" rx="4" fill="#7a5a3e"/>
+            </svg>
+            <div class="photo-tag">
+              <strong>Maple</strong>
+              A Vancouver web studio
+            </div>
+          </div>
+          <div class="founder-copy reveal">
+            <p class="eyebrow">How we work</p>
+            <h2>Focused, and big on attention.</h2>
+            <div class="founder-quote">
+              <p>No account managers, no hand-offs, no surprise invoices. When you hire Maple, you work directly with the people actually designing and building your site.</p>
+              <p>We're a focused studio by design — we take on only a handful of local projects at a time, so every one gets our full attention. And we don't stop revising until you genuinely love it.</p>
+            </div>
+            <div class="founding-offer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2 3 7v6c0 5 9 9 9 9s9-4 9-9V7z"/><path d="m9 12 2 2 4-4"/></svg>
+              <span><strong>Founding-client pricing:</strong> be one of our first Vancouver clients and lock in our launch rates — in exchange for an honest review.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== WORK / PORTFOLIO ===================== -->
+    <section class="section" id="work">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Concept studies</p>
+          <h2>Sample designs that show what we build</h2>
+          <p class="section-sub">A range of detailed concept studies across local industries. Each shows the style, speed, and growth tools we bring to a real custom build.</p>
+        </div>
+        <p class="work-note reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5M12 8h.01"/></svg>
+          These are concept studies that show our style and the growth tools we build in. The outcomes below are the goals each design is built toward — your real numbers come from your real launch.
+        </p>
+        <div class="work-grid">
+          <!-- 1. Pet grooming booking -->
+          <article class="work-card reveal">
+            <div class="work-thumb">
+              <span class="concept-chip" aria-hidden="true">Concept study</span>
+              <svg viewBox="0 0 320 220" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Concept study: a pet-grooming booking site with a calendar and hero photo">
+                <rect width="320" height="220" fill="#18717a"/>
+                <rect x="0" y="0" width="320" height="46" fill="#0e525a"/>
+                <circle cx="26" cy="23" r="9" fill="#e9b949"/><rect x="44" y="18" width="56" height="9" rx="4" fill="#fff" opacity="0.85"/>
+                <rect x="244" y="14" width="60" height="18" rx="9" fill="#e9b949"/>
+                <rect x="22" y="68" width="150" height="16" rx="6" fill="#fff"/>
+                <rect x="22" y="92" width="120" height="9" rx="4" fill="#fff" opacity="0.65"/>
+                <rect x="22" y="118" width="84" height="22" rx="11" fill="#e9b949"/>
+                <!-- booking calendar card -->
+                <rect x="196" y="64" width="104" height="120" rx="12" fill="#fbfaf4"/>
+                <rect x="208" y="76" width="48" height="8" rx="4" fill="#14211b" opacity="0.6"/>
+                <g fill="#7ba78c"><rect x="208" y="92" width="16" height="16" rx="3"/><rect x="230" y="92" width="16" height="16" rx="3"/><rect x="252" y="92" width="16" height="16" rx="3"/><rect x="274" y="92" width="16" height="16" rx="3"/><rect x="208" y="114" width="16" height="16" rx="3"/></g>
+                <rect x="230" y="114" width="16" height="16" rx="3" fill="#bd5026"/>
+                <g fill="#7ba78c"><rect x="252" y="114" width="16" height="16" rx="3"/><rect x="274" y="114" width="16" height="16" rx="3"/></g>
+                <rect x="208" y="140" width="84" height="14" rx="7" fill="#18583e"/>
+              </svg>
+            </div>
+            <div class="work-body">
+              <div class="work-head"><h3>Pawsome Groomers</h3><span class="work-tag">Booking</span></div>
+              <p>An online booking concept for a pet-grooming studio, with automated reminders and an AI chatbot that fields the most common questions.</p>
+              <span class="work-outcome"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 17 9 11l4 4 8-8"/><path d="M21 7v5h-5"/></svg> Designed to turn more visits into booked appointments <em>· design goal</em></span>
+            </div>
+          </article>
+
+          <!-- 2. Restaurant -->
+          <article class="work-card reveal">
+            <div class="work-thumb">
+              <span class="concept-chip" aria-hidden="true">Concept study</span>
+              <svg viewBox="0 0 320 220" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Concept study: a farm-to-table restaurant site with a menu and reservation button">
+                <rect width="320" height="220" fill="#7c4a2c"/>
+                <rect width="320" height="220" fill="#0b2a22" opacity="0.42"/>
+                <circle cx="160" cy="70" r="44" fill="#e9b949" opacity="0.9"/>
+                <path d="M160 38 q14 32 0 64 q-14 -32 0 -64Z" fill="#18583e" opacity="0.5"/>
+                <rect x="92" y="128" width="136" height="14" rx="7" fill="#fff"/>
+                <rect x="116" y="150" width="88" height="8" rx="4" fill="#fff" opacity="0.6"/>
+                <rect x="118" y="172" width="84" height="22" rx="11" fill="#bd5026"/>
+                <rect x="208" y="174" width="60" height="18" rx="9" fill="none" stroke="#fff" stroke-width="2" opacity="0.7"/>
+                <rect x="52" y="174" width="60" height="18" rx="9" fill="none" stroke="#fff" stroke-width="2" opacity="0.7"/>
+              </svg>
+            </div>
+            <div class="work-body">
+              <div class="work-head"><h3>Cedar &amp; Tide Bistro</h3><span class="work-tag">Restaurant</span></div>
+              <p>A mouth-watering farm-to-table concept with online reservations, a live menu, and local SEO structured to rank across the neighbourhood.</p>
+              <span class="work-outcome"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 17 9 11l4 4 8-8"/><path d="M21 7v5h-5"/></svg> Built to win local "near me" searches <em>· design goal</em></span>
+            </div>
+          </article>
+
+          <!-- 3. Physio dashboard -->
+          <article class="work-card reveal">
+            <div class="work-thumb">
+              <span class="concept-chip" aria-hidden="true">Concept study</span>
+              <svg viewBox="0 0 320 220" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Concept study: a physiotherapy clinic site with intake form and one-tap booking">
+                <rect width="320" height="220" fill="#103b30"/>
+                <rect x="22" y="24" width="160" height="16" rx="6" fill="#fff"/>
+                <rect x="22" y="48" width="120" height="8" rx="4" fill="#fff" opacity="0.5"/>
+                <!-- intake form card -->
+                <rect x="22" y="72" width="170" height="124" rx="12" fill="#fbfaf4"/>
+                <rect x="36" y="86" width="80" height="8" rx="4" fill="#14211b" opacity="0.6"/>
+                <rect x="36" y="102" width="142" height="14" rx="7" fill="#e9e6db"/>
+                <rect x="36" y="124" width="142" height="14" rx="7" fill="#e9e6db"/>
+                <rect x="36" y="146" width="142" height="14" rx="7" fill="#e9e6db"/>
+                <rect x="36" y="170" width="84" height="16" rx="8" fill="#18717a"/>
+                <!-- trend chart card -->
+                <rect x="206" y="72" width="92" height="124" rx="12" fill="#0e2f26"/>
+                <path d="M218 168 l16 -22 14 28 16 -34 14 12" fill="none" stroke="#e9b949" stroke-width="3.5" stroke-linecap="round"/>
+                <circle cx="278" cy="146" r="4" fill="#e9b949"/>
+              </svg>
+            </div>
+            <div class="work-body">
+              <div class="work-head"><h3>Mainland Physio</h3><span class="work-tag">Health</span></div>
+              <p>A calm, trust-first clinic concept with online intake forms, direct-billing info, and one-tap booking — tuned for mobile-first patients.</p>
+              <span class="work-outcome"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 17 9 11l4 4 8-8"/><path d="M21 7v5h-5"/></svg> Designed to cut no-shows with reminders <em>· design goal</em></span>
+            </div>
+          </article>
+
+          <!-- 4. Fitness e-commerce -->
+          <article class="work-card reveal">
+            <div class="work-thumb">
+              <span class="concept-chip" aria-hidden="true">Concept study</span>
+              <svg viewBox="0 0 320 220" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Concept study: an outdoor fitness store selling class packs online">
+                <rect width="320" height="220" fill="#18583e"/>
+                <path d="M0 220 L70 130 L140 188 L210 120 L280 180 L320 150 L320 220 Z" fill="#0b2a22"/>
+                <rect x="22" y="28" width="150" height="16" rx="6" fill="#fff"/>
+                <rect x="22" y="52" width="110" height="8" rx="4" fill="#fff" opacity="0.55"/>
+                <rect x="22" y="76" width="92" height="22" rx="11" fill="#e9b949"/>
+                <!-- product cards w/ price tags -->
+                <rect x="186" y="40" width="58" height="74" rx="10" fill="#fbfaf4"/>
+                <rect x="196" y="50" width="38" height="30" rx="6" fill="#18717a" opacity="0.6"/>
+                <rect x="196" y="86" width="30" height="8" rx="4" fill="#14211b" opacity="0.6"/>
+                <rect x="196" y="98" width="40" height="10" rx="5" fill="#bd5026"/>
+                <rect x="252" y="40" width="58" height="74" rx="10" fill="#fbfaf4"/>
+                <rect x="262" y="50" width="38" height="30" rx="6" fill="#7ba78c" opacity="0.7"/>
+                <rect x="262" y="86" width="30" height="8" rx="4" fill="#14211b" opacity="0.6"/>
+                <rect x="262" y="98" width="40" height="10" rx="5" fill="#bd5026"/>
+              </svg>
+            </div>
+            <div class="work-body">
+              <div class="work-head"><h3>North Shore Fitness</h3><span class="work-tag">E-commerce</span></div>
+              <p>A bold outdoor-gym concept selling memberships and trail-run class packs online, with a member portal and integrated payments.</p>
+              <span class="work-outcome"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 17 9 11l4 4 8-8"/><path d="M21 7v5h-5"/></svg> Built to sell class packs around the clock <em>· design goal</em></span>
+            </div>
+          </article>
+
+          <!-- 5. Joinery portfolio -->
+          <article class="work-card reveal">
+            <div class="work-thumb">
+              <span class="concept-chip" aria-hidden="true">Concept study</span>
+              <svg viewBox="0 0 320 220" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Concept study: an image-forward portfolio for a custom-furniture maker">
+                <rect width="320" height="220" fill="#14211b"/>
+                <rect x="22" y="22" width="120" height="14" rx="6" fill="#fff" opacity="0.9"/>
+                <!-- gallery grid -->
+                <rect x="22" y="52" width="138" height="146" rx="10" fill="#3f9268" opacity="0.8"/>
+                <path d="M22 198 L70 150 L110 184 L160 144 L160 198 Z" fill="#0b2a22" opacity="0.5"/>
+                <rect x="170" y="52" width="128" height="68" rx="10" fill="#c79a6e"/>
+                <rect x="170" y="128" width="62" height="70" rx="10" fill="#e9b949" opacity="0.85"/>
+                <rect x="240" y="128" width="58" height="70" rx="10" fill="#fbfaf4"/>
+                <rect x="250" y="168" width="38" height="8" rx="4" fill="#14211b" opacity="0.6"/>
+                <rect x="250" y="180" width="28" height="8" rx="4" fill="#14211b" opacity="0.35"/>
+              </svg>
+            </div>
+            <div class="work-body">
+              <div class="work-head"><h3>Fraser Joinery</h3><span class="work-tag">Portfolio</span></div>
+              <p>A minimal, image-forward portfolio concept for a custom-furniture maker — fast image loading and a relentless focus on craft and detail.</p>
+              <span class="work-outcome"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 17 9 11l4 4 8-8"/><path d="M21 7v5h-5"/></svg> Designed to turn browsers into quote requests <em>· design goal</em></span>
+            </div>
+          </article>
+
+          <!-- 6. Café + roastery -->
+          <article class="work-card reveal">
+            <div class="work-thumb">
+              <span class="concept-chip" aria-hidden="true">Concept study</span>
+              <svg viewBox="0 0 320 220" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Concept study: a café and roastery site with an online beans shop and loyalty sign-up">
+                <rect width="320" height="220" fill="#bd5026"/>
+                <rect width="320" height="220" fill="#0b2a22" opacity="0.34"/>
+                <rect x="22" y="26" width="150" height="16" rx="6" fill="#fff"/>
+                <rect x="22" y="50" width="120" height="8" rx="4" fill="#fff" opacity="0.6"/>
+                <!-- steaming cup -->
+                <path d="M210 118 h54 v18 a18 18 0 0 1 -18 18 h-18 a18 18 0 0 1 -18 -18 Z" fill="#fbfaf4"/>
+                <path d="M264 124 h10 a8 8 0 0 1 0 16 h-10" fill="none" stroke="#fbfaf4" stroke-width="4"/>
+                <path d="M224 104 q-4 -8 2 -14 M238 104 q-4 -8 2 -14 M252 104 q-4 -8 2 -14" stroke="#fff" stroke-width="3" fill="none" opacity="0.7" stroke-linecap="round"/>
+                <!-- loyalty / shop chips -->
+                <rect x="22" y="120" width="92" height="22" rx="11" fill="#e9b949"/>
+                <rect x="22" y="152" width="120" height="10" rx="5" fill="#fff" opacity="0.55"/>
+                <rect x="22" y="170" width="100" height="10" rx="5" fill="#fff" opacity="0.4"/>
+              </svg>
+            </div>
+            <div class="work-body">
+              <div class="work-head"><h3>Strand &amp; Steam Café</h3><span class="work-tag">Hospitality</span></div>
+              <p>A warm café-and-roastery concept with an online beans shop, loyalty sign-ups, and a story-driven layout built to grow a regular crowd.</p>
+              <span class="work-outcome"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 17 9 11l4 4 8-8"/><path d="M21 7v5h-5"/></svg> Built to grow the email &amp; loyalty list <em>· design goal</em></span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROCESS ===================== -->
+    <section class="section section-deep" id="process">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow on-dark">How it works</p>
+          <h2>A clear trail from idea to launch</h2>
+          <p class="section-sub">No jargon, no surprises. You'll always know exactly which marker we're standing at next.</p>
+        </div>
+        <div class="trail-wrap">
+          <div class="trail-path" aria-hidden="true">
+            <svg viewBox="0 0 1100 120" preserveAspectRatio="none">
+              <path d="M40 60 C 200 0, 360 120, 550 60 S 900 0, 1060 60" fill="none" stroke="rgba(233,185,73,0.4)" stroke-width="2.5" stroke-dasharray="3 9" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <ol class="steps">
+            <li class="step reveal">
+              <span class="step-badge" aria-hidden="true"><span>1</span><span class="pin"></span></span>
+              <h3>Discover</h3>
+              <p>We get to know your business, goals, and audience in a free, no-pressure strategy call.</p>
+            </li>
+            <li class="step reveal">
+              <span class="step-badge" aria-hidden="true"><span>2</span><span class="pin"></span></span>
+              <h3>Design</h3>
+              <p>You review a custom mockup and refine it with us until it's exactly right — revisions included.</p>
+            </li>
+            <li class="step reveal">
+              <span class="step-badge" aria-hidden="true"><span>3</span><span class="pin"></span></span>
+              <h3>Build &amp; Equip</h3>
+              <p>We develop the site and wire in analytics, the AI chatbot, and SEO so it's ready to grow.</p>
+            </li>
+            <li class="step reveal">
+              <span class="step-badge" aria-hidden="true"><span>4</span><span class="pin"></span></span>
+              <h3>Launch &amp; Grow</h3>
+              <p>We go live, watch the data, and keep optimizing for more traffic — and more customers.</p>
+            </li>
+          </ol>
+        </div>
+        <div class="process-cta reveal">
+          <p class="pc-line">Step one is a free 20-minute call — pick a time that works for you.</p>
+          <!-- js-booking links are wired to BOOKING_URL by the script (degrades to #contact if unset) -->
+          <a class="btn btn-fir js-booking" href="#contact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="width:18px;height:18px;"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg>
+            Book a free strategy call
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== REVIEWS / SOCIAL PROOF ===================== -->
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Why Maple, not the other guys</p>
+          <h2>What you get with Maple that most agencies won't put in writing</h2>
+          <p class="section-sub">We're a new, founder-led studio — so instead of borrowed testimonials, here's exactly how we out-work the typical Vancouver agency. In plain English, before you ever pay a dollar.</p>
+        </div>
+
+        <!-- Honesty-first: a young studio, so NO fabricated named testimonials or star
+             rating. We compete on a transparent, head-to-head differentiation grid. -->
+        <div class="proof-banner reveal">
+          <span class="pb-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 2 2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg></span>
+          <p class="pb-text">We'd rather earn your trust than borrow someone else's. Maple is just getting started in Vancouver, so we lead with a written guarantee and <strong>founding-client pricing</strong> — and you can <a href="#contact">talk to the founder directly</a> before you commit to anything.</p>
+        </div>
+
+        <div class="testi-grid">
+          <figure class="testi reveal">
+            <span class="quote-mark" aria-hidden="true">“</span>
+            <blockquote><strong>Most agencies hand you off.</strong> You start with a salesperson, then get passed to an account manager and an offshore team you never meet. With Maple, the person who designs and codes your site is the only person you'll ever talk to.</blockquote>
+            <figcaption class="testi-author">
+              <span class="testi-meta">
+                <span class="ta-name">One person, start to finish</span>
+                <span class="ta-role">No hand-offs, no account managers</span>
+              </span>
+            </figcaption>
+          </figure>
+
+          <figure class="testi reveal">
+            <span class="quote-mark" aria-hidden="true">“</span>
+            <blockquote><strong>Most quotes are a moving target.</strong> Hourly creep and surprise invoices are the norm. Maple starts from clear, published prices — Starter from $499, Growth from $1,500 — then tailors an exact quote to your project in a free consult, and that's the number you pay, growth tools and all.</blockquote>
+            <figcaption class="testi-author">
+              <span class="testi-meta">
+                <span class="ta-name">A clear quote, in writing</span>
+                <span class="ta-role">Analytics, SEO &amp; AI chatbot included</span>
+              </span>
+            </figcaption>
+          </figure>
+
+          <figure class="testi reveal">
+            <span class="quote-mark" aria-hidden="true">“</span>
+            <blockquote><strong>Most studios disappear at launch.</strong> Many quote months of timeline, then go quiet once the invoice clears. We launch most sites in about two weeks, then keep watching your analytics so the site keeps earning — not just sitting there.</blockquote>
+            <figcaption class="testi-author">
+              <span class="testi-meta">
+                <span class="ta-name">~2-week launch, then we stay</span>
+                <span class="ta-role">Built to grow traffic &amp; customers</span>
+              </span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- Standards framed clearly as commitments, not metrics -->
+        <div class="standards-band">
+          <div class="section-head reveal" style="margin-bottom:36px;">
+            <p class="eyebrow">Our commitments</p>
+            <h2>The promises behind every Maple build</h2>
+            <p class="section-sub">Not cherry-picked stats — the standards we hold ourselves to on every single project, from Starter to Scale.</p>
+          </div>
+          <div class="promises">
+            <figure class="promise reveal">
+              <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg></div>
+              <h3>Clear, upfront pricing</h3>
+              <p>We start from published prices and tailor an exact quote up front — and the number we quote is the number you pay. No surprise invoices, no scope-creep games, ever.</p>
+            </figure>
+            <figure class="promise reveal">
+              <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-4.4-9.3-9C1.2 9 2.8 5 6.5 5 9 5 12 8 12 8s3-3 5.5-3C21.2 5 22.8 9 21.3 12 19 16.6 12 21 12 21z"/></svg></div>
+              <h3>Revisions until you love it</h3>
+              <p>We keep refining the design until it's genuinely right. You'll never get stuck with a look you don't love.</p>
+            </figure>
+            <figure class="promise reveal">
+              <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3v4M5 7l2.5 2.5M19 7l-2.5 2.5M3 13h18M6 13c0 4 2.7 7 6 7s6-3 6-7"/></svg></div>
+              <h3>Growth tools included</h3>
+              <p>Analytics, SEO, and an AI chatbot come built into every site — not pricey bolt-on add-ons after the fact.</p>
+            </figure>
+          </div>
+
+          <!-- Concrete risk-reversal guarantee -->
+          <div class="guarantee reveal">
+            <span class="g-seal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2 4 5v6c0 5.2 3.4 8.9 8 11 4.6-2.1 8-5.8 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg></span>
+            <div>
+              <h3>The "we revise until you love it" guarantee</h3>
+              <p>Don't love the design yet? <strong>We keep revising until you do.</strong> Design revisions are included in every package, so you'll never get stuck with a look you don't love. We'd rather take an extra round than ship something you're not proud of.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PRICING ===================== -->
+    <section class="section section-alt" id="pricing">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Pricing</p>
+          <h2>Plans that grow with you</h2>
+          <p class="section-sub">A transparent starting build price, plus an honest, low monthly fee for hosting &amp; care — shown right on every plan. No lock-in, and you can cancel the monthly anytime.</p>
+        </div>
+        <div class="pricing">
+          <article class="plan reveal">
+            <h3>Starter</h3>
+            <p class="price"><span class="pre">Starting at</span>$499<span>one-time build</span></p>
+            <p class="plan-recurring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> then <strong>$49/mo</strong> hosting &amp; care · cancel anytime</p>
+            <p class="plan-tag">Perfect for a sharp first website</p>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> Up to 5 custom pages</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> Mobile-responsive design</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> Google Analytics setup</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> Basic SEO &amp; contact form</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> Secure hosting, SSL &amp; updates included in monthly</li>
+            </ul>
+            <a href="#contact" class="btn btn-ghost" data-cta="starter">Choose Starter</a>
+          </article>
+
+          <article class="plan plan-featured reveal">
+            <span class="plan-badge">Most popular</span>
+            <h3>Growth</h3>
+            <p class="price"><span class="pre">Starting at</span>$1,500<span>one-time build</span></p>
+            <p class="plan-recurring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> then <strong>$149/mo</strong> hosting, care &amp; chatbot · cancel anytime</p>
+            <p class="plan-tag">Built to attract and convert traffic</p>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> Up to 12 custom pages</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> AI chatbot integration</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> Advanced SEO &amp; conversion tracking</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> Analytics dashboard</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> 90 days hands-on support, then ongoing care in the monthly</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary" data-cta="growth">Choose Growth</a>
+          </article>
+
+          <article class="plan reveal">
+            <h3>Scale</h3>
+            <p class="price">Custom<span>quoted per project</span></p>
+            <p class="plan-recurring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> custom monthly for care &amp; growth · cancel anytime</p>
+            <p class="plan-tag">E-commerce &amp; ongoing growth</p>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> Unlimited pages / online store</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> Custom AI assistant &amp; automations</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> Monthly SEO &amp; content</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> Ongoing optimization</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> Priority support</li>
+            </ul>
+            <a href="#contact" class="btn btn-ghost" data-cta="scale">Talk to us</a>
+          </article>
+        </div>
+        <p class="pricing-foot">
+          The monthly covers secure hosting, SSL, software updates, backups, small content tweaks, and your AI chatbot — no surprise invoices, and you can cancel it anytime and take your site with you.
+          <br>
+          Not sure which fits? <a href="#contact">Tell us about your project</a> — we'll point you the right way, no pressure.
+          <br>
+          <span class="pricing-guarantee"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2 4 5v6c0 5.2 3.4 8.9 8 11 4.6-2.1 8-5.8 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg> Backed by our "we revise until you love it" guarantee</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section class="section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <p class="eyebrow">Let's build it</p>
+          <h2>Get a free, no-pressure quote</h2>
+          <p class="section-sub" style="margin-top:14px;">Tell us a little about your business and we'll get back to you within one business day — neighbour to neighbour.</p>
+          <ul class="contact-points">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg> Free strategy call with the founder</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg> Clear, transparent pricing</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg> Launch in as little as 2 weeks</li>
+          </ul>
+
+          <!-- Real booking path: the flagship "free strategy call" actually has a calendar -->
+          <div class="book-card">
+            <span class="bc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/><path d="m9 16 2 2 4-4"/></svg></span>
+            <div class="bc-copy">
+              <strong>Rather just book a time?</strong>
+              <span>Grab a free 20-minute strategy call on the calendar.</span>
+            </div>
+            <!-- js-booking link is wired to BOOKING_URL by the script (degrades to #contact if unset) -->
+            <a class="btn btn-fir js-booking" href="#contact">Pick a time</a>
+          </div>
+
+          <div class="contact-direct">
+            <div class="cd-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> Email <a href="mailto:info@maplewebsites.com">info@maplewebsites.com</a></div>
+            <div class="cd-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-7 8-12a8 8 0 1 0-16 0c0 5 8 12 8 12z"/><circle cx="12" cy="10" r="2.5"/></svg> Based in Vancouver, BC — serving Mount Pleasant, Kitsilano, Burnaby, the North Shore &amp; Richmond</div>
+            <div class="cd-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> By appointment · Pacific Time</div>
+          </div>
+        </div>
+
+        <!--
+          Lead capture form — posts to Web3Forms (delivers to info@maplewebsites.com).
+          - action/method are set so the form still posts even if JS fails (progressive enhancement).
+          - JS upgrades it to a fetch() POST and only shows success on a resolved {success:true}.
+          - While the access key is the sample placeholder, the guard keeps the form inert (no fake "sent").
+          - To connect this funnel, paste your Web3Forms key into the hidden access_key input here
+            AND WEB3FORMS_KEY in the script (they're kept in sync intentionally).
+        -->
+        <form class="contact-form reveal" id="quote-form"
+              action="https://api.web3forms.com/submit"
+              method="POST" novalidate>
+          <!-- Web3Forms: delivers to the inbox tied to this access key (info@maplewebsites.com).
+               The JS keeps access_key in sync from WEB3FORMS_KEY in the config block below. -->
+          <input type="hidden" name="access_key" value="cb3ef286-b9c9-494f-bb69-27a6456b78ee" />
+          <!-- honeypot: real people leave this empty; bots tend to fill it -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="company-website">Company website (leave blank)</label>
+            <input type="text" id="company-website" name="botcheck" tabindex="-1" autocomplete="off" />
+          </div>
+          <div class="field">
+            <label for="name">Name <span class="req" aria-hidden="true">*</span></label>
+            <input type="text" id="name" name="name" autocomplete="name" required aria-required="true" aria-describedby="err-name" />
+            <p class="field-error" id="err-name">Please tell us your name.</p>
+          </div>
+          <div class="field">
+            <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" required aria-required="true" aria-describedby="err-email" />
+            <p class="field-error" id="err-email">Please enter a valid email address.</p>
+          </div>
+          <div class="field">
+            <label for="service">What do you need?</label>
+            <select id="service" name="service">
+              <option value="new-website">A brand-new website</option>
+              <option value="redesign">A redesign of my current site</option>
+              <option value="chatbot">An AI chatbot</option>
+              <option value="seo">SEO &amp; traffic growth</option>
+              <option value="ecommerce">An online store</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="message">Tell us about your project</label>
+            <textarea id="message" name="message" rows="4" aria-describedby="err-message"></textarea>
+            <p class="field-error" id="err-message">Just a sentence or two helps us prep.</p>
+          </div>
+          <!-- Web3Forms uses these to label the email it sends you -->
+          <input type="hidden" name="subject" value="New Maple quote request" />
+          <input type="hidden" name="from_name" value="Maple website — quote form" />
+          <button type="submit" class="btn btn-primary btn-block" id="quote-submit">Send my request</button>
+          <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
+          <p class="form-foot">No spam, ever. We reply within one business day. Prefer email? <a href="mailto:info@maplewebsites.com">info@maplewebsites.com</a></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <svg class="footer-tide" viewBox="0 0 1440 46" preserveAspectRatio="none" aria-hidden="true"><path d="M0 46 L0 22 Q180 4 360 22 T720 22 T1080 22 T1440 22 L1440 46 Z" fill="currentColor"/></svg>
+    <div class="container footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#top" class="brand" aria-label="Maple — home">
+            <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+              <rect width="40" height="40" rx="11" fill="#18583e"/>
+              <path d="M20 7 C22.5 13 27 14.5 27 19.5 a7 7 0 0 1-14 0 C13 14.5 17.5 13 20 7 Z" fill="#f4ede0"/>
+              <rect x="19" y="18" width="2" height="13" rx="1" fill="#f4ede0"/>
+              <circle cx="20" cy="12" r="1.6" fill="#e9b949"/>
+            </svg>
+            <span class="brand-name">Map<span class="leaf">le</span></span>
+          </a>
+          <p class="footer-blurb">Custom websites for Vancouver small businesses — crafted on the West Coast, built to convert.</p>
+          <div class="footer-contact-line">
+            <a href="mailto:info@maplewebsites.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> info@maplewebsites.com</a>
+          </div>
+        </div>
+        <div class="footer-cols">
+          <nav aria-label="Explore">
+            <h4>Explore</h4>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="portfolio.html">Work</a>
+            <a href="pricing.html">Pricing</a>
+          </nav>
+          <nav aria-label="Studio">
+            <h4>Studio</h4>
+            <a href="about.html">About</a>
+            <a href="blog.html">Blog</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+          <nav aria-label="Get in touch">
+            <h4>Get in touch</h4>
+            <a href="contact.html">Free quote</a>
+            <a href="contact.html" class="js-booking">Book a call</a>
+            <a href="mailto:info@maplewebsites.com">info@maplewebsites.com</a>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Maple+Web+Design+Vancouver+BC" target="_blank" rel="noopener">Find us on Google</a>
+          </nav>
+          <div class="footer-serving">
+            <h4>Serving</h4>
+            <span>Vancouver, BC · Pacific Time</span>
+            <p>Mount Pleasant, Kitsilano, Gastown, Commercial Drive, Burnaby, North &amp; West Vancouver, Richmond &amp; New Westminster.</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> Maple. All rights reserved.</p>
+        <p>Designed &amp; built on the Pacific Northwest coast 🌲</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== MOBILE STICKY ACTION BAR ===================== -->
+  <div class="mobile-bar" id="mobile-bar" aria-label="Quick contact actions">
+    <a class="btn btn-fir" href="mailto:info@maplewebsites.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      Email
+    </a>
+    <a class="btn btn-primary" href="#contact">Free quote</a>
+  </div>
+
+  <!-- ===================== AI CHATBOT WIDGET ===================== -->
+  <div class="chatbot" id="chatbot">
+    <div class="chat-nudge" id="chat-nudge" role="status">
+      Questions? Ask me about pricing or timelines 🌲
+      <button type="button" id="chat-nudge-close" aria-label="Dismiss message">✕</button>
+    </div>
+    <button class="chatbot-launch" id="chat-launch" aria-label="Open chat with the Maple assistant" aria-expanded="false" aria-controls="chat-panel">
+      <span class="chat-launch-pulse" aria-hidden="true"></span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5z"/></svg>
+    </button>
+    <div class="chatbot-panel" id="chat-panel" role="dialog" aria-modal="false" aria-label="Maple assistant chat" hidden>
+      <div class="chatbot-header">
+        <div class="ch-id">
+          <span class="ch-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 C13.5 7 16 8 16 11 a4 4 0 0 1-8 0 C8 8 10.5 7 12 3 Z"/><path d="M12 11v9"/></svg></span>
+          <div>
+            <p class="chatbot-title">Maple Assistant</p>
+            <p class="chatbot-status"><span class="live" aria-hidden="true"></span> Online — usually replies instantly</p>
+          </div>
+        </div>
+        <button class="chatbot-close" id="chat-close" aria-label="Close chat">✕</button>
+      </div>
+      <div class="chatbot-messages" id="chat-messages" aria-live="polite"></div>
+      <div class="chatbot-quick" id="chat-quick"></div>
+      <form class="chatbot-input" id="chat-form">
+        <label for="chat-text" class="sr-only">Type your message</label>
+        <input type="text" id="chat-text" placeholder="Type your message…" autocomplete="off" />
+        <button type="submit" aria-label="Send message"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* ============================================================
+         CONFIG — replace these two before launch.
+         ============================================================ */
+      // Lead funnel config. Set these to your own real values before launch so the
+      // primary conversion events fire.
+      //   WEB3FORMS_KEY — your Web3Forms access key (create one free at https://web3forms.com
+      //                   using info@maplewebsites.com; submissions are delivered to that inbox).
+      //   BOOKING_URL   — set to your Cal.com "intro-call" event.
+      // While either is a placeholder (the default), the guards below fail safe
+      // (no fake "sent", no dead calendar link) rather than 404 the funnel.
+      var WEB3FORMS_KEY = 'cb3ef286-b9c9-494f-bb69-27a6456b78ee';     // paste your key here
+      var FORM_ENDPOINT = 'https://api.web3forms.com/submit';
+      var BOOKING_URL   = 'https://cal.com/your-cal-link';
+
+      // A value counts as "unconfigured" only if it's blank or an obvious sample slug.
+      var BOOKING_PLACEHOLDER = /^$|your-cal-link|your-calendar|example\.com|cal\.com\/maple-websites\/intro$/i;
+      var FORM_PLACEHOLDER    = /^$|YOUR-WEB3FORMS-ACCESS-KEY|your-access-key/i;
+      var bookingConfigured   = !BOOKING_PLACEHOLDER.test(BOOKING_URL);
+      var formConfigured      = !FORM_PLACEHOLDER.test(WEB3FORMS_KEY);
+
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function escapeHtml(str) {
+        return String(str).replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+      }
+
+      /* ---------- Footer year ---------- */
+      var yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      /* ---------- Booking CTAs: one source of truth, guarded against 404s ----------
+         If BOOKING_URL is still the placeholder slug, every "Pick a time" /
+         "Book a call" link would 404. So when unconfigured we re-point those
+         CTAs at the contact form (the same guard the form itself uses),
+         strip target=_blank, and relabel them so the funnel never dead-ends. */
+      document.querySelectorAll('.js-booking').forEach(function (a) {
+        if (bookingConfigured) {
+          a.href = BOOKING_URL;
+          a.setAttribute('target', '_blank');
+          a.setAttribute('rel', 'noopener');
+        } else {
+          a.setAttribute('href', '#contact');
+          a.removeAttribute('target');
+          a.removeAttribute('rel');
+          a.setAttribute('data-booking-fallback', 'true');
+          a.setAttribute('title', 'Send us your details and we’ll set up a time');
+          // Keep copy honest: the CTA still works, it just scrolls to the contact
+          // form. Relabel only the visible text node(s) so any SVG icon survives.
+          var label = a.textContent.trim();
+          var newLabel = /pick a time/i.test(label) ? 'Request a time'
+            : /strategy call/i.test(label) ? 'Request a free strategy call'
+            : /book a call/i.test(label) ? 'Request a call' : null;
+          if (newLabel) {
+            var replaced = false;
+            a.childNodes.forEach(function (n) {
+              if (n.nodeType === 3 && n.textContent.trim()) {
+                n.textContent = replaced ? '' : ' ' + newLabel;
+                replaced = true;
+              }
+            });
+            if (!replaced) a.textContent = newLabel;
+          }
+        }
+      });
+
+      /* ---------- Header shadow on scroll ---------- */
+      var header = document.getElementById('top');
+      if (header) {
+        var onScroll = function () { header.classList.toggle('scrolled', window.scrollY > 12); };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      }
+
+      /* ---------- Mobile nav toggle ---------- */
+      var navToggle = document.querySelector('.nav-toggle');
+      var navLinks = document.getElementById('nav-links');
+      if (navToggle && navLinks) {
+        navToggle.addEventListener('click', function () {
+          var open = navLinks.classList.toggle('open');
+          navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        navLinks.addEventListener('click', function (e) {
+          if (e.target.closest('a')) {
+            navLinks.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      /* ---------- Scrollspy: mark current nav link ---------- */
+      var navAnchors = navLinks ? navLinks.querySelectorAll('a[href^="#"]:not(.nav-cta):not(.nav-phone)') : [];
+      var sectionMap = [];
+      navAnchors.forEach(function (a) {
+        var id = a.getAttribute('href').slice(1);
+        var sec = document.getElementById(id);
+        if (sec) sectionMap.push({ a: a, sec: sec });
+      });
+      if (sectionMap.length && 'IntersectionObserver' in window) {
+        var spy = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              sectionMap.forEach(function (m) {
+                m.a.setAttribute('aria-current', m.sec === entry.target ? 'true' : 'false');
+              });
+            }
+          });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+        sectionMap.forEach(function (m) { spy.observe(m.sec); });
+      }
+
+      /* ---------- Mobile sticky action bar: show after hero scrolls out ---------- */
+      var mobileBar = document.getElementById('mobile-bar');
+      var hero = document.querySelector('.hero');
+      if (mobileBar && hero) {
+        if ('IntersectionObserver' in window) {
+          var barIo = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              mobileBar.classList.toggle('show', !entry.isIntersecting);
+            });
+          }, { rootMargin: '-120px 0px 0px 0px' });
+          barIo.observe(hero);
+        } else {
+          mobileBar.classList.add('show');
+        }
+      }
+
+      /* ---------- Scroll reveal (staggered) ---------- */
+      var revealEls = document.querySelectorAll('.reveal');
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        revealEls.forEach(function (el) { el.classList.add('in'); });
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              var el = entry.target;
+              // stagger siblings within the same grid for a gentle cascade
+              var sibs = Array.prototype.slice.call(el.parentNode.children).filter(function (n) { return n.classList.contains('reveal'); });
+              var idx = sibs.indexOf(el);
+              el.style.transitionDelay = (Math.min(idx, 5) * 70) + 'ms';
+              el.classList.add('in');
+              io.unobserve(el);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        revealEls.forEach(function (el) { io.observe(el); });
+      }
+
+      /* ============================================================
+         Contact form — REAL submission (fetch POST) + validation + honeypot
+         ============================================================ */
+      var form = document.getElementById('quote-form');
+      var note = document.getElementById('form-note');
+      var submitBtn = document.getElementById('quote-submit');
+
+      function setFieldError(input, hasError) {
+        var field = input.closest('.field');
+        if (field) field.classList.toggle('invalid', hasError);
+        input.setAttribute('aria-invalid', hasError ? 'true' : 'false');
+      }
+      function validEmail(value) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()); }
+
+      if (form) {
+        var nameI = document.getElementById('name');
+        var emailI = document.getElementById('email');
+        var honeypot = document.getElementById('company-website');
+
+        [nameI, emailI].forEach(function (input) {
+          input.addEventListener('input', function () {
+            if (input.closest('.field').classList.contains('invalid')) {
+              var ok = input === emailI ? validEmail(input.value) : input.value.trim().length > 0;
+              setFieldError(input, !ok);
+            }
+          });
+        });
+
+        function showSuccess(firstName) {
+          // Only offer a "Book a call" link if the calendar is really configured;
+          // otherwise point to the phone so the success state never dead-ends.
+          var bookLine = bookingConfigured
+            ? 'Prefer to grab a time now? <a href="' + escapeHtml(BOOKING_URL) + '" target="_blank" rel="noopener">Book a call</a>.'
+            : 'Prefer email? Reach us anytime at <a href="mailto:info@maplewebsites.com">info@maplewebsites.com</a>.';
+          form.innerHTML =
+            '<div class="form-success" role="status">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>' +
+            '<h3>Thanks, ' + escapeHtml(firstName) + '! 🌲</h3>' +
+            '<p>Your request is on its way to us. Our team will be in touch within one business day with next steps and a free quote. ' + bookLine + '</p>' +
+            '</div>';
+        }
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          note.textContent = '';
+          note.className = 'form-note';
+
+          // Honeypot tripped -> silently pretend success, send nothing.
+          if (honeypot && honeypot.value.trim() !== '') { showSuccess('friend'); return; }
+
+          var nameOk = nameI.value.trim().length > 0;
+          var emailOk = validEmail(emailI.value);
+          setFieldError(nameI, !nameOk);
+          setFieldError(emailI, !emailOk);
+
+          if (!nameOk || !emailOk) {
+            note.textContent = 'Please fix the highlighted fields and try again.';
+            note.classList.add('err');
+            (!nameOk ? nameI : emailI).focus();
+            return;
+          }
+
+          var firstName = nameI.value.trim().split(' ')[0];
+          var data = new FormData(form);
+          data.set('access_key', WEB3FORMS_KEY);   // keep the key in sync with the config var
+
+          // If the access key is still a placeholder, don't fake a delivery.
+          if (!formConfigured) {
+            note.textContent = 'Heads up: this demo form has no inbox wired up yet, so nothing was sent. Email info@maplewebsites.com and we’ll jump right on it.';
+            note.classList.add('err');
+            return;
+          }
+
+          if (submitBtn) { submitBtn.setAttribute('aria-busy', 'true'); submitBtn.textContent = 'Sending…'; }
+
+          fetch(FORM_ENDPOINT, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          }).then(function (res) {
+            return res.json().then(function (j) {
+              if (res.ok && j && j.success) {
+                showSuccess(firstName);
+              } else {
+                throw new Error((j && j.message) || 'Bad response');
+              }
+            });
+          }).catch(function () {
+            if (submitBtn) { submitBtn.removeAttribute('aria-busy'); submitBtn.textContent = 'Send my request'; }
+            note.textContent = 'Sorry — something went wrong sending that. Please email info@maplewebsites.com and we’ll sort it out.';
+            note.classList.add('err');
+          });
+        });
+      }
+
+      /* ============================================================
+         AI Chatbot — rule-based assistant that captures REAL leads
+         ============================================================ */
+      var launch = document.getElementById('chat-launch');
+      var panel = document.getElementById('chat-panel');
+      var closeBtn = document.getElementById('chat-close');
+      var messages = document.getElementById('chat-messages');
+      var quickWrap = document.getElementById('chat-quick');
+      var chatForm = document.getElementById('chat-form');
+      var chatText = document.getElementById('chat-text');
+      var nudge = document.getElementById('chat-nudge');
+      var nudgeClose = document.getElementById('chat-nudge-close');
+      var greeted = false;
+      var nudgeDismissed = false;
+
+      /* Gentle one-time nudge to invite engagement (no annoyance on reduced motion or after interaction) */
+      function maybeNudge() {
+        if (nudgeDismissed || !nudge || !panel || !panel.hidden) return;
+        nudge.classList.add('show');
+        setTimeout(function () { if (nudge) nudge.classList.remove('show'); }, 7000);
+      }
+      if (nudge && !reduceMotion) { setTimeout(maybeNudge, 6000); }
+      if (nudgeClose) nudgeClose.addEventListener('click', function () { nudgeDismissed = true; nudge.classList.remove('show'); });
+
+      var quickReplies = [
+        { label: 'How much does it cost?', key: 'pricing' },
+        { label: 'How long does it take?', key: 'timeline' },
+        { label: 'Book a free call', key: 'book' },
+        { label: 'Leave my details', key: 'lead' }
+      ];
+
+      function renderQuick() {
+        quickWrap.innerHTML = '';
+        quickReplies.forEach(function (q) {
+          var b = document.createElement('button');
+          b.type = 'button'; b.className = 'quick-btn'; b.textContent = q.label;
+          b.addEventListener('click', function () { addMessage(q.label, 'user'); respond(q.key); });
+          quickWrap.appendChild(b);
+        });
+      }
+
+      function addMessage(text, who) {
+        var m = document.createElement('div');
+        m.className = 'msg ' + who;
+        m.textContent = text;
+        messages.appendChild(m);
+        messages.scrollTop = messages.scrollHeight;
+        return m;
+      }
+      // bot message that may contain a safe, known link (booking / mailto / tel)
+      function addBotHtml(html) {
+        var m = document.createElement('div');
+        m.className = 'msg bot';
+        m.innerHTML = html;
+        messages.appendChild(m);
+        messages.scrollTop = messages.scrollHeight;
+        return m;
+      }
+
+      function showTyping() {
+        var t = document.createElement('div');
+        t.className = 'msg bot typing';
+        t.setAttribute('aria-label', 'Maple assistant is typing');
+        t.innerHTML = '<span></span><span></span><span></span>';
+        messages.appendChild(t);
+        messages.scrollTop = messages.scrollHeight;
+        return t;
+      }
+      function botSay(text, cb) {
+        if (reduceMotion) { addMessage(text, 'bot'); if (cb) cb(); return; }
+        var typing = showTyping();
+        setTimeout(function () { typing.remove(); addMessage(text, 'bot'); if (cb) cb(); }, 600);
+      }
+      function botSayHtml(html, cb) {
+        if (reduceMotion) { addBotHtml(html); if (cb) cb(); return; }
+        var typing = showTyping();
+        setTimeout(function () { typing.remove(); addBotHtml(html); if (cb) cb(); }, 600);
+      }
+
+      var ANSWERS = {
+        pricing: 'Our pricing is transparent. Starter starts at $499 one-time to build (then $49/mo hosting & care). Growth starts at $1,500 one-time (then $149/mo, includes the AI chatbot — our most popular). Scale is a custom build with a custom monthly. These are starting prices — we tailor an exact quote to your project in a free consult, and that quote is what you pay. The monthly covers hosting, SSL, updates, backups and small tweaks, and you can cancel anytime. As a new studio we also offer founding-client pricing — ask me about it!',
+        timeline: 'Most custom sites launch in about 2 weeks from our first chat. We move fast without cutting corners — and you review the design before we build a thing.',
+        services: 'Every Maple build includes custom design, Google Analytics, SEO, and an AI chatbot like this one, plus fast secure hosting on a simple monthly care plan (from $49/mo, cancel anytime). We also do e-commerce and online booking. It all comes built in — not as pricey add-ons.',
+        founding: 'Great question. We’re a young, founder-led studio, so we offer founding-client pricing to our first Vancouver-area clients in exchange for an honest review once your site is live. Want me to take your details so we can check if a spot is open?',
+        chatbot: 'Yep — this little assistant is the same kind of AI chatbot we build into client sites. It answers questions and captures real leads 24/7, just like this. Want to leave your details and see it work?',
+        seo: 'We handle technical SEO, fast load times, clean content structure, and Google Search Console setup — all tuned to help local searchers in Vancouver find you first.',
+        ecommerce: 'Absolutely. Our Scale plan covers online stores and booking with secure checkout, automated emails, and inventory that just works.',
+        local: 'We sure are — Maple is a founder-led studio based right here in Vancouver, BC, working with shops, restaurants, clinics, and trades across the city.',
+        guarantee: 'You’re covered: design revisions are included in every package, and we keep revising until you genuinely love it — you’ll never get stuck with a look you don’t love. We’d rather take an extra round than ship something you’re not proud of.',
+        greeting: 'Hey there! 🌲 I’m the Maple assistant. Ask me about pricing, timelines, or our guarantee — or tap a button below to book a call or leave your details.',
+        fallback: 'Good question! I can help with pricing, timelines, what’s included, and our guarantee — or I can take your details and have our team follow up within one business day. What would help most?'
+      };
+
+      function classify(text) {
+        var t = text.toLowerCase();
+        if (/(book|calendar|schedule|call|appointment|meeting|time)/.test(t)) return 'book';
+        if (/(detail|contact me|reach me|my email|follow up|quote|get started|sign up|leave)/.test(t)) return 'lead';
+        if (/(found|first client|early|review|deal|discount)/.test(t)) return 'founding';
+        if (/(price|cost|how much|budget|\$|afford)/.test(t)) return 'pricing';
+        if (/(time|long|fast|when|deadline|launch|weeks?)/.test(t)) return 'timeline';
+        if (/(guarantee|revisions?|risk|revise|don't love|not happy)/.test(t)) return 'guarantee';
+        if (/(human|person|phone|talk|speak)/.test(t)) return 'lead';
+        if (/(seo|rank|google|search|traffic)/.test(t)) return 'seo';
+        if (/(shop|store|ecommerce|e-commerce|sell|product|booking)/.test(t)) return 'ecommerce';
+        if (/(chatbot|chat bot|ai|assistant|bot)/.test(t)) return 'chatbot';
+        if (/(local|vancouver|where|located|bc|near|area|lower mainland)/.test(t)) return 'local';
+        if (/(service|include|get|offer|do you|build|design|analytic|host)/.test(t)) return 'services';
+        if (/(hi|hello|hey|yo|howdy|good morning|good afternoon)/.test(t)) return 'greeting';
+        return 'fallback';
+      }
+
+      // demonstrate the flagship value prop: the bot can actually book + capture a lead.
+      // Guarded: if the calendar link is still a placeholder, don't hand out a dead
+      // link — offer the phone + lead capture instead so the funnel never 404s.
+      function offerBooking() {
+        if (bookingConfigured) {
+          botSayHtml('Happy to help you grab a time. Here’s the calendar — pick whatever suits you: ' +
+            '<a href="' + escapeHtml(BOOKING_URL) + '" target="_blank" rel="noopener">Book a free 20-min call →</a>' +
+            '<br><br>Or email us at <a href="mailto:info@maplewebsites.com">info@maplewebsites.com</a>. Want to leave your details instead?');
+        } else {
+          botSayHtml('Happy to set up a free 20-minute call. The fastest way: email us at ' +
+            '<a href="mailto:info@maplewebsites.com">info@maplewebsites.com</a>, or leave your name and email here and we’ll send you a couple of times that work. Want to leave your details?',
+            showLeadForm);
+        }
+      }
+
+      var leadShown = false;
+      function showLeadForm() {
+        if (leadShown) return;
+        leadShown = true;
+        var wrap = document.createElement('div');
+        wrap.className = 'lead-mini';
+        wrap.innerHTML =
+          '<label for="lead-name" class="sr-only">Your name</label>' +
+          '<input type="text" id="lead-name" placeholder="Your name" aria-label="Your name" autocomplete="name" />' +
+          '<label for="lead-email" class="sr-only">Email or phone</label>' +
+          '<input type="email" id="lead-email" placeholder="Email or phone" aria-label="Email or phone" autocomplete="email" />' +
+          '<button type="button" id="lead-send">Send to the team</button>';
+        messages.appendChild(wrap);
+        messages.scrollTop = messages.scrollHeight;
+        setTimeout(function () { var ln = wrap.querySelector('#lead-name'); if (ln) ln.focus(); }, 60);
+
+        wrap.querySelector('#lead-send').addEventListener('click', function () {
+          var ln = wrap.querySelector('#lead-name').value.trim();
+          var le = wrap.querySelector('#lead-email').value.trim();
+          if (!ln || !le) { botSay('Just need a name and a way to reach you — then you’re all set.'); return; }
+
+          if (!formConfigured) {
+            // No inbox configured yet — be honest, don't pretend it sent.
+            botSayHtml('Thanks, ' + escapeHtml(ln.split(' ')[0]) + '! This demo isn’t wired to a live inbox yet, so please email <a href="mailto:info@maplewebsites.com">info@maplewebsites.com</a> and we’ll get right back to you.');
+            wrap.remove();
+            return;
+          }
+          var fd = new FormData();
+          fd.append('access_key', WEB3FORMS_KEY);
+          fd.append('name', ln);
+          fd.append('email', le);
+          fd.append('source', 'AI chatbot');
+          fd.append('subject', 'New Maple chatbot lead');
+          fd.append('from_name', 'Maple website — chatbot');
+          wrap.querySelector('#lead-send').textContent = 'Sending…';
+          fetch(FORM_ENDPOINT, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } })
+            .then(function (res) {
+              return res.json().then(function (j) {
+                wrap.remove();
+                if (res.ok && j && j.success) {
+                  botSay('Got it, ' + ln.split(' ')[0] + '! 🌲 Our team will reach out within one business day. Anything else I can help with in the meantime?');
+                } else { throw new Error('bad'); }
+              });
+            })
+            .catch(function () {
+              wrap.remove();
+              botSayHtml('Hmm, that didn’t go through. Please email <a href="mailto:info@maplewebsites.com">info@maplewebsites.com</a> — we don’t want to lose you!');
+            });
+        });
+      }
+
+      function respond(key) {
+        if (key === 'book') { offerBooking(); return; }
+        if (key === 'lead') {
+          botSay('Perfect — drop your name and the best way to reach you and I’ll send it straight to our team.', showLeadForm);
+          return;
+        }
+        if (key === 'founding' || key === 'chatbot') {
+          botSay(ANSWERS[key], showLeadForm);
+          return;
+        }
+        botSay(ANSWERS[key] || ANSWERS.fallback);
+      }
+
+      /* ---------- Focus trap so keyboard users stay inside the open dialog ---------- */
+      function trapFocus(e) {
+        if (e.key !== 'Tab' || !panel || panel.hidden) return;
+        var focusables = panel.querySelectorAll('a[href], button:not([disabled]), input, select, textarea');
+        if (!focusables.length) return;
+        var first = focusables[0];
+        var last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+
+      function openChat() {
+        if (nudge) { nudge.classList.remove('show'); nudgeDismissed = true; }
+        panel.hidden = false;
+        launch.setAttribute('aria-expanded', 'true');
+        if (!greeted) { greeted = true; renderQuick(); botSay(ANSWERS.greeting); }
+        setTimeout(function () { chatText.focus(); }, 60);
+      }
+      function closeChat() {
+        panel.hidden = true;
+        launch.setAttribute('aria-expanded', 'false');
+        launch.focus();
+      }
+
+      if (launch) {
+        launch.addEventListener('click', function () { if (panel.hidden) openChat(); else closeChat(); });
+      }
+      if (closeBtn) closeBtn.addEventListener('click', closeChat);
+
+      // "Try our chatbot" links in the services section open the widget
+      document.querySelectorAll('[data-open-chat]').forEach(function (el) {
+        el.addEventListener('click', function (e) { e.preventDefault(); openChat(); });
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && panel && !panel.hidden) closeChat();
+        trapFocus(e);
+      });
+
+      if (chatForm) {
+        chatForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var text = chatText.value.trim();
+          if (!text) return;
+          addMessage(text, 'user');
+          chatText.value = '';
+          respond(classify(text));
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

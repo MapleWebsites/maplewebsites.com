@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================= -->
+  <!-- SEO + Social meta.                                            -->
+  <!-- ============================================================= -->
+  <title>Services — Maple | Custom Web Design, AI Chatbots, SEO &amp; More</title>
+  <meta name="description" content="Explore every Maple service in detail: custom web design, AI chatbots, Google Analytics, SEO, performance &amp; hosting, and e-commerce &amp; booking — with benefits and FAQs for each. Growth tools built in, transparent starting prices, launch in ~2 weeks." />
+  <meta name="keywords" content="custom web design, AI chatbot, Google Analytics, SEO services, website performance, hosting, e-commerce, online booking, web development agency" />
+  <meta name="author" content="Maple" />
+  <link rel="canonical" href="https://www.maplewebsites.com/services.html" />
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Maple" />
+  <meta property="og:url" content="https://www.maplewebsites.com/services.html" />
+  <meta property="og:title" content="Services — Maple | Everything your website needs to win" />
+  <meta property="og:description" content="Six services, transparent starting prices. Custom design with AI chatbots, analytics, SEO, performance, and e-commerce built in." />
+  <meta property="og:image" content="https://www.maplewebsites.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Services — Maple | Everything your website needs to win" />
+  <meta name="twitter:description" content="Six services, transparent starting prices. Custom design with AI chatbots, analytics, SEO, performance, and e-commerce built in." />
+  <meta name="twitter:image" content="https://www.maplewebsites.com/og-image.png" />
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- ============================================================= -->
+  <!-- All styles inline so this page opens standalone in a browser. -->
+  <!-- Tokens mirror the main Maple site (styles.css).               -->
+  <!-- ============================================================= -->
+  <style>
+    :root {
+      --bg: #f3f1ea;
+      --bg-alt: #e9e6db;
+      --surface: #fbfaf4;
+      --surface-2: #e9e6db;
+      --text: #14211b;
+      --muted: #626c62;
+      --border: rgba(20,33,27,0.15);
+      --brand: #18583e;
+      --brand-2: #18717a;
+      --accent: #e9b949;
+      --grad: linear-gradient(120deg, #18583e 0%, #3f9268 100%);
+      --shadow: 0 30px 64px -34px rgba(11,42,34,0.5);
+      --radius: 16px;
+      --container: 1140px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .brand { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; line-height: 1.15; }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--brand-2);
+      margin-bottom: 14px;
+    }
+
+    .grad-text {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Visually-hidden but screen-reader accessible */
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap; border: 0;
+    }
+
+    /* Skip link for keyboard users */
+    .skip-link {
+      position: absolute;
+      left: 16px; top: -60px;
+      background: var(--brand);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 10px;
+      z-index: 200;
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus { top: 12px; }
+
+    :focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; border-radius: 6px; }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.98rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: #bd5026;
+      color: #fff;
+      box-shadow: 0 16px 30px -14px rgba(158,63,28,0.7);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 22px 38px -16px rgba(158,63,28,0.78); }
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text);
+    }
+    .btn-ghost:hover { background: var(--surface-2); transform: translateY(-2px); }
+    .btn-block { width: 100%; }
+
+    /* ---------- Header / Nav ---------- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.25rem;
+    }
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      flex: none;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+    .brand:hover .brand-mark { transform: rotate(-8deg); }
+    .brand-name { display: inline; }
+    .brand-accent { color: var(--brand-2); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      list-style: none;
+    }
+    .nav-links a { color: var(--muted); font-weight: 500; transition: color 0.15s; }
+    .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--text); }
+    .nav-cta {
+      background: var(--surface-2);
+      color: var(--text) !important;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+    }
+    .nav-cta:hover { background: #bd5026; border-color: #bd5026; color: #fff !important; }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      padding: 6px;
+    }
+    .nav-toggle span { width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.25s; }
+
+    /* ---------- Page hero ---------- */
+    .page-hero {
+      position: relative;
+      padding: 84px 0 64px;
+      text-align: center;
+      background:
+        radial-gradient(900px 500px at 80% -10%, rgba(123, 167, 140, 0.16), transparent 60%),
+        radial-gradient(700px 500px at 5% 10%, rgba(24, 88, 62, 0.12), transparent 55%);
+    }
+    .page-hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 800; margin-bottom: 18px; }
+    .page-hero .lead { font-size: 1.12rem; color: var(--muted); max-width: 640px; margin: 0 auto 28px; }
+    .breadcrumb { font-size: 0.85rem; color: var(--muted); margin-bottom: 22px; }
+    .breadcrumb a { color: var(--brand-2); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+    .hero-promises {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 10px 14px; margin-top: 30px;
+    }
+    .promise-pill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text);
+      box-shadow: 0 8px 24px -18px rgba(11, 42, 34, 0.4);
+    }
+    .promise-pill span { color: var(--accent); font-weight: 700; }
+
+    /* ---------- Quick service nav ---------- */
+    .service-nav {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-alt);
+      position: sticky;
+      top: 72px;
+      z-index: 40;
+    }
+    .service-nav .container {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      scrollbar-width: thin;
+    }
+    .service-nav a {
+      flex: 0 0 auto;
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--muted);
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+    .service-nav a:hover { color: var(--text); background: var(--surface); border-color: var(--border); }
+
+    /* ---------- Generic section ---------- */
+    .section { padding: 80px 0; }
+    .section-alt { background: var(--bg-alt); }
+    .section-head { text-align: center; max-width: 680px; margin: 0 auto 50px; }
+    .section-head h2 { font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 700; }
+    .section-sub { color: var(--muted); margin-top: 14px; font-size: 1.05rem; }
+
+    /* ---------- Service detail blocks ---------- */
+    .service-block { scroll-margin-top: 150px; }
+    .service-block + .service-block { margin-top: 30px; }
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: 0 20px 50px -34px rgba(11, 42, 34, 0.3);
+    }
+    .service-top {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 22px;
+      align-items: start;
+    }
+    .service-icon {
+      width: 64px; height: 64px;
+      display: grid; place-items: center;
+      font-size: 1.9rem;
+      background: var(--surface-2);
+      border-radius: 16px;
+      flex: 0 0 auto;
+    }
+    .service-kicker {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+      color: var(--brand-2);
+      margin-bottom: 6px;
+    }
+    .service-head-text h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 12px; }
+    .service-head-text > p { color: var(--muted); font-size: 1.04rem; max-width: 640px; }
+    .service-tier {
+      flex: 0 0 auto;
+      text-align: right;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .service-tier strong { display: block; font-family: 'Fraunces'; font-size: 1rem; color: var(--text); }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 34px;
+      margin-top: 30px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+    }
+    .service-grid h3 {
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .service-grid h3 .h3-mark {
+      width: 8px; height: 8px; border-radius: 3px;
+      background: var(--grad);
+      display: inline-block;
+    }
+
+    /* Benefits list */
+    .benefits { list-style: none; }
+    .benefits li {
+      position: relative;
+      padding: 10px 0 10px 30px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.96rem;
+    }
+    .benefits li:last-child { border-bottom: 0; }
+    .benefits li::before {
+      content: "✓";
+      position: absolute;
+      left: 0; top: 10px;
+      width: 20px; height: 20px;
+      display: grid; place-items: center;
+      background: var(--surface-2);
+      color: var(--brand-2);
+      border-radius: 50%;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+    .benefits li strong { color: var(--text); }
+
+    /* "What's included" chips */
+    .included-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .chip {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--brand-2);
+      background: var(--surface-2);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+
+    /* FAQ accordion */
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 10px;
+      background: var(--bg);
+      overflow: hidden;
+    }
+    .faq-item:last-child { margin-bottom: 0; }
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      padding: 16px 46px 16px 18px;
+      font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+      font-weight: 600;
+      font-size: 0.96rem;
+      color: var(--text);
+      position: relative;
+      line-height: 1.4;
+    }
+    .faq-q:hover { color: var(--brand-2); }
+    .faq-q::after {
+      content: "+";
+      position: absolute;
+      right: 16px; top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--brand-2);
+      transition: transform 0.25s ease;
+      line-height: 1;
+    }
+    .faq-q[aria-expanded="true"]::after { transform: translateY(-50%) rotate(45deg); }
+    .faq-a {
+      padding: 0 18px;
+      max-height: 0;
+      overflow: hidden;
+      color: var(--muted);
+      font-size: 0.94rem;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    .faq-a[data-open="true"] { padding: 0 18px 18px; }
+    .faq-a p { margin-bottom: 8px; }
+    .faq-a p:last-child { margin-bottom: 0; }
+
+    /* ---------- Process steps ---------- */
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; list-style: none; }
+    .step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      position: relative;
+    }
+    .step-num {
+      display: grid; place-items: center;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--grad);
+      color: #fff;
+      font-family: 'Fraunces'; font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .step h3 { margin-bottom: 8px; }
+    .step p { color: var(--muted); font-size: 0.95rem; }
+
+    /* ---------- Pricing mini ---------- */
+    .pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: start; }
+    .plan {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      position: relative;
+    }
+    .plan-featured {
+      border-color: rgba(24, 88, 62, 0.6);
+      box-shadow: 0 20px 50px -25px var(--brand);
+      transform: translateY(-8px);
+    }
+    .plan-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--grad); color: #fff;
+      font-size: 0.75rem; font-weight: 600;
+      padding: 5px 14px; border-radius: 999px;
+    }
+    .plan h3 { font-size: 1.3rem; }
+    .price { font-family: 'Fraunces'; font-size: 2.2rem; font-weight: 800; margin: 10px 0 4px; }
+    .price span { display: block; font-size: 0.85rem; font-weight: 400; color: var(--muted); }
+    .price .pre { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 1px; }
+    .plan-tag { color: var(--muted); margin-bottom: 18px; font-size: 0.95rem; }
+    .plan ul { list-style: none; margin-bottom: 24px; }
+    .plan ul li { padding: 8px 0; border-bottom: 1px solid var(--border); color: var(--text); font-size: 0.95rem; }
+    .plan ul li::before { content: "✓ "; color: var(--accent); font-weight: 700; }
+    .plan .btn { width: 100%; }
+
+    /* ---------- CTA band ---------- */
+    .cta-band {
+      background: var(--grad);
+      color: #fff;
+      text-align: center;
+      border-radius: 22px;
+      padding: 56px 30px;
+      box-shadow: var(--shadow);
+    }
+    .cta-band h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); margin-bottom: 12px; }
+    .cta-band p { max-width: 560px; margin: 0 auto 26px; opacity: 0.95; font-size: 1.05rem; }
+    .cta-band .btn-light {
+      background: #fff;
+      color: var(--brand);
+    }
+    .cta-band .btn-light:hover { transform: translateY(-2px); box-shadow: 0 16px 36px -12px rgba(0,0,0,0.35); }
+    .cta-band .btn-outline {
+      background: transparent;
+      border-color: rgba(255,255,255,0.6);
+      color: #fff;
+    }
+    .cta-band .btn-outline:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+    .cta-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+    .cta-direct { margin-top: 20px; font-size: 0.92rem; opacity: 0.92; }
+    .cta-direct a { text-decoration: underline; }
+
+    /* ---------- Footer ---------- */
+    .site-footer { background: var(--bg-alt); border-top: 1px solid var(--border); padding: 56px 0 28px; }
+    .footer-grid { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 36px; }
+    .brand-footer { margin-bottom: 14px; }
+    .footer-blurb { color: var(--muted); max-width: 280px; }
+    .footer-cols { display: flex; gap: 70px; flex-wrap: wrap; }
+    .footer-cols h4 { margin-bottom: 12px; font-size: 1rem; }
+    .footer-cols a { display: block; color: var(--muted); padding: 4px 0; transition: color 0.15s; }
+    .footer-cols a:hover { color: var(--text); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+      padding-top: 24px; border-top: 1px solid var(--border);
+      color: var(--muted); font-size: 0.88rem;
+    }
+
+    /* ============================================================
+       Responsive
+       ============================================================ */
+    @media (max-width: 900px) {
+      .steps, .pricing { grid-template-columns: 1fr 1fr; }
+      .plan-featured { transform: none; }
+      .service-grid { grid-template-columns: 1fr; gap: 28px; }
+      .service-card { padding: 30px 24px; }
+      .service-top { grid-template-columns: auto 1fr; }
+      .service-tier { grid-column: 1 / -1; text-align: left; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: absolute;
+        top: 72px; left: 0; right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: var(--bg-alt);
+        border-bottom: 1px solid var(--border);
+        padding: 10px 24px 20px;
+        display: none;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; padding: 8px 0; }
+      .nav-cta { display: inline-block; margin-top: 6px; }
+      .steps, .pricing { grid-template-columns: 1fr; }
+      .section { padding: 60px 0; }
+      .service-nav { top: 72px; }
+      .service-top { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ===================== HEADER / NAV ===================== -->
+  <header class="site-header" id="top">
+    <nav class="nav container" aria-label="Primary">
+      <a href="index.html" class="brand" aria-label="Maple home">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#103b30"/><path d="M20 7 C22.5 13 27 14.5 27 19.5 a7 7 0 0 1-14 0 C13 14.5 17.5 13 20 7 Z" fill="#f4ede0"/><rect x="19" y="18" width="2" height="13" rx="1" fill="#f4ede0"/><circle cx="20" cy="12" r="1.6" fill="#e9b949"/></svg>
+        <span class="brand-name">Map<span class="brand-accent">le</span></span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="services.html" aria-current="page">Services</a></li>
+        <li><a href="portfolio.html">Work</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" class="nav-cta">Get a Free Quote</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ===================== PAGE HERO ===================== -->
+    <section class="page-hero">
+      <div class="container">
+        <p class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <span aria-current="page">Services</span></p>
+        <p class="eyebrow">Our services</p>
+        <h1>Everything your website needs to <span class="grad-text">win — in one place</span>.</h1>
+        <p class="lead">
+          Most agencies sell you a website, then charge extra for the things that actually grow it.
+          We don't. Every Maple build comes with custom design and the growth tech wired in from day one —
+          AI chatbots, analytics, SEO, performance, and the tools to sell or take bookings online.
+          Here's exactly what each service does for your business.
+        </p>
+        <div class="hero-actions">
+          <a href="contact.html" class="btn btn-primary" data-cta="services-hero">Get a Free Quote</a>
+          <a href="#service-design" class="btn btn-ghost">Explore the services</a>
+        </div>
+        <div class="hero-promises">
+          <span class="promise-pill"><span>✓</span> Clear, transparent pricing</span>
+          <span class="promise-pill"><span>✓</span> Revisions until you love it</span>
+          <span class="promise-pill"><span>✓</span> Growth tools included</span>
+          <span class="promise-pill"><span>✓</span> Launch in ~2 weeks</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== QUICK SERVICE NAV ===================== -->
+    <nav class="service-nav" aria-label="Jump to a service">
+      <div class="container">
+        <a href="#service-design">🎨 Custom Web Design</a>
+        <a href="#service-chatbot">🤖 AI Chatbots</a>
+        <a href="#service-analytics">📈 Analytics &amp; Tracking</a>
+        <a href="#service-seo">🔍 SEO &amp; Traffic</a>
+        <a href="#service-performance">⚡ Performance &amp; Hosting</a>
+        <a href="#service-ecommerce">🛒 E-commerce &amp; Booking</a>
+      </div>
+    </nav>
+
+    <!-- ===================== SERVICE DETAILS ===================== -->
+    <section class="section">
+      <div class="container">
+
+        <!-- ---------- 1. Custom Web Design ---------- -->
+        <article class="service-block" id="service-design">
+          <div class="service-card">
+            <div class="service-top">
+              <div class="service-icon" aria-hidden="true">🎨</div>
+              <div class="service-head-text">
+                <p class="service-kicker">Service 01</p>
+                <h2>Custom Web Design</h2>
+                <p>Hand-crafted, on-brand websites built from scratch around <em>your</em> business — never a recycled template. Mobile-first, fast, and designed to turn visitors into customers, not just to look pretty.</p>
+                <div class="included-chips">
+                  <span class="chip">Mobile-first</span>
+                  <span class="chip">On-brand</span>
+                  <span class="chip">Conversion-focused</span>
+                  <span class="chip">Accessible</span>
+                </div>
+              </div>
+              <div class="service-tier">
+                Included in
+                <strong>All plans</strong>
+                Starter · Growth · Scale
+              </div>
+            </div>
+
+            <div class="service-grid">
+              <div>
+                <h3><span class="h3-mark" aria-hidden="true"></span> What you get</h3>
+                <ul class="benefits">
+                  <li><strong>A design that's unmistakably yours.</strong> We craft every page around your brand, audience, and goals — so your site looks like a competitor's site for no one.</li>
+                  <li><strong>Built mobile-first.</strong> Over half your visitors are on a phone. We design for the small screen first, then scale up, so it's sharp everywhere.</li>
+                  <li><strong>Engineered to convert.</strong> Clear calls-to-action, logical flow, and trust signals placed where they earn clicks — not decoration for its own sake.</li>
+                  <li><strong>Revisions until you love it.</strong> You review a real mockup and refine it with us. You'll never get stuck with a look you don't love.</li>
+                  <li><strong>Accessible by default.</strong> Readable contrast, keyboard navigation, and semantic structure so every customer — and search engine — can use your site.</li>
+                </ul>
+              </div>
+              <div>
+                <h3><span class="h3-mark" aria-hidden="true"></span> Common questions</h3>
+                <div class="faq">
+                  <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">Do you really design everything custom, or start from a template?</button>
+                    <div class="faq-a"><p>Everything is custom. We don't drag a pre-built theme onto your brand and call it a day. We design your layout, type, color, and components around your business — which is exactly why a Maple site doesn't look like every other site in your industry.</p></div>
+                  </div>
+                  <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">What if I don't like the first design?</button>
+                    <div class="faq-a"><p>That's expected — first drafts are a starting point. We revise the design until you love it. There's no surprise charge for refining the look; getting it right is part of the build.</p></div>
+                  </div>
+                  <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">I don't have a logo or brand colors yet. Can you still help?</button>
+                    <div class="faq-a"><p>Yes. We'll work with what you have and help shape a simple, consistent look — colors, type, and style — so your site feels polished and cohesive even if you're starting fresh.</p></div>
+                  </div>
+                  <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">How many pages can I have?</button>
+                    <div class="faq-a"><p>Starter covers up to 5 custom pages and Growth up to 12 — enough for most small businesses. Need more, or an online store? That's the Scale tier, which is sized to your project.</p></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ---------- 2. AI Chatbots ---------- -->
+        <article class="service-block" id="service-chatbot">
+          <div class="service-card">
+            <div class="service-top">
+              <div class="service-icon" aria-hidden="true">🤖</div>
+              <div class="service-head-text">
+                <p class="service-kicker">Service 02</p>
+                <h2>AI Chatbots</h2>
+                <p>A friendly AI assistant that works 24/7 — answering questions, capturing leads, and booking appointments while you're busy running the business or fast asleep. Try ours in the corner of any Maple-built site.</p>
+                <div class="included-chips">
+                  <span class="chip">24/7 lead capture</span>
+                  <span class="chip">Books appointments</span>
+                  <span class="chip">Answers FAQs</span>
+                  <span class="chip">Trained on your business</span>
+                </div>
+              </div>
+              <div class="service-tier">
+                Included in
+                <strong>Growth &amp; Scale</strong>
+                Custom assistant on Scale
+              </div>
+            </div>
+
+            <div class="service-grid">
+              <div>
+                <h3><span class="h3-mark" aria-hidden="true"></span> What you get</h3>
+                <ul class="benefits">
+                  <li><strong>A salesperson that never sleeps.</strong> The chatbot greets every visitor, answers common questions instantly, and keeps people engaged instead of bouncing.</li>
+                  <li><strong>Leads captured automatically.</strong> When someone's interested, the bot collects their name and contact details and hands you a warm lead — even at 2 a.m.</li>
+                  <li><strong>Bookings made for you.</strong> Point it at your calendar and it can guide visitors straight to a booked appointment or a quote request.</li>
+                  <li><strong>Trained on your business.</strong> We teach it your services, hours, pricing approach, and FAQs so its answers actually sound like you — not a generic robot.</li>
+                  <li><strong>Fewer repetitive emails.</strong> The questions you answer ten times a day get handled by the bot, freeing up your time for the work that matters.</li>
+                </ul>
+              </div>
+              <div>
+                <h3><span class="h3-mark" aria-hidden="true"></span> Common questions</h3>
+                <div class="faq">
+                  <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">Is the chatbot a real feature or just a gimmick?</button>
+                    <div class="faq-a"><p>It's wired to do a real job: capture leads and book appointments 24/7, and feed those interactions into your analytics. You can try the live chatbot on this very site — what you see is what your customers get.</p></div>
+                  </div>
+                  <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">Will it give wrong answers about my business?</button>
+                    <div class="faq-a"><p>We train it on your real information — services, hours, policies, and FAQs — and set guardrails so it stays on-topic. When it isn't sure, it gracefully hands the visitor off to you instead of guessing.</p></div>
+                  </div>
+                  <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">What happens to the leads it collects?</button>
+                    <div class="faq-a"><p>They're delivered to you — by email, into a form inbox, or to your calendar for bookings — and the activity shows up in your analytics so you can see how many conversations turn into customers.</p></div>
+                  </div>
+                  <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">Is it included or an expensive add-on?</button>
+                    <div class="faq-a"><p>It's built into the Growth plan and every Scale build — not a pricey extra. Growth tools come standard at Maple; that's the whole point.</p></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ---------- 3. Google Analytics & Tracking ---------- -->
+        <article class="service-block" id="service-analytics">
+          <div class="service-card">
+            <div class="service-top">
+              <div class="service-icon" aria-hidden="true">📈</div>
+              <div class="service-head-text">
+                <p class="service-kicker">Service 03</p>
+                <h2>Google Analytics &amp; Tracking</h2>
+                <p>You can't grow what you can't measure. We install Google Analytics, conversion tracking, and clear dashboards so you know exactly what's working — and where to double down.</p>
+                <div class="included-chips">
+                  <span class="chip">Google Analytics setup</span>
+                  <span class="chip">Conversion tracking</span>
+                  <span class="chip">Dashboards</span>
+                  <span class="chip">Form &amp; CTA events</span>
+                </div>
+              </div>
+              <div class="service-tier">
+                Included in
+                <strong>All plans</strong>
+                Dashboards on Growth &amp; Scale
+              </div>
+            </div>
+
+            <div class="service-grid">
+              <div>
+                <h3><span class="h3-mark" aria-hidden="true"></span> What you get</h3>
+                <ul class="benefits">
+                  <li><strong>Analytics set up properly from day one.</strong> No half-installed tracking or guesswork — we configure Google Analytics so your data is accurate from launch.</li>
+                  <li><strong>Conversions you can actually see.</strong> Form submissions, button clicks, chatbot opens, and calls are tracked as events, so you know which actions lead to customers.</li>
+                  <li><strong>A dashboard you can read.</strong> Instead of drowning in tabs, you get a clean view of visitors, sources, and conversions — the numbers that matter.</li>
+                  <li><strong>Know where your customers come from.</strong> See which channels — search, social, referrals — bring the people who actually buy, so you spend effort where it pays.</li>
+                  <li><strong>Decisions backed by data.</strong> Every other Maple service gets sharper because you can measure its impact and double down on what's working.</li>
+                </ul>
+              </div>
+              <div>
+                <h3><span class="h3-mark" aria-hidden="true"></span> Common questions</h3>
+                <div class="faq">
+                  <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">I'm not technical — will I actually understand the data?</button>
+                    <div class="faq-a"><p>Yes. We set up a simple dashboard focused on the handful of numbers that matter for your business — visitors, where they come from, and how many convert — instead of the overwhelming default reports.</p></div>
+                  </div>
+                  <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">Do I need my own Google Analytics account?</button>
+                    <div class="faq-a"><p>It's free and takes a couple of minutes to create — we'll walk you through it (or set it up under your ownership) so the data and the account always belong to you, not us.</p></div>
+                  </div>
+                  <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">What exactly counts as a "conversion"?</button>
+                    <div class="faq-a"><p>Whatever matters to your business — a contact-form submission, a quote request, a phone tap, a booking, or a chatbot lead. We agree on your key actions and track them as conversions.</p></div>
+                  </div>
+                  <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">Is this an extra cost?</button>
+                    <div class="faq-a"><p>No. Analytics and conversion tracking are included in every build. We believe you should be able to see what your website is doing without paying for the privilege.</p></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ---------- 4. SEO & Traffic Growth ---------- -->
+        <article class="service-block" id="service-seo">
+          <div class="service-card">
+            <div class="service-top">
+              <div class="service-icon" aria-hidden="true">🔍</div>
+              <div class="service-head-text">
+                <p class="service-kicker">Service 04</p>
+                <h2>SEO &amp; Traffic Growth</h2>
+                <p>A beautiful site no one finds doesn't grow a business. We build in technical SEO, fast load times, and clean content structure so Google can rank you and send qualified visitors your way.</p>
+                <div class="included-chips">
+                  <span class="chip">Technical SEO</span>
+                  <span class="chip">Local SEO</span>
+                  <span class="chip">Clean structure</span>
+                  <span class="chip">Search Console</span>
+                </div>
+              </div>
+              <div class="service-tier">
+                Included in
+                <strong>All plans</strong>
+                Advanced &amp; ongoing on Growth/Scale
+              </div>
+            </div>
+
+            <div class="service-grid">
+              <div>
+                <h3><span class="h3-mark" aria-hidden="true"></span> What you get</h3>
+                <ul class="benefits">
+                  <li><strong>SEO built into the foundation.</strong> Clean code, proper headings, fast pages, and structured metadata — the technical groundwork Google rewards, baked in from launch.</li>
+                  <li><strong>Found by people nearby.</strong> Local SEO and "near me" structure help customers in your area discover you when they're ready to buy.</li>
+                  <li><strong>Content that's easy to rank.</strong> We structure your pages and headings so search engines understand what each page is about — and show it to the right people.</li>
+                  <li><strong>Connected to Google Search Console.</strong> We set it up so you can see the searches bringing people in and spot opportunities to climb higher.</li>
+                  <li><strong>Speed that helps rankings.</strong> Because we obsess over load times, your pages don't just feel fast — that speed is itself a ranking factor in your favor.</li>
+                </ul>
+              </div>
+              <div>
+                <h3><span class="h3-mark" aria-hidden="true"></span> Common questions</h3>
+                <div class="faq">
+                  <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">How long until I rank on Google?</button>
+                    <div class="faq-a"><p>The technical foundation is in place at launch, which is the part most sites get wrong. Rankings build over weeks to months as Google trusts your site — there's no honest "instant page one." For competitive terms, ongoing SEO (Growth and Scale) accelerates it.</p></div>
+                  </div>
+                  <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">Can you guarantee the #1 spot?</button>
+                    <div class="faq-a"><p>No reputable agency can — and anyone who guarantees a specific ranking is a red flag. What we guarantee is that your site is built to rank: fast, well-structured, and technically sound, so you're competing on a level field.</p></div>
+                  </div>
+                  <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">Is ongoing SEO different from the SEO in the build?</button>
+                    <div class="faq-a"><p>Yes. Every build includes the technical and on-page foundation. Ongoing SEO — fresh content, local citations, and continuous optimization — is part of the Scale tier for businesses that want to keep climbing.</p></div>
+                  </div>
+                  <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">My current site won't rank. Can a rebuild fix that?</button>
+                    <div class="faq-a"><p>Often, yes. Many DIY and template sites are slow and poorly structured, which holds them back. A custom, fast, properly structured rebuild removes those barriers — and we make sure your existing pages are preserved or redirected so you don't lose ground.</p></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ---------- 5. Performance & Hosting ---------- -->
+        <article class="service-block" id="service-performance">
+          <div class="service-card">
+            <div class="service-top">
+              <div class="service-icon" aria-hidden="true">⚡</div>
+              <div class="service-head-text">
+                <p class="service-kicker">Service 05</p>
+                <h2>Performance &amp; Hosting</h2>
+                <p>Blazing-fast pages with strong Core Web Vitals, secure hosting, SSL, and ongoing maintenance handled for you. Speed isn't a nice-to-have — it keeps visitors from leaving and helps you rank.</p>
+                <div class="included-chips">
+                  <span class="chip">Fast load times</span>
+                  <span class="chip">Secure hosting</span>
+                  <span class="chip">SSL included</span>
+                  <span class="chip">Maintenance</span>
+                </div>
+              </div>
+              <div class="service-tier">
+                Included in
+                <strong>All plans</strong>
+                Ongoing maintenance on Scale
+              </div>
+            </div>
+
+            <div class="service-grid">
+              <div>
+                <h3><span class="h3-mark" aria-hidden="true"></span> What you get</h3>
+                <ul class="benefits">
+                  <li><strong>Pages that load before patience runs out.</strong> We target sub-2-second loads and strong Core Web Vitals, because slow sites lose visitors and rankings.</li>
+                  <li><strong>Secure hosting, handled.</strong> Reliable hosting with SSL so your site loads over HTTPS, shows the trust padlock, and protects your visitors' data.</li>
+                  <li><strong>Maintenance off your plate.</strong> Updates, security patches, and uptime are looked after so your site stays fast and online without you thinking about it.</li>
+                  <li><strong>Built lean.</strong> No bloated page-builders dragging your site down — clean, efficient code means better performance on every device and connection.</li>
+                  <li><strong>Peace of mind.</strong> With monitoring and SSL in place, you're not lying awake wondering if your site is down or insecure.</li>
+                </ul>
+              </div>
+              <div>
+                <h3><span class="h3-mark" aria-hidden="true"></span> Common questions</h3>
+                <div class="faq">
+                  <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">Why does site speed matter so much?</button>
+                    <div class="faq-a"><p>Visitors abandon slow sites within seconds, and Google uses speed as a ranking signal. A fast site means more people stay, more of them convert, and you rank higher — speed pays for itself.</p></div>
+                  </div>
+                  <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">Do I have to host with you?</button>
+                    <div class="faq-a"><p>We include secure, fast hosting so you don't have to figure it out — but you're never locked in. You own your site, and there's no contract trapping you. Maintenance is optional and can be cancelled anytime.</p></div>
+                  </div>
+                  <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">Is the SSL certificate extra?</button>
+                    <div class="faq-a"><p>No. SSL is included so your site is served securely over HTTPS from day one — the padlock customers look for before they trust you with their details.</p></div>
+                  </div>
+                  <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">What does "maintenance" actually cover?</button>
+                    <div class="faq-a"><p>Keeping the site secure, updated, backed up, and online — plus small fixes. Each plan includes a support window (1 month on Starter, 3 on Growth), and ongoing care is available for businesses that want it handled long-term.</p></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ---------- 6. E-commerce & Booking ---------- -->
+        <article class="service-block" id="service-ecommerce">
+          <div class="service-card">
+            <div class="service-top">
+              <div class="service-icon" aria-hidden="true">🛒</div>
+              <div class="service-head-text">
+                <p class="service-kicker">Service 06</p>
+                <h2>E-commerce &amp; Booking</h2>
+                <p>Sell products or take appointments online with secure checkout, automated confirmations, and inventory or calendars that just work. Turn your website into a storefront or a booking machine.</p>
+                <div class="included-chips">
+                  <span class="chip">Secure checkout</span>
+                  <span class="chip">Online booking</span>
+                  <span class="chip">Automated emails</span>
+                  <span class="chip">Inventory</span>
+                </div>
+              </div>
+              <div class="service-tier">
+                Best fit
+                <strong>Scale plan</strong>
+                Simple booking on Growth
+              </div>
+            </div>
+
+            <div class="service-grid">
+              <div>
+                <h3><span class="h3-mark" aria-hidden="true"></span> What you get</h3>
+                <ul class="benefits">
+                  <li><strong>Sell online, securely.</strong> A clean storefront with secure checkout, so customers can buy with confidence and you get paid without the friction.</li>
+                  <li><strong>Take bookings around the clock.</strong> Let customers book appointments or reservations themselves, any time — no phone tag, no double-bookings.</li>
+                  <li><strong>Automated confirmations and reminders.</strong> Order receipts and booking reminders go out automatically, cutting no-shows and support emails.</li>
+                  <li><strong>Inventory that keeps up.</strong> Stock levels and availability stay accurate, so you're never selling something you can't deliver.</li>
+                  <li><strong>Every sale measured.</strong> Paired with analytics, you see exactly which products, pages, and channels drive revenue — and the AI chatbot can guide buyers to checkout.</li>
+                </ul>
+              </div>
+              <div>
+                <h3><span class="h3-mark" aria-hidden="true"></span> Common questions</h3>
+                <div class="faq">
+                  <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">Which plan do I need to sell or take bookings?</button>
+                    <div class="faq-a"><p>A simple booking form fits within the Growth plan. Full online stores and advanced booking systems live in the Scale tier, which we size to your products, payments, and workflow on a free call.</p></div>
+                  </div>
+                  <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">How do customers pay — and is it secure?</button>
+                    <div class="faq-a"><p>We set up trusted, secure payment processing with SSL so card details are handled safely. You get paid directly; we don't sit between you and your money.</p></div>
+                  </div>
+                  <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">Can it handle bookings and a store at the same time?</button>
+                    <div class="faq-a"><p>Yes. Whether you sell products, take appointments, or both, we build the right mix for your business — with automated emails and calendars so it runs without constant babysitting.</p></div>
+                  </div>
+                  <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">Will I be able to add products or manage bookings myself?</button>
+                    <div class="faq-a"><p>Absolutely. We set things up so you can add products, adjust prices, and manage your calendar without writing a line of code — and we show you how during launch.</p></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===================== PROCESS ===================== -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">How it works</p>
+          <h2>Every service ships through one simple process</h2>
+          <p class="section-sub">No jargon, no surprises. You'll always know what's happening next — from first call to live site.</p>
+        </div>
+        <ol class="steps">
+          <li class="step">
+            <span class="step-num">1</span>
+            <h3>Discover</h3>
+            <p>We learn your business, goals, and audience in a free strategy call — and pick the services that move the needle for you.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">2</span>
+            <h3>Design</h3>
+            <p>You review a custom mockup and refine it with us until it's exactly right. Revisions until you love it.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">3</span>
+            <h3>Build &amp; Equip</h3>
+            <p>We develop the site and wire in analytics, the AI chatbot, SEO, performance, and any store or booking tools.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">4</span>
+            <h3>Launch &amp; Grow</h3>
+            <p>We go live in about two weeks, monitor the data, and keep optimizing for more traffic and more customers.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================== PRICING MINI ===================== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Pricing</p>
+          <h2>Transparent starting prices — growth tools included</h2>
+          <p class="section-sub">Transparent starting prices. No lock-in. Cancel maintenance anytime. We tailor an exact quote in a free consult — and that's the number you pay.</p>
+        </div>
+        <div class="pricing">
+          <article class="plan">
+            <h3>Starter</h3>
+            <p class="price"><span class="pre">Starting at</span>$499<span>one-time</span></p>
+            <p class="plan-tag">Perfect for a sharp first website</p>
+            <ul>
+              <li>Up to 5 custom pages</li>
+              <li>Mobile-responsive design</li>
+              <li>Google Analytics setup</li>
+              <li>Basic SEO &amp; contact form</li>
+              <li>1 month of support</li>
+            </ul>
+            <a href="contact.html" class="btn btn-ghost" data-cta="starter">Choose Starter</a>
+          </article>
+          <article class="plan plan-featured">
+            <span class="plan-badge">Most popular</span>
+            <h3>Growth</h3>
+            <p class="price"><span class="pre">Starting at</span>$1,500<span>one-time</span></p>
+            <p class="plan-tag">Built to attract and convert traffic</p>
+            <ul>
+              <li>Up to 12 custom pages</li>
+              <li>AI chatbot integration</li>
+              <li>Advanced SEO &amp; conversion tracking</li>
+              <li>Analytics dashboard</li>
+              <li>3 months of support</li>
+            </ul>
+            <a href="contact.html" class="btn btn-primary" data-cta="growth">Choose Growth</a>
+          </article>
+          <article class="plan">
+            <h3>Scale</h3>
+            <p class="price">Custom<span>let's talk</span></p>
+            <p class="plan-tag">E-commerce &amp; ongoing growth</p>
+            <ul>
+              <li>Unlimited pages / online store</li>
+              <li>Custom AI assistant &amp; automations</li>
+              <li>Monthly SEO &amp; content</li>
+              <li>Ongoing optimization</li>
+              <li>Priority support</li>
+            </ul>
+            <a href="pricing.html" class="btn btn-ghost" data-cta="scale">Talk to us</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CTA BAND ===================== -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-band">
+          <h2>Not sure which services you need?</h2>
+          <p>That's what the free strategy call is for. Tell us about your business and we'll recommend exactly what will bring you more customers — no pressure, no jargon, and a fixed quote you can see.</p>
+          <div class="cta-actions">
+            <a href="contact.html" class="btn btn-light" data-cta="services-cta">Get a Free Quote</a>
+            <a href="pricing.html" class="btn btn-outline">Compare plans</a>
+          </div>
+          <p class="cta-direct">Prefer email? <a href="mailto:info@maplewebsites.com">info@maplewebsites.com</a> · We reply within one business day.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="brand brand-footer">
+          <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#103b30"/><path d="M20 7 C22.5 13 27 14.5 27 19.5 a7 7 0 0 1-14 0 C13 14.5 17.5 13 20 7 Z" fill="#f4ede0"/><rect x="19" y="18" width="2" height="13" rx="1" fill="#f4ede0"/><circle cx="20" cy="12" r="1.6" fill="#e9b949"/></svg>
+          <span class="brand-name">Map<span class="brand-accent">le</span></span>
+        </a>
+        <p class="footer-blurb">Custom websites that drive traffic and grow your business.</p>
+      </div>
+      <div class="footer-cols">
+        <nav aria-label="Explore">
+          <h4>Explore</h4>
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Work</a>
+          <a href="pricing.html">Pricing</a>
+        </nav>
+        <nav aria-label="Company">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="blog.html">Blog</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div>
+          <h4>Contact</h4>
+          <a href="mailto:info@maplewebsites.com">info@maplewebsites.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> Maple. All rights reserved.</p>
+      <p>Built with ❤️ and modern web tools.</p>
+    </div>
+  </footer>
+
+  <!-- ===================== INLINE SCRIPT ===================== -->
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile nav toggle
+    var navToggle = document.querySelector('.nav-toggle');
+    var navLinks = document.getElementById('nav-links');
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', function () {
+        var open = navLinks.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      // Close the menu after tapping a link (mobile)
+      navLinks.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') {
+          navLinks.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // Accessible FAQ accordion
+    var faqButtons = document.querySelectorAll('.faq-q');
+    faqButtons.forEach(function (btn) {
+      var answer = btn.nextElementSibling;
+      // Link button and panel for screen readers
+      var aId = answer.id || ('faq-a-' + Math.random().toString(36).slice(2, 9));
+      answer.id = aId;
+      btn.setAttribute('aria-controls', aId);
+      answer.setAttribute('role', 'region');
+
+      btn.addEventListener('click', function () {
+        var isOpen = btn.getAttribute('aria-expanded') === 'true';
+        // Close siblings within the same FAQ group for a clean accordion
+        var group = btn.closest('.faq');
+        if (group && !isOpen) {
+          group.querySelectorAll('.faq-q').forEach(function (other) {
+            if (other !== btn) {
+              other.setAttribute('aria-expanded', 'false');
+              var oa = other.nextElementSibling;
+              oa.style.maxHeight = null;
+              oa.setAttribute('data-open', 'false');
+            }
+          });
+        }
+        if (isOpen) {
+          btn.setAttribute('aria-expanded', 'false');
+          answer.style.maxHeight = null;
+          answer.setAttribute('data-open', 'false');
+        } else {
+          btn.setAttribute('aria-expanded', 'true');
+          answer.setAttribute('data-open', 'true');
+          answer.style.maxHeight = answer.scrollHeight + 40 + 'px';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

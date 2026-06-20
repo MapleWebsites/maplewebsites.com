@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================= -->
+  <!-- SEO + Social meta for the About page.                         -->
+  <!-- ============================================================= -->
+  <title>About Maple — Vancouver Custom Web Design Studio | Our Team &amp; Story</title>
+  <meta name="description" content="Meet Maple, a Vancouver BC custom web-design and development studio. We build fast, on-brand websites for local businesses with AI chatbots, analytics, and SEO built in. Learn our story, values, and the people who'll build your site." />
+  <meta name="keywords" content="about Maple, Vancouver web design agency, web development team, custom websites, Vancouver web designer, our story, web design studio" />
+  <meta name="author" content="Maple" />
+  <link rel="canonical" href="https://www.maplewebsites.com/about.html" />
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Maple" />
+  <meta property="og:url" content="https://www.maplewebsites.com/about.html" />
+  <meta property="og:title" content="About Maple — Vancouver Custom Web Design Studio | Our Team &amp; Story" />
+  <meta property="og:description" content="Meet the Vancouver BC studio building fast, custom websites for local businesses — with AI chatbots, analytics, and SEO built in." />
+  <meta property="og:image" content="https://www.maplewebsites.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About Maple — Vancouver Custom Web Design Studio" />
+  <meta name="twitter:description" content="Meet the Vancouver BC studio building fast, custom websites with growth tech built in." />
+  <meta name="twitter:image" content="https://www.maplewebsites.com/og-image.png" />
+
+  <!-- Favicon (SVG, with emoji fallback for older browsers) -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- ============================================================= -->
+  <!-- Inline styles. Mirrors the main site's design tokens so the   -->
+  <!-- About page feels like part of maplewebsites.com.              -->
+  <!-- ============================================================= -->
+  <style>
+    :root {
+      --bg: #f3f1ea;
+      --bg-alt: #e9e6db;
+      --surface: #fbfaf4;
+      --surface-2: #e9e6db;
+      --text: #14211b;
+      --muted: #626c62;
+      --border: rgba(20,33,27,0.15);
+      --brand: #18583e;
+      --brand-2: #18717a;
+      --accent: #e9b949;
+      --grad: linear-gradient(120deg, #18583e 0%, #3f9268 100%);
+      --shadow: 0 30px 64px -34px rgba(11,42,34,0.5);
+      --radius: 16px;
+      --container: 1140px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .brand { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; line-height: 1.15; }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--brand-2);
+      margin-bottom: 14px;
+    }
+
+    .grad-text {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Skip link for keyboard / screen-reader users */
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 8px;
+      z-index: 200;
+      background: var(--text);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+    .skip-link:focus { left: 12px; }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.98rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: #bd5026;
+      color: #fff;
+      box-shadow: 0 16px 30px -14px rgba(158,63,28,0.7);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 22px 38px -16px rgba(158,63,28,0.78); }
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text);
+    }
+    .btn-ghost:hover { background: var(--surface-2); transform: translateY(-2px); }
+    .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+    /* ---------- Header / Nav ---------- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.25rem;
+    }
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      flex: none;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+    .brand:hover .brand-mark { transform: rotate(-8deg); }
+    .brand-name { display: inline; }
+    .brand-accent { color: var(--brand-2); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      list-style: none;
+    }
+    .nav-links a { color: var(--muted); font-weight: 500; transition: color 0.15s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .nav-links a.active { font-weight: 600; }
+    .nav-cta {
+      background: var(--surface-2);
+      color: var(--text) !important;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+    }
+    .nav-cta:hover { background: #bd5026; border-color: #bd5026; color: #fff !important; }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      padding: 6px;
+    }
+    .nav-toggle span { width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.25s; }
+
+    /* ---------- Page hero ---------- */
+    .page-hero {
+      position: relative;
+      padding: 84px 0 64px;
+      background:
+        radial-gradient(900px 500px at 80% -10%, rgba(123, 167, 140, 0.16), transparent 60%),
+        radial-gradient(700px 500px at 5% 10%, rgba(24, 88, 62, 0.12), transparent 55%);
+    }
+    .page-hero-inner { max-width: 760px; }
+    .breadcrumb { font-size: 0.85rem; color: var(--muted); margin-bottom: 18px; }
+    .breadcrumb a:hover { color: var(--text); }
+    .breadcrumb span { color: var(--text); }
+    .page-hero h1 { font-size: clamp(2.3rem, 5vw, 3.4rem); font-weight: 800; margin-bottom: 20px; }
+    .page-hero .lead { font-size: 1.14rem; color: var(--muted); max-width: 620px; margin-bottom: 30px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* ---------- Generic section ---------- */
+    .section { padding: 84px 0; }
+    .section-alt { background: var(--bg-alt); }
+    .section-head { text-align: center; max-width: 680px; margin: 0 auto 50px; }
+    .section-head h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; }
+    .section-sub { color: var(--muted); margin-top: 14px; font-size: 1.05rem; }
+
+    /* ---------- Story (two-column) ---------- */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 54px;
+      align-items: center;
+    }
+    .story-copy h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); margin-bottom: 18px; }
+    .story-copy p { color: var(--muted); margin-bottom: 16px; }
+    .story-copy p strong { color: var(--text); font-weight: 600; }
+    .story-card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+    .story-card .sc-orb {
+      position: absolute;
+      inset: -30px -20px auto auto;
+      width: 200px;
+      height: 200px;
+      background: var(--grad);
+      filter: blur(70px);
+      opacity: 0.3;
+      border-radius: 50%;
+      z-index: 0;
+    }
+    .story-card h3 { font-size: 1.15rem; margin-bottom: 14px; position: relative; z-index: 1; }
+    .story-card ul { list-style: none; position: relative; z-index: 1; }
+    .story-card ul li {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.96rem;
+    }
+    .story-card ul li:last-child { border-bottom: 0; }
+    .story-card ul li .ic { font-size: 1.15rem; line-height: 1.4; }
+    .story-card ul li b { font-family: 'Fraunces'; }
+
+    /* ---------- Stats strip ---------- */
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+    .stat {
+      text-align: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px 18px;
+    }
+    .stat-num { font-family: 'Fraunces'; font-size: clamp(2rem, 4vw, 2.6rem); font-weight: 800; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .stat-label { color: var(--muted); font-size: 0.9rem; margin-top: 6px; }
+
+    /* ---------- Values cards ---------- */
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .card:hover { transform: translateY(-6px); border-color: rgba(24, 88, 62, 0.5); }
+    .card-icon {
+      width: 54px; height: 54px;
+      display: grid; place-items: center;
+      font-size: 1.6rem;
+      background: var(--surface-2);
+      border-radius: 14px;
+      margin-bottom: 16px;
+    }
+    .card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+    .card p { color: var(--muted); }
+
+    /* ---------- Team ---------- */
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .member {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px 26px;
+      text-align: center;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .member:hover { transform: translateY(-6px); border-color: rgba(24, 88, 62, 0.5); box-shadow: var(--shadow); }
+    .avatar {
+      width: 78px; height: 78px;
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      display: grid;
+      place-items: center;
+      font-family: 'Fraunces';
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #fff;
+      background: var(--grad);
+      box-shadow: 0 10px 26px -10px rgba(24, 88, 62, 0.7);
+    }
+    .member h3 { font-size: 1.15rem; margin-bottom: 4px; }
+    .member .role { color: var(--brand-2); font-weight: 600; font-size: 0.9rem; margin-bottom: 12px; }
+    .member p { color: var(--muted); font-size: 0.95rem; }
+
+    /* ---------- Process timeline ---------- */
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; list-style: none; }
+    .step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      position: relative;
+    }
+    .step-num {
+      display: grid; place-items: center;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--grad);
+      color: #fff;
+      font-family: 'Fraunces'; font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .step h3 { margin-bottom: 8px; }
+    .step p { color: var(--muted); font-size: 0.95rem; }
+
+    /* ---------- Promises / quotes ---------- */
+    .testimonials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .quote {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+    }
+    .quote blockquote { font-size: 1.02rem; margin-bottom: 14px; }
+    .quote figcaption { color: var(--muted); font-size: 0.9rem; }
+
+    /* ---------- CTA band ---------- */
+    .cta-band {
+      background: var(--grad);
+      border-radius: 24px;
+      padding: 54px 40px;
+      text-align: center;
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+    .cta-band h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); margin-bottom: 14px; }
+    .cta-band p { max-width: 560px; margin: 0 auto 26px; opacity: 0.95; }
+    .cta-band .btn-white {
+      background: #fff;
+      color: var(--brand);
+      box-shadow: 0 12px 30px -12px rgba(0, 0, 0, 0.4);
+    }
+    .cta-band .btn-white:hover { transform: translateY(-2px); }
+    .cta-band .cta-direct { margin-top: 18px; font-size: 0.92rem; opacity: 0.92; }
+    .cta-band .cta-direct a { text-decoration: underline; }
+
+    /* ---------- Footer ---------- */
+    .site-footer { background: var(--bg-alt); border-top: 1px solid var(--border); padding: 56px 0 28px; }
+    .footer-grid { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 36px; }
+    .brand-footer { margin-bottom: 14px; }
+    .footer-blurb { color: var(--muted); max-width: 280px; }
+    .footer-cols { display: flex; gap: 70px; flex-wrap: wrap; }
+    .footer-cols h4 { margin-bottom: 12px; font-size: 1rem; }
+    .footer-cols a { display: block; color: var(--muted); padding: 4px 0; transition: color 0.15s; }
+    .footer-cols a:hover { color: var(--text); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+      padding-top: 24px; border-top: 1px solid var(--border);
+      color: var(--muted); font-size: 0.88rem;
+    }
+
+    /* ---------- Scroll reveal ---------- */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ============================================================
+       Responsive
+       ============================================================ */
+    @media (max-width: 900px) {
+      .story-grid { grid-template-columns: 1fr; gap: 36px; }
+      .cards, .steps, .stats, .testimonials, .team-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: absolute;
+        top: 72px; left: 0; right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: var(--bg-alt);
+        border-bottom: 1px solid var(--border);
+        padding: 10px 24px 20px;
+        display: none;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; padding: 8px 0; }
+      .nav-cta { display: inline-block; margin-top: 6px; }
+      .cards, .steps, .stats, .testimonials, .team-grid { grid-template-columns: 1fr; }
+      .section { padding: 60px 0; }
+      .cta-band { padding: 40px 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- ===================== HEADER / NAV ===================== -->
+  <header class="site-header" id="top">
+    <nav class="nav container" aria-label="Primary">
+      <a href="index.html" class="brand" aria-label="Maple home">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#103b30"/><path d="M20 7 C22.5 13 27 14.5 27 19.5 a7 7 0 0 1-14 0 C13 14.5 17.5 13 20 7 Z" fill="#f4ede0"/><rect x="19" y="18" width="2" height="13" rx="1" fill="#f4ede0"/><circle cx="20" cy="12" r="1.6" fill="#e9b949"/></svg>
+        <span class="brand-name">Map<span class="brand-accent">le</span></span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Work</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="about.html" class="active" aria-current="page">About</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" class="nav-cta">Get a Free Quote</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ===================== PAGE HERO ===================== -->
+    <section class="page-hero">
+      <div class="container page-hero-inner">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a> / <span>About</span>
+        </nav>
+        <p class="eyebrow">Our story</p>
+        <h1>We're a studio with <span class="grad-text">one big obsession</span>: websites that grow your business.</h1>
+        <p class="lead">
+          Maple is a custom web-design and development studio. We don't sell templates or
+          one-size-fits-all packages — we design and build websites tailored to your business,
+          then wire in the growth tools most agencies treat as expensive extras: AI chatbots,
+          Google Analytics, and SEO. The result is a site that looks great, loads fast, and
+          actually brings in customers.
+        </p>
+        <div class="hero-actions">
+          <a href="contact.html" class="btn btn-primary" data-cta="about-hero">Get a Free Quote</a>
+          <a href="portfolio.html" class="btn btn-ghost">See our work</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== STORY ===================== -->
+    <section class="section">
+      <div class="container story-grid">
+        <div class="story-copy">
+          <p class="eyebrow">Why we started Maple</p>
+          <h2>Great design shouldn't mean a confusing invoice.</h2>
+          <p>
+            Maple started with a frustration we kept hearing from small-business owners: they'd
+            paid for a "professional" website, only to end up with a pretty brochure that never
+            brought in a single lead — and a bill full of mystery line items.
+          </p>
+          <p>
+            We thought it should work the other way around. A website is your hardest-working
+            employee: it's open 24/7, it greets every visitor, and it should be measurably
+            <strong>earning its keep</strong>. So we built a studio around that idea — custom design
+            paired with the analytics, SEO, and AI tools that turn visitors into customers.
+          </p>
+          <p>
+            Today we do one thing, and we do it well: build fast, beautiful, custom websites with
+            growth tech built in — at a <strong>transparent, upfront price</strong>, usually live in
+            about two weeks.
+          </p>
+        </div>
+        <aside class="story-card">
+          <span class="sc-orb" aria-hidden="true"></span>
+          <h3>What makes us different</h3>
+          <ul>
+            <li><span class="ic" aria-hidden="true">🎯</span><span><b>Custom, never canned.</b> Every site is designed from scratch around your brand and goals.</span></li>
+            <li><span class="ic" aria-hidden="true">🧰</span><span><b>Growth tools included.</b> Chatbot, analytics, and SEO ship with the site — not as add-ons.</span></li>
+            <li><span class="ic" aria-hidden="true">💸</span><span><b>Transparent pricing.</b> Clear starting prices, then an exact quote we put in writing — and that's the number you pay. No surprise invoices, ever.</span></li>
+            <li><span class="ic" aria-hidden="true">⚡</span><span><b>Fast to launch.</b> Most sites go live in roughly two weeks.</span></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===================== STATS / STANDARDS ===================== -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">By the numbers</p>
+          <h2>The standards we hold every build to</h2>
+          <p class="section-sub">These aren't averages dressed up to look good — they're the bar we set for ourselves on every single project.</p>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <p class="stat-num" data-count="100" data-suffix="%">0%</p>
+            <p class="stat-label">Custom-built — never a template</p>
+          </div>
+          <div class="stat">
+            <p class="stat-num" data-count="2" data-suffix="s" data-decimals="1">0s</p>
+            <p class="stat-label">Target page-load time</p>
+          </div>
+          <div class="stat">
+            <p class="stat-num">24/7</p>
+            <p class="stat-label">AI chatbot, always on</p>
+          </div>
+          <div class="stat">
+            <p class="stat-num">~2 wk</p>
+            <p class="stat-label">Typical time to launch</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== VALUES ===================== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">What we believe</p>
+          <h2>The values behind every site we ship</h2>
+          <p class="section-sub">A handful of principles guide everything we build — and how we work with you along the way.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">📊</div>
+            <h3>Results over decoration</h3>
+            <p>A site that looks stunning but never converts is just expensive art. We design for traffic and conversions first, then make it beautiful.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🤝</div>
+            <h3>Honesty, always</h3>
+            <p>Plain-English explanations, transparent pricing, and no jargon. If something won't help your business, we'll tell you — even if it's a sale we don't make.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🛠️</div>
+            <h3>Craft you can feel</h3>
+            <p>Clean code, top Core Web Vitals, and pixel-level care. We sweat the details so your visitors get a fast, smooth experience on every device.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🌱</div>
+            <h3>Built to grow</h3>
+            <p>We don't just launch and leave. Analytics, SEO, and an AI chatbot come standard so your site keeps earning long after it goes live.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🎨</div>
+            <h3>Your brand, not ours</h3>
+            <p>No cookie-cutter themes. We design around your story, voice, and audience so the site feels unmistakably like you.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">💬</div>
+            <h3>Revisions until you love it</h3>
+            <p>You'll never be stuck with a look you don't love. We refine the design with you until it's exactly right — that's a promise.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TEAM ===================== -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">How we work</p>
+          <h2>A studio that does it all</h2>
+          <p class="section-sub">Maple is intentionally lean. You'll work directly with the people doing the work — no account-manager telephone game, no hand-offs. Here's what we handle on every project.</p>
+        </div>
+        <div class="team-grid">
+          <article class="member">
+            <div class="avatar" aria-hidden="true">🎨</div>
+            <h3>Design</h3>
+            <p class="role">Custom &amp; conversion-focused</p>
+            <p>We lead every project from the first strategy call to launch day — clean layouts, brand-true type, and designs that turn browsers into buyers.</p>
+          </article>
+          <article class="member">
+            <div class="avatar" aria-hidden="true">⚙️</div>
+            <h3>Development</h3>
+            <p class="role">Fast, accessible, secure</p>
+            <p>We turn designs into fast, accessible code, and tune Core Web Vitals, hosting, and security so your site loads in a blink and stays rock-solid.</p>
+          </article>
+          <article class="member">
+            <div class="avatar" aria-hidden="true">📈</div>
+            <h3>Growth &amp; SEO</h3>
+            <p class="role">Built to bring you traffic</p>
+            <p>We wire in Google Analytics, SEO, and the AI chatbot, then read the data so we can keep sending more of the right visitors your way.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== HOW WE WORK / PROCESS ===================== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">How we work</p>
+          <h2>A simple path from idea to launch</h2>
+          <p class="section-sub">No surprises, no mystery. You'll always know exactly what's happening next.</p>
+        </div>
+        <ol class="steps">
+          <li class="step">
+            <span class="step-num" aria-hidden="true">1</span>
+            <h3>Discover</h3>
+            <p>We learn your business, goals, and audience in a free strategy call.</p>
+          </li>
+          <li class="step">
+            <span class="step-num" aria-hidden="true">2</span>
+            <h3>Design</h3>
+            <p>You review a custom mockup and refine it with us until it's exactly right.</p>
+          </li>
+          <li class="step">
+            <span class="step-num" aria-hidden="true">3</span>
+            <h3>Build &amp; Equip</h3>
+            <p>We develop the site and wire in analytics, the AI chatbot, and SEO.</p>
+          </li>
+          <li class="step">
+            <span class="step-num" aria-hidden="true">4</span>
+            <h3>Launch &amp; Grow</h3>
+            <p>We go live, watch the data, and keep optimizing for more traffic.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================== PROMISES ===================== -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Our promises</p>
+          <h2>What you can count on, every time</h2>
+          <p class="section-sub">The commitments we make to every client — written down, not buried in the fine print.</p>
+        </div>
+        <div class="testimonials">
+          <figure class="quote">
+            <blockquote>Transparent, upfront pricing. We start from clear prices, then the quote we put in writing is the number you pay — no surprise invoices, ever.</blockquote>
+            <figcaption>Our promise — Transparent pricing</figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote>We revise the design until it's right. You'll never get stuck with a look you don't love.</blockquote>
+            <figcaption>Our promise — Design you'll love</figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote>Analytics, SEO, and an AI chatbot come built into every site — not as pricey add-ons.</blockquote>
+            <figcaption>Our promise — Growth tools included</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CTA BAND ===================== -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-band">
+          <h2>Ready to meet your hardest-working employee?</h2>
+          <p>Tell us a little about your business and we'll send back a free, no-pressure quote within one business day. Most sites launch in about two weeks.</p>
+          <a href="contact.html" class="btn btn-white" data-cta="about-cta">Get a Free Quote</a>
+          <p class="cta-direct">Prefer email? <a href="mailto:info@maplewebsites.com">info@maplewebsites.com</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="brand brand-footer" aria-label="Maple home">
+          <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#103b30"/><path d="M20 7 C22.5 13 27 14.5 27 19.5 a7 7 0 0 1-14 0 C13 14.5 17.5 13 20 7 Z" fill="#f4ede0"/><rect x="19" y="18" width="2" height="13" rx="1" fill="#f4ede0"/><circle cx="20" cy="12" r="1.6" fill="#e9b949"/></svg>
+          <span class="brand-name">Map<span class="brand-accent">le</span></span>
+        </a>
+        <p class="footer-blurb">Custom websites that drive traffic and grow your business — for Vancouver, BC.</p>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h4>Explore</h4>
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Work</a>
+          <a href="pricing.html">Pricing</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="faq.html">FAQ</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div>
+          <h4>Get in touch</h4>
+          <a href="mailto:info@maplewebsites.com">info@maplewebsites.com</a>
+          <a href="contact.html">Get a free quote</a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> Maple. All rights reserved.</p>
+      <p>Built with ❤️ and modern web tools.</p>
+    </div>
+  </footer>
+
+  <!-- ===================== PAGE SCRIPT ===================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      // Footer year
+      var yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // Mobile nav toggle
+      var navToggle = document.querySelector('.nav-toggle');
+      var navLinks = document.querySelector('.nav-links');
+      if (navToggle && navLinks) {
+        navToggle.addEventListener('click', function () {
+          var open = navLinks.classList.toggle('open');
+          navToggle.setAttribute('aria-expanded', String(open));
+        });
+        navLinks.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            navLinks.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      // Scroll reveal
+      var revealTargets = document.querySelectorAll(
+        '.card, .step, .stat, .quote, .member, .section-head, .story-card'
+      );
+      revealTargets.forEach(function (el) { el.classList.add('reveal'); });
+
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        revealTargets.forEach(function (el) { io.observe(el); });
+      } else {
+        revealTargets.forEach(function (el) { el.classList.add('in'); });
+      }
+
+      // Animated stat counters
+      function animateCount(el) {
+        var target = parseFloat(el.getAttribute('data-count')) || 0;
+        var suffix = el.getAttribute('data-suffix') || '';
+        var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+        var duration = 1400;
+        var start = null;
+
+        function step(ts) {
+          if (start === null) start = ts;
+          var progress = Math.min((ts - start) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+          var value = (target * eased).toFixed(decimals);
+          el.textContent = value + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      var statNums = document.querySelectorAll('.stat-num[data-count]');
+      if ('IntersectionObserver' in window) {
+        var statIO = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              animateCount(entry.target);
+              statIO.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.6 });
+        statNums.forEach(function (el) { statIO.observe(el); });
+      } else {
+        statNums.forEach(animateCount);
+      }
+    })();
+  </script>
+</body>
+</html>

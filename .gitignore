@@ -1,0 +1,18 @@
+# QA screenshot artifacts (large binary PNGs, regenerable) — not website code
+iterations/
+screenshots/
+strategy/
+
+# Internal planning / strategy docs — not part of the public website
+DECISION-BRIEF.md
+SUMMARY.md
+README-OVERNIGHT.md
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+
+# Local build/server logs
+*.log
+build.log

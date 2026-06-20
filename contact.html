@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================= -->
+  <!-- SEO + Social meta                                             -->
+  <!-- ============================================================= -->
+  <title>Contact Maple — Get a Free, Fixed-Price Website Quote</title>
+  <meta name="description" content="Tell Maple about your project and get a free, fixed-price quote within one business day. Custom websites with AI chatbots, analytics, and SEO built in. Email info@maplewebsites.com." />
+  <meta name="keywords" content="contact web design agency, get a website quote, custom website quote, AI chatbot, SEO, Maple websites" />
+  <meta name="author" content="Maple" />
+  <link rel="canonical" href="https://www.maplewebsites.com/contact.html" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Maple" />
+  <meta property="og:url" content="https://www.maplewebsites.com/contact.html" />
+  <meta property="og:title" content="Contact Maple — Get a Free, Fixed-Price Website Quote" />
+  <meta property="og:description" content="Tell us about your project and get a free, fixed-price quote within one business day. Custom websites with AI chatbots, analytics, and SEO built in." />
+  <meta property="og:image" content="https://www.maplewebsites.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact Maple — Get a Free, Fixed-Price Website Quote" />
+  <meta name="twitter:description" content="Tell us about your project and get a free, fixed-price quote within one business day." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       Maple — Contact / Get-a-Quote page
+       Self-contained. Design tokens mirror the main marketing site.
+       ============================================================ */
+    :root {
+      --bg: #f3f1ea;
+      --bg-alt: #e9e6db;
+      --surface: #fbfaf4;
+      --surface-2: #e9e6db;
+      --text: #14211b;
+      --muted: #626c62;
+      --border: rgba(20,33,27,0.15);
+      --brand: #18583e;
+      --brand-2: #18717a;
+      --accent: #e9b949;
+      --ok: #18583e;
+      --grad: linear-gradient(120deg, #18583e 0%, #3f9268 100%);
+      --shadow: 0 30px 64px -34px rgba(11,42,34,0.5);
+      --radius: 16px;
+      --container: 1140px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, .brand { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; line-height: 1.15; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--brand-2);
+      margin-bottom: 14px;
+    }
+    .grad-text {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.98rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+      white-space: nowrap;
+      font-family: inherit;
+    }
+    .btn-primary {
+      background: #bd5026;
+      color: #fff;
+      box-shadow: 0 16px 30px -14px rgba(158,63,28,0.7);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 22px 38px -16px rgba(158,63,28,0.78); }
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text);
+    }
+    .btn-ghost:hover { background: var(--surface-2); transform: translateY(-2px); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    /* ---------- Header / Nav ---------- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.25rem; }
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      flex: none;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+    .brand:hover .brand-mark { transform: rotate(-8deg); }
+    .brand-accent { color: var(--brand-2); }
+    .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+    .nav-links a { color: var(--muted); font-weight: 500; transition: color 0.15s; }
+    .nav-links a:hover,
+    .nav-links a[aria-current="page"]:not(.nav-cta) { color: var(--text); }
+    .nav-cta {
+      background: var(--surface-2);
+      color: var(--text) !important;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+    }
+    .nav-cta:hover { background: #bd5026; border-color: #bd5026; color: #fff !important; }
+    .nav-toggle {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: 0; cursor: pointer; padding: 6px;
+    }
+    .nav-toggle span { width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.25s; }
+
+    /* ---------- Contact hero ---------- */
+    .c-hero {
+      position: relative;
+      padding: 72px 0 48px;
+      background:
+        radial-gradient(900px 500px at 82% -10%, rgba(123, 167, 140, 0.18), transparent 60%),
+        radial-gradient(700px 500px at 4% 8%, rgba(24, 88, 62, 0.12), transparent 55%);
+    }
+    .c-hero-inner { max-width: 760px; }
+    .c-hero h1 { font-size: clamp(2.1rem, 4.6vw, 3.2rem); font-weight: 800; margin-bottom: 18px; }
+    .c-hero .lead { font-size: 1.12rem; color: var(--muted); max-width: 620px; margin-bottom: 26px; }
+    .promise-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 10px 20px 10px 12px;
+      box-shadow: var(--shadow);
+      flex-wrap: wrap;
+    }
+    .promise-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--grad);
+      color: #fff;
+      font-weight: 700;
+      font-family: 'Fraunces';
+      font-size: 0.9rem;
+      padding: 8px 16px;
+      border-radius: 999px;
+    }
+    .promise-badge .pulse-dot {
+      width: 9px; height: 9px; border-radius: 50%;
+      background: #fff; box-shadow: 0 0 0 0 rgba(255,255,255,0.7);
+      animation: livedot 2s ease-out infinite;
+    }
+    @keyframes livedot {
+      0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.7); }
+      70% { box-shadow: 0 0 0 9px rgba(255,255,255,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+    }
+    .promise-row p { font-size: 0.95rem; color: var(--text); font-weight: 500; }
+
+    /* ---------- Layout: form + sidebar ---------- */
+    .c-main { padding: 18px 0 80px; }
+    .c-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.85fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    /* ---------- The quote form card ---------- */
+    .form-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .form-card-head {
+      padding: 26px 30px 0;
+    }
+    .form-card-head h2 { font-size: 1.45rem; margin-bottom: 6px; }
+    .form-card-head p { color: var(--muted); font-size: 0.96rem; }
+
+    /* Stepper */
+    .stepper {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      padding: 22px 30px 4px;
+    }
+    .stepper-item { display: flex; align-items: center; flex: 1; min-width: 0; }
+    .stepper-item:last-child { flex: 0 0 auto; }
+    .stepper-dot {
+      width: 34px; height: 34px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      font-family: 'Fraunces'; font-weight: 700; font-size: 0.9rem;
+      background: var(--surface-2);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      transition: background 0.25s, color 0.25s, border-color 0.25s;
+    }
+    .stepper-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-left: 10px;
+      white-space: nowrap;
+      transition: color 0.25s;
+    }
+    .stepper-line {
+      flex: 1;
+      height: 2px;
+      background: var(--border);
+      margin: 0 12px;
+      border-radius: 2px;
+      transition: background 0.25s;
+    }
+    .stepper-item.active .stepper-dot,
+    .stepper-item.done .stepper-dot {
+      background: var(--grad);
+      color: #fff;
+      border-color: transparent;
+    }
+    .stepper-item.active .stepper-label,
+    .stepper-item.done .stepper-label { color: var(--text); }
+    .stepper-item.done .stepper-line { background: var(--brand); }
+
+    /* Steps */
+    .form-body { padding: 14px 30px 30px; }
+    .step-panel { display: none; animation: fadeStep 0.3s ease; }
+    .step-panel.active { display: block; }
+    @keyframes fadeStep { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    .step-heading { font-size: 1.05rem; margin: 6px 0 4px; }
+    .step-hint { color: var(--muted); font-size: 0.9rem; margin-bottom: 18px; }
+
+    .field { margin-bottom: 18px; }
+    .field > label { display: block; font-size: 0.88rem; margin-bottom: 6px; color: var(--text); font-weight: 600; }
+    .field .opt { color: var(--muted); font-weight: 400; }
+    .field input, .field select, .field textarea {
+      width: 100%;
+      padding: 12px 14px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.98rem;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      outline: none;
+      border-color: var(--brand);
+      box-shadow: 0 0 0 3px rgba(24, 88, 62, 0.12);
+    }
+    .field textarea { resize: vertical; min-height: 120px; }
+    .field input[aria-invalid="true"], .field textarea[aria-invalid="true"] { border-color: var(--brand); }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .err-msg { color: var(--brand); font-size: 0.82rem; margin-top: 6px; min-height: 0; display: none; }
+    .err-msg.show { display: block; }
+
+    /* Choice chips / option cards */
+    .choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .choice {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      cursor: pointer;
+      background: var(--bg);
+      transition: border-color 0.15s, background 0.15s, transform 0.1s;
+    }
+    .choice:hover { border-color: rgba(24, 88, 62, 0.45); }
+    .choice input { position: absolute; opacity: 0; pointer-events: none; }
+    .choice .choice-ico { font-size: 1.3rem; line-height: 1; }
+    .choice .choice-text strong { display: block; font-size: 0.95rem; font-family: 'Fraunces'; }
+    .choice .choice-text span { font-size: 0.82rem; color: var(--muted); }
+    .choice.selected { border-color: var(--brand); background: rgba(24, 88, 62, 0.05); }
+    .choice.selected::after {
+      content: "✓";
+      position: absolute; top: 10px; right: 12px;
+      color: var(--brand); font-weight: 800;
+    }
+
+    .pill-group { display: flex; flex-wrap: wrap; gap: 10px; }
+    .pill {
+      border: 1px solid var(--border);
+      background: var(--bg);
+      border-radius: 999px;
+      padding: 9px 16px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+      user-select: none;
+    }
+    .pill:hover { border-color: rgba(24, 88, 62, 0.45); }
+    .pill.selected { background: var(--brand); border-color: var(--brand); color: #fff; }
+
+    /* Nav buttons */
+    .step-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .step-nav .spacer { flex: 1; }
+    .btn-back { background: none; border: 0; color: var(--muted); font-weight: 600; cursor: pointer; font-family: inherit; padding: 10px 6px; }
+    .btn-back:hover { color: var(--text); }
+
+    .form-foot-note {
+      margin-top: 16px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    /* Review summary */
+    .review-list { list-style: none; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .review-list li {
+      display: flex; justify-content: space-between; gap: 16px;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.92rem;
+    }
+    .review-list li:last-child { border-bottom: 0; }
+    .review-list .rk { color: var(--muted); }
+    .review-list .rv { font-weight: 600; text-align: right; }
+
+    /* Success state */
+    .success {
+      display: none;
+      text-align: center;
+      padding: 40px 30px 44px;
+    }
+    .success.show { display: block; animation: fadeStep 0.4s ease; }
+    .success-check {
+      width: 72px; height: 72px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: var(--grad);
+      display: grid; place-items: center;
+      color: #fff; font-size: 2rem; font-weight: 800;
+      box-shadow: 0 14px 34px -10px rgba(24, 88, 62, 0.7);
+    }
+    .success h2 { font-size: 1.6rem; margin-bottom: 10px; }
+    .success p { color: var(--muted); max-width: 440px; margin: 0 auto 8px; }
+    .success .next-steps { margin: 22px auto 0; max-width: 460px; text-align: left; }
+
+    /* ---------- Sidebar ---------- */
+    .side-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .side-card h3 { font-size: 1.1rem; margin-bottom: 14px; }
+    .contact-line { display: flex; gap: 12px; align-items: flex-start; padding: 9px 0; }
+    .contact-line .ci {
+      width: 38px; height: 38px; flex: 0 0 auto;
+      border-radius: 11px;
+      background: var(--surface-2);
+      display: grid; place-items: center;
+      font-size: 1.05rem;
+    }
+    .contact-line .cl-label { font-size: 0.78rem; color: var(--muted); }
+    .contact-line .cl-value { font-weight: 600; font-size: 0.96rem; }
+    .contact-line .cl-value a { color: var(--brand-2); }
+    .contact-line .cl-value a:hover { color: var(--brand); }
+
+    /* Response-time promise card */
+    .promise-card {
+      background: linear-gradient(150deg, #103b30 0%, #0b2a22 100%);
+      color: #fff;
+      border: 0;
+    }
+    .promise-card h3 { color: #fff; }
+    .promise-card .big {
+      font-family: 'Fraunces'; font-weight: 800;
+      font-size: 2.6rem;
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+      line-height: 1.1;
+    }
+    .promise-card .big-sub { font-size: 0.92rem; opacity: 0.85; margin-bottom: 16px; }
+    .promise-card ul { list-style: none; }
+    .promise-card ul li {
+      padding: 7px 0;
+      font-size: 0.92rem;
+      opacity: 0.92;
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    .promise-card ul li::before { content: "✓"; color: var(--accent); font-weight: 800; }
+
+    /* Map placeholder */
+    .map-card { padding: 0; overflow: hidden; }
+    .map-ph {
+      position: relative;
+      aspect-ratio: 16 / 11;
+      background: radial-gradient(125% 95% at 50% 6%, #1c4438 0%, #0c2c23 55%, #07201a 100%);
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+    }
+    /* faint starfield behind the globe */
+    .map-ph::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(1.5px 1.5px at 18% 28%, rgba(255,255,255,0.55), transparent 60%),
+        radial-gradient(1.5px 1.5px at 72% 18%, rgba(255,255,255,0.40), transparent 60%),
+        radial-gradient(1px 1px at 40% 66%, rgba(255,255,255,0.45), transparent 60%),
+        radial-gradient(1px 1px at 86% 58%, rgba(255,255,255,0.35), transparent 60%),
+        radial-gradient(1.5px 1.5px at 58% 88%, rgba(255,255,255,0.32), transparent 60%),
+        radial-gradient(1px 1px at 12% 78%, rgba(255,255,255,0.30), transparent 60%);
+      opacity: 0.85;
+    }
+    /* ---------- Revolving earth (emoji) ---------- */
+    .globe {
+      position: relative;
+      display: grid;
+      place-items: center;
+      height: 76%;
+      aspect-ratio: 1;
+      width: auto;
+      margin-bottom: 12%;
+      border-radius: 50%;
+      /* soft atmospheric glow behind the emoji */
+      box-shadow: 0 0 46px rgba(74,163,224,0.45), 0 16px 40px -14px rgba(0,0,0,0.5);
+      z-index: 1;
+    }
+    /* the spinning earth: three globe-emoji faces stacked + a gentle float */
+    .globe .earth {
+      position: relative;
+      width: clamp(64px, 13vw, 120px);
+      height: clamp(64px, 13vw, 120px);
+      animation: earth-bob 6s ease-in-out infinite;
+    }
+    .globe .earth span {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: clamp(64px, 13vw, 120px);
+      line-height: 1;
+      opacity: 0;
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,0.35));
+      animation: earth-faces 3.6s steps(1, end) infinite;
+    }
+    .globe .earth span:nth-child(1) { animation-delay: 0s; }      /* 🌍 Europe / Africa */
+    .globe .earth span:nth-child(2) { animation-delay: -1.2s; }  /* 🌎 Americas */
+    .globe .earth span:nth-child(3) { animation-delay: -2.4s; }  /* 🌏 Asia / Australia */
+    @keyframes earth-faces {
+      0%, 33.33%  { opacity: 1; }
+      33.34%, 100% { opacity: 0; }
+    }
+    @keyframes earth-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+    @media (prefers-reduced-motion: reduce) {
+      .globe .earth { animation: none; }
+      .globe .earth span { animation: none; }
+      .globe .earth span:nth-child(1) { opacity: 1; }
+    }
+    .map-caption {
+      position: absolute;
+      left: 14px; bottom: 14px; right: 14px;
+      z-index: 2;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(6px);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    }
+    .map-caption .mc-name { font-family: 'Fraunces'; font-weight: 700; font-size: 0.95rem; }
+    .map-caption .mc-sub { font-size: 0.82rem; color: var(--muted); }
+    .map-caption a { font-size: 0.82rem; font-weight: 600; color: var(--brand-2); white-space: nowrap; }
+    .map-caption a:hover { color: var(--brand); }
+
+    /* mini FAQ */
+    .faq-card details {
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+    .faq-card details:last-child { border-bottom: 0; }
+    .faq-card summary {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      list-style: none;
+      display: flex; justify-content: space-between; align-items: center; gap: 10px;
+    }
+    .faq-card summary::-webkit-details-marker { display: none; }
+    .faq-card summary::after { content: "+"; color: var(--brand-2); font-size: 1.2rem; font-weight: 700; transition: transform 0.2s; }
+    .faq-card details[open] summary::after { transform: rotate(45deg); }
+    .faq-card details p { color: var(--muted); font-size: 0.9rem; margin-top: 8px; }
+
+    /* trust strip under hero */
+    .trust-strip {
+      display: flex; flex-wrap: wrap; gap: 10px 14px;
+      margin-top: 22px;
+    }
+    .trust-chip {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .trust-chip .tc-ico { color: var(--ok); font-weight: 800; }
+
+    /* ---------- Footer ---------- */
+    .site-footer { background: var(--bg-alt); border-top: 1px solid var(--border); padding: 56px 0 28px; }
+    .footer-grid { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 36px; }
+    .brand-footer { margin-bottom: 14px; }
+    .footer-blurb { color: var(--muted); max-width: 280px; }
+    .footer-cols { display: flex; gap: 70px; flex-wrap: wrap; }
+    .footer-cols h4 { margin-bottom: 12px; font-size: 1rem; }
+    .footer-cols a { display: block; color: var(--muted); padding: 4px 0; transition: color 0.15s; }
+    .footer-cols a:hover { color: var(--text); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+      padding-top: 24px; border-top: 1px solid var(--border);
+      color: var(--muted); font-size: 0.88rem;
+    }
+
+    .visually-hidden {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 940px) {
+      .c-grid { grid-template-columns: 1fr; }
+      .map-ph { aspect-ratio: 16 / 8; }
+    }
+    @media (max-width: 640px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: absolute;
+        top: 72px; left: 0; right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: var(--bg-alt);
+        border-bottom: 1px solid var(--border);
+        padding: 10px 24px 20px;
+        display: none;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; padding: 8px 0; }
+      .nav-cta { display: inline-block; margin-top: 6px; }
+      .form-card-head, .form-body, .stepper { padding-left: 20px; padding-right: 20px; }
+      .field-row { grid-template-columns: 1fr; }
+      .choice-grid { grid-template-columns: 1fr; }
+      .stepper-label { display: none; }
+      .stepper-line { margin: 0 8px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ===================== HEADER / NAV ===================== -->
+  <header class="site-header" id="top">
+    <nav class="nav container">
+      <a href="index.html" class="brand" aria-label="Maple home">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#103b30"/><path d="M20 7 C22.5 13 27 14.5 27 19.5 a7 7 0 0 1-14 0 C13 14.5 17.5 13 20 7 Z" fill="#f4ede0"/><rect x="19" y="18" width="2" height="13" rx="1" fill="#f4ede0"/><circle cx="20" cy="12" r="1.6" fill="#e9b949"/></svg>
+        <span class="brand-name">Map<span class="brand-accent">le</span></span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Work</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" class="nav-cta" aria-current="page">Get a Free Quote</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ===================== CONTACT HERO ===================== -->
+    <section class="c-hero">
+      <div class="container c-hero-inner">
+        <p class="eyebrow">Contact · Get a quote</p>
+        <h1>Let's build a website that <span class="grad-text">earns its keep</span>.</h1>
+        <p class="lead">
+          Tell us a little about your business and what you want your site to do.
+          In a few quick steps you'll have your request in front of us — and a real,
+          fixed-price quote on its way back. No sales pressure, no mystery invoices, ever.
+        </p>
+        <div class="promise-row" role="note">
+          <span class="promise-badge"><span class="pulse-dot" aria-hidden="true"></span>Reply guarantee</span>
+          <p>A real human replies <strong>within one business day</strong> — usually within a few hours.</p>
+        </div>
+        <div class="trust-strip">
+          <span class="trust-chip"><span class="tc-ico" aria-hidden="true">✓</span> Free strategy call</span>
+          <span class="trust-chip"><span class="tc-ico" aria-hidden="true">✓</span> Clear, transparent pricing</span>
+          <span class="trust-chip"><span class="tc-ico" aria-hidden="true">✓</span> Revisions until you love it</span>
+          <span class="trust-chip"><span class="tc-ico" aria-hidden="true">✓</span> Launch in ~2 weeks</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FORM + SIDEBAR ===================== -->
+    <section class="c-main">
+      <div class="container c-grid">
+
+        <!-- ----- Quote form ----- -->
+        <div class="form-card">
+          <div class="form-card-head" id="form-shell-head">
+            <h2>Get your free quote</h2>
+            <p>Three short steps — takes about 90 seconds.</p>
+          </div>
+
+          <!-- Stepper -->
+          <div class="stepper" id="stepper" aria-hidden="true">
+            <div class="stepper-item active" data-step="1">
+              <span class="stepper-dot">1</span>
+              <span class="stepper-label">Your project</span>
+            </div>
+            <span class="stepper-line"></span>
+            <div class="stepper-item" data-step="2">
+              <span class="stepper-dot">2</span>
+              <span class="stepper-label">Details</span>
+            </div>
+            <span class="stepper-line"></span>
+            <div class="stepper-item" data-step="3">
+              <span class="stepper-dot">3</span>
+              <span class="stepper-label">About you</span>
+            </div>
+          </div>
+
+          <form class="form-body" id="quote-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+            <!-- live status for screen readers -->
+            <p class="visually-hidden" role="status" aria-live="polite" id="step-announce">Step 1 of 3: Your project</p>
+
+            <!-- Web3Forms: delivers to the inbox tied to this access key (info@maplewebsites.com).
+                 The JS keeps access_key in sync with WEB3FORMS_KEY in the config block below. -->
+            <input type="hidden" name="access_key" value="23aa0ee0-6eb6-46f9-bd71-2da324bfa92f" />
+            <input type="hidden" name="subject" value="New Maple quote request" />
+            <input type="hidden" name="from_name" value="Maple website — quote form" />
+            <!-- honeypot: real people leave this empty; bots tend to fill it -->
+            <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
+
+            <!-- STEP 1 -->
+            <div class="step-panel active" data-panel="1">
+              <h3 class="step-heading">What can we help you build?</h3>
+              <p class="step-hint">Pick the option that fits best — you can tell us more in a moment.</p>
+
+              <div class="field">
+                <div class="choice-grid" role="radiogroup" aria-label="Project type">
+                  <label class="choice selected">
+                    <input type="radio" name="project" value="A brand-new website" checked />
+                    <span class="choice-ico" aria-hidden="true">🌱</span>
+                    <span class="choice-text"><strong>A brand-new website</strong><span>Start fresh, custom-built</span></span>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="project" value="A redesign of my current site" />
+                    <span class="choice-ico" aria-hidden="true">🎨</span>
+                    <span class="choice-text"><strong>A redesign</strong><span>Refresh what I already have</span></span>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="project" value="An online store (e-commerce)" />
+                    <span class="choice-ico" aria-hidden="true">🛒</span>
+                    <span class="choice-text"><strong>An online store</strong><span>Sell products or take bookings</span></span>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="project" value="An AI chatbot or growth add-on" />
+                    <span class="choice-ico" aria-hidden="true">🤖</span>
+                    <span class="choice-text"><strong>Chatbot / growth</strong><span>AI chat, SEO, analytics</span></span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Which plan are you leaning toward? <span class="opt">(optional — just a guide)</span></label>
+                <div class="pill-group" id="plan-pills" role="group" aria-label="Plan of interest">
+                  <span class="pill" data-value="Starter — $499">Starter · $499</span>
+                  <span class="pill selected" data-value="Growth — $1,500 (most popular)">Growth · $1,500</span>
+                  <span class="pill" data-value="Scale — custom">Scale · Custom</span>
+                  <span class="pill" data-value="Not sure yet">Not sure yet</span>
+                </div>
+                <input type="hidden" name="plan" id="plan-input" value="Growth — $1,500 (most popular)" />
+              </div>
+
+              <div class="step-nav">
+                <span class="spacer"></span>
+                <button type="button" class="btn btn-primary" data-next="2">Continue →</button>
+              </div>
+              <p class="form-foot-note"><span aria-hidden="true">🔒</span> Your details stay private. We only use them to prepare your quote.</p>
+            </div>
+
+            <!-- STEP 2 -->
+            <div class="step-panel" data-panel="2">
+              <h3 class="step-heading">Tell us about the project</h3>
+              <p class="step-hint">The more we know, the more accurate (and useful) your quote will be.</p>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="timeline">Ideal timeline</label>
+                  <select id="timeline" name="timeline">
+                    <option value="ASAP — let's go">ASAP — let's go</option>
+                    <option value="Within ~1 month" selected>Within ~1 month</option>
+                    <option value="1–3 months">1–3 months</option>
+                    <option value="Just exploring for now">Just exploring for now</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="budget">Rough budget <span class="opt">(optional)</span></label>
+                  <select id="budget" name="budget">
+                    <option value="Not sure yet" selected>Not sure yet</option>
+                    <option value="Around $499 (Starter)">Around $499 (Starter)</option>
+                    <option value="Around $1,500 (Growth)">Around $1,500 (Growth)</option>
+                    <option value="$2,000+ / custom (Scale)">$2,000+ / custom (Scale)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>What should the site help you do? <span class="opt">(pick any)</span></label>
+                <div class="pill-group" id="goal-pills" role="group" aria-label="Project goals">
+                  <span class="pill" data-value="Get more leads &amp; enquiries">More leads</span>
+                  <span class="pill" data-value="Sell products / take bookings">Sell &amp; book online</span>
+                  <span class="pill" data-value="Rank higher on Google (SEO)">Rank on Google</span>
+                  <span class="pill" data-value="Look more professional / credible">Look more pro</span>
+                  <span class="pill" data-value="Automate support with an AI chatbot">AI chatbot</span>
+                  <span class="pill" data-value="Track what's working (analytics)">Track results</span>
+                </div>
+                <input type="hidden" name="goals" id="goals-input" value="" />
+              </div>
+
+              <div class="field">
+                <label for="message">Anything else we should know? <span class="opt">(optional)</span></label>
+                <textarea id="message" name="message" placeholder="A link to your current site, who your customers are, examples you love, must-have pages…"></textarea>
+              </div>
+
+              <div class="step-nav">
+                <button type="button" class="btn-back" data-back="1">← Back</button>
+                <span class="spacer"></span>
+                <button type="button" class="btn btn-primary" data-next="3">Continue →</button>
+              </div>
+            </div>
+
+            <!-- STEP 3 -->
+            <div class="step-panel" data-panel="3">
+              <h3 class="step-heading">Where should we send your quote?</h3>
+              <p class="step-hint">We'll reply within one business day with a tailored quote and next steps.</p>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="name">Your name</label>
+                  <input type="text" id="name" name="name" autocomplete="name" required />
+                  <p class="err-msg" id="err-name">Please enter your name.</p>
+                </div>
+                <div class="field">
+                  <label for="business">Business name <span class="opt">(optional)</span></label>
+                  <input type="text" id="business" name="business" autocomplete="organization" />
+                </div>
+              </div>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" autocomplete="email" required />
+                  <p class="err-msg" id="err-email">Please enter a valid email so we can reach you.</p>
+                </div>
+                <div class="field">
+                  <label for="phone">Phone <span class="opt">(optional)</span></label>
+                  <input type="tel" id="phone" name="phone" autocomplete="tel" />
+                </div>
+              </div>
+
+              <div class="field">
+                <label style="font-weight:600;">Quick review</label>
+                <ul class="review-list" id="review-list">
+                  <!-- filled by JS -->
+                </ul>
+              </div>
+
+              <div class="step-nav">
+                <button type="button" class="btn-back" data-back="2">← Back</button>
+                <span class="spacer"></span>
+                <button type="submit" class="btn btn-primary" id="submit-btn">Send my request</button>
+              </div>
+              <p class="form-foot-note"><span aria-hidden="true">✅</span> By sending, you'll get a reply within one business day. No spam, no obligation.</p>
+              <p class="form-note" id="form-note" role="status" aria-live="polite" style="display:none;margin-top:.75rem;"></p>
+            </div>
+          </form>
+
+          <!-- SUCCESS -->
+          <div class="success" id="success" role="status" aria-live="polite">
+            <div class="success-check" aria-hidden="true">✓</div>
+            <h2>Request received — thank you!</h2>
+            <p id="success-line">Thanks, <span id="success-name">there</span>. Your quote request is in, and a real person on the Maple team will be in touch shortly.</p>
+            <ul class="review-list next-steps">
+              <li><span class="rk">⏱ Within 1 business day</span><span class="rv">We reply with your fixed-price quote</span></li>
+              <li><span class="rk">📞 Free strategy call</span><span class="rv">We dig into your goals together</span></li>
+              <li><span class="rk">🎨 Custom mockup</span><span class="rv">You review &amp; refine until it's right</span></li>
+              <li><span class="rk">🚀 Launch in ~2 weeks</span><span class="rv">Analytics, SEO &amp; chatbot built in</span></li>
+            </ul>
+            <p style="margin-top:18px;">Prefer to keep things moving? Email us anytime at
+              <a href="mailto:info@maplewebsites.com" style="color:var(--brand-2);font-weight:600;">info@maplewebsites.com</a>.
+            </p>
+          </div>
+        </div>
+
+        <!-- ----- Sidebar ----- -->
+        <aside>
+          <!-- Response-time promise -->
+          <div class="side-card promise-card">
+            <h3>Our response promise</h3>
+            <p class="big">&lt; 1 day</p>
+            <p class="big-sub">Every enquiry gets a real human reply within one business day — most before lunch.</p>
+            <ul>
+              <li>No call centres or chatbots gating your message</li>
+              <li>A fixed-price quote, not a vague "it depends"</li>
+              <li>Straight answers, even if we're not the right fit</li>
+            </ul>
+          </div>
+
+          <!-- Direct contact -->
+          <div class="side-card">
+            <h3>Reach us directly</h3>
+            <div class="contact-line">
+              <span class="ci" aria-hidden="true">✉️</span>
+              <span>
+                <span class="cl-label">Email</span>
+                <span class="cl-value"><a href="mailto:info@maplewebsites.com">info@maplewebsites.com</a></span>
+              </span>
+            </div>
+            <div class="contact-line">
+              <span class="ci" aria-hidden="true">🌐</span>
+              <span>
+                <span class="cl-label">Website</span>
+                <span class="cl-value"><a href="index.html">maplewebsites.com</a></span>
+              </span>
+            </div>
+            <div class="contact-line">
+              <span class="ci" aria-hidden="true">🕘</span>
+              <span>
+                <span class="cl-label">Hours</span>
+                <span class="cl-value">Mon–Fri · 9am–6pm</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Map placeholder -->
+          <div class="side-card map-card">
+            <div class="map-ph" role="img" aria-label="A revolving globe — Maple works with clients online, everywhere.">
+              <div class="globe" aria-hidden="true">
+                <div class="earth">
+                  <span>🌍</span>
+                  <span>🌎</span>
+                  <span>🌏</span>
+                </div>
+              </div>
+              <div class="map-caption">
+                <span>
+                  <span class="mc-name">Maple — remote-first</span>
+                  <span class="mc-sub">Serving clients everywhere, online</span>
+                </span>
+                <a href="mailto:info@maplewebsites.com">Say hello →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mini FAQ -->
+          <div class="side-card faq-card">
+            <h3>Quick questions</h3>
+            <details open>
+              <summary>How fast will I hear back?</summary>
+              <p>Within one business day, guaranteed — and usually within a few hours during working hours.</p>
+            </details>
+            <details>
+              <summary>How does the quote work?</summary>
+              <p>We start from transparent published prices, then tailor an exact quote to your project — and the number we quote is the number you pay. No surprise invoices, ever.</p>
+            </details>
+            <details>
+              <summary>What's included as standard?</summary>
+              <p>Every build comes with Google Analytics, SEO, and an AI chatbot baked in — not pricey add-ons.</p>
+            </details>
+            <details>
+              <summary>How long until launch?</summary>
+              <p>Most sites launch in about two weeks, from first call to going live.</p>
+            </details>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="brand brand-footer">
+          <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#103b30"/><path d="M20 7 C22.5 13 27 14.5 27 19.5 a7 7 0 0 1-14 0 C13 14.5 17.5 13 20 7 Z" fill="#f4ede0"/><rect x="19" y="18" width="2" height="13" rx="1" fill="#f4ede0"/><circle cx="20" cy="12" r="1.6" fill="#e9b949"/></svg>
+          <span class="brand-name">Map<span class="brand-accent">le</span></span>
+        </a>
+        <p class="footer-blurb">Custom websites that drive traffic and grow your business.</p>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h4>Explore</h4>
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Work</a>
+          <a href="pricing.html">Pricing</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="blog.html">Blog</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html" aria-current="page">Contact</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <a href="mailto:info@maplewebsites.com">info@maplewebsites.com</a>
+          <a href="contact.html">Get a free quote</a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> Maple. All rights reserved.</p>
+      <p>Built with ❤️ and modern web tools.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      // ---- Footer year ----
+      var yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // ---- Mobile nav toggle ----
+      var toggle = document.querySelector('.nav-toggle');
+      var links = document.querySelector('.nav-links');
+      if (toggle && links) {
+        toggle.addEventListener('click', function () {
+          var open = links.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        links.addEventListener('click', function (e) {
+          if (e.target.tagName === 'A') {
+            links.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      // ---- Choice cards (radio styling) ----
+      var choices = document.querySelectorAll('.choice');
+      choices.forEach(function (c) {
+        c.addEventListener('click', function () {
+          choices.forEach(function (o) { o.classList.remove('selected'); });
+          c.classList.add('selected');
+        });
+      });
+
+      // ---- Pill groups (multi-select goals, single-select plan) ----
+      function wirePills(groupId, hiddenId, single) {
+        var group = document.getElementById(groupId);
+        var hidden = document.getElementById(hiddenId);
+        if (!group || !hidden) return;
+        var pills = group.querySelectorAll('.pill');
+
+        function sync() {
+          var vals = [];
+          pills.forEach(function (p) {
+            if (p.classList.contains('selected')) {
+              // decode any HTML entities (e.g. &amp;) to plain text
+              var tmp = document.createElement('textarea');
+              tmp.innerHTML = p.getAttribute('data-value');
+              vals.push(tmp.value);
+            }
+          });
+          hidden.value = vals.join(', ');
+        }
+
+        pills.forEach(function (p) {
+          p.setAttribute('role', single ? 'radio' : 'checkbox');
+          p.setAttribute('tabindex', '0');
+          p.setAttribute('aria-checked', p.classList.contains('selected') ? 'true' : 'false');
+
+          function activate() {
+            if (single) {
+              pills.forEach(function (o) { o.classList.remove('selected'); o.setAttribute('aria-checked', 'false'); });
+              p.classList.add('selected');
+            } else {
+              p.classList.toggle('selected');
+            }
+            p.setAttribute('aria-checked', p.classList.contains('selected') ? 'true' : 'false');
+            sync();
+          }
+          p.addEventListener('click', activate);
+          p.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
+          });
+        });
+        sync();
+      }
+      wirePills('plan-pills', 'plan-input', true);
+      wirePills('goal-pills', 'goals-input', false);
+
+      // ---- Multi-step engine ----
+      var form = document.getElementById('quote-form');
+      var panels = form.querySelectorAll('.step-panel');
+      var stepItems = document.querySelectorAll('.stepper-item');
+      var announce = document.getElementById('step-announce');
+      var stepLabels = ['Your project', 'Details', 'About you'];
+      var current = 1;
+      var total = panels.length;
+
+      function showStep(n, focus) {
+        current = n;
+        panels.forEach(function (p) {
+          p.classList.toggle('active', Number(p.getAttribute('data-panel')) === n);
+        });
+        stepItems.forEach(function (item) {
+          var s = Number(item.getAttribute('data-step'));
+          item.classList.toggle('active', s === n);
+          item.classList.toggle('done', s < n);
+        });
+        if (announce) announce.textContent = 'Step ' + n + ' of ' + total + ': ' + stepLabels[n - 1];
+        if (focus !== false) {
+          var heading = panels[n - 1].querySelector('.step-heading');
+          if (heading) { heading.setAttribute('tabindex', '-1'); heading.focus({ preventScroll: true }); }
+          var card = document.querySelector('.form-card');
+          if (card && card.getBoundingClientRect().top < 0) {
+            card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+        if (n === total) buildReview();
+      }
+
+      // ---- Validation helpers ----
+      function showError(input, errId) {
+        input.setAttribute('aria-invalid', 'true');
+        var e = document.getElementById(errId);
+        if (e) e.classList.add('show');
+      }
+      function clearError(input, errId) {
+        input.removeAttribute('aria-invalid');
+        var e = document.getElementById(errId);
+        if (e) e.classList.remove('show');
+      }
+      var nameInput = document.getElementById('name');
+      var emailInput = document.getElementById('email');
+      [['name', 'err-name'], ['email', 'err-email']].forEach(function (pair) {
+        var el = document.getElementById(pair[0]);
+        el.addEventListener('input', function () { clearError(el, pair[1]); });
+      });
+
+      function validateStep3() {
+        var ok = true;
+        if (!nameInput.value.trim()) { showError(nameInput, 'err-name'); ok = false; }
+        var emailVal = emailInput.value.trim();
+        var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal);
+        if (!emailOk) { showError(emailInput, 'err-email'); ok = false; }
+        if (!ok) {
+          var firstBad = !nameInput.value.trim() ? nameInput : emailInput;
+          firstBad.focus();
+        }
+        return ok;
+      }
+
+      // ---- Review summary ----
+      function getRadio(name) {
+        var r = form.querySelector('input[name="' + name + '"]:checked');
+        return r ? r.value : '';
+      }
+      function buildReview() {
+        var list = document.getElementById('review-list');
+        if (!list) return;
+        var goals = document.getElementById('goals-input').value || 'Not specified';
+        var rows = [
+          ['Project', getRadio('project')],
+          ['Plan of interest', document.getElementById('plan-input').value],
+          ['Timeline', document.getElementById('timeline').value],
+          ['Goals', goals]
+        ];
+        list.innerHTML = rows.map(function (r) {
+          return '<li><span class="rk">' + r[0] + '</span><span class="rv">' + escapeHtml(r[1]) + '</span></li>';
+        }).join('');
+      }
+      function escapeHtml(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+      }
+
+      // ---- Step nav buttons ----
+      form.querySelectorAll('[data-next]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var target = Number(btn.getAttribute('data-next'));
+          showStep(target);
+        });
+      });
+      form.querySelectorAll('[data-back]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          showStep(Number(btn.getAttribute('data-back')));
+        });
+      });
+
+      // ---- Submit ----
+      // Set WEB3FORMS_KEY to your real Web3Forms access key before launch (create one free at
+      // https://web3forms.com using info@maplewebsites.com — submissions are delivered there).
+      // Paste the same key into the form's hidden access_key input above. While it is the
+      // placeholder below, the form does NOT fake a successful send — it tells the visitor
+      // it isn't connected yet and points them to email, so a real lead is never lost.
+      var WEB3FORMS_KEY = '23aa0ee0-6eb6-46f9-bd71-2da324bfa92f';     // paste your key here
+      var FORM_ENDPOINT = 'https://api.web3forms.com/submit';
+      var FORM_PLACEHOLDER = /^$|YOUR-WEB3FORMS-ACCESS-KEY|your-access-key/i;
+      var formConfigured = !FORM_PLACEHOLDER.test(WEB3FORMS_KEY);
+
+      function showFormNote(html) {
+        var note = document.getElementById('form-note');
+        if (note) { note.innerHTML = html; note.style.display = 'block'; }
+      }
+
+      function revealSuccess() {
+        var name = nameInput.value.trim().split(' ')[0] || 'there';
+        var nameSpan = document.getElementById('success-name');
+        if (nameSpan) nameSpan.textContent = name;
+
+        form.style.display = 'none';
+        document.getElementById('stepper').style.display = 'none';
+        var head = document.getElementById('form-shell-head');
+        if (head) head.style.display = 'none';
+        var success = document.getElementById('success');
+        success.classList.add('show');
+        success.focus && success.setAttribute('tabindex', '-1');
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (current !== total) { showStep(total); return; }
+        if (!validateStep3()) return;
+
+        var btn = document.getElementById('submit-btn');
+
+        // No backend wired yet: be honest instead of faking "we got it".
+        if (!formConfigured) {
+          btn.textContent = 'Email us instead →';
+          showFormNote('This quote form isn’t connected to an inbox yet. Please email ' +
+            '<a href="mailto:info@maplewebsites.com">info@maplewebsites.com</a> ' +
+            'and we’ll reply within one business day.');
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+
+        // Real submit: POST to Web3Forms; only show success when it returns {success:true}.
+        var data = new FormData(form);
+        data.set('access_key', WEB3FORMS_KEY);   // keep the key in sync with the config var
+        fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: data
+        }).then(function (res) {
+          return res.json().then(function (j) {
+            if (res.ok && j && j.success) {
+              revealSuccess();
+            } else {
+              btn.disabled = false;
+              btn.textContent = 'Try again';
+              showFormNote('Something went wrong sending your request. Please email ' +
+                '<a href="mailto:info@maplewebsites.com">info@maplewebsites.com</a>.');
+            }
+          });
+        }).catch(function () {
+          btn.disabled = false;
+          btn.textContent = 'Try again';
+          showFormNote('Network error. Please email ' +
+            '<a href="mailto:info@maplewebsites.com">info@maplewebsites.com</a>.');
+        });
+      });
+
+      // ---- Init ----
+      showStep(1, false);
+    })();
+  </script>
+</body>
+</html>

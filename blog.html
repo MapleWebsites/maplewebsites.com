@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================= -->
+  <!-- SEO + Social meta.                                            -->
+  <!-- ============================================================= -->
+  <title>Blog &amp; Resources — Maple | Web Design, SEO &amp; Growth Tips</title>
+  <meta name="description" content="Practical, jargon-free guides on custom web design, SEO, AI chatbots, Google Analytics, and turning website traffic into customers — from Maple, a Vancouver, BC web studio." />
+  <meta name="keywords" content="web design blog, SEO tips, AI chatbots, Google Analytics, conversion optimization, small business websites, web development resources, Vancouver web design" />
+  <meta name="author" content="Maple" />
+  <link rel="canonical" href="https://www.maplewebsites.com/blog.html" />
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Maple" />
+  <meta property="og:url" content="https://www.maplewebsites.com/blog.html" />
+  <meta property="og:title" content="Blog &amp; Resources — Maple | Web Design, SEO &amp; Growth Tips" />
+  <meta property="og:description" content="Practical, jargon-free guides on web design, SEO, AI chatbots, analytics, and converting traffic into customers — from the team at Maple." />
+  <meta property="og:image" content="https://www.maplewebsites.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Blog &amp; Resources — Maple | Web Design, SEO &amp; Growth Tips" />
+  <meta name="twitter:description" content="Practical, jargon-free guides on web design, SEO, AI chatbots, analytics, and converting traffic into customers — from the team at Maple." />
+  <meta name="twitter:image" content="https://www.maplewebsites.com/og-image.png" />
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       Maple — design tokens (shared with the main site)
+       ============================================================ */
+    :root {
+      --bg: #f3f1ea;
+      --bg-alt: #e9e6db;
+      --surface: #fbfaf4;
+      --surface-2: #e9e6db;
+      --text: #14211b;
+      --muted: #626c62;
+      --border: rgba(20,33,27,0.15);
+      --brand: #18583e;
+      --brand-2: #18717a;
+      --accent: #e9b949;
+      --grad: linear-gradient(120deg, #18583e 0%, #3f9268 100%);
+      --shadow: 0 30px 64px -34px rgba(11,42,34,0.5);
+      --radius: 16px;
+      --container: 1140px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .brand { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; line-height: 1.15; }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--brand-2);
+      margin-bottom: 14px;
+    }
+
+    .grad-text {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* skip link for keyboard / screen-reader users */
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 0;
+      background: var(--text);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 0 0 10px 0;
+      z-index: 200;
+    }
+    .skip-link:focus { left: 0; }
+
+    :focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; border-radius: 6px; }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.98rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: #bd5026;
+      color: #fff;
+      box-shadow: 0 16px 30px -14px rgba(158,63,28,0.7);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 22px 38px -16px rgba(158,63,28,0.78); }
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text);
+    }
+    .btn-ghost:hover { background: var(--surface-2); transform: translateY(-2px); }
+
+    /* ---------- Header / Nav ---------- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.25rem;
+    }
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      flex: none;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+    .brand:hover .brand-mark { transform: rotate(-8deg); }
+    .brand-name { display: inline; }
+    .brand-accent { color: var(--brand-2); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      list-style: none;
+    }
+    .nav-links a { color: var(--muted); font-weight: 500; transition: color 0.15s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .nav-links a.active { font-weight: 600; }
+    .nav-cta {
+      background: var(--surface-2);
+      color: var(--text) !important;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+    }
+    .nav-cta:hover { background: #bd5026; border-color: #bd5026; color: #fff !important; }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      padding: 6px;
+    }
+    .nav-toggle span { width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.25s; }
+
+    /* ---------- Blog hero ---------- */
+    .blog-hero {
+      position: relative;
+      padding: 72px 0 40px;
+      text-align: center;
+      background:
+        radial-gradient(900px 460px at 80% -20%, rgba(123, 167, 140, 0.16), transparent 60%),
+        radial-gradient(700px 460px at 5% 0%, rgba(24, 88, 62, 0.12), transparent 55%);
+    }
+    .blog-hero h1 { font-size: clamp(2.1rem, 4.6vw, 3.2rem); font-weight: 800; margin-bottom: 18px; }
+    .blog-hero .lead {
+      font-size: 1.12rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* breadcrumb */
+    .crumbs { font-size: 0.85rem; color: var(--muted); margin-bottom: 18px; }
+    .crumbs a:hover { color: var(--brand-2); }
+    .crumbs span { margin: 0 8px; opacity: 0.6; }
+
+    /* ---------- Category filter ---------- */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 0 6px;
+    }
+    .filter-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 9px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.15s ease;
+    }
+    .filter-btn:hover { transform: translateY(-2px); color: var(--text); }
+    .filter-btn.active {
+      background: var(--grad);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 10px 24px -12px rgba(24, 88, 62, 0.8);
+    }
+
+    /* ---------- Generic section ---------- */
+    .section { padding: 56px 0 90px; }
+
+    /* ---------- Featured post ---------- */
+    .featured {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin-bottom: 48px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .featured:hover { transform: translateY(-4px); border-color: rgba(24, 88, 62, 0.5); }
+    .featured-thumb {
+      position: relative;
+      min-height: 320px;
+      background: linear-gradient(135deg, #18583e 0%, #7ba78c 100%);
+      overflow: hidden;
+    }
+    .featured-thumb .glyph {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 5rem;
+      filter: drop-shadow(0 12px 24px rgba(0,0,0,0.25));
+    }
+    .featured-thumb::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(420px 220px at 30% 20%, rgba(255,255,255,0.28), transparent 60%);
+    }
+    .featured-body { padding: 40px 40px; display: flex; flex-direction: column; justify-content: center; }
+    .featured-body .post-cat { margin-bottom: 16px; }
+    .featured-body h2 { font-size: clamp(1.5rem, 2.6vw, 2.05rem); font-weight: 700; margin-bottom: 14px; }
+    .featured-body p { color: var(--muted); margin-bottom: 22px; font-size: 1.02rem; }
+    .post-link {
+      color: var(--brand-2);
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      align-self: flex-start;
+    }
+    .post-link .arrow { transition: transform 0.18s ease; }
+    .featured:hover .post-link .arrow,
+    .post-card:hover .post-link .arrow { transform: translateX(4px); }
+
+    /* ---------- Post grid ---------- */
+    .grid-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .grid-head h2 { font-size: 1.5rem; }
+    .grid-head p { color: var(--muted); font-size: 0.95rem; }
+
+    .post-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .post-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .post-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(24, 88, 62, 0.5);
+      box-shadow: var(--shadow);
+    }
+    .post-thumb {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+    }
+    .post-thumb .glyph {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 2.6rem;
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.22));
+    }
+    .post-thumb::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(280px 140px at 28% 18%, rgba(255,255,255,0.28), transparent 60%);
+    }
+    .thumb-1 { background: linear-gradient(135deg, #18583e 0%, #7ba78c 100%); }
+    .thumb-2 { background: linear-gradient(135deg, #3f9268 0%, #e9b949 100%); }
+    .thumb-3 { background: linear-gradient(135deg, #e9b949 0%, #18583e 100%); }
+    .thumb-4 { background: linear-gradient(135deg, #e9b949 0%, #3f9268 100%); }
+    .thumb-5 { background: linear-gradient(135deg, #103b30 0%, #18583e 100%); }
+    .thumb-6 { background: linear-gradient(135deg, #0b2a22 0%, #103b30 100%); }
+    .thumb-7 { background: linear-gradient(135deg, #18583e 0%, #0b2a22 100%); }
+    .thumb-8 { background: linear-gradient(135deg, #7ba78c 0%, #18583e 100%); }
+    .thumb-9 { background: linear-gradient(135deg, #e9b949 0%, #103b30 100%); }
+
+    .post-body { padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+    .post-cat {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--brand-2);
+      background: var(--surface-2);
+      border-radius: 999px;
+      padding: 4px 11px;
+      align-self: flex-start;
+    }
+    .post-card h3 { font-size: 1.18rem; }
+    .post-card p { color: var(--muted); font-size: 0.95rem; flex: 1; }
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-top: 4px;
+    }
+    .post-meta .dot-sep { width: 3px; height: 3px; border-radius: 50%; background: var(--muted); opacity: 0.6; }
+
+    /* empty state for filters */
+    .empty-state {
+      display: none;
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted);
+    }
+    .empty-state.show { display: block; }
+
+    /* ---------- Newsletter / CTA ---------- */
+    .newsletter {
+      margin-top: 70px;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 48px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .newsletter::before {
+      content: "";
+      position: absolute;
+      inset: -40% 60% auto auto;
+      width: 320px; height: 320px;
+      background: var(--grad);
+      filter: blur(80px);
+      opacity: 0.22;
+      border-radius: 50%;
+    }
+    .newsletter h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 12px; position: relative; }
+    .newsletter p { color: var(--muted); max-width: 520px; margin: 0 auto 26px; position: relative; }
+    .news-form {
+      display: flex;
+      gap: 10px;
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .news-form input {
+      flex: 1;
+      min-width: 220px;
+      padding: 13px 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.98rem;
+      transition: border-color 0.15s;
+    }
+    .news-form input:focus { outline: none; border-color: var(--brand); }
+    .news-note { margin-top: 14px; font-size: 0.9rem; min-height: 1.2em; position: relative; }
+    .news-note.ok { color: var(--accent); }
+    .news-note.err { color: #b22f2f; }
+    .news-fine { font-size: 0.8rem; color: var(--muted); margin-top: 10px; position: relative; }
+
+    /* ---------- Footer ---------- */
+    .site-footer { background: var(--bg-alt); border-top: 1px solid var(--border); padding: 56px 0 28px; }
+    .footer-grid { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 36px; }
+    .brand-footer { margin-bottom: 14px; }
+    .footer-blurb { color: var(--muted); max-width: 280px; }
+    .footer-cols { display: flex; gap: 70px; flex-wrap: wrap; }
+    .footer-cols h4 { margin-bottom: 12px; font-size: 1rem; }
+    .footer-cols a { display: block; color: var(--muted); padding: 4px 0; transition: color 0.15s; }
+    .footer-cols a:hover { color: var(--text); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+      padding-top: 24px; border-top: 1px solid var(--border);
+      color: var(--muted); font-size: 0.88rem;
+    }
+
+    /* ---------- Scroll reveal ---------- */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ============================================================
+       Responsive
+       ============================================================ */
+    @media (max-width: 900px) {
+      .featured { grid-template-columns: 1fr; }
+      .featured-thumb { min-height: 200px; }
+      .post-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: absolute;
+        top: 72px; left: 0; right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: var(--bg-alt);
+        border-bottom: 1px solid var(--border);
+        padding: 10px 24px 20px;
+        display: none;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; padding: 8px 0; }
+      .nav-cta { display: inline-block; margin-top: 6px; }
+      .post-grid { grid-template-columns: 1fr; }
+      .featured-body { padding: 30px 26px; }
+      .newsletter { padding: 38px 24px; }
+      .section { padding: 44px 0 64px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===================== HEADER / NAV ===================== -->
+  <header class="site-header" id="top">
+    <nav class="nav container" aria-label="Primary">
+      <a href="index.html" class="brand" aria-label="Maple home">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#103b30"/><path d="M20 7 C22.5 13 27 14.5 27 19.5 a7 7 0 0 1-14 0 C13 14.5 17.5 13 20 7 Z" fill="#f4ede0"/><rect x="19" y="18" width="2" height="13" rx="1" fill="#f4ede0"/><circle cx="20" cy="12" r="1.6" fill="#e9b949"/></svg>
+        <span class="brand-name">Map<span class="brand-accent">le</span></span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Work</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html" class="active" aria-current="page">Blog</a></li>
+        <li><a href="contact.html" class="nav-cta">Get a Free Quote</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ===================== BLOG HERO ===================== -->
+    <section class="blog-hero">
+      <div class="container">
+        <p class="crumbs">
+          <a href="index.html">Home</a><span aria-hidden="true">/</span>Blog
+        </p>
+        <p class="eyebrow">Blog &amp; resources</p>
+        <h1>Ideas to help your website <span class="grad-text">work harder</span>.</h1>
+        <p class="lead">
+          Practical, jargon-free guides on web design, SEO, AI chatbots, analytics,
+          and turning visitors into customers — written by the team that builds
+          and grows Maple sites every day.
+        </p>
+        <div class="filter-bar" role="tablist" aria-label="Filter articles by category">
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="filter-btn" data-filter="design" role="tab" aria-selected="false">Web Design</button>
+          <button class="filter-btn" data-filter="seo" role="tab" aria-selected="false">SEO</button>
+          <button class="filter-btn" data-filter="ai" role="tab" aria-selected="false">AI Chatbots</button>
+          <button class="filter-btn" data-filter="analytics" role="tab" aria-selected="false">Analytics</button>
+          <button class="filter-btn" data-filter="ecommerce" role="tab" aria-selected="false">E-commerce</button>
+          <button class="filter-btn" data-filter="growth" role="tab" aria-selected="false">Growth</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ARTICLES ===================== -->
+    <section class="section">
+      <div class="container">
+
+        <!-- Featured post -->
+        <article class="featured" data-category="growth">
+          <div class="featured-thumb" aria-hidden="true">
+            <span class="glyph">🚀</span>
+          </div>
+          <div class="featured-body">
+            <span class="post-cat">Featured · Growth</span>
+            <h2>Why a "cheap" website is the most expensive thing you can buy</h2>
+            <p>
+              A bargain template that loads slowly, ranks nowhere, and converts no one
+              isn't a deal — it's a leak. Here's how we think about the real ROI of a
+              custom site, and why transparent, upfront pricing beats surprise invoices
+              every time.
+            </p>
+            <a href="case-study.html" class="post-link">Read the case study <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <div class="grid-head">
+          <h2>Latest articles</h2>
+          <p id="result-count">Showing all 9 articles</p>
+        </div>
+
+        <!-- Post grid -->
+        <div class="post-grid" id="post-grid">
+
+          <article class="post-card" data-category="design">
+            <div class="post-thumb thumb-2" aria-hidden="true"><span class="glyph">🎨</span></div>
+            <div class="post-body">
+              <span class="post-cat">Web Design</span>
+              <h3>5 signs your homepage is quietly costing you customers</h3>
+              <p>From a vague headline to a buried call-to-action — the small design choices that send visitors clicking the back button, and the easy fixes.</p>
+              <a href="#newsletter" class="post-link">Read more <span class="arrow" aria-hidden="true">→</span></a>
+              <div class="post-meta"><span>Jun 12, 2026</span><span class="dot-sep" aria-hidden="true"></span><span>6 min read</span></div>
+            </div>
+          </article>
+
+          <article class="post-card" data-category="seo">
+            <div class="post-thumb thumb-3" aria-hidden="true"><span class="glyph">🔍</span></div>
+            <div class="post-body">
+              <span class="post-cat">SEO</span>
+              <h3>SEO for small businesses: a no-nonsense starter checklist</h3>
+              <p>You don't need a huge budget to show up on Google. Here's the technical-SEO groundwork we build into every Maple site, explained in plain English.</p>
+              <a href="#newsletter" class="post-link">Read more <span class="arrow" aria-hidden="true">→</span></a>
+              <div class="post-meta"><span>Jun 5, 2026</span><span class="dot-sep" aria-hidden="true"></span><span>8 min read</span></div>
+            </div>
+          </article>
+
+          <article class="post-card" data-category="ai">
+            <div class="post-thumb thumb-1" aria-hidden="true"><span class="glyph">🤖</span></div>
+            <div class="post-body">
+              <span class="post-cat">AI Chatbots</span>
+              <h3>What a good AI chatbot actually does for your business</h3>
+              <p>It's more than a pop-up. A well-built assistant answers questions 24/7, captures leads while you sleep, and books appointments — without sounding like a robot.</p>
+              <a href="#newsletter" class="post-link">Read more <span class="arrow" aria-hidden="true">→</span></a>
+              <div class="post-meta"><span>May 28, 2026</span><span class="dot-sep" aria-hidden="true"></span><span>5 min read</span></div>
+            </div>
+          </article>
+
+          <article class="post-card" data-category="analytics">
+            <div class="post-thumb thumb-4" aria-hidden="true"><span class="glyph">📈</span></div>
+            <div class="post-body">
+              <span class="post-cat">Analytics</span>
+              <h3>Google Analytics: the 6 numbers that actually matter</h3>
+              <p>Analytics can feel overwhelming. Skip the noise — these are the six metrics we put on every client dashboard so you know what's working and where to double down.</p>
+              <a href="#newsletter" class="post-link">Read more <span class="arrow" aria-hidden="true">→</span></a>
+              <div class="post-meta"><span>May 21, 2026</span><span class="dot-sep" aria-hidden="true"></span><span>7 min read</span></div>
+            </div>
+          </article>
+
+          <article class="post-card" data-category="growth">
+            <div class="post-thumb thumb-5" aria-hidden="true"><span class="glyph">⚡</span></div>
+            <div class="post-body">
+              <span class="post-cat">Growth</span>
+              <h3>Page speed is a growth lever, not a tech detail</h3>
+              <p>Every second of load time quietly costs you conversions. How we hit top Core Web Vitals scores on every build — and why Google rewards you for it.</p>
+              <a href="#newsletter" class="post-link">Read more <span class="arrow" aria-hidden="true">→</span></a>
+              <div class="post-meta"><span>May 14, 2026</span><span class="dot-sep" aria-hidden="true"></span><span>6 min read</span></div>
+            </div>
+          </article>
+
+          <article class="post-card" data-category="ecommerce">
+            <div class="post-thumb thumb-6" aria-hidden="true"><span class="glyph">🛒</span></div>
+            <div class="post-body">
+              <span class="post-cat">E-commerce</span>
+              <h3>Turning a booking page into a revenue machine</h3>
+              <p>Online booking and checkout should feel effortless. The friction points we remove — and the automated reminders that cut no-shows and recover lost sales.</p>
+              <a href="#newsletter" class="post-link">Read more <span class="arrow" aria-hidden="true">→</span></a>
+              <div class="post-meta"><span>May 7, 2026</span><span class="dot-sep" aria-hidden="true"></span><span>9 min read</span></div>
+            </div>
+          </article>
+
+          <article class="post-card" data-category="design">
+            <div class="post-thumb thumb-7" aria-hidden="true"><span class="glyph">📱</span></div>
+            <div class="post-body">
+              <span class="post-cat">Web Design</span>
+              <h3>Mobile-first isn't optional anymore — here's why</h3>
+              <p>Most of your visitors are on a phone. We design for the small screen first, then scale up — so nobody pinches, zooms, or bounces. What that looks like in practice.</p>
+              <a href="#newsletter" class="post-link">Read more <span class="arrow" aria-hidden="true">→</span></a>
+              <div class="post-meta"><span>Apr 30, 2026</span><span class="dot-sep" aria-hidden="true"></span><span>5 min read</span></div>
+            </div>
+          </article>
+
+          <article class="post-card" data-category="seo">
+            <div class="post-thumb thumb-8" aria-hidden="true"><span class="glyph">🗺️</span></div>
+            <div class="post-body">
+              <span class="post-cat">SEO</span>
+              <h3>Local SEO: how to get found by customers nearby</h3>
+              <p>If you serve a city or neighborhood, local search is your biggest opportunity. The Google Business Profile and on-page steps that help you rank where it counts.</p>
+              <a href="#newsletter" class="post-link">Read more <span class="arrow" aria-hidden="true">→</span></a>
+              <div class="post-meta"><span>Apr 23, 2026</span><span class="dot-sep" aria-hidden="true"></span><span>7 min read</span></div>
+            </div>
+          </article>
+
+          <article class="post-card" data-category="growth">
+            <div class="post-thumb thumb-9" aria-hidden="true"><span class="glyph">🗓️</span></div>
+            <div class="post-body">
+              <span class="post-cat">Growth</span>
+              <h3>From idea to launch in ~2 weeks: how our process works</h3>
+              <p>Discover, Design, Build &amp; Equip, Launch &amp; Grow. A look behind the curtain at how we ship a custom, growth-ready website in about two weeks — no surprises.</p>
+              <a href="#newsletter" class="post-link">Read more <span class="arrow" aria-hidden="true">→</span></a>
+              <div class="post-meta"><span>Apr 16, 2026</span><span class="dot-sep" aria-hidden="true"></span><span>6 min read</span></div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Empty state (shown when a filter matches nothing) -->
+        <div class="empty-state" id="empty-state">
+          <p>No articles in this category just yet — check back soon, or browse <button class="post-link" type="button" id="reset-filter" style="background:none;border:0;cursor:pointer;font:inherit;color:var(--brand-2);font-weight:600;">all articles</button>.</p>
+        </div>
+
+        <!-- ===================== NEWSLETTER / CTA ===================== -->
+        <section class="newsletter" id="newsletter" aria-labelledby="news-heading">
+          <h2 id="news-heading">Get growth tips in your inbox</h2>
+          <p>
+            One short, practical email a month on web design, SEO, and turning
+            traffic into customers. No spam, no fluff — unsubscribe anytime.
+          </p>
+          <form class="news-form" id="news-form" novalidate>
+            <label for="news-email" class="skip-link">Email address</label>
+            <input type="email" id="news-email" name="email" placeholder="you@yourbusiness.com" autocomplete="email" required />
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+          <p class="news-note" id="news-note" role="status" aria-live="polite"></p>
+          <p class="news-fine">Prefer to talk? Email <a href="mailto:info@maplewebsites.com" style="color:var(--brand-2);">info@maplewebsites.com</a> or <a href="contact.html" style="color:var(--brand-2);">get a free quote</a>.</p>
+        </section>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="brand brand-footer" aria-label="Maple home">
+          <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#103b30"/><path d="M20 7 C22.5 13 27 14.5 27 19.5 a7 7 0 0 1-14 0 C13 14.5 17.5 13 20 7 Z" fill="#f4ede0"/><rect x="19" y="18" width="2" height="13" rx="1" fill="#f4ede0"/><circle cx="20" cy="12" r="1.6" fill="#e9b949"/></svg>
+          <span class="brand-name">Map<span class="brand-accent">le</span></span>
+        </a>
+        <p class="footer-blurb">Custom websites that drive traffic and grow your business. Proudly building for Vancouver, BC.</p>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h4>Explore</h4>
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Work</a>
+          <a href="pricing.html">Pricing</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="faq.html">FAQ</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <a href="mailto:info@maplewebsites.com">info@maplewebsites.com</a>
+          <a href="contact.html">Get a free quote</a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> Maple. All rights reserved.</p>
+      <p>Built with ❤️ and modern web tools.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* ---------- Footer year ---------- */
+      var yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      /* ---------- Mobile nav toggle ---------- */
+      var navToggle = document.querySelector('.nav-toggle');
+      var navLinks = document.querySelector('.nav-links');
+      if (navToggle && navLinks) {
+        navToggle.addEventListener('click', function () {
+          var open = navLinks.classList.toggle('open');
+          navToggle.setAttribute('aria-expanded', String(open));
+        });
+        navLinks.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            navLinks.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      /* ---------- Category filtering ---------- */
+      var filterBtns = document.querySelectorAll('.filter-btn');
+      var cards = document.querySelectorAll('#post-grid .post-card');
+      var emptyState = document.getElementById('empty-state');
+      var resultCount = document.getElementById('result-count');
+      var resetBtn = document.getElementById('reset-filter');
+
+      function applyFilter(filter) {
+        var visible = 0;
+        cards.forEach(function (card) {
+          var match = filter === 'all' || card.getAttribute('data-category') === filter;
+          card.style.display = match ? '' : 'none';
+          if (match) visible++;
+        });
+        if (emptyState) emptyState.classList.toggle('show', visible === 0);
+        if (resultCount) {
+          if (filter === 'all') {
+            resultCount.textContent = 'Showing all ' + cards.length + ' articles';
+          } else {
+            resultCount.textContent = 'Showing ' + visible + ' article' + (visible === 1 ? '' : 's');
+          }
+        }
+      }
+
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          filterBtns.forEach(function (b) {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-selected', 'true');
+          applyFilter(btn.getAttribute('data-filter'));
+        });
+      });
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', function () {
+          var allBtn = document.querySelector('.filter-btn[data-filter="all"]');
+          if (allBtn) allBtn.click();
+        });
+      }
+
+      /* ---------- Scroll reveal ---------- */
+      var revealTargets = document.querySelectorAll('.featured, .post-card, .grid-head, .newsletter');
+      revealTargets.forEach(function (el) { el.classList.add('reveal'); });
+
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        revealTargets.forEach(function (el) { io.observe(el); });
+      } else {
+        revealTargets.forEach(function (el) { el.classList.add('in'); });
+      }
+
+      /* ---------- Newsletter form (front-end demo) ---------- */
+      var form = document.getElementById('news-form');
+      var note = document.getElementById('news-note');
+      if (form && note) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var email = form.email.value.trim();
+          var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+          if (!emailOk) {
+            note.textContent = 'Please enter a valid email address.';
+            note.className = 'news-note err';
+            return;
+          }
+          // NOTE: front-end demo. Point this at your email backend
+          // (e.g. Mailchimp, ConvertKit, or your own API) to capture real signups.
+          note.textContent = "You're in! Watch your inbox for the next Maple growth tip. 🌱";
+          note.className = 'news-note ok';
+          form.reset();
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
