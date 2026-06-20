@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clearview Dental — Family &amp; Cosmetic Dentistry in Vancouver, BC</title>
+  <meta name="description" content="Clearview Dental is a bright, gentle family &amp; cosmetic dental practice in Vancouver, BC. New-patient exams, whitening, Invisalign, implants, kids' dentistry and emergencies. Book your visit online — direct billing to most BC insurers." />
+  <meta name="theme-color" content="#3d7bf7" />
+  <meta name="author" content="Clearview Dental" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Clearview Dental — Smile, you're in good hands" />
+  <meta property="og:description" content="A bright, calming family &amp; cosmetic dental practice in Vancouver. Gentle care, modern technology, easy online booking." />
+
+  <!-- Fonts: Poppins (friendly rounded display) + DM Sans (clean body/UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       Clearview Dental — design tokens
+       Bright sky-blue / soft periwinkle, warm coral accent,
+       lots of white, soft slate text. Friendly + reassuring.
+       ============================================================ */
+    :root {
+      --sky-700: #1f5fe0;
+      --sky-600: #3d7bf7;   /* primary brand blue */
+      --sky-500: #5b93ff;
+      --sky-400: #84b1ff;
+      --sky-200: #cfe0ff;
+      --sky-100: #e6efff;
+      --sky-50:  #f3f8ff;
+
+      --peri:    #8a8fff;   /* soft periwinkle */
+      --peri-100:#eceaff;
+
+      --coral:   #ff6f61;   /* warm friendly accent */
+      --coral-600:#f0564c;
+      --coral-100:#ffe7e3;
+
+      --mint:    #2bd4a8;   /* small success accent only */
+      --sunny:   #ffc24b;   /* tiny highlight (stars) */
+
+      --ink:     #1b2440;   /* primary slate-navy text */
+      --slate:   #475069;   /* secondary text */
+      --slate-2: #717a93;   /* muted text */
+      --line:    #e5ebf6;
+      --paper:   #ffffff;
+      --paper-2: #f6f9ff;   /* faint section wash */
+
+      --shadow-sm: 0 1px 2px rgba(31,95,224,.05), 0 2px 7px rgba(31,95,224,.05);
+      --shadow:    0 8px 28px -10px rgba(31,95,224,.20), 0 3px 10px rgba(31,95,224,.06);
+      --shadow-lg: 0 30px 70px -24px rgba(31,95,224,.34), 0 10px 26px -14px rgba(31,95,224,.20);
+      --shadow-coral: 0 12px 26px -10px rgba(255,111,97,.55);
+
+      --r-sm: 12px;
+      --r:    18px;
+      --r-lg: 26px;
+      --r-xl: 34px;
+      --r-pill: 999px;
+
+      --maxw: 1200px;
+      --gut: clamp(18px, 5vw, 56px);
+
+      --font-body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --font-head: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+      --ease: cubic-bezier(.22,.61,.36,1);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.62;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      line-height: 1.08;
+      color: var(--ink);
+      letter-spacing: -.018em;
+      margin: 0 0 .45em;
+    }
+
+    p { margin: 0 0 1em; }
+    a { color: var(--sky-600); text-decoration: none; }
+    img, svg { max-width: 100%; display: block; }
+    ::selection { background: var(--sky-200); color: var(--ink); }
+
+    .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gut); }
+    section { padding: clamp(56px, 8vw, 104px) 0; position: relative; }
+    .wash { background: var(--paper-2); }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    .skip-link {
+      position: absolute; left: 12px; top: -60px; z-index: 300;
+      background: var(--sky-700); color: #fff; padding: 10px 16px;
+      border-radius: var(--r-sm); transition: top .2s var(--ease); font-weight: 600;
+    }
+    .skip-link:focus { top: 12px; }
+
+    :focus-visible {
+      outline: 3px solid var(--sky-500);
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
+
+    /* ---------- Section heads ---------- */
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .6em;
+      font-family: var(--font-body); font-weight: 700; font-size: .78rem;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--sky-600);
+    }
+    .eyebrow::before {
+      content: ""; width: 24px; height: 3px; border-radius: 3px;
+      background: linear-gradient(90deg, var(--sky-600), var(--peri));
+    }
+    .eyebrow.center { justify-content: center; }
+    .head { max-width: 680px; }
+    .head.center { margin: 0 auto; text-align: center; }
+    .head h2 { font-size: clamp(1.9rem, 4vw, 2.85rem); margin-top: .35em; }
+    .head p { color: var(--slate); font-size: 1.08rem; margin-bottom: 0; }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .55em;
+      font-family: var(--font-head); font-weight: 600; font-size: .97rem;
+      padding: .82em 1.5em; border-radius: var(--r-pill);
+      border: 2px solid transparent; cursor: pointer;
+      transition: transform .2s var(--ease), box-shadow .25s var(--ease),
+                  background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
+      text-align: center; line-height: 1.1; white-space: nowrap;
+    }
+    .btn svg { width: 18px; height: 18px; }
+    .btn:active { transform: translateY(1px) scale(.99); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--sky-600), var(--sky-500));
+      color: #fff; box-shadow: 0 12px 26px -10px rgba(61,123,247,.65);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 32px -10px rgba(61,123,247,.6); }
+    .btn-coral {
+      background: linear-gradient(135deg, var(--coral), var(--coral-600));
+      color: #fff; box-shadow: var(--shadow-coral);
+    }
+    .btn-coral:hover { transform: translateY(-2px); box-shadow: 0 18px 32px -10px rgba(255,111,97,.55); }
+    .btn-ghost {
+      background: #fff; color: var(--sky-700); border-color: var(--sky-200);
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-ghost:hover { border-color: var(--sky-500); color: var(--sky-700); transform: translateY(-2px); }
+    .btn-lg { padding: 1.02em 1.85em; font-size: 1.04rem; }
+    .btn-block { width: 100%; }
+
+    .pill {
+      display: inline-flex; align-items: center; gap: .5em;
+      font-weight: 600; font-size: .85rem; padding: .4em .9em;
+      border-radius: var(--r-pill); background: var(--sky-100); color: var(--sky-700);
+    }
+
+    /* ---------- Header ---------- */
+    header.site {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.74);
+      backdrop-filter: saturate(160%) blur(14px);
+      -webkit-backdrop-filter: saturate(160%) blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: box-shadow .3s var(--ease), border-color .3s var(--ease), background .3s var(--ease);
+    }
+    header.site.scrolled {
+      box-shadow: 0 6px 24px -16px rgba(31,95,224,.4);
+      border-bottom-color: var(--line);
+      background: rgba(255,255,255,.9);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 1.4rem; padding: .85rem 0; }
+    .brand { display: inline-flex; align-items: center; gap: .62rem; font-family: var(--font-head); font-weight: 700; font-size: 1.22rem; color: var(--ink); letter-spacing: -.02em; }
+    .brand .logo-mark { width: 38px; height: 38px; flex: none; filter: drop-shadow(0 4px 10px rgba(61,123,247,.35)); }
+    .brand b { color: var(--sky-600); }
+    .nav-links { display: flex; align-items: center; gap: .35rem; list-style: none; margin: 0; padding: 0; }
+    .nav-links a {
+      color: var(--slate); font-weight: 600; font-size: .95rem; padding: .5em .82em;
+      border-radius: var(--r-pill); transition: color .2s var(--ease), background .2s var(--ease);
+    }
+    .nav-links a:hover { color: var(--sky-700); background: var(--sky-50); }
+    .nav-cta { display: flex; align-items: center; gap: .6rem; }
+    .nav-phone { display: inline-flex; align-items: center; gap: .45em; font-weight: 600; color: var(--ink); font-size: .95rem; }
+    .nav-phone svg { width: 17px; height: 17px; color: var(--sky-600); }
+
+    .hamburger {
+      display: none; width: 46px; height: 46px; border: 1px solid var(--line);
+      background: #fff; border-radius: var(--r-sm); cursor: pointer; padding: 0;
+      align-items: center; justify-content: center; box-shadow: var(--shadow-sm);
+    }
+    .hamburger span { display: block; width: 20px; height: 2px; background: var(--ink); border-radius: 2px; position: relative; transition: transform .3s var(--ease), opacity .2s var(--ease); }
+    .hamburger span::before, .hamburger span::after { content: ""; position: absolute; left: 0; width: 20px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform .3s var(--ease); }
+    .hamburger span::before { top: -6px; } .hamburger span::after { top: 6px; }
+    .hamburger[aria-expanded="true"] span { background: transparent; }
+    .hamburger[aria-expanded="true"] span::before { transform: translateY(6px) rotate(45deg); }
+    .hamburger[aria-expanded="true"] span::after { transform: translateY(-6px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none; position: fixed; inset: 0 0 0 auto; width: min(86vw, 360px); z-index: 200;
+      background: #fff; box-shadow: var(--shadow-lg); padding: 5.2rem 1.5rem 2rem;
+      transform: translateX(100%); transition: transform .35s var(--ease); flex-direction: column; gap: .3rem;
+    }
+    .mobile-menu.open { transform: translateX(0); }
+    .mobile-menu a { color: var(--ink); font-weight: 600; font-size: 1.1rem; padding: .85em .6em; border-radius: var(--r-sm); border-bottom: 1px solid var(--line); }
+    .mobile-menu a:last-of-type { border-bottom: 0; }
+    .mobile-menu .btn { margin-top: 1rem; }
+    .scrim { display: none; position: fixed; inset: 0; background: rgba(27,36,64,.4); z-index: 150; opacity: 0; transition: opacity .3s var(--ease); }
+    .scrim.show { opacity: 1; }
+
+    /* ---------- Hero ---------- */
+    .hero { padding-top: clamp(40px, 6vw, 76px); overflow: clip; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+    .hero-copy h1 { font-size: clamp(2.3rem, 5.6vw, 4rem); font-weight: 800; }
+    .hero-copy h1 .hl { color: var(--sky-600); position: relative; white-space: nowrap; }
+    .hero-copy h1 .hl::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: .06em; height: .28em;
+      background: linear-gradient(90deg, var(--coral-100), var(--sky-200)); border-radius: 6px; z-index: -1;
+    }
+    .hero-copy .lede { font-size: 1.18rem; color: var(--slate); max-width: 33ch; margin: 1.1rem 0 1.7rem; }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: .75rem; }
+    .hero-trust { display: flex; flex-wrap: wrap; align-items: center; gap: 1.1rem 1.6rem; margin-top: 1.9rem; }
+    .hero-trust .stars { display: inline-flex; gap: 2px; }
+    .hero-trust .stars svg { width: 18px; height: 18px; color: var(--sunny); }
+    .hero-trust .t-text { font-weight: 600; color: var(--slate); font-size: .95rem; }
+    .hero-trust .t-text b { color: var(--ink); }
+    .hero-trust .divider { width: 1px; height: 30px; background: var(--line); }
+
+    /* hero visual / tooth character scene */
+    .hero-art { position: relative; }
+    .hero-blob {
+      position: absolute; inset: -8% -6% -10% -6%;
+      background:
+        radial-gradient(60% 55% at 70% 22%, rgba(138,143,255,.35), transparent 60%),
+        radial-gradient(70% 60% at 22% 78%, rgba(91,147,255,.40), transparent 62%),
+        linear-gradient(150deg, var(--sky-100), var(--peri-100));
+      border-radius: 44% 56% 58% 42% / 52% 44% 56% 48%;
+      filter: blur(.2px);
+      z-index: 0;
+      animation: blobMorph 16s ease-in-out infinite alternate;
+    }
+    @keyframes blobMorph {
+      0%   { border-radius: 44% 56% 58% 42% / 52% 44% 56% 48%; }
+      100% { border-radius: 56% 44% 42% 58% / 44% 56% 48% 52%; }
+    }
+    .hero-card {
+      position: relative; z-index: 2; background: #fff; border-radius: var(--r-xl);
+      box-shadow: var(--shadow-lg); padding: clamp(20px, 3vw, 34px); max-width: 480px; margin: 0 auto;
+      border: 1px solid #fff;
+    }
+    .tooth-svg { width: 100%; height: auto; display: block; }
+    .tooth-float { animation: floaty 5.5s ease-in-out infinite; transform-origin: center; }
+    @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+    .sparkle { animation: twinkle 3.2s ease-in-out infinite; transform-origin: center; }
+    .sparkle.s2 { animation-delay: .9s; } .sparkle.s3 { animation-delay: 1.7s; }
+    @keyframes twinkle { 0%,100% { opacity: .35; transform: scale(.75); } 50% { opacity: 1; transform: scale(1); } }
+
+    .hero-chip {
+      position: absolute; z-index: 3; background: #fff; border-radius: var(--r);
+      box-shadow: var(--shadow); padding: .7rem .95rem; display: flex; align-items: center; gap: .6rem;
+      font-weight: 600; font-size: .9rem; border: 1px solid var(--line);
+    }
+    .hero-chip .ico { width: 34px; height: 34px; border-radius: 11px; display: grid; place-items: center; flex: none; }
+    .hero-chip .ico svg { width: 19px; height: 19px; color: #fff; }
+    .hero-chip small { display: block; font-weight: 500; color: var(--slate-2); font-size: .78rem; }
+    .chip-tl { top: 6%; left: -4%; animation: floaty 6.5s ease-in-out infinite; }
+    .chip-br { bottom: 8%; right: -5%; animation: floaty 7.5s ease-in-out .6s infinite; }
+
+    /* ---------- Offer banner ---------- */
+    .offer-band {
+      position: relative; overflow: hidden;
+      background: linear-gradient(120deg, var(--sky-700), var(--sky-600) 55%, var(--peri));
+      border-radius: var(--r-xl); color: #fff; padding: clamp(26px, 4vw, 44px);
+      box-shadow: var(--shadow-lg);
+      display: grid; grid-template-columns: 1fr auto; gap: 1.6rem 2rem; align-items: center;
+    }
+    .offer-band::before, .offer-band::after {
+      content: ""; position: absolute; border-radius: 50%; background: rgba(255,255,255,.10); pointer-events: none;
+    }
+    .offer-band::before { width: 320px; height: 320px; right: -90px; top: -120px; }
+    .offer-band::after { width: 200px; height: 200px; left: -70px; bottom: -110px; background: rgba(255,255,255,.07); }
+    .offer-band .price { font-family: var(--font-head); font-weight: 800; font-size: clamp(2.6rem, 6vw, 3.6rem); line-height: 1; }
+    .offer-band .price sup { font-size: .42em; font-weight: 700; top: -1.1em; }
+    .offer-tag { display: inline-flex; align-items: center; gap: .5em; background: var(--coral); color:#fff; font-weight: 700; padding: .4em 1em; border-radius: var(--r-pill); font-size: .82rem; letter-spacing: .03em; }
+    .offer-band h2 { color: #fff; font-size: clamp(1.5rem, 3vw, 2.1rem); margin: .55rem 0 .3rem; }
+    .offer-band p { color: rgba(255,255,255,.92); margin-bottom: 0; max-width: 52ch; }
+    .offer-right { position: relative; z-index: 2; text-align: center; }
+    .offer-fine { font-size: .8rem; color: rgba(255,255,255,.78); margin-top: .8rem; }
+
+    /* ---------- Services ---------- */
+    .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; margin-top: 2.8rem; }
+    .svc-card {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 1.7rem;
+      box-shadow: var(--shadow-sm); transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
+      position: relative; overflow: hidden;
+    }
+    .svc-card::after { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: linear-gradient(90deg, var(--sky-500), var(--peri)); opacity: 0; transition: opacity .25s var(--ease); }
+    .svc-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: var(--sky-200); }
+    .svc-card:hover::after { opacity: 1; }
+    .svc-icon { width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center; margin-bottom: 1.1rem; }
+    .svc-icon svg { width: 28px; height: 28px; }
+    .svc-card h3 { font-size: 1.2rem; margin-bottom: .35rem; }
+    .svc-card p { color: var(--slate); font-size: .97rem; margin-bottom: .9rem; }
+    .svc-meta { font-weight: 600; font-size: .85rem; color: var(--sky-700); display: inline-flex; align-items: center; gap: .4em; }
+    .svc-meta svg { width: 15px; height: 15px; }
+    /* icon color variants */
+    .ic-blue { background: var(--sky-100); color: var(--sky-600); }
+    .ic-peri { background: var(--peri-100); color: var(--peri); }
+    .ic-coral { background: var(--coral-100); color: var(--coral-600); }
+    .ic-mint  { background: #d8f8ee; color: #0e9e78; }
+    .ic-sun   { background: #fff1d6; color: #d9941f; }
+    .ic-sky2  { background: #dbeafe; color: var(--sky-700); }
+
+    /* ---------- Stats strip ---------- */
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .stat {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 1.5rem 1.2rem;
+      text-align: center; box-shadow: var(--shadow-sm);
+    }
+    .stat .num { font-family: var(--font-head); font-weight: 800; font-size: clamp(1.9rem, 4vw, 2.7rem); color: var(--sky-600); line-height: 1; letter-spacing: -.02em; }
+    .stat .lbl { color: var(--slate); font-weight: 600; font-size: .92rem; margin-top: .45rem; }
+
+    /* ---------- Booking widget (THE STAR) ---------- */
+    .booker-shell { max-width: 980px; margin: 2.6rem auto 0; }
+    .booker {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--r-xl);
+      box-shadow: var(--shadow-lg); overflow: hidden;
+    }
+    .booker-top { padding: 1.4rem clamp(18px, 3vw, 34px) 0; }
+    /* horizontal stepper */
+    .stepper { display: flex; align-items: center; gap: 0; }
+    .stepper .node { display: flex; align-items: center; flex: 1; min-width: 0; }
+    .stepper .node:last-child { flex: 0; }
+    .stepper .dot {
+      width: 36px; height: 36px; border-radius: 50%; flex: none; display: grid; place-items: center;
+      background: var(--sky-50); color: var(--slate-2); font-weight: 700; font-family: var(--font-head);
+      border: 2px solid var(--line); transition: all .3s var(--ease); position: relative;
+    }
+    .stepper .dot .ck { display: none; width: 18px; height: 18px; }
+    .stepper .bar { flex: 1; height: 3px; margin: 0 8px; background: var(--line); border-radius: 3px; position: relative; overflow: hidden; }
+    .stepper .bar i { position: absolute; inset: 0; width: 0; background: linear-gradient(90deg, var(--sky-500), var(--peri)); transition: width .4s var(--ease); }
+    .stepper .node.done .dot { background: var(--sky-600); border-color: var(--sky-600); color: #fff; }
+    .stepper .node.done .dot .num { display: none; }
+    .stepper .node.done .dot .ck { display: block; }
+    .stepper .node.done .bar i { width: 100%; }
+    .stepper .node.active .dot { background: #fff; border-color: var(--sky-600); color: var(--sky-700); box-shadow: 0 0 0 5px var(--sky-100); }
+    .step-label { margin: 1rem 0 .2rem; font-weight: 600; color: var(--slate-2); font-size: .88rem; }
+    .step-label b { color: var(--sky-700); }
+
+    .booker-body { padding: 1rem clamp(18px, 3vw, 34px) 0; }
+    .step { display: none; animation: fadeStep .35s var(--ease); border: 0; margin: 0; padding: 0; min-width: 0; }
+    .step.active { display: block; }
+    @keyframes fadeStep { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .step h3 { font-size: 1.35rem; margin-bottom: .2rem; }
+    .step .hint { color: var(--slate-2); font-size: .94rem; margin-bottom: 1.2rem; }
+
+    .opt-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .8rem; }
+    .opt {
+      display: flex; align-items: center; gap: .85rem; text-align: left; cursor: pointer;
+      background: #fff; border: 2px solid var(--line); border-radius: var(--r); padding: .95rem 1rem;
+      font-family: var(--font-body); transition: border-color .2s var(--ease), box-shadow .2s var(--ease), transform .15s var(--ease), background .2s var(--ease);
+      position: relative; width: 100%;
+    }
+    .opt:hover { border-color: var(--sky-300, var(--sky-400)); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+    .opt[aria-pressed="true"] { border-color: var(--sky-600); background: var(--sky-50); box-shadow: 0 0 0 3px var(--sky-100); }
+    .opt .oic { width: 42px; height: 42px; border-radius: 13px; flex: none; display: grid; place-items: center; background: var(--sky-100); color: var(--sky-600); }
+    .opt .oic svg { width: 22px; height: 22px; }
+    .opt .ometa { display: flex; flex-direction: column; min-width: 0; }
+    .opt .ometa b { font-family: var(--font-head); font-weight: 600; font-size: .98rem; color: var(--ink); }
+    .opt .ometa small { color: var(--slate-2); font-weight: 500; font-size: .82rem; }
+    .opt .check { margin-left: auto; width: 24px; height: 24px; border-radius: 50%; flex: none; display: grid; place-items: center; background: var(--sky-600); color: #fff; opacity: 0; transform: scale(.5); transition: all .2s var(--ease); }
+    .opt .check svg { width: 14px; height: 14px; }
+    .opt[aria-pressed="true"] .check { opacity: 1; transform: scale(1); }
+    .opt .avatar { width: 42px; height: 42px; border-radius: 50%; flex: none; display: grid; place-items: center; color: #fff; font-family: var(--font-head); font-weight: 700; font-size: 1rem; }
+
+    .day-row { display: flex; gap: .6rem; overflow-x: auto; padding-bottom: .5rem; margin-bottom: 1.1rem; scrollbar-width: thin; }
+    .day {
+      flex: none; min-width: 76px; text-align: center; cursor: pointer; background: #fff;
+      border: 2px solid var(--line); border-radius: var(--r); padding: .7rem .4rem; font-family: var(--font-body);
+      transition: border-color .2s var(--ease), background .2s var(--ease), transform .15s var(--ease);
+    }
+    .day:hover { border-color: var(--sky-400); transform: translateY(-2px); }
+    .day[aria-pressed="true"] { border-color: var(--sky-600); background: var(--sky-600); color: #fff; }
+    .day .dow { font-weight: 700; font-size: .8rem; letter-spacing: .04em; text-transform: uppercase; }
+    .day .dnum { font-family: var(--font-head); font-weight: 700; font-size: 1.3rem; line-height: 1.1; }
+    .day .dmo { font-size: .74rem; color: var(--slate-2); }
+    .day[aria-pressed="true"] .dmo { color: rgba(255,255,255,.85); }
+
+    .slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: .55rem; }
+    .slot {
+      cursor: pointer; background: #fff; border: 2px solid var(--line); border-radius: var(--r-sm);
+      padding: .65rem .4rem; font-family: var(--font-head); font-weight: 600; font-size: .92rem; color: var(--ink);
+      transition: border-color .2s var(--ease), background .2s var(--ease), color .2s var(--ease), transform .15s var(--ease);
+    }
+    .slot:hover { border-color: var(--sky-400); transform: translateY(-2px); }
+    .slot[aria-pressed="true"] { border-color: var(--coral); background: var(--coral); color: #fff; box-shadow: var(--shadow-coral); }
+
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+    .field { margin-bottom: .95rem; }
+    .field label { display: block; font-weight: 600; font-size: .88rem; margin-bottom: .35rem; color: var(--ink); }
+    .field input {
+      width: 100%; font-family: var(--font-body); font-size: 1rem; padding: .8em .95em;
+      border: 2px solid var(--line); border-radius: var(--r-sm); background: var(--sky-50); color: var(--ink);
+      transition: border-color .2s var(--ease), background .2s var(--ease); -webkit-appearance: none;
+    }
+    .field input:focus { outline: none; border-color: var(--sky-500); background: #fff; }
+    .field input::placeholder { color: var(--slate-2); }
+    .new-patient-note { display: flex; gap: .65rem; align-items: flex-start; background: var(--coral-100); border-radius: var(--r-sm); padding: .8rem 1rem; font-size: .9rem; color: #9c382f; font-weight: 500; margin-bottom: .4rem; }
+    .new-patient-note svg { width: 20px; height: 20px; color: var(--coral-600); flex: none; margin-top: 1px; }
+
+    .summary-card { background: var(--sky-50); border: 1px solid var(--sky-200); border-radius: var(--r); padding: 1.1rem 1.2rem; margin-bottom: 1rem; }
+    .summary-card .srow { display: flex; justify-content: space-between; gap: 1rem; padding: .35rem 0; font-size: .95rem; }
+    .summary-card .srow:not(:last-child) { border-bottom: 1px dashed var(--sky-200); }
+    .summary-card .srow span { color: var(--slate); }
+    .summary-card .srow b { color: var(--ink); font-family: var(--font-head); font-weight: 600; text-align: right; }
+
+    .booker-foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.3rem clamp(18px, 3vw, 34px) clamp(18px, 3vw, 34px); margin-top: .4rem; }
+    .booker-foot .ghost-link {
+      background: none; border: 0; cursor: pointer; font-family: var(--font-head); font-weight: 600;
+      color: var(--slate-2); font-size: .95rem; display: inline-flex; align-items: center; gap: .4em; padding: .5em;
+    }
+    .booker-foot .ghost-link:hover { color: var(--sky-700); }
+    .booker-foot .ghost-link[hidden] { visibility: hidden; }
+    .booker-foot .ghost-link svg { width: 16px; height: 16px; }
+
+    /* confirmation */
+    .confirm { text-align: center; padding: 1rem 0 .5rem; }
+    .confirm-badge {
+      width: 84px; height: 84px; border-radius: 50%; margin: 0 auto 1.2rem; display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--mint), #1bb88e); color: #fff; box-shadow: 0 16px 30px -12px rgba(43,212,168,.7);
+      animation: pop .5s var(--ease) both;
+    }
+    .confirm-badge svg { width: 42px; height: 42px; }
+    @keyframes pop { 0% { transform: scale(0); } 60% { transform: scale(1.12); } 100% { transform: scale(1); } }
+    .confirm h3 { font-size: 1.7rem; }
+    .confirm p { color: var(--slate); max-width: 44ch; margin: 0 auto 1.3rem; }
+    .confirm .summary-card { text-align: left; max-width: 420px; margin: 0 auto 1.4rem; }
+
+    /* ---------- Team ---------- */
+    .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.3rem; margin-top: 2.8rem; }
+    .doc-card { background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform .25s var(--ease), box-shadow .25s var(--ease); }
+    .doc-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .doc-photo { aspect-ratio: 4/3.4; position: relative; display: grid; place-items: end center; overflow: hidden; }
+    .doc-photo .initials { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--font-head); font-weight: 800; font-size: 3rem; color: rgba(255,255,255,.92); letter-spacing: .02em; }
+    .doc-photo svg.persona { position: relative; z-index: 1; width: 72%; height: auto; }
+    .doc-body { padding: 1.15rem 1.25rem 1.4rem; }
+    .doc-body h3 { font-size: 1.12rem; margin-bottom: .1rem; }
+    .doc-cred { color: var(--sky-700); font-weight: 700; font-size: .82rem; letter-spacing: .02em; }
+    .doc-body p { color: var(--slate); font-size: .92rem; margin: .6rem 0 0; }
+    .doc-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .85rem; }
+    .doc-tags span { font-size: .76rem; font-weight: 600; color: var(--slate); background: var(--sky-50); border: 1px solid var(--line); padding: .25em .65em; border-radius: var(--r-pill); }
+
+    /* ---------- Insurance ---------- */
+    .ins-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 56px); align-items: center; }
+    .ins-copy ul { list-style: none; padding: 0; margin: 1.4rem 0 1.8rem; display: grid; gap: .9rem; }
+    .ins-copy li { display: flex; gap: .75rem; align-items: flex-start; font-weight: 500; color: var(--slate); }
+    .ins-copy li b { color: var(--ink); font-weight: 600; }
+    .ins-copy li svg { width: 24px; height: 24px; color: var(--sky-600); flex: none; margin-top: 1px; }
+    .ins-logos { display: grid; grid-template-columns: repeat(2, 1fr); gap: .8rem; }
+    .ins-logo {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--r); padding: 1.1rem 1.2rem;
+      display: flex; align-items: center; gap: .8rem; box-shadow: var(--shadow-sm); font-weight: 600; color: var(--ink);
+      transition: transform .2s var(--ease), box-shadow .2s var(--ease);
+    }
+    .ins-logo:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+    .ins-logo .badge { width: 38px; height: 38px; border-radius: 11px; flex: none; display: grid; place-items: center; font-family: var(--font-head); font-weight: 800; color: #fff; font-size: 1rem; }
+
+    /* ---------- Technology ---------- */
+    .tech-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; margin-top: 2.8rem; }
+    .tech-card { background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 1.7rem; box-shadow: var(--shadow-sm); transition: transform .25s var(--ease), box-shadow .25s var(--ease); }
+    .tech-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .tech-card .tic { width: 54px; height: 54px; border-radius: 15px; display: grid; place-items: center; margin-bottom: 1.1rem; background: linear-gradient(135deg, var(--sky-100), var(--peri-100)); color: var(--sky-600); }
+    .tech-card .tic svg { width: 28px; height: 28px; }
+    .tech-card h3 { font-size: 1.12rem; }
+    .tech-card p { color: var(--slate); font-size: .95rem; margin-bottom: 0; }
+
+    /* ---------- Reviews ---------- */
+    .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; margin-top: 2.8rem; }
+    .review {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 1.6rem 1.6rem 1.5rem;
+      box-shadow: var(--shadow-sm); display: flex; flex-direction: column; position: relative;
+    }
+    .review .stars { display: inline-flex; gap: 2px; margin-bottom: .8rem; }
+    .review .stars svg { width: 18px; height: 18px; color: var(--sunny); }
+    .review .quote { color: var(--ink); font-size: 1.02rem; line-height: 1.55; margin: 0 0 1.2rem; }
+    .review .who { display: flex; align-items: center; gap: .7rem; margin-top: auto; }
+    .review .who .av { width: 42px; height: 42px; border-radius: 50%; flex: none; display: grid; place-items: center; color: #fff; font-family: var(--font-head); font-weight: 700; }
+    .review .who .meta b { display: block; font-family: var(--font-head); font-weight: 600; font-size: .96rem; }
+    .review .who .meta small { color: var(--slate-2); font-size: .82rem; }
+
+    /* ---------- FAQ ---------- */
+    .faq-wrap { max-width: 800px; margin: 2.6rem auto 0; }
+    .faq-item { background: #fff; border: 1px solid var(--line); border-radius: var(--r); margin-bottom: .8rem; box-shadow: var(--shadow-sm); overflow: hidden; transition: border-color .2s var(--ease); }
+    .faq-item[open] { border-color: var(--sky-200); }
+    .faq-q {
+      display: flex; align-items: center; gap: 1rem; cursor: pointer; list-style: none;
+      padding: 1.15rem 1.4rem; font-family: var(--font-head); font-weight: 600; font-size: 1.05rem; color: var(--ink);
+    }
+    .faq-q::-webkit-details-marker { display: none; }
+    .faq-q .qmark {
+      margin-left: auto; width: 30px; height: 30px; border-radius: 50%; flex: none; display: grid; place-items: center;
+      background: var(--sky-50); color: var(--sky-600); transition: transform .3s var(--ease), background .2s var(--ease);
+    }
+    .faq-q .qmark svg { width: 16px; height: 16px; }
+    .faq-item[open] .faq-q .qmark { transform: rotate(45deg); background: var(--sky-600); color: #fff; }
+    .faq-a { padding: 0 1.4rem 1.3rem; color: var(--slate); }
+    .faq-a p { margin: 0; }
+
+    /* ---------- Location / Hours ---------- */
+    .loc-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(24px, 4vw, 48px); align-items: stretch; }
+    .map-card { border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--line); min-height: 340px; position: relative; background: var(--sky-50); }
+    .map-card svg { width: 100%; height: 100%; display: block; }
+    .map-pin { position: absolute; left: 50%; top: 46%; transform: translate(-50%, -100%); z-index: 2; filter: drop-shadow(0 8px 14px rgba(31,95,224,.4)); }
+    .map-pin svg { width: 48px; height: 48px; }
+    .map-badge { position: absolute; left: 18px; bottom: 18px; z-index: 3; background: #fff; border-radius: var(--r); box-shadow: var(--shadow); padding: .75rem 1rem; font-weight: 600; font-size: .9rem; display: flex; align-items: center; gap: .6rem; }
+    .map-badge svg { width: 18px; height: 18px; color: var(--sky-600); }
+
+    .info-card { background: #fff; border: 1px solid var(--line); border-radius: var(--r-xl); padding: clamp(22px, 3vw, 34px); box-shadow: var(--shadow-sm); }
+    .info-card h3 { font-size: 1.25rem; }
+    .info-block { margin-bottom: 1.5rem; }
+    .info-block:last-child { margin-bottom: 0; }
+    .info-block .lbl { display: flex; align-items: center; gap: .55rem; font-family: var(--font-head); font-weight: 600; font-size: .95rem; color: var(--sky-700); margin-bottom: .55rem; }
+    .info-block .lbl svg { width: 18px; height: 18px; }
+    .hours-table { width: 100%; border-collapse: collapse; }
+    .hours-table td { padding: .42rem 0; font-size: .96rem; color: var(--slate); }
+    .hours-table td:last-child { text-align: right; font-weight: 600; color: var(--ink); }
+    .hours-table tr.today td { color: var(--sky-700); }
+    .hours-table tr.today td:last-child { color: var(--sky-700); }
+    .hours-table tr.closed td:last-child { color: var(--slate-2); font-weight: 500; }
+    .addr { color: var(--slate); font-style: normal; line-height: 1.7; }
+    .addr a { font-weight: 600; }
+
+    /* ---------- CTA band ---------- */
+    .cta-band {
+      background: linear-gradient(130deg, var(--sky-700), var(--sky-600) 50%, var(--peri));
+      border-radius: var(--r-xl); padding: clamp(34px, 5vw, 60px); text-align: center; color: #fff;
+      box-shadow: var(--shadow-lg); position: relative; overflow: hidden;
+    }
+    .cta-band::before { content: ""; position: absolute; width: 360px; height: 360px; border-radius: 50%; background: rgba(255,255,255,.08); right: -120px; bottom: -160px; }
+    .cta-band h2 { color: #fff; font-size: clamp(1.8rem, 4vw, 2.8rem); position: relative; }
+    .cta-band p { color: rgba(255,255,255,.92); max-width: 50ch; margin: 0 auto 1.8rem; position: relative; font-size: 1.1rem; }
+    .cta-band .hero-cta { justify-content: center; position: relative; }
+    .cta-band .btn-ghost { background: #fff; border-color: #fff; color: var(--sky-700); }
+    .cta-band .btn-coral { box-shadow: 0 14px 30px -10px rgba(0,0,0,.3); }
+
+    /* ---------- Footer ---------- */
+    footer.site { background: var(--ink); color: #c8d2ec; padding: clamp(48px, 6vw, 76px) 0 0; }
+    .foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 2.4rem; }
+    .foot-brand .brand { color: #fff; margin-bottom: 1rem; }
+    .foot-brand .brand b { color: var(--sky-400); }
+    .foot-brand p { color: #97a4c6; font-size: .95rem; max-width: 32ch; }
+    .foot-col h4 { color: #fff; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; margin-bottom: 1.1rem; }
+    .foot-col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .65rem; }
+    .foot-col a { color: #c8d2ec; font-size: .95rem; transition: color .2s var(--ease); }
+    .foot-col a:hover { color: #fff; }
+    .foot-col address { font-style: normal; color: #c8d2ec; font-size: .95rem; line-height: 1.8; }
+    .foot-col address a { font-weight: 600; }
+    .socials { display: flex; gap: .6rem; margin-top: 1.2rem; }
+    .socials a { width: 40px; height: 40px; border-radius: 12px; background: rgba(255,255,255,.07); display: grid; place-items: center; transition: background .2s var(--ease), transform .2s var(--ease); }
+    .socials a:hover { background: var(--sky-600); transform: translateY(-2px); }
+    .socials svg { width: 19px; height: 19px; color: #fff; }
+    .foot-bottom { margin-top: clamp(36px, 5vw, 56px); border-top: 1px solid rgba(255,255,255,.10); padding: 1.6rem 0; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; }
+    .foot-bottom small { color: #8593b8; font-size: .85rem; }
+    .credit { color: #97a4c6; font-size: .85rem; }
+    .credit a { color: var(--sky-400); font-weight: 600; }
+
+    /* ---------- Reveal animation ---------- */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; }
+      .hero-blob, .tooth-float, .sparkle, .hero-chip { animation: none !important; }
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1000px) {
+      .svc-grid, .tech-grid, .review-grid { grid-template-columns: repeat(2, 1fr); }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .foot-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    @media (max-width: 860px) {
+      .nav-links, .nav-phone { display: none; }
+      .hamburger { display: inline-flex; }
+      .mobile-menu { display: flex; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-art { order: -1; max-width: 460px; margin: 0 auto; }
+      .hero-copy .lede { max-width: none; }
+      .offer-band { grid-template-columns: 1fr; text-align: left; }
+      .ins-grid, .loc-grid { grid-template-columns: 1fr; }
+      .map-card { min-height: 280px; }
+    }
+    @media (max-width: 560px) {
+      body { font-size: 16px; }
+      .svc-grid, .tech-grid, .review-grid, .team-grid, .stats, .ins-logos, .foot-grid { grid-template-columns: 1fr; }
+      .opt-grid { grid-template-columns: 1fr; }
+      .field-row { grid-template-columns: 1fr; }
+      .nav-cta .btn span.cta-full { display: none; }
+      .offer-right { text-align: left; }
+      .step-label { display: none; }
+      .booker-foot { flex-direction: row; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site" id="top">
+    <div class="wrap">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="#top" aria-label="Clearview Dental home">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <rect width="40" height="40" rx="11" fill="url(#lgGrad)"/>
+            <path d="M20 9c-3.6-2.4-8.5-1.6-10 1.8-1.2 2.7-.2 6 .9 9.2.8 2.4 1.3 5.6 2.1 7.7.5 1.4 2.3 1.5 2.8.1.5-1.4.9-3.4 1.6-4.6.6-1 2.4-1 3 0 .7 1.2 1.1 3.2 1.6 4.6.5 1.4 2.3 1.3 2.8-.1.8-2.1 1.3-5.3 2.1-7.7 1.1-3.2 2.1-6.5.9-9.2C28.5 7.4 23.6 6.6 20 9z" fill="#fff"/>
+            <path d="M24.5 12.5c1 .3 1.8 1.1 2.1 2.2" stroke="#5b93ff" stroke-width="1.6" stroke-linecap="round"/>
+            <defs><linearGradient id="lgGrad" x1="0" y1="0" x2="40" y2="40"><stop stop-color="#3d7bf7"/><stop offset="1" stop-color="#8a8fff"/></linearGradient></defs>
+          </svg>
+          Clear<b>view</b> Dental
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#book">Book</a></li>
+          <li><a href="#team">Our Team</a></li>
+          <li><a href="#insurance">Insurance</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+
+        <div class="nav-cta">
+          <a class="nav-phone" href="tel:+16045550148" aria-label="Call Clearview Dental at 604-555-0148">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v3a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            604-555-0148
+          </a>
+          <a class="btn btn-coral" href="#book"><span class="cta-full">Book a visit</span><span aria-hidden="true" style="display:none">Book</span></a>
+          <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+            <span></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="scrim" id="scrim"></div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+    <a href="#services">Services</a>
+    <a href="#book">Book a Visit</a>
+    <a href="#team">Our Team</a>
+    <a href="#insurance">Insurance &amp; Billing</a>
+    <a href="#technology">Technology</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Hours &amp; Location</a>
+    <a class="btn btn-coral btn-block" href="#book">Book new-patient visit</a>
+    <a class="nav-phone" href="tel:+16045550148" style="display:inline-flex;justify-content:center;margin-top:.8rem">604-555-0148</a>
+  </nav>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-labelledby="hero-h">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="hero-copy reveal">
+            <span class="pill">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" style="width:15px;height:15px"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Now welcoming new patients in Vancouver
+            </span>
+            <h1 id="hero-h">The confident smile you've been <span class="hl">waiting for</span>.</h1>
+            <p class="lede">Gentle, modern family &amp; cosmetic dentistry in the heart of Vancouver. Bright rooms, honest advice, and care that actually feels calm.</p>
+            <div class="hero-cta">
+              <a class="btn btn-primary btn-lg" href="#book">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3" stroke="currentColor" stroke-width="2"/><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                Book new-patient visit
+              </a>
+              <a class="btn btn-ghost btn-lg" href="#offer">See new-patient offer</a>
+            </div>
+            <div class="hero-trust">
+              <div>
+                <span class="stars" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.8 6.1 20l1.3-6.6L2.5 8.9l6.6-.8z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.8 6.1 20l1.3-6.6L2.5 8.9l6.6-.8z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.8 6.1 20l1.3-6.6L2.5 8.9l6.6-.8z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.8 6.1 20l1.3-6.6L2.5 8.9l6.6-.8z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.8 6.1 20l1.3-6.6L2.5 8.9l6.6-.8z"/></svg>
+                </span>
+                <div class="t-text"><b>4.9 / 5</b> from 1,200+ Vancouver smiles</div>
+              </div>
+              <div class="divider" aria-hidden="true"></div>
+              <div class="t-text"><b>Direct billing</b> to most BC insurers</div>
+            </div>
+          </div>
+
+          <!-- Friendly tooth-character scene -->
+          <div class="hero-art reveal">
+            <div class="hero-blob" aria-hidden="true"></div>
+
+            <div class="hero-chip chip-tl" aria-hidden="true">
+              <span class="ico" style="background:linear-gradient(135deg,var(--mint),#1bb88e)">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span>Painless visits<small>Gentle, judgment-free care</small></span>
+            </div>
+
+            <div class="hero-card">
+              <svg class="tooth-svg" viewBox="0 0 320 300" role="img" aria-label="Illustration of a happy, smiling tooth character surrounded by sparkles">
+                <defs>
+                  <linearGradient id="toothBody" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#ffffff"/>
+                    <stop offset="1" stop-color="#eaf1ff"/>
+                  </linearGradient>
+                  <radialGradient id="cheek" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0" stop-color="#ff9d92"/>
+                    <stop offset="1" stop-color="#ff9d92" stop-opacity="0"/>
+                  </radialGradient>
+                  <linearGradient id="sparkGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#8a8fff"/>
+                    <stop offset="1" stop-color="#5b93ff"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- sparkles -->
+                <g class="sparkle" fill="url(#sparkGrad)">
+                  <path d="M58 60 l5 13 13 5 -13 5 -5 13 -5 -13 -13 -5 13 -5z"/>
+                </g>
+                <g class="sparkle s2" fill="#ffc24b">
+                  <path d="M268 92 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4z"/>
+                </g>
+                <g class="sparkle s3" fill="#ff6f61">
+                  <path d="M250 200 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3z"/>
+                </g>
+
+                <g class="tooth-float">
+                  <!-- tooth body -->
+                  <path d="M160 70c-32-22-78-14-92 16-11 24-2 54 8 83 7 21 12 50 19 69 5 13 21 13 26 1 5-13 8-30 14-41 5-9 21-9 26 0 6 11 9 28 14 41 5 12 21 12 26-1 7-19 12-48 19-69 10-29 19-59 8-83-14-30-60-38-92-16z" fill="url(#toothBody)" stroke="#3d7bf7" stroke-width="5" stroke-linejoin="round"/>
+                  <!-- shine -->
+                  <path d="M120 95c-8 4-14 12-16 22" stroke="#cfe0ff" stroke-width="7" stroke-linecap="round" fill="none"/>
+                  <!-- cheeks -->
+                  <ellipse cx="112" cy="168" rx="16" ry="11" fill="url(#cheek)"/>
+                  <ellipse cx="208" cy="168" rx="16" ry="11" fill="url(#cheek)"/>
+                  <!-- eyes -->
+                  <circle cx="128" cy="140" r="9" fill="#1b2440"/>
+                  <circle cx="192" cy="140" r="9" fill="#1b2440"/>
+                  <circle cx="131" cy="137" r="3" fill="#fff"/>
+                  <circle cx="195" cy="137" r="3" fill="#fff"/>
+                  <!-- happy smile -->
+                  <path d="M126 168c10 16 58 16 68 0" stroke="#1b2440" stroke-width="6" stroke-linecap="round" fill="none"/>
+                </g>
+              </svg>
+            </div>
+
+            <div class="hero-chip chip-br" aria-hidden="true">
+              <span class="ico" style="background:linear-gradient(135deg,var(--coral),var(--coral-600))">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="11" r="2.4" fill="currentColor"/></svg>
+              </span>
+              <span>Same-week openings<small>Including evenings &amp; Saturdays</small></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NEW-PATIENT OFFER BANNER ============ -->
+    <section id="offer" style="padding-top:0">
+      <div class="wrap">
+        <div class="offer-band reveal" role="region" aria-label="New patient offer">
+          <div class="offer-left">
+            <span class="offer-tag">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" style="width:15px;height:15px"><path d="M20 12l-8 8-9-9V3h8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="8" cy="8" r="1.6" fill="currentColor"/></svg>
+              New patient special
+            </span>
+            <h2>$99 complete exam + digital x-rays</h2>
+            <p>Brand new to Clearview? Get a full dental exam, gentle digital x-rays, and a personalized smile plan for just $99 — no insurance required. Already insured? We'll direct-bill and you likely pay nothing.</p>
+            <p class="offer-fine">New patients only. Cleanings quoted separately based on your needs. Offer valid through your first visit — mention code <b>HELLO99</b>.</p>
+          </div>
+          <div class="offer-right">
+            <div class="price"><sup>$</sup>99</div>
+            <a class="btn btn-coral btn-lg" href="#book">Claim this offer</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section id="services" aria-labelledby="serv-h">
+      <div class="wrap">
+        <div class="head center reveal">
+          <span class="eyebrow center">What we do</span>
+          <h2 id="serv-h">Whole-family care, all under one bright roof</h2>
+          <p>From a six-month-old's first checkup to a complete smile makeover, our team handles it all — gently, and with honest treatment plans you'll actually understand.</p>
+        </div>
+        <div class="svc-grid">
+          <article class="svc-card reveal">
+            <div class="svc-icon ic-blue"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4c-3-2-7-1-8 2-1 2.4 0 5 1 7.5 1 2.4 1.2 5 2 6.5.6 1 2 1 2.4-.2.4-1.3.8-3 1.6-3s1.2 1.7 1.6 3c.4 1.2 1.8 1.2 2.4.2.8-1.5 1-4.1 2-6.5 1-2.5 2-5.1 1-7.5-1-3-5-4-8-2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
+            <h3>General Dentistry</h3>
+            <p>Cleanings, exams, fillings, and preventive care that keeps small issues from becoming big ones. The friendly six-month reset your smile deserves.</p>
+            <span class="svc-meta">Checkups from $129<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </article>
+
+          <article class="svc-card reveal">
+            <div class="svc-icon ic-coral"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l2 5 5 .5-3.8 3.4 1.2 5.1L12 19.5 7.6 22l1.2-5.1L5 13.5 10 13z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
+            <h3>Cosmetic &amp; Whitening</h3>
+            <p>Professional whitening, veneers, and bonding tailored to your face and goals. Brighten safely in one visit, or take home a custom tray kit.</p>
+            <span class="svc-meta">Whitening from $349<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </article>
+
+          <article class="svc-card reveal">
+            <div class="svc-icon ic-peri"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="9" width="16" height="6" rx="3" stroke="currentColor" stroke-width="2"/><path d="M8 9V7M12 9V6.5M16 9V7M8 15v2M12 15v2.5M16 15v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <h3>Invisalign &amp; Ortho</h3>
+            <p>Clear, removable aligners and modern orthodontics to straighten teeth without the metal. Free smile scan to preview your results.</p>
+            <span class="svc-meta">Free consultation<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </article>
+
+          <article class="svc-card reveal">
+            <div class="svc-icon ic-sky2"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c-2 0-3.5 1.5-3.5 3.5V12c0 4 1.2 8.5 3.5 8.5S15.5 16 15.5 12V6.5C15.5 4.5 14 3 12 3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 7v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <h3>Dental Implants</h3>
+            <p>Permanent, natural-looking tooth replacement — single implants, bridges, or full-arch restorations planned with 3D imaging for precision.</p>
+            <span class="svc-meta">Free implant assessment<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </article>
+
+          <article class="svc-card reveal">
+            <div class="svc-icon ic-mint"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v6m0 0l-2.5 8.5c-.4 1.3 1 2.3 2.2 1.5L12 19l.3 1c1.2.8 2.6-.2 2.2-1.5L12 10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="6" r="3" stroke="currentColor" stroke-width="2"/></svg></div>
+            <h3>Emergency Dentistry</h3>
+            <p>Toothache, chipped tooth, lost crown, or sudden swelling? Same-day emergency appointments with real pain relief — call and we'll fit you in.</p>
+            <span class="svc-meta">Same-day relief<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </article>
+
+          <article class="svc-card reveal">
+            <div class="svc-icon ic-sun"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="2"/><circle cx="17" cy="9" r="2.2" stroke="currentColor" stroke-width="2"/><path d="M3 20c0-3 2.7-5 6-5s6 2 6 5M15 20c0-2.2 1.6-3.6 3.8-3.6S22 17.8 22 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <h3>Kids' Dentistry</h3>
+            <p>Patient, playful care that helps little ones love the dentist. Gentle first visits, fun rewards, and a no-pressure approach for every age.</p>
+            <span class="svc-meta">First visit is free<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BOOKING WIDGET (THE STAR) ============ -->
+    <section id="book" class="wash" aria-labelledby="book-h">
+      <div class="wrap">
+        <div class="head center reveal">
+          <span class="eyebrow center">Book in under a minute</span>
+          <h2 id="book-h">Reserve your visit online</h2>
+          <p>No phone tag, no accounts. Pick a reason, choose your dentist and a time that works — you'll get a friendly confirmation right here. New patients always welcome.</p>
+        </div>
+
+        <div class="booker-shell reveal">
+          <div class="booker" role="region" aria-label="Online appointment booking">
+            <!-- progress stepper -->
+            <div class="booker-top">
+              <div class="stepper" id="stepper" aria-hidden="true">
+                <div class="node active" data-node="1">
+                  <span class="dot"><span class="num">1</span><svg class="ck" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <span class="bar"><i></i></span>
+                </div>
+                <div class="node" data-node="2">
+                  <span class="dot"><span class="num">2</span><svg class="ck" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <span class="bar"><i></i></span>
+                </div>
+                <div class="node" data-node="3">
+                  <span class="dot"><span class="num">3</span><svg class="ck" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <span class="bar"><i></i></span>
+                </div>
+                <div class="node" data-node="4">
+                  <span class="dot"><span class="num">4</span><svg class="ck" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </div>
+              </div>
+              <div class="step-label" aria-live="polite">Step <b id="stepNow">1</b> of 4 &middot; <span id="stepName">Reason for visit</span></div>
+            </div>
+
+            <form class="booker-body" id="bookForm" novalidate>
+              <!-- Step 1: reason -->
+              <fieldset class="step active" data-step="1">
+                <legend class="sr-only">Choose a reason for your visit</legend>
+                <h3>What brings you in?</h3>
+                <p class="hint">Pick the option that fits best — we'll confirm everything at your visit.</p>
+                <div class="opt-grid" id="reasonList" role="group" aria-label="Reason for visit">
+                  <button type="button" class="opt" data-value="New-Patient Checkup &amp; Exam" data-dur="60 min">
+                    <span class="oic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12.5l2 2 4-4.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg></span>
+                    <span class="ometa"><b>Checkup &amp; exam</b><small>New-patient visit &middot; 60 min</small></span>
+                    <span class="check"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </button>
+                  <button type="button" class="opt" data-value="Hygiene Cleaning" data-dur="45 min">
+                    <span class="oic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v8m0 0l-2.6 8.7c-.4 1.3 1 2.3 2.2 1.5L12 20l.4 1.2c1.2.8 2.6-.2 2.2-1.5L12 11z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="5" r="2.6" stroke="currentColor" stroke-width="2"/></svg></span>
+                    <span class="ometa"><b>Cleaning</b><small>Hygiene &amp; polish &middot; 45 min</small></span>
+                    <span class="check"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </button>
+                  <button type="button" class="opt" data-value="Cosmetic Consultation" data-dur="45 min">
+                    <span class="oic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l2 5 5 .5-3.8 3.4 1.2 5.1L12 14.5 7.6 17l1.2-5.1L5 8.5 10 8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
+                    <span class="ometa"><b>Cosmetic / whitening</b><small>Smile consultation &middot; 45 min</small></span>
+                    <span class="check"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </button>
+                  <button type="button" class="opt" data-value="Emergency / Toothache" data-dur="30 min">
+                    <span class="oic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 3L4 14h6l-1 7 9-11h-6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
+                    <span class="ometa"><b>Emergency</b><small>Pain / urgent &middot; same-day</small></span>
+                    <span class="check"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </button>
+                </div>
+              </fieldset>
+
+              <!-- Step 2: dentist -->
+              <fieldset class="step" data-step="2">
+                <legend class="sr-only">Choose your dentist</legend>
+                <h3>Who would you like to see?</h3>
+                <p class="hint">All of our dentists are wonderful — or let us match you to the soonest opening.</p>
+                <div class="opt-grid" id="dentistList" role="group" aria-label="Dentists">
+                  <button type="button" class="opt" data-value="First available" data-role="We'll match you to the soonest fit" data-av="any">
+                    <span class="oic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19c1.4-4 4-6 7-6s5.6 2 7 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="8" r="3.4" stroke="currentColor" stroke-width="2"/></svg></span>
+                    <span class="ometa"><b>First available</b><small>Soonest opening for you</small></span>
+                    <span class="check"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </button>
+                  <button type="button" class="opt" data-value="Dr. Hannah Reyes, DDS" data-role="Family &amp; cosmetic dentist" data-av="HR" data-color="#3d7bf7">
+                    <span class="avatar" style="background:linear-gradient(135deg,#3d7bf7,#5b93ff)">HR</span>
+                    <span class="ometa"><b>Dr. Hannah Reyes</b><small>DDS &middot; Family &amp; cosmetic</small></span>
+                    <span class="check"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </button>
+                  <button type="button" class="opt" data-value="Dr. Marcus Vela, DMD" data-role="Implants &amp; restorative" data-av="MV" data-color="#8a8fff">
+                    <span class="avatar" style="background:linear-gradient(135deg,#8a8fff,#6f74e8)">MV</span>
+                    <span class="ometa"><b>Dr. Marcus Vela</b><small>DMD &middot; Implants &amp; restorative</small></span>
+                    <span class="check"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </button>
+                  <button type="button" class="opt" data-value="Dr. Priya Anand, DDS" data-role="Invisalign &amp; kids' dentistry" data-av="PA" data-color="#2bd4a8">
+                    <span class="avatar" style="background:linear-gradient(135deg,#2bd4a8,#13ae87)">PA</span>
+                    <span class="ometa"><b>Dr. Priya Anand</b><small>DDS &middot; Invisalign &amp; kids</small></span>
+                    <span class="check"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </button>
+                </div>
+              </fieldset>
+
+              <!-- Step 3: day + time -->
+              <fieldset class="step" data-step="3">
+                <legend class="sr-only">Choose a day and time</legend>
+                <h3>Pick a day &amp; time</h3>
+                <p class="hint">Showing openings at our Cambie Street office, Pacific time.</p>
+                <div class="day-row" id="dayRow" role="group" aria-label="Available days"></div>
+                <div class="slots" id="slotGrid" role="group" aria-label="Available times"></div>
+              </fieldset>
+
+              <!-- Step 4: details + confirm -->
+              <fieldset class="step" data-step="4">
+                <legend class="sr-only">Your details</legend>
+                <div id="detailsPane">
+                  <h3>Last step — your details</h3>
+                  <p class="hint">We'll email your confirmation and a quick new-patient intake form.</p>
+
+                  <div class="summary-card" id="liveSummary" aria-hidden="true">
+                    <div class="srow"><span>Visit</span><b id="sumReason">—</b></div>
+                    <div class="srow"><span>Dentist</span><b id="sumDentist">—</b></div>
+                    <div class="srow"><span>When</span><b id="sumWhen">—</b></div>
+                  </div>
+
+                  <div class="field-row">
+                    <div class="field">
+                      <label for="fName">First name</label>
+                      <input type="text" id="fName" name="fName" autocomplete="given-name" placeholder="Jordan" required>
+                    </div>
+                    <div class="field">
+                      <label for="lName">Last name</label>
+                      <input type="text" id="lName" name="lName" autocomplete="family-name" placeholder="Whitfield" required>
+                    </div>
+                  </div>
+                  <div class="field-row">
+                    <div class="field">
+                      <label for="email">Email</label>
+                      <input type="email" id="email" name="email" autocomplete="email" placeholder="jordan@email.com" required>
+                    </div>
+                    <div class="field">
+                      <label for="phone">Phone</label>
+                      <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="604-555-0199" required>
+                    </div>
+                  </div>
+                  <div class="new-patient-note">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    <span>New here? Wonderful — bring any insurance details and we'll handle direct billing for you. Nervous? Just let us know; we'll go at your pace.</span>
+                  </div>
+                </div>
+
+                <!-- confirmation (hidden until submit) -->
+                <div id="confirmPane" class="confirm" hidden>
+                  <div class="confirm-badge">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <h3 id="confirmName">You're all booked!</h3>
+                  <p>A confirmation and your new-patient intake form are on the way to your inbox. We can't wait to meet you.</p>
+                  <div class="summary-card">
+                    <div class="srow"><span>Visit</span><b id="cReason">—</b></div>
+                    <div class="srow"><span>Dentist</span><b id="cDentist">—</b></div>
+                    <div class="srow"><span>When</span><b id="cWhen">—</b></div>
+                    <div class="srow"><span>Where</span><b>Cambie St, Vancouver</b></div>
+                  </div>
+                  <button type="button" class="btn btn-ghost" id="restartBtn">Book another visit</button>
+                </div>
+              </fieldset>
+            </form>
+
+            <!-- footer controls -->
+            <div class="booker-foot" id="bookerFoot">
+              <button type="button" class="ghost-link" id="backBtn" hidden>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Back
+              </button>
+              <button type="button" class="btn btn-primary" id="nextBtn" disabled>Continue</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STATS STRIP ============ -->
+    <section style="padding-bottom:0" aria-label="Clearview Dental at a glance">
+      <div class="wrap">
+        <div class="stats">
+          <div class="stat reveal"><div class="num" data-count="18">18</div><div class="lbl">Years caring for Vancouver</div></div>
+          <div class="stat reveal"><div class="num" data-count="42000" data-suffix="+">42,000+</div><div class="lbl">Healthy smiles delivered</div></div>
+          <div class="stat reveal"><div class="num" data-count="1200" data-suffix="+">1,200+</div><div class="lbl">Five-star reviews</div></div>
+          <div class="stat reveal"><div class="num" data-suffix="" data-static="4.9★">4.9★</div><div class="lbl">Average patient rating</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TEAM ============ -->
+    <section id="team" aria-labelledby="team-h">
+      <div class="wrap">
+        <div class="head center reveal">
+          <span class="eyebrow center">Meet the team</span>
+          <h2 id="team-h">Dentists you'll actually look forward to seeing</h2>
+          <p>Friendly, highly trained, and genuinely invested in your comfort — our dentists explain every option in plain language, never upsell, and always meet you where you are.</p>
+        </div>
+        <div class="team-grid">
+          <article class="doc-card reveal">
+            <div class="doc-photo" style="background:linear-gradient(150deg,#3d7bf7,#84b1ff)">
+              <span class="initials">HR</span>
+              <svg class="persona" viewBox="0 0 120 110" aria-hidden="true"><circle cx="60" cy="42" r="26" fill="rgba(255,255,255,.9)"/><path d="M18 110c0-24 18-40 42-40s42 16 42 40z" fill="rgba(255,255,255,.9)"/></svg>
+            </div>
+            <div class="doc-body">
+              <h3>Dr. Hannah Reyes</h3>
+              <div class="doc-cred">DDS &middot; Principal Dentist</div>
+              <p>Founder of Clearview, with a gentle touch and an eye for natural-looking cosmetic work. UBC Faculty of Dentistry grad.</p>
+              <div class="doc-tags"><span>Family</span><span>Cosmetic</span><span>Veneers</span></div>
+            </div>
+          </article>
+
+          <article class="doc-card reveal">
+            <div class="doc-photo" style="background:linear-gradient(150deg,#8a8fff,#b3b6ff)">
+              <span class="initials">MV</span>
+              <svg class="persona" viewBox="0 0 120 110" aria-hidden="true"><circle cx="60" cy="42" r="26" fill="rgba(255,255,255,.9)"/><path d="M18 110c0-24 18-40 42-40s42 16 42 40z" fill="rgba(255,255,255,.9)"/></svg>
+            </div>
+            <div class="doc-body">
+              <h3>Dr. Marcus Vela</h3>
+              <div class="doc-cred">DMD &middot; Restorative &amp; Implants</div>
+              <p>Implant and restorative specialist who rebuilds smiles with precision 3D planning. Known for calm, clear explanations.</p>
+              <div class="doc-tags"><span>Implants</span><span>Crowns</span><span>Restorative</span></div>
+            </div>
+          </article>
+
+          <article class="doc-card reveal">
+            <div class="doc-photo" style="background:linear-gradient(150deg,#2bd4a8,#7ce8cf)">
+              <span class="initials">PA</span>
+              <svg class="persona" viewBox="0 0 120 110" aria-hidden="true"><circle cx="60" cy="42" r="26" fill="rgba(255,255,255,.9)"/><path d="M18 110c0-24 18-40 42-40s42 16 42 40z" fill="rgba(255,255,255,.9)"/></svg>
+            </div>
+            <div class="doc-body">
+              <h3>Dr. Priya Anand</h3>
+              <div class="doc-cred">DDS &middot; Invisalign &amp; Pediatric</div>
+              <p>A favourite with kids and teens, Dr. Anand makes orthodontics simple and visits fun. Certified Invisalign provider.</p>
+              <div class="doc-tags"><span>Invisalign</span><span>Kids</span><span>Ortho</span></div>
+            </div>
+          </article>
+
+          <article class="doc-card reveal">
+            <div class="doc-photo" style="background:linear-gradient(150deg,#ff6f61,#ffa49a)">
+              <span class="initials">TO</span>
+              <svg class="persona" viewBox="0 0 120 110" aria-hidden="true"><circle cx="60" cy="42" r="26" fill="rgba(255,255,255,.9)"/><path d="M18 110c0-24 18-40 42-40s42 16 42 40z" fill="rgba(255,255,255,.9)"/></svg>
+            </div>
+            <div class="doc-body">
+              <h3>Talia Owens</h3>
+              <div class="doc-cred">RDH &middot; Lead Hygienist</div>
+              <p>Our registered dental hygienist leads the gentle-cleaning team and our nervous-patient comfort program. The calmest cleanings in town.</p>
+              <div class="doc-tags"><span>Hygiene</span><span>Comfort</span><span>Prevention</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INSURANCE & BILLING ============ -->
+    <section id="insurance" class="wash" aria-labelledby="ins-h">
+      <div class="wrap">
+        <div class="ins-grid">
+          <div class="ins-copy reveal">
+            <span class="eyebrow">Insurance &amp; billing</span>
+            <h2 id="ins-h">We bill your insurance directly — so you don't have to</h2>
+            <p>Dental coverage can be confusing. We make it simple: bring your plan details and we'll handle the paperwork, submit your claim electronically, and you only pay any remaining balance (often $0).</p>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12.5l2 2 4-4.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg><span><b>Direct billing</b> to most major BC providers — no upfront full payment.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12.5l2 2 4-4.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg><span><b>Canadian Dental Care Plan (CDCP)</b> accepted — we're a participating provider.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12.5l2 2 4-4.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg><span><b>Clear, upfront estimates</b> before any treatment — no surprise bills, ever.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12.5l2 2 4-4.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg><span><b>No coverage? No problem.</b> Ask about our in-house membership plan from $29/mo.</span></li>
+            </ul>
+            <a class="btn btn-primary" href="#book">Book &amp; we'll verify your coverage</a>
+          </div>
+          <div class="ins-logos reveal" aria-label="Accepted insurance providers">
+            <div class="ins-logo"><span class="badge" style="background:linear-gradient(135deg,#3d7bf7,#5b93ff)">PB</span>Pacific Blue Cross</div>
+            <div class="ins-logo"><span class="badge" style="background:linear-gradient(135deg,#8a8fff,#6f74e8)">SL</span>Sun Life</div>
+            <div class="ins-logo"><span class="badge" style="background:linear-gradient(135deg,#2bd4a8,#13ae87)">MN</span>Manulife</div>
+            <div class="ins-logo"><span class="badge" style="background:linear-gradient(135deg,#ff6f61,#f0564c)">CL</span>Canada Life</div>
+            <div class="ins-logo"><span class="badge" style="background:linear-gradient(135deg,#f6a623,#d9941f)">GW</span>GreatWest / GSC</div>
+            <div class="ins-logo"><span class="badge" style="background:linear-gradient(135deg,#1f5fe0,#3d7bf7)">CD</span>CDCP &middot; Federal</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TECHNOLOGY ============ -->
+    <section id="technology" aria-labelledby="tech-h">
+      <div class="wrap">
+        <div class="head center reveal">
+          <span class="eyebrow center">Gentle, modern technology</span>
+          <h2 id="tech-h">Comfortable care, powered by the good stuff</h2>
+          <p>Modern dentistry should feel easy. Our tools mean less waiting, less guessing, and a whole lot less discomfort — so your visit is faster and calmer.</p>
+        </div>
+        <div class="tech-grid">
+          <article class="tech-card reveal">
+            <div class="tic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" stroke="currentColor" stroke-width="2"/><path d="M7 9v6M11 7v10M15 10v4M19 9v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <h3>Low-dose digital x-rays</h3>
+            <p>Up to 80% less radiation than traditional film, with instant on-screen images you can actually see and understand.</p>
+          </article>
+          <article class="tech-card reveal">
+            <div class="tic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8a8 8 0 0116 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="7" y="8" width="10" height="12" rx="2" stroke="currentColor" stroke-width="2"/><path d="M10 12h4M10 15h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <h3>3D intraoral scanning</h3>
+            <p>No more goopy impressions. A quick digital wand maps your smile in minutes — perfect for Invisalign, crowns, and implants.</p>
+          </article>
+          <article class="tech-card reveal">
+            <div class="tic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9.5 11.5l1.8 1.8 3.2-3.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Gentle &amp; sedation options</h3>
+            <p>From numbing gel and noise-cancelling headphones to laughing gas and oral sedation — anxious patients are our specialty.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ REVIEWS ============ -->
+    <section id="reviews" class="wash" aria-labelledby="rev-h">
+      <div class="wrap">
+        <div class="head center reveal">
+          <span class="eyebrow center">Patient stories</span>
+          <h2 id="rev-h">Vancouver loves their Clearview smiles</h2>
+          <p>Real reviews from real patients — the kind of word-of-mouth we're proud to earn one gentle visit at a time.</p>
+        </div>
+        <div class="review-grid">
+          <article class="review reveal">
+            <span class="stars" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.8 6.1 20l1.3-6.6L2.5 8.9l6.6-.8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.8 6.1 20l1.3-6.6L2.5 8.9l6.6-.8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.8 6.1 20l1.3-6.6L2.5 8.9l6.6-.8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.8 6.1 20l1.3-6.6L2.5 8.9l6.6-.8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.8 6.1 20l1.3-6.6L2.5 8.9l6.6-.8z"/></svg>
+            </span>
+            <p class="quote">"I've avoided dentists my whole life because of anxiety. The Clearview team was so patient and kind that I actually booked my next cleaning before I left. Genuinely life-changing."</p>
+            <div class="who"><span class="av" style="background:linear-gradient(135deg,#3d7bf7,#5b93ff)">SM</span><div class="meta"><b>Sarah M.</b><small>Kitsilano &middot; New patient</small></div></div>
+          </article>
+
+          <article class="review reveal">
+            <span class="stars" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.8 6.1 20l1.3-6.6L2.5 8.9l6.6-.8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.8 6.1 20l1.3-6.6L2.5 8.9l6.6-.8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.8 6.1 20l1.3-6.6L2.5 8.9l6.6-.8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.8 6.1 20l1.3-6.6L2.5 8.9l6.6-.8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.8 6.1 20l1.3-6.6L2.5 8.9l6.6-.8z"/></svg>
+            </span>
+            <p class="quote">"Dr. Vela replaced a tooth I'd been hiding for years. The 3D planning made it painless and the result is unreal — I can't stop smiling. Direct billing was effortless too."</p>
+            <div class="who"><span class="av" style="background:linear-gradient(135deg,#8a8fff,#6f74e8)">DT</span><div class="meta"><b>David T.</b><small>Mount Pleasant &middot; Implant patient</small></div></div>
+          </article>
+
+          <article class="review reveal">
+            <span class="stars" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.8 6.1 20l1.3-6.6L2.5 8.9l6.6-.8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.8 6.1 20l1.3-6.6L2.5 8.9l6.6-.8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.8 6.1 20l1.3-6.6L2.5 8.9l6.6-.8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.8 6.1 20l1.3-6.6L2.5 8.9l6.6-.8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.8 6.1 20l1.3-6.6L2.5 8.9l6.6-.8z"/></svg>
+            </span>
+            <p class="quote">"My two kids beg to come back — they get a fun scan, a sticker, and zero fear. Dr. Anand is incredible with little ones. Booking online took me 30 seconds."</p>
+            <div class="who"><span class="av" style="background:linear-gradient(135deg,#2bd4a8,#13ae87)">JL</span><div class="meta"><b>Jenny L.</b><small>Riley Park &middot; Family patient</small></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section id="faq" aria-labelledby="faq-h">
+      <div class="wrap">
+        <div class="head center reveal">
+          <span class="eyebrow center">Good to know</span>
+          <h2 id="faq-h">Questions, answered</h2>
+          <p>If you don't see your question here, just call us at 604-555-0148 — a real, friendly human will pick up.</p>
+        </div>
+        <div class="faq-wrap">
+          <details class="faq-item reveal">
+            <summary class="faq-q">I'm really nervous about the dentist. Can you help?
+              <span class="qmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+            </summary>
+            <div class="faq-a"><p>Absolutely — anxious patients are genuinely our specialty. Tell us when you book and we'll go slow, explain everything before we do it, and offer comfort options like numbing gel, headphones, weighted blankets, laughing gas, or oral sedation. There's no judgment here, ever.</p></div>
+          </details>
+
+          <details class="faq-item reveal">
+            <summary class="faq-q">Do you take my insurance, and will you bill it directly?
+              <span class="qmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+            </summary>
+            <div class="faq-a"><p>Most likely yes. We direct-bill to most major BC providers — Pacific Blue Cross, Sun Life, Manulife, Canada Life, GreatWest/GSC and more — plus the federal Canadian Dental Care Plan (CDCP). Bring your plan details to your first visit and we'll submit electronically so you only pay any remaining balance, which is often $0.</p></div>
+          </details>
+
+          <details class="faq-item reveal">
+            <summary class="faq-q">How early should my child's first visit be?
+              <span class="qmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+            </summary>
+            <div class="faq-a"><p>We recommend a first visit by age one or within six months of the first tooth appearing. Early visits are short, gentle, and mostly about helping your little one feel comfortable — and your child's first checkup with us is free. Dr. Anand makes it genuinely fun.</p></div>
+          </details>
+
+          <details class="faq-item reveal">
+            <summary class="faq-q">I have a dental emergency. What do I do right now?
+              <span class="qmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+            </summary>
+            <div class="faq-a"><p>Call us at <a href="tel:+16045550148">604-555-0148</a> right away — we keep same-day emergency slots open every day we're open for toothaches, chipped or knocked-out teeth, lost fillings, and swelling. If a tooth is knocked out, keep it moist (in milk or saliva) and come in fast. After hours, our line gives you urgent guidance.</p></div>
+          </details>
+
+          <details class="faq-item reveal">
+            <summary class="faq-q">What's included in the $99 new-patient offer?
+              <span class="qmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+            </summary>
+            <div class="faq-a"><p>Your $99 covers a complete dental exam, low-dose digital x-rays, an oral-cancer screening, and a personalized smile plan — no insurance required. If you'd like a cleaning the same day, we'll quote it transparently based on what you need, and direct-bill your insurance if you have it.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOURS & LOCATION ============ -->
+    <section id="contact" class="wash" aria-labelledby="loc-h">
+      <div class="wrap">
+        <div class="head reveal">
+          <span class="eyebrow">Visit us</span>
+          <h2 id="loc-h">Bright, easy to reach, and welcoming</h2>
+          <p>Free patient parking and a 4-minute walk from the Broadway-City Hall SkyTrain station.</p>
+        </div>
+        <div class="loc-grid" style="margin-top:2.2rem">
+          <div class="map-card reveal" role="img" aria-label="Stylized map showing Clearview Dental on Cambie Street near Broadway in Vancouver">
+            <svg viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="600" height="380" fill="#eaf1ff"/>
+              <!-- park blocks -->
+              <rect x="40" y="40" width="150" height="120" rx="10" fill="#d8f0e6"/>
+              <rect x="420" y="220" width="150" height="120" rx="10" fill="#d8f0e6"/>
+              <!-- water -->
+              <path d="M0 320 q150 -30 300 0 t300 0 V380 H0 Z" fill="#cfe0ff"/>
+              <!-- roads -->
+              <rect x="270" y="0" width="46" height="380" fill="#ffffff"/>
+              <rect x="0" y="170" width="600" height="42" fill="#ffffff"/>
+              <rect x="280" y="0" width="3" height="380" fill="#cfe0ff" stroke-dasharray="10 10"/>
+              <line x1="0" y1="191" x2="600" y2="191" stroke="#cfe0ff" stroke-width="3" stroke-dasharray="12 10"/>
+              <!-- buildings -->
+              <rect x="80" y="220" width="90" height="80" rx="6" fill="#dde6f8"/>
+              <rect x="360" y="60" width="70" height="80" rx="6" fill="#dde6f8"/>
+              <rect x="120" y="60" width="40" height="60" rx="6" fill="#e4ecfb"/>
+              <text x="316" y="30" font-family="DM Sans, sans-serif" font-size="13" fill="#8aa0c8">Cambie St</text>
+              <text x="20" y="162" font-family="DM Sans, sans-serif" font-size="13" fill="#8aa0c8">W Broadway</text>
+            </svg>
+            <span class="map-pin" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 22s-7-5-7-12a7 7 0 0114 0c0 7-7 12-7 12z" fill="#3d7bf7" stroke="#1f5fe0" stroke-width="1.5"/><circle cx="12" cy="10" r="3" fill="#fff"/></svg>
+            </span>
+            <span class="map-badge">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s-7-5-7-12a7 7 0 0114 0c0 7-7 12-7 12z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+              2480 Cambie Street, Vancouver
+            </span>
+          </div>
+
+          <div class="info-card reveal">
+            <div class="info-block">
+              <div class="lbl"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Office Hours</div>
+              <table class="hours-table" id="hoursTable">
+                <tr data-day="1"><td>Monday</td><td>8:00 am – 6:00 pm</td></tr>
+                <tr data-day="2"><td>Tuesday</td><td>8:00 am – 6:00 pm</td></tr>
+                <tr data-day="3"><td>Wednesday</td><td>9:00 am – 7:00 pm</td></tr>
+                <tr data-day="4"><td>Thursday</td><td>8:00 am – 6:00 pm</td></tr>
+                <tr data-day="5"><td>Friday</td><td>8:00 am – 4:00 pm</td></tr>
+                <tr data-day="6"><td>Saturday</td><td>9:00 am – 3:00 pm</td></tr>
+                <tr data-day="0" class="closed"><td>Sunday</td><td>Closed</td></tr>
+              </table>
+            </div>
+            <div class="info-block">
+              <div class="lbl"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="11" r="2.4" stroke="currentColor" stroke-width="2"/></svg> Find Us</div>
+              <address class="addr">
+                2480 Cambie Street, Suite 200<br>
+                Vancouver, BC &nbsp;V5Z 2T8<br>
+                <a href="tel:+16045550148">604-555-0148</a> &nbsp;&middot;&nbsp; <a href="mailto:hello@clearviewdental.ca">hello@clearviewdental.ca</a>
+              </address>
+            </div>
+            <a class="btn btn-primary btn-block" href="#book">Book your visit</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA BAND ============ -->
+    <section style="padding-bottom:clamp(56px,8vw,104px)">
+      <div class="wrap">
+        <div class="cta-band reveal">
+          <h2>Ready for a smile you're proud of?</h2>
+          <p>Join the 42,000+ Vancouverites who trust Clearview Dental. Book your $99 new-patient exam today — we'll handle the rest.</p>
+          <div class="hero-cta">
+            <a class="btn btn-coral btn-lg" href="#book">Book new-patient visit</a>
+            <a class="btn btn-ghost btn-lg" href="tel:+16045550148">Call 604-555-0148</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand" href="#top" aria-label="Clearview Dental home">
+            <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <rect width="40" height="40" rx="11" fill="url(#lgGradF)"/>
+              <path d="M20 9c-3.6-2.4-8.5-1.6-10 1.8-1.2 2.7-.2 6 .9 9.2.8 2.4 1.3 5.6 2.1 7.7.5 1.4 2.3 1.5 2.8.1.5-1.4.9-3.4 1.6-4.6.6-1 2.4-1 3 0 .7 1.2 1.1 3.2 1.6 4.6.5 1.4 2.3 1.3 2.8-.1.8-2.1 1.3-5.3 2.1-7.7 1.1-3.2 2.1-6.5.9-9.2C28.5 7.4 23.6 6.6 20 9z" fill="#fff"/>
+              <defs><linearGradient id="lgGradF" x1="0" y1="0" x2="40" y2="40"><stop stop-color="#3d7bf7"/><stop offset="1" stop-color="#8a8fff"/></linearGradient></defs>
+            </svg>
+            Clear<b>view</b> Dental
+          </a>
+          <p>Bright, gentle family &amp; cosmetic dentistry in the heart of Vancouver. Smile — you're in good hands.</p>
+          <div class="socials">
+            <a href="#" aria-label="Clearview Dental on Instagram"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a>
+            <a href="#" aria-label="Clearview Dental on Facebook"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 8h2V5h-2c-2 0-3 1.3-3 3.2V10H9v3h2v8h3v-8h2.2l.5-3H14V8.6c0-.4.2-.6.7-.6z" fill="currentColor"/></svg></a>
+            <a href="#" aria-label="Clearview Dental on Google"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.8 6.1 20l1.3-6.6L2.5 8.9l6.6-.8z" fill="currentColor"/></svg></a>
+          </div>
+        </div>
+
+        <div class="foot-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">General Dentistry</a></li>
+            <li><a href="#services">Cosmetic &amp; Whitening</a></li>
+            <li><a href="#services">Invisalign &amp; Ortho</a></li>
+            <li><a href="#services">Dental Implants</a></li>
+            <li><a href="#services">Kids' Dentistry</a></li>
+            <li><a href="#services">Emergency Care</a></li>
+          </ul>
+        </div>
+
+        <div class="foot-col">
+          <h4>Practice</h4>
+          <ul>
+            <li><a href="#team">Our Team</a></li>
+            <li><a href="#offer">New-Patient Offer</a></li>
+            <li><a href="#insurance">Insurance &amp; Billing</a></li>
+            <li><a href="#technology">Technology</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="foot-col">
+          <h4>Visit</h4>
+          <address>
+            2480 Cambie Street, Suite 200<br>
+            Vancouver, BC &nbsp;V5Z 2T8<br>
+            <a href="tel:+16045550148">604-555-0148</a><br>
+            <a href="mailto:hello@clearviewdental.ca">hello@clearviewdental.ca</a>
+          </address>
+          <a class="btn btn-coral" href="#book" style="margin-top:1.1rem">Book a visit</a>
+        </div>
+      </div>
+
+      <div class="foot-bottom">
+        <small>&copy; <span id="year">2026</span> Clearview Dental Inc. &middot; College of Dental Surgeons of BC registered &middot; All rights reserved.</small>
+        <span class="credit">Concept site crafted by <a href="../index.html">Maple</a> &middot; sample design</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    "use strict";
+
+    /* ---------- Header shadow on scroll ---------- */
+    var header = document.querySelector('header.site');
+    var onScroll = function () {
+      if (window.scrollY > 8) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* ---------- Mobile menu ---------- */
+    var hamburger = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobileMenu');
+    var scrim = document.getElementById('scrim');
+    function setMenu(open) {
+      mobileMenu.classList.toggle('open', open);
+      scrim.classList.toggle('show', open);
+      scrim.style.display = open ? 'block' : 'none';
+      hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+    hamburger.addEventListener('click', function () {
+      setMenu(!mobileMenu.classList.contains('open'));
+    });
+    scrim.addEventListener('click', function () { setMenu(false); });
+    mobileMenu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { setMenu(false); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) setMenu(false);
+    });
+
+    /* ---------- Reveal on scroll ---------- */
+    var reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) {
+            en.target.classList.add('in');
+            io.unobserve(en.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      reveals.forEach(function (el) { io.observe(el); });
+    } else {
+      reveals.forEach(function (el) { el.classList.add('in'); });
+    }
+
+    /* ---------- Stat count-up ---------- */
+    var counted = false;
+    function animateCounts() {
+      if (counted) return;
+      counted = true;
+      document.querySelectorAll('.num[data-count]').forEach(function (el) {
+        var target = parseInt(el.getAttribute('data-count'), 10);
+        var suffix = el.getAttribute('data-suffix') || '';
+        var dur = 1400, start = null;
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduce) { el.textContent = target.toLocaleString() + suffix; return; }
+        function tick(ts) {
+          if (!start) start = ts;
+          var p = Math.min((ts - start) / dur, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.floor(eased * target).toLocaleString() + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+          else el.textContent = target.toLocaleString() + suffix;
+        }
+        requestAnimationFrame(tick);
+      });
+    }
+    var statsSection = document.querySelector('.stats');
+    if (statsSection && 'IntersectionObserver' in window) {
+      var statIo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { animateCounts(); statIo.disconnect(); } });
+      }, { threshold: 0.4 });
+      statIo.observe(statsSection);
+    } else {
+      animateCounts();
+    }
+
+    /* ---------- Highlight today's hours ---------- */
+    (function () {
+      var today = new Date().getDay();
+      var row = document.querySelector('#hoursTable tr[data-day="' + today + '"]');
+      if (row) row.classList.add('today');
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+
+    /* ===================================================
+       BOOKING WIDGET — pure-JS multi-step flow
+       =================================================== */
+    var state = { step: 1, reason: null, reasonDur: null, dentist: null, dentistRole: null, day: null, time: null };
+    var TOTAL = 4;
+    var stepNames = ['Reason for visit', 'Choose a dentist', 'Pick a day & time', 'Your details'];
+
+    var form = document.getElementById('bookForm');
+    var nextBtn = document.getElementById('nextBtn');
+    var backBtn = document.getElementById('backBtn');
+    var stepNow = document.getElementById('stepNow');
+    var stepName = document.getElementById('stepName');
+    var stepperNodes = document.querySelectorAll('#stepper .node');
+
+    /* generic single-select option groups */
+    function wireOptions(containerId, onPick) {
+      var container = document.getElementById(containerId);
+      container.querySelectorAll('.opt').forEach(function (btn) {
+        btn.setAttribute('aria-pressed', 'false');
+        btn.addEventListener('click', function () {
+          container.querySelectorAll('.opt').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+          btn.setAttribute('aria-pressed', 'true');
+          onPick(btn);
+          refreshNext();
+        });
+      });
+    }
+
+    wireOptions('reasonList', function (btn) {
+      state.reason = decode(btn.getAttribute('data-value'));
+      state.reasonDur = btn.getAttribute('data-dur');
+    });
+    wireOptions('dentistList', function (btn) {
+      state.dentist = decode(btn.getAttribute('data-value'));
+      state.dentistRole = btn.getAttribute('data-role') || '';
+    });
+
+    function decode(s) {
+      var t = document.createElement('textarea');
+      t.innerHTML = s;
+      return t.value;
+    }
+
+    /* build day chips (next 7 weekday-ish days, skip Sunday since closed) */
+    var dayRow = document.getElementById('dayRow');
+    var slotGrid = document.getElementById('slotGrid');
+    var DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    var MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    function buildDays() {
+      dayRow.innerHTML = '';
+      var added = 0;
+      var d = new Date();
+      d.setHours(0, 0, 0, 0);
+      d.setDate(d.getDate() + 1); // start tomorrow
+      var guard = 0;
+      while (added < 6 && guard < 20) {
+        guard++;
+        if (d.getDay() !== 0) { // skip Sundays (closed)
+          var chip = document.createElement('button');
+          chip.type = 'button';
+          chip.className = 'day';
+          chip.setAttribute('aria-pressed', 'false');
+          var label = DOW[d.getDay()] + ' ' + MON[d.getMonth()] + ' ' + d.getDate();
+          chip.setAttribute('data-label', label);
+          chip.innerHTML = '<div class="dow">' + DOW[d.getDay()] + '</div>' +
+                           '<div class="dnum">' + d.getDate() + '</div>' +
+                           '<div class="dmo">' + MON[d.getMonth()] + '</div>';
+          (function (lbl, el) {
+            el.addEventListener('click', function () {
+              dayRow.querySelectorAll('.day').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+              el.setAttribute('aria-pressed', 'true');
+              state.day = lbl;
+              state.time = null;
+              buildSlots(el);
+              refreshNext();
+            });
+          })(label, chip);
+          dayRow.appendChild(chip);
+          added++;
+        }
+        d.setDate(d.getDate() + 1);
+      }
+    }
+
+    /* pseudo-random but stable slots per day */
+    var ALL_SLOTS = ['8:00', '9:00', '9:40', '10:30', '11:15', '1:00', '2:00', '2:45', '3:30', '4:30', '5:15'];
+    function buildSlots(dayEl) {
+      slotGrid.innerHTML = '';
+      var seed = 0, lbl = dayEl.getAttribute('data-label');
+      for (var i = 0; i < lbl.length; i++) seed += lbl.charCodeAt(i);
+      ALL_SLOTS.forEach(function (t, idx) {
+        if ((seed + idx * 3) % 4 === 0) return; // hide some to look "booked"
+        var hour = parseInt(t.split(':')[0], 10);
+        var ampm = (hour >= 8 && hour <= 11) ? 'am' : 'pm';
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'slot';
+        btn.setAttribute('aria-pressed', 'false');
+        btn.textContent = t + ' ' + ampm;
+        btn.addEventListener('click', function () {
+          slotGrid.querySelectorAll('.slot').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+          btn.setAttribute('aria-pressed', 'true');
+          state.time = btn.textContent;
+          refreshNext();
+        });
+        slotGrid.appendChild(btn);
+      });
+      if (!slotGrid.children.length) {
+        var note = document.createElement('p');
+        note.className = 'hint';
+        note.textContent = 'Fully booked that day — try another, or call us for same-day options.';
+        slotGrid.appendChild(note);
+      }
+    }
+    buildDays();
+
+    /* validation per step */
+    function stepValid(n) {
+      if (n === 1) return !!state.reason;
+      if (n === 2) return !!state.dentist;
+      if (n === 3) return !!(state.day && state.time);
+      if (n === 4) {
+        return ['fName', 'lName', 'email', 'phone'].every(function (id) {
+          return document.getElementById(id).value.trim().length > 0;
+        });
+      }
+      return true;
+    }
+
+    function refreshNext() {
+      nextBtn.disabled = !stepValid(state.step);
+    }
+
+    ['fName', 'lName', 'email', 'phone'].forEach(function (id) {
+      document.getElementById(id).addEventListener('input', refreshNext);
+    });
+
+    function showStep(n) {
+      state.step = n;
+      form.querySelectorAll('.step').forEach(function (s) {
+        s.classList.toggle('active', parseInt(s.getAttribute('data-step'), 10) === n);
+      });
+      // stepper visuals
+      stepperNodes.forEach(function (node) {
+        var idx = parseInt(node.getAttribute('data-node'), 10);
+        node.classList.toggle('done', idx < n);
+        node.classList.toggle('active', idx === n);
+      });
+      stepNow.textContent = n;
+      stepName.textContent = stepNames[n - 1];
+      backBtn.hidden = (n === 1);
+      nextBtn.textContent = (n === TOTAL) ? 'Confirm booking' : 'Continue';
+      if (n === 4) fillSummary();
+      refreshNext();
+      // move focus to the active step heading for screen-reader/keyboard users
+      var active = form.querySelector('.step.active h3');
+      if (active) { active.setAttribute('tabindex', '-1'); active.focus({ preventScroll: true }); }
+    }
+
+    function fmtWhen() {
+      if (!state.day || !state.time) return '—';
+      return state.day + ' · ' + state.time;
+    }
+    function fillSummary() {
+      document.getElementById('sumReason').textContent = state.reason + (state.reasonDur ? ' (' + state.reasonDur + ')' : '');
+      document.getElementById('sumDentist').textContent = state.dentist;
+      document.getElementById('sumWhen').textContent = fmtWhen();
+    }
+
+    nextBtn.addEventListener('click', function () {
+      if (!stepValid(state.step)) return;
+      if (state.step < TOTAL) {
+        showStep(state.step + 1);
+      } else {
+        confirmBooking();
+      }
+    });
+    backBtn.addEventListener('click', function () {
+      if (state.step > 1) showStep(state.step - 1);
+    });
+
+    /* allow Enter in detail fields to advance */
+    form.addEventListener('submit', function (e) { e.preventDefault(); if (!nextBtn.disabled) nextBtn.click(); });
+
+    function confirmBooking() {
+      var name = document.getElementById('fName').value.trim();
+      document.getElementById('detailsPane').hidden = true;
+      var foot = document.getElementById('bookerFoot');
+      foot.style.display = 'none';
+      var pane = document.getElementById('confirmPane');
+      pane.hidden = false;
+      document.getElementById('confirmName').textContent = (name ? name + ', you’re all booked!' : 'You’re all booked!');
+      document.getElementById('cReason').textContent = state.reason;
+      document.getElementById('cDentist').textContent = state.dentist;
+      document.getElementById('cWhen').textContent = fmtWhen();
+      // mark all stepper nodes done
+      stepperNodes.forEach(function (node) { node.classList.add('done'); node.classList.remove('active'); });
+      stepName.textContent = 'Confirmed!';
+      pane.querySelector('h3').setAttribute('tabindex', '-1');
+      pane.querySelector('h3').focus({ preventScroll: true });
+    }
+
+    document.getElementById('restartBtn').addEventListener('click', function () {
+      state = { step: 1, reason: null, reasonDur: null, dentist: null, dentistRole: null, day: null, time: null };
+      form.reset();
+      document.querySelectorAll('#bookForm .opt, #dayRow .day, #slotGrid .slot').forEach(function (b) {
+        b.setAttribute('aria-pressed', 'false');
+      });
+      slotGrid.innerHTML = '';
+      buildDays();
+      document.getElementById('detailsPane').hidden = false;
+      document.getElementById('confirmPane').hidden = true;
+      document.getElementById('bookerFoot').style.display = '';
+      showStep(1);
+    });
+
+    showStep(1);
+  })();
+  </script>
+</body>
+</html>

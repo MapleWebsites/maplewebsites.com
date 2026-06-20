@@ -445,8 +445,9 @@
     }
     .work-note svg { width: 18px; height: 18px; color: var(--evergreen); flex: none; }
     .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .work-card { background: var(--surface); border: 1px solid var(--fog-3); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.22s ease, box-shadow 0.22s ease; }
+    .work-card { position: relative; background: var(--surface); border: 1px solid var(--fog-3); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.22s ease, box-shadow 0.22s ease; }
     .work-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .work-card:focus-within { box-shadow: var(--shadow); }
     .work-thumb { position: relative; aspect-ratio: 16 / 11; overflow: hidden; background: var(--fog-2); }
     .work-thumb svg { width: 100%; height: 100%; display: block; transition: transform 0.5s ease; }
     .work-card:hover .work-thumb svg { transform: scale(1.04); }
@@ -457,6 +458,13 @@
     .work-tag { font-size: 0.66rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--tide); background: var(--tide-soft); border-radius: 999px; padding: 4px 10px; white-space: nowrap; }
     .work-body p { color: var(--body); font-size: 0.93rem; flex: 1; }
     .work-outcome { display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; color: var(--evergreen); background: rgba(24,88,62,0.1); border-radius: 9px; padding: 7px 11px; }
+    /* whole-card link to the live sample site (opens in a new tab) */
+    .work-sample-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 2px; font-size: 0.9rem; font-weight: 700; color: var(--arbutus); transition: gap 0.18s ease; }
+    .work-sample-link svg { width: 16px; height: 16px; transition: transform 0.18s ease; }
+    .work-card:hover .work-sample-link svg { transform: translateX(3px); }
+    .work-sample-link::after { content: ""; position: absolute; inset: 0; z-index: 4; border-radius: var(--radius); }
+    .work-sample-link:focus-visible { outline: none; }
+    .work-card:focus-within .work-sample-link { text-decoration: underline; }
     .work-outcome svg { width: 15px; height: 15px; flex: none; }
     .work-outcome em { font-style: normal; color: var(--muted); font-weight: 400; font-size: 0.78rem; }
 
@@ -1061,6 +1069,7 @@
               <div class="work-head"><h3>Pawsome Groomers</h3><span class="work-tag">Booking</span></div>
               <p>An online booking concept for a pet-grooming studio, with automated reminders and an AI chatbot that fields the most common questions.</p>
               <span class="work-outcome"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 17 9 11l4 4 8-8"/><path d="M21 7v5h-5"/></svg> Designed to turn more visits into booked appointments <em>· design goal</em></span>
+              <a class="work-sample-link" href="samples/pawsome-groomers.html" target="_blank" rel="noopener" aria-label="View the Pawsome Groomers sample site (opens in a new tab)">View live sample <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
             </div>
           </article>
 
@@ -1084,6 +1093,7 @@
               <div class="work-head"><h3>Cedar &amp; Tide Bistro</h3><span class="work-tag">Restaurant</span></div>
               <p>A mouth-watering farm-to-table concept with online reservations, a live menu, and local SEO structured to rank across the neighbourhood.</p>
               <span class="work-outcome"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 17 9 11l4 4 8-8"/><path d="M21 7v5h-5"/></svg> Built to win local "near me" searches <em>· design goal</em></span>
+              <a class="work-sample-link" href="samples/cedar-and-tide-bistro.html" target="_blank" rel="noopener" aria-label="View the Cedar &amp; Tide Bistro sample site (opens in a new tab)">View live sample <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
             </div>
           </article>
 
@@ -1112,6 +1122,7 @@
               <div class="work-head"><h3>Mainland Physio</h3><span class="work-tag">Health</span></div>
               <p>A calm, trust-first clinic concept with online intake forms, direct-billing info, and one-tap booking — tuned for mobile-first patients.</p>
               <span class="work-outcome"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 17 9 11l4 4 8-8"/><path d="M21 7v5h-5"/></svg> Designed to cut no-shows with reminders <em>· design goal</em></span>
+              <a class="work-sample-link" href="samples/mainland-physio.html" target="_blank" rel="noopener" aria-label="View the Mainland Physio sample site (opens in a new tab)">View live sample <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
             </div>
           </article>
 
@@ -1140,6 +1151,7 @@
               <div class="work-head"><h3>North Shore Fitness</h3><span class="work-tag">E-commerce</span></div>
               <p>A bold outdoor-gym concept selling memberships and trail-run class packs online, with a member portal and integrated payments.</p>
               <span class="work-outcome"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 17 9 11l4 4 8-8"/><path d="M21 7v5h-5"/></svg> Built to sell class packs around the clock <em>· design goal</em></span>
+              <a class="work-sample-link" href="samples/north-shore-fitness.html" target="_blank" rel="noopener" aria-label="View the North Shore Fitness sample site (opens in a new tab)">View live sample <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
             </div>
           </article>
 
@@ -1164,6 +1176,7 @@
               <div class="work-head"><h3>Fraser Joinery</h3><span class="work-tag">Portfolio</span></div>
               <p>A minimal, image-forward portfolio concept for a custom-furniture maker — fast image loading and a relentless focus on craft and detail.</p>
               <span class="work-outcome"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 17 9 11l4 4 8-8"/><path d="M21 7v5h-5"/></svg> Designed to turn browsers into quote requests <em>· design goal</em></span>
+              <a class="work-sample-link" href="samples/fraser-joinery.html" target="_blank" rel="noopener" aria-label="View the Fraser Joinery sample site (opens in a new tab)">View live sample <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
             </div>
           </article>
 
@@ -1190,6 +1203,7 @@
               <div class="work-head"><h3>Strand &amp; Steam Café</h3><span class="work-tag">Hospitality</span></div>
               <p>A warm café-and-roastery concept with an online beans shop, loyalty sign-ups, and a story-driven layout built to grow a regular crowd.</p>
               <span class="work-outcome"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 17 9 11l4 4 8-8"/><path d="M21 7v5h-5"/></svg> Built to grow the email &amp; loyalty list <em>· design goal</em></span>
+              <a class="work-sample-link" href="samples/strand-and-steam-cafe.html" target="_blank" rel="noopener" aria-label="View the Strand &amp; Steam Café sample site (opens in a new tab)">View live sample <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
             </div>
           </article>
         </div>

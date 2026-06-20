@@ -251,6 +251,7 @@
     /* Work grid (same card style as the home page work section) */
     .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .work-card {
+      position: relative;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -259,7 +260,8 @@
       flex-direction: column;
       transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, opacity 0.3s ease;
     }
-    .work-card:hover {
+    .work-card:hover,
+    .work-card:focus-within {
       transform: translateY(-6px);
       border-color: rgba(24, 88, 62, 0.5);
       box-shadow: var(--shadow);
@@ -330,7 +332,11 @@
       border-radius: 999px;
       padding: 3px 9px;
     }
-    .work-link { color: var(--brand-2); font-weight: 600; font-size: 0.92rem; transition: color 0.15s; margin-top: 4px; }
+    .work-link { color: var(--brand-2); font-weight: 700; font-size: 0.92rem; transition: color 0.15s; margin-top: 4px; }
+    /* stretch the link across the whole card so the entire card opens the sample */
+    .work-link::after { content: ""; position: absolute; inset: 0; z-index: 3; border-radius: var(--radius); }
+    .work-link:focus-visible { outline: none; }
+    .work-card:hover .work-link, .work-card:focus-within .work-link { color: var(--brand); text-decoration: underline; }
     .work-link:hover { color: var(--brand); }
 
     /* Empty state */
@@ -590,7 +596,7 @@
               <div class="work-head"><h3>TeachingGrandma</h3><span class="work-tag">Education</span></div>
               <p>Friendly, large-type tutorials that help seniors get comfortable with everyday tech. Built for accessibility, high contrast, and dead-simple navigation.</p>
               <div class="work-chips"><span class="work-chip">Accessibility-first</span><span class="work-chip">SEO</span><span class="work-chip">AI chatbot</span></div>
-              <a class="work-link" href="case-study.html">View case study →</a>
+              <a class="work-link" href="samples/teachinggrandma.html" target="_blank" rel="noopener" aria-label="View the TeachingGrandma sample site (opens in a new tab)">View live sample →</a>
             </div>
           </article>
 
@@ -604,7 +610,7 @@
               <div class="work-head"><h3>Pawsome Groomers</h3><span class="work-tag">Booking</span></div>
               <p>An online booking concept for a pet-grooming studio, with automated reminders and an AI chatbot that answers common questions and fills the calendar.</p>
               <div class="work-chips"><span class="work-chip">Online booking</span><span class="work-chip">AI chatbot</span><span class="work-chip">Reminders</span></div>
-              <a class="work-link" href="case-study.html">View case study →</a>
+              <a class="work-link" href="samples/pawsome-groomers.html" target="_blank" rel="noopener" aria-label="View the Pawsome Groomers sample site (opens in a new tab)">View live sample →</a>
             </div>
           </article>
 
@@ -618,7 +624,7 @@
               <div class="work-head"><h3>BrightLedger</h3><span class="work-tag">SaaS</span></div>
               <p>A crisp marketing-site concept for a bookkeeping startup, with conversion tracking and a clear, sign-up-focused pricing page designed to grow trials.</p>
               <div class="work-chips"><span class="work-chip">Conversion tracking</span><span class="work-chip">Google Analytics</span><span class="work-chip">Pricing page</span></div>
-              <a class="work-link" href="case-study.html">View case study →</a>
+              <a class="work-link" href="samples/brightledger.html" target="_blank" rel="noopener" aria-label="View the BrightLedger sample site (opens in a new tab)">View live sample →</a>
             </div>
           </article>
 
@@ -632,7 +638,7 @@
               <div class="work-head"><h3>Harvest Moon Bistro</h3><span class="work-tag">Restaurant</span></div>
               <p>A mouth-watering restaurant concept with online reservations, a live menu, and local SEO structured to rank for "best dinner near me" in its city.</p>
               <div class="work-chips"><span class="work-chip">Reservations</span><span class="work-chip">Local SEO</span><span class="work-chip">Live menu</span></div>
-              <a class="work-link" href="case-study.html">View case study →</a>
+              <a class="work-link" href="samples/harvest-moon-bistro.html" target="_blank" rel="noopener" aria-label="View the Harvest Moon Bistro sample site (opens in a new tab)">View live sample →</a>
             </div>
           </article>
 
@@ -646,7 +652,7 @@
               <div class="work-head"><h3>Summit Peak Fitness</h3><span class="work-tag">E-commerce</span></div>
               <p>A bold gym concept selling memberships and class packs online, with a member portal, integrated payments, and abandoned-cart email automations.</p>
               <div class="work-chips"><span class="work-chip">Secure checkout</span><span class="work-chip">Memberships</span><span class="work-chip">Email automation</span></div>
-              <a class="work-link" href="case-study.html">View case study →</a>
+              <a class="work-link" href="samples/summit-peak-fitness.html" target="_blank" rel="noopener" aria-label="View the Summit Peak Fitness sample site (opens in a new tab)">View live sample →</a>
             </div>
           </article>
 
@@ -660,7 +666,7 @@
               <div class="work-head"><h3>Lumen Architects</h3><span class="work-tag">Portfolio</span></div>
               <p>A minimal, image-forward portfolio concept for a design firm, with lazy-loaded imagery and a relentless focus on top Core Web Vitals scores.</p>
               <div class="work-chips"><span class="work-chip">Image-forward</span><span class="work-chip">Core Web Vitals</span><span class="work-chip">Performance</span></div>
-              <a class="work-link" href="case-study.html">View case study →</a>
+              <a class="work-link" href="samples/lumen-architects.html" target="_blank" rel="noopener" aria-label="View the Lumen Architects sample site (opens in a new tab)">View live sample →</a>
             </div>
           </article>
 
@@ -674,7 +680,7 @@
               <div class="work-head"><h3>Maple &amp; Thread</h3><span class="work-tag">E-commerce</span></div>
               <p>A boutique apparel store concept with product filtering, a fast cart, and a quiz-style AI assistant that recommends pieces and nudges shoppers to buy.</p>
               <div class="work-chips"><span class="work-chip">Product filtering</span><span class="work-chip">AI assistant</span><span class="work-chip">Inventory</span></div>
-              <a class="work-link" href="case-study.html">View case study →</a>
+              <a class="work-link" href="samples/maple-and-thread.html" target="_blank" rel="noopener" aria-label="View the Maple &amp; Thread sample site (opens in a new tab)">View live sample →</a>
             </div>
           </article>
 
@@ -688,7 +694,7 @@
               <div class="work-head"><h3>Clearview Dental</h3><span class="work-tag">Booking</span></div>
               <p>A calm, trust-building dental practice concept with new-patient online booking, insurance FAQs handled by the AI chatbot, and local SEO baked in.</p>
               <div class="work-chips"><span class="work-chip">Appointment booking</span><span class="work-chip">AI chatbot</span><span class="work-chip">Local SEO</span></div>
-              <a class="work-link" href="case-study.html">View case study →</a>
+              <a class="work-link" href="samples/clearview-dental.html" target="_blank" rel="noopener" aria-label="View the Clearview Dental sample site (opens in a new tab)">View live sample →</a>
             </div>
           </article>
 
@@ -702,7 +708,7 @@
               <div class="work-head"><h3>FlowMetric</h3><span class="work-tag">SaaS</span></div>
               <p>A high-contrast analytics-platform concept with an interactive feature tour, analytics-tracked CTAs, and an SEO-friendly blog structure built to compound traffic.</p>
               <div class="work-chips"><span class="work-chip">Feature tour</span><span class="work-chip">Google Analytics</span><span class="work-chip">SEO blog</span></div>
-              <a class="work-link" href="case-study.html">View case study →</a>
+              <a class="work-link" href="samples/flowmetric.html" target="_blank" rel="noopener" aria-label="View the FlowMetric sample site (opens in a new tab)">View live sample →</a>
             </div>
           </article>
 

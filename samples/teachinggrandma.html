@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TeachingGrandma — Technology, Made Gentle | Friendly Tech Lessons for Seniors</title>
+  <meta name="description" content="TeachingGrandma offers warm, patient, large-type online tutorials and 1:1 sessions that help seniors get comfortable with phones, email, video calls, and staying safe online. Book a free 20-minute chat." />
+  <meta name="author" content="TeachingGrandma" />
+  <meta name="theme-color" content="#1c5d99" />
+
+  <!-- Google Fonts: Atkinson Hyperlegible — a highly legible humanist sans designed for low-vision readers -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =========================================================
+       TeachingGrandma — design tokens
+       Warm, high-contrast, generous. Big type by default.
+       ========================================================= */
+    :root {
+      /* Palette: warm blues + soft coral/amber on warm off-white */
+      --ink:        #20242e;   /* near-black warm text */
+      --ink-soft:   #4b5160;
+      --paper:      #fbf6ee;   /* warm off-white */
+      --paper-2:    #fffdf9;   /* card surface */
+      --blue:       #1c5d99;   /* trustworthy warm blue */
+      --blue-deep:  #15406b;
+      --blue-tint:  #e7f0f9;
+      --coral:      #e8674a;   /* friendly coral */
+      --coral-deep: #c44a31;
+      --amber:      #f4a836;   /* soft amber */
+      --amber-tint: #fdeecb;
+      --leaf:       #2f8f6e;   /* gentle success green */
+      --line:       #e6ddcf;
+
+      /* Type scale — base controlled by .text-* classes on <html> */
+      --fs-base: 19px;         /* generous base */
+      --lh-base: 1.75;
+
+      --radius:    18px;
+      --radius-lg: 28px;
+      --radius-pill: 999px;
+      --shadow-sm: 0 2px 8px rgba(32,36,46,.06);
+      --shadow:    0 10px 30px rgba(21,64,107,.10);
+      --shadow-lg: 0 22px 60px rgba(21,64,107,.16);
+      --maxw: 1180px;
+      --tap: 56px; /* big tap targets, well above 48px minimum */
+    }
+
+    /* Text-size control: scales whole page by adjusting root font-size */
+    html { font-size: var(--fs-base); scroll-behavior: smooth; }
+    html.text-md  { font-size: 19px; }
+    html.text-lg  { font-size: 22px; }
+    html.text-xl  { font-size: 26px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Atkinson Hyperlegible", system-ui, -apple-system, sans-serif;
+      font-size: 1rem;
+      line-height: var(--lh-base);
+      color: var(--ink);
+      background: var(--paper);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    h1, h2, h3 {
+      font-family: "Fraunces", Georgia, serif;
+      line-height: 1.12;
+      color: var(--ink);
+      margin: 0 0 .4em;
+      letter-spacing: -0.01em;
+    }
+    h1 { font-size: clamp(2.4rem, 6vw, 3.7rem); }
+    h2 { font-size: clamp(1.9rem, 4vw, 2.7rem); }
+    h3 { font-size: clamp(1.25rem, 2.4vw, 1.5rem); font-family: "Atkinson Hyperlegible", sans-serif; font-weight: 700; }
+    p  { margin: 0 0 1rem; }
+    a  { color: var(--blue); }
+
+    img, svg { max-width: 100%; }
+
+    .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+    /* ---- Accessibility: skip link + strong focus rings ---- */
+    .skip-link {
+      position: absolute; left: 16px; top: -200px;
+      background: var(--ink); color: #fff;
+      padding: 16px 24px; border-radius: 12px; z-index: 999;
+      font-weight: 700; text-decoration: none; font-size: 1.05rem;
+      transition: top .15s ease;
+    }
+    .skip-link:focus { top: 16px; }
+
+    :focus-visible {
+      outline: 4px solid var(--amber);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    /* ---- Buttons ---- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+      min-height: var(--tap); padding: .85rem 1.7rem;
+      font-family: inherit; font-size: 1.05rem; font-weight: 700;
+      border-radius: var(--radius-pill); border: 3px solid transparent;
+      cursor: pointer; text-decoration: none; line-height: 1.2;
+      transition: transform .14s ease, box-shadow .14s ease, background .14s ease;
+    }
+    .btn:active { transform: translateY(1px) scale(.99); }
+    .btn-primary { background: var(--coral); color: #fff; box-shadow: var(--shadow-sm); }
+    .btn-primary:hover { background: var(--coral-deep); box-shadow: var(--shadow); }
+    .btn-blue { background: var(--blue); color: #fff; }
+    .btn-blue:hover { background: var(--blue-deep); }
+    .btn-ghost { background: var(--paper-2); color: var(--blue-deep); border-color: var(--blue); }
+    .btn-ghost:hover { background: var(--blue-tint); }
+    .btn-lg { min-height: 64px; font-size: 1.15rem; padding: 1rem 2.1rem; }
+
+    /* ============ HEADER ============ */
+    header.site {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(251,246,238,.86);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid transparent;
+      transition: box-shadow .2s ease, border-color .2s ease, background .2s ease;
+    }
+    header.site.scrolled {
+      box-shadow: var(--shadow-sm);
+      border-bottom-color: var(--line);
+      background: rgba(251,246,238,.95);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 80px; gap: 1rem; }
+    .brand { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; color: var(--ink); font-weight: 700; }
+    .brand .mark { flex: 0 0 auto; }
+    .brand .name { font-family: "Fraunces", serif; font-size: 1.5rem; font-weight: 600; letter-spacing: -.01em; }
+    .brand .name b { color: var(--coral-deep); }
+
+    .nav-links { display: flex; align-items: center; gap: .35rem; list-style: none; margin: 0; padding: 0; }
+    .nav-links a {
+      display: inline-flex; align-items: center; min-height: 48px;
+      padding: .4rem .85rem; border-radius: 12px;
+      text-decoration: none; color: var(--ink); font-weight: 700; font-size: 1rem;
+    }
+    .nav-links a:hover { background: var(--blue-tint); color: var(--blue-deep); }
+
+    .nav-right { display: flex; align-items: center; gap: .75rem; }
+
+    /* Text-size control */
+    .textsize {
+      display: inline-flex; align-items: center; gap: .3rem;
+      background: var(--paper-2); border: 2px solid var(--line);
+      border-radius: var(--radius-pill); padding: 4px;
+    }
+    .textsize .ts-label { font-size: .8rem; font-weight: 700; color: var(--ink-soft); padding: 0 .5rem 0 .65rem; }
+    .ts-btn {
+      min-width: 44px; min-height: 44px; border: none; cursor: pointer;
+      background: transparent; color: var(--blue-deep); font-family: "Fraunces", serif;
+      font-weight: 600; border-radius: var(--radius-pill); line-height: 1;
+    }
+    .ts-btn[aria-pressed="true"] { background: var(--blue); color: #fff; }
+    .ts-btn:hover { background: var(--blue-tint); }
+    .ts-btn[aria-pressed="true"]:hover { background: var(--blue-deep); }
+    .ts-btn.s1 { font-size: .95rem; }
+    .ts-btn.s2 { font-size: 1.2rem; }
+    .ts-btn.s3 { font-size: 1.45rem; }
+
+    .hamburger {
+      display: none; width: var(--tap); height: var(--tap);
+      align-items: center; justify-content: center;
+      background: var(--paper-2); border: 2px solid var(--line); border-radius: 14px; cursor: pointer;
+    }
+    .hamburger svg { display: block; }
+
+    /* ============ HERO ============ */
+    .hero { position: relative; overflow: hidden; padding: clamp(2.5rem, 6vw, 5rem) 0 clamp(3rem, 7vw, 5.5rem); }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; z-index: -1;
+      background:
+        radial-gradient(900px 500px at 12% -5%, var(--amber-tint), transparent 60%),
+        radial-gradient(900px 600px at 100% 10%, var(--blue-tint), transparent 55%);
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--paper-2); border: 2px solid var(--line);
+      color: var(--blue-deep); font-weight: 700; font-size: .95rem;
+      padding: .5rem 1rem; border-radius: var(--radius-pill); margin-bottom: 1.2rem;
+    }
+    .eyebrow .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--leaf); }
+    .hero p.lead { font-size: 1.22rem; color: var(--ink-soft); max-width: 38ch; }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.6rem; }
+    .hero-trust { display: flex; flex-wrap: wrap; gap: 1.4rem; margin-top: 2rem; color: var(--ink-soft); font-weight: 700; }
+    .hero-trust span { display: inline-flex; align-items: center; gap: .5rem; }
+    .hero-trust svg { color: var(--leaf); }
+
+    .hero-art { position: relative; }
+    .hero-art .card-float {
+      position: absolute; background: var(--paper-2); border: 2px solid var(--line);
+      border-radius: var(--radius); box-shadow: var(--shadow); padding: .8rem 1rem;
+      display: flex; align-items: center; gap: .6rem; font-weight: 700; font-size: .95rem;
+    }
+    .card-float .ic { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; flex: 0 0 auto; }
+    .card-float.one { top: 6%; left: -4%; }
+    .card-float.two { bottom: 4%; right: -3%; }
+    @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+    .float-anim { animation: floaty 5s ease-in-out infinite; }
+
+    /* ============ Sections ============ */
+    section { padding: clamp(3rem, 7vw, 5.5rem) 0; }
+    .section-head { max-width: 56ch; margin: 0 auto clamp(2rem, 4vw, 3rem); text-align: center; }
+    .section-head .kicker { color: var(--coral-deep); font-weight: 700; text-transform: uppercase; letter-spacing: .12em; font-size: .9rem; }
+    .section-head p { font-size: 1.12rem; color: var(--ink-soft); }
+
+    .alt { background: linear-gradient(180deg, var(--paper-2), var(--paper)); border-top: 2px solid var(--line); border-bottom: 2px solid var(--line); }
+
+    /* ---- How it works ---- */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; counter-reset: step; }
+    .step {
+      background: var(--paper-2); border: 2px solid var(--line); border-radius: var(--radius-lg);
+      padding: 2rem 1.7rem; text-align: center; position: relative;
+    }
+    .step .badge {
+      width: 96px; height: 96px; margin: 0 auto 1.1rem; border-radius: 26px;
+      display: grid; place-items: center; background: var(--blue-tint);
+    }
+    .step:nth-child(2) .badge { background: var(--amber-tint); }
+    .step:nth-child(3) .badge { background: #e3f3ec; }
+    .step .num {
+      counter-increment: step; position: absolute; top: -16px; left: 50%; transform: translateX(-50%);
+      width: 40px; height: 40px; border-radius: 50%; background: var(--coral); color: #fff;
+      display: grid; place-items: center; font-family: "Fraunces", serif; font-weight: 600; font-size: 1.1rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .step .num::before { content: counter(step); }
+
+    /* ---- Lessons / topics ---- */
+    .lessons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .lesson {
+      background: var(--paper-2); border: 2px solid var(--line); border-radius: var(--radius-lg);
+      padding: 1.8rem; display: flex; flex-direction: column; gap: .4rem;
+      transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+    }
+    .lesson:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: var(--blue); }
+    .lesson .ic {
+      width: 70px; height: 70px; border-radius: 20px; margin-bottom: .6rem;
+      display: grid; place-items: center; background: var(--blue-tint); color: var(--blue-deep);
+    }
+    .lesson:nth-child(2) .ic { background: var(--amber-tint); color: var(--coral-deep); }
+    .lesson:nth-child(3) .ic { background: #e3f3ec; color: var(--leaf); }
+    .lesson:nth-child(4) .ic { background: #fde6e1; color: var(--coral-deep); }
+    .lesson:nth-child(5) .ic { background: var(--blue-tint); color: var(--blue-deep); }
+    .lesson:nth-child(6) .ic { background: var(--amber-tint); color: var(--coral-deep); }
+    .lesson p { color: var(--ink-soft); margin-bottom: .2rem; }
+    .lesson .tag { margin-top: auto; font-weight: 700; color: var(--blue-deep); font-size: .95rem; display: inline-flex; align-items: center; gap: .4rem; }
+
+    /* ============ Booking widget (the star) ============ */
+    .booking-shell {
+      background: var(--paper-2); border: 2px solid var(--line); border-radius: var(--radius-lg);
+      box-shadow: var(--shadow); overflow: hidden; max-width: 920px; margin: 0 auto;
+    }
+    .booking-head { padding: 1.6rem 1.8rem; background: var(--blue-deep); color: #fff; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .booking-head h3 { color: #fff; margin: 0; font-size: 1.35rem; }
+    .booking-head p { margin: 0; color: #d6e6f5; }
+    .booking-head .free-pill { margin-left: auto; background: var(--amber); color: var(--ink); font-weight: 700; padding: .5rem 1rem; border-radius: var(--radius-pill); }
+    .booking-body { padding: 1.8rem; }
+
+    .progress { display: flex; gap: .6rem; margin-bottom: 1.6rem; }
+    .progress .pstep { flex: 1; height: 10px; border-radius: 999px; background: var(--line); }
+    .progress .pstep.done { background: var(--leaf); }
+    .progress .pstep.active { background: var(--blue); }
+
+    fieldset { border: none; margin: 0; padding: 0; }
+    fieldset legend { font-family: "Fraunces", serif; font-size: 1.35rem; font-weight: 600; margin-bottom: .3rem; padding: 0; }
+    .field-hint { color: var(--ink-soft); margin-bottom: 1.2rem; }
+
+    .choice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .9rem; }
+    .choice {
+      display: flex; align-items: center; gap: .8rem; text-align: left;
+      min-height: 68px; padding: .9rem 1.1rem; cursor: pointer;
+      background: var(--paper); border: 3px solid var(--line); border-radius: var(--radius);
+      font-family: inherit; font-size: 1.05rem; font-weight: 700; color: var(--ink);
+      transition: border-color .14s ease, background .14s ease, transform .12s ease;
+    }
+    .choice:hover { border-color: var(--blue); background: var(--blue-tint); }
+    .choice.selected { border-color: var(--blue); background: var(--blue-tint); box-shadow: inset 0 0 0 2px var(--blue); }
+    .choice .emoji { font-size: 1.7rem; line-height: 1; flex: 0 0 auto; }
+    .choice .check { margin-left: auto; color: var(--blue); opacity: 0; flex: 0 0 auto; }
+    .choice.selected .check { opacity: 1; }
+
+    .day-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: .9rem; }
+    .day {
+      cursor: pointer; min-height: 92px; padding: .8rem; border-radius: var(--radius);
+      background: var(--paper); border: 3px solid var(--line); text-align: center;
+      font-family: inherit; color: var(--ink); transition: border-color .14s ease, background .14s ease;
+    }
+    .day:hover { border-color: var(--blue); background: var(--blue-tint); }
+    .day.selected { border-color: var(--blue); background: var(--blue-tint); box-shadow: inset 0 0 0 2px var(--blue); }
+    .day .dow { display: block; font-weight: 700; font-size: 1.05rem; }
+    .day .dnum { display: block; font-family: "Fraunces", serif; font-size: 1.7rem; font-weight: 600; color: var(--blue-deep); }
+    .day .dmon { display: block; font-size: .85rem; color: var(--ink-soft); font-weight: 700; }
+
+    .booking-nav { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.8rem; align-items: center; }
+    .booking-nav .spacer { flex: 1; }
+
+    .summary-line { display: flex; align-items: center; gap: .7rem; padding: .65rem 0; border-bottom: 2px dashed var(--line); font-size: 1.08rem; }
+    .summary-line:last-of-type { border-bottom: none; }
+    .summary-line .lbl { color: var(--ink-soft); min-width: 9ch; font-weight: 700; }
+    .summary-line .val { font-weight: 700; color: var(--ink); }
+
+    /* Confirmation */
+    .confirm { text-align: center; padding: 1rem 0 .5rem; }
+    .confirm .tick {
+      width: 110px; height: 110px; margin: 0 auto 1.2rem; border-radius: 50%;
+      background: #e3f3ec; display: grid; place-items: center; color: var(--leaf);
+    }
+    @keyframes pop { 0% { transform: scale(.6); opacity: 0; } 60% { transform: scale(1.08); } 100% { transform: scale(1); opacity: 1; } }
+    .confirm .tick { animation: pop .5s ease both; }
+    .confirm h3 { font-family: "Fraunces", serif; font-size: 2rem; }
+    .confirm .recap {
+      display: inline-block; text-align: left; margin: 1.2rem auto 1.6rem;
+      background: var(--paper); border: 2px solid var(--line); border-radius: var(--radius); padding: 1.2rem 1.5rem;
+    }
+    .visually-hidden {
+      position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+
+    /* ============ Testimonials ============ */
+    .quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .quote {
+      background: var(--paper-2); border: 2px solid var(--line); border-radius: var(--radius-lg);
+      padding: 2rem 1.8rem; display: flex; flex-direction: column;
+    }
+    .quote .stars { color: var(--amber); margin-bottom: .8rem; letter-spacing: 2px; font-size: 1.2rem; }
+    .quote blockquote { margin: 0 0 1.2rem; font-size: 1.12rem; color: var(--ink); }
+    .quote .who { display: flex; align-items: center; gap: .85rem; margin-top: auto; }
+    .quote .avatar { width: 54px; height: 54px; border-radius: 50%; flex: 0 0 auto; display: grid; place-items: center; font-family: "Fraunces", serif; font-weight: 600; font-size: 1.3rem; color: #fff; }
+    .quote .who b { display: block; }
+    .quote .who span { color: var(--ink-soft); font-size: .95rem; }
+
+    /* ============ Pricing ============ */
+    .prices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; align-items: stretch; }
+    .price {
+      background: var(--paper-2); border: 2px solid var(--line); border-radius: var(--radius-lg);
+      padding: 2rem 1.8rem; display: flex; flex-direction: column;
+    }
+    .price.featured { border-color: var(--blue); box-shadow: var(--shadow); position: relative; }
+    .price.featured::after {
+      content: "Most loved"; position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+      background: var(--coral); color: #fff; font-weight: 700; font-size: .85rem;
+      padding: .4rem 1rem; border-radius: var(--radius-pill); white-space: nowrap;
+    }
+    .price .amt { font-family: "Fraunces", serif; font-size: 2.8rem; font-weight: 600; color: var(--blue-deep); line-height: 1; margin: .4rem 0 .2rem; }
+    .price .amt small { font-size: 1rem; color: var(--ink-soft); font-family: "Atkinson Hyperlegible", sans-serif; font-weight: 700; }
+    .price .per { color: var(--ink-soft); margin-bottom: 1.2rem; }
+    .price ul { list-style: none; margin: 0 0 1.6rem; padding: 0; display: grid; gap: .7rem; }
+    .price li { display: flex; gap: .6rem; align-items: flex-start; }
+    .price li svg { flex: 0 0 auto; color: var(--leaf); margin-top: 3px; }
+    .price .btn { margin-top: auto; }
+    .price-note { text-align: center; color: var(--ink-soft); margin-top: 1.6rem; font-size: 1rem; }
+
+    /* ============ FAQ ============ */
+    .faq { max-width: 800px; margin: 0 auto; display: grid; gap: 1rem; }
+    .faq-item { background: var(--paper-2); border: 2px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    .faq-q {
+      width: 100%; text-align: left; cursor: pointer; background: none; border: none;
+      font-family: inherit; font-size: 1.15rem; font-weight: 700; color: var(--ink);
+      padding: 1.3rem 1.5rem; min-height: var(--tap);
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .faq-q:hover { background: var(--blue-tint); }
+    .faq-q .plus { flex: 0 0 auto; width: 34px; height: 34px; border-radius: 50%; background: var(--blue-tint); color: var(--blue-deep); display: grid; place-items: center; transition: transform .2s ease, background .2s ease; }
+    .faq-q[aria-expanded="true"] .plus { transform: rotate(45deg); background: var(--blue); color: #fff; }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .28s ease; }
+    .faq-a .inner { padding: 0 1.5rem 1.4rem; color: var(--ink-soft); font-size: 1.08rem; }
+
+    /* ============ CTA band ============ */
+    .cta-band { background: linear-gradient(135deg, var(--blue-deep), var(--blue)); color: #fff; border-radius: var(--radius-lg); padding: clamp(2.5rem,5vw,3.5rem); text-align: center; box-shadow: var(--shadow-lg); }
+    .cta-band h2 { color: #fff; }
+    .cta-band p { color: #dbeaf8; font-size: 1.15rem; max-width: 48ch; margin: 0 auto 1.6rem; }
+
+    /* ============ Footer ============ */
+    footer.site { background: var(--ink); color: #d8dbe4; padding: clamp(3rem,5vw,4rem) 0 2rem; }
+    .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 2.5rem; }
+    footer.site h4 { font-family: "Atkinson Hyperlegible", sans-serif; color: #fff; font-size: 1.05rem; margin: 0 0 1rem; text-transform: uppercase; letter-spacing: .08em; }
+    footer.site a { color: #d8dbe4; text-decoration: none; }
+    footer.site a:hover { color: #fff; text-decoration: underline; }
+    .foot-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .65rem; }
+    .foot-brand .brand .name { color: #fff; }
+    .foot-brand p { color: #aab0bf; max-width: 32ch; }
+    .socials { display: flex; gap: .6rem; margin-top: 1rem; }
+    .socials a { width: var(--tap); height: var(--tap); border-radius: 14px; background: rgba(255,255,255,.08); display: grid; place-items: center; }
+    .socials a:hover { background: rgba(255,255,255,.18); }
+    .foot-contact a { display: inline-flex; align-items: center; gap: .55rem; }
+    .foot-bottom { border-top: 1px solid rgba(255,255,255,.12); margin-top: 2.5rem; padding-top: 1.6rem; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; color: #aab0bf; font-size: .92rem; }
+    .foot-bottom a { color: #cdd2dd; }
+    .maple-credit { color: #aab0bf; }
+    .maple-credit a { color: var(--amber); font-weight: 700; }
+
+    /* ---- Scroll reveal ---- */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; }
+      .float-anim { animation: none; }
+    }
+
+    /* ============ Responsive ============ */
+    @media (max-width: 980px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-art { max-width: 480px; margin: 0 auto; }
+      .steps, .lessons, .quotes, .prices { grid-template-columns: 1fr 1fr; }
+      .foot-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    @media (max-width: 760px) {
+      .nav-links, .nav-right .textsize { display: none; }
+      .hamburger { display: inline-flex; }
+      .nav-right .btn { display: none; }
+      .mobile-menu.open ~ .nav-right .textsize { display: inline-flex; }
+      .steps, .lessons, .quotes, .prices { grid-template-columns: 1fr; }
+      .foot-grid { grid-template-columns: 1fr; }
+      .booking-head .free-pill { margin-left: 0; }
+      .card-float { display: none !important; }
+    }
+
+    /* Mobile menu panel */
+    .mobile-menu {
+      display: none; position: fixed; inset: 80px 0 0; z-index: 90;
+      background: var(--paper); padding: 1.5rem 24px 2rem; overflow-y: auto;
+      border-top: 2px solid var(--line);
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; margin: 0 0 1.5rem; padding: 0; display: grid; gap: .5rem; }
+    .mobile-menu a {
+      display: flex; align-items: center; min-height: var(--tap); padding: .6rem 1rem;
+      border-radius: 14px; text-decoration: none; color: var(--ink); font-weight: 700; font-size: 1.2rem;
+      border: 2px solid var(--line); background: var(--paper-2);
+    }
+    .mobile-menu a:hover { background: var(--blue-tint); }
+    .mobile-textsize { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+    .mobile-textsize .ts-label { font-weight: 700; color: var(--ink-soft); }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site" id="top">
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="TeachingGrandma home">
+        <span class="mark" aria-hidden="true">
+          <!-- friendly heart + chat bubble mark -->
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" role="img">
+            <rect x="2" y="3" width="40" height="32" rx="11" fill="#1c5d99"/>
+            <path d="M14 33 L14 41 L23 33 Z" fill="#1c5d99"/>
+            <path d="M22 13.8c2.2-3 7.6-2.2 7.6 2.2 0 3.3-4.4 6.2-7.6 8.4-3.2-2.2-7.6-5.1-7.6-8.4 0-4.4 5.4-5.2 7.6-2.2Z" fill="#f4a836"/>
+          </svg>
+        </span>
+        <span class="name">Teaching<b>Grandma</b></span>
+      </a>
+
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#lessons">Lessons</a></li>
+          <li><a href="#book">Book a chat</a></li>
+          <li><a href="#stories">Stories</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">Questions</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-right">
+        <div class="textsize" role="group" aria-label="Text size">
+          <span class="ts-label" aria-hidden="true">Text size</span>
+          <button class="ts-btn s1" data-size="md" aria-pressed="true" aria-label="Normal text size">A</button>
+          <button class="ts-btn s2" data-size="lg" aria-pressed="false" aria-label="Larger text size">A+</button>
+          <button class="ts-btn s3" data-size="xl" aria-pressed="false" aria-label="Largest text size">A++</button>
+        </div>
+        <a class="btn btn-primary" href="#book">Book a free chat</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#15406b" stroke-width="2.6" stroke-linecap="round" aria-hidden="true">
+            <line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-textsize" role="group" aria-label="Text size">
+        <span class="ts-label">Text size:</span>
+        <button class="ts-btn s1" data-size="md" aria-pressed="true" aria-label="Normal text size" style="border:2px solid var(--line);">A</button>
+        <button class="ts-btn s2" data-size="lg" aria-pressed="false" aria-label="Larger text size" style="border:2px solid var(--line);">A+</button>
+        <button class="ts-btn s3" data-size="xl" aria-pressed="false" aria-label="Largest text size" style="border:2px solid var(--line);">A++</button>
+      </div>
+      <ul>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#lessons">Lessons &amp; topics</a></li>
+        <li><a href="#book">Book a free chat</a></li>
+        <li><a href="#stories">Stories</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">Common questions</a></li>
+      </ul>
+      <a class="btn btn-primary btn-lg" href="#book" style="width:100%;">Book a free chat</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow"><span class="dot" aria-hidden="true"></span> Patient, friendly, one step at a time</span>
+          <h1 id="hero-title">Technology,<br>made gentle.</h1>
+          <p class="lead">Warm, unhurried lessons that help you feel confident with your phone, tablet, and computer — taught by people who never sigh, never rush, and always explain it twice if you like.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary btn-lg" href="#book">Book a free chat</a>
+            <a class="btn btn-ghost btn-lg" href="#lessons">See lessons</a>
+          </div>
+          <div class="hero-trust">
+            <span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> No question is too small</span>
+            <span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> First chat is always free</span>
+            <span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Nothing to install</span>
+          </div>
+        </div>
+
+        <!-- Hand-drawn inline SVG: a grandma with a tablet + heart motif -->
+        <div class="hero-art">
+          <div class="card-float one float-anim" aria-hidden="true">
+            <span class="ic" style="background:var(--amber-tint);color:var(--coral-deep)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </span>
+            Video call with Grandkids
+          </div>
+          <div class="card-float two float-anim" style="animation-delay:1.4s" aria-hidden="true">
+            <span class="ic" style="background:#e3f3ec;color:var(--leaf)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </span>
+            Spotted that scam!
+          </div>
+
+          <svg viewBox="0 0 460 420" role="img" aria-label="A smiling grandmother holding a tablet with a heart on the screen, waving hello." width="100%">
+            <defs>
+              <radialGradient id="bgGlow" cx="50%" cy="38%" r="62%">
+                <stop offset="0%" stop-color="#fffdf9"/>
+                <stop offset="100%" stop-color="#e7f0f9"/>
+              </radialGradient>
+              <linearGradient id="tabGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#1c5d99"/>
+                <stop offset="100%" stop-color="#15406b"/>
+              </linearGradient>
+            </defs>
+
+            <circle cx="230" cy="205" r="200" fill="url(#bgGlow)"/>
+            <!-- decorative dots -->
+            <circle cx="70" cy="80" r="9" fill="#f4a836" opacity=".7"/>
+            <circle cx="402" cy="120" r="13" fill="#e8674a" opacity=".55"/>
+            <circle cx="404" cy="300" r="8" fill="#2f8f6e" opacity=".5"/>
+
+            <!-- shoulders / cardigan -->
+            <path d="M120 420 q110 -120 220 0 Z" fill="#e8674a"/>
+            <path d="M120 420 q110 -120 220 0" fill="none" stroke="#c44a31" stroke-width="3"/>
+            <!-- collar -->
+            <path d="M200 360 q30 30 60 0 l-6 40 h-48 Z" fill="#fffdf9"/>
+
+            <!-- neck -->
+            <rect x="212" y="330" width="36" height="44" rx="14" fill="#f0c9a8"/>
+            <!-- head -->
+            <circle cx="230" cy="278" r="66" fill="#f6d4b3"/>
+            <!-- silver bun + hair -->
+            <path d="M164 270 q-6 -86 66 -90 q72 4 66 90 q-12 -40 -66 -42 q-54 2 -66 42Z" fill="#dfe3ea"/>
+            <circle cx="230" cy="172" r="20" fill="#eef0f4"/>
+            <!-- glasses -->
+            <circle cx="208" cy="280" r="20" fill="#fffdf9" stroke="#15406b" stroke-width="4"/>
+            <circle cx="252" cy="280" r="20" fill="#fffdf9" stroke="#15406b" stroke-width="4"/>
+            <line x1="228" y1="280" x2="232" y2="280" stroke="#15406b" stroke-width="4"/>
+            <!-- eyes -->
+            <circle cx="208" cy="280" r="4.5" fill="#20242e"/>
+            <circle cx="252" cy="280" r="4.5" fill="#20242e"/>
+            <!-- rosy cheeks -->
+            <circle cx="190" cy="300" r="11" fill="#f0a98f" opacity=".55"/>
+            <circle cx="270" cy="300" r="11" fill="#f0a98f" opacity=".55"/>
+            <!-- warm smile -->
+            <path d="M206 308 q24 26 48 0" fill="none" stroke="#c44a31" stroke-width="5" stroke-linecap="round"/>
+
+            <!-- waving hand -->
+            <g>
+              <circle cx="350" cy="250" r="20" fill="#f6d4b3"/>
+              <path d="M338 246 v-26 a6 6 0 0 1 12 0 v22 M350 244 v-30 a6 6 0 0 1 12 0 v28" fill="#f6d4b3" stroke="#e3b48f" stroke-width="2"/>
+            </g>
+
+            <!-- tablet held up, heart on screen -->
+            <g transform="rotate(-8 150 350)">
+              <rect x="92" y="300" width="150" height="118" rx="16" fill="url(#tabGrad)"/>
+              <rect x="104" y="312" width="126" height="94" rx="8" fill="#eaf3fb"/>
+              <path d="M167 392c-14-9-30-21-30-35 0-18 22-21 30-9 8-12 30-9 30 9 0 14-16 26-30 35Z" fill="#e8674a"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section id="how" class="alt" aria-labelledby="how-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">Simple from the start</span>
+          <h2 id="how-title">How it works</h2>
+          <p>Three easy steps. No jargon, no pressure, and a real person on the other end the whole way through.</p>
+        </div>
+        <div class="steps">
+          <div class="step reveal">
+            <span class="num" aria-hidden="true"></span>
+            <span class="badge" aria-hidden="true">
+              <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#15406b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18"/><circle cx="8" cy="14" r="1.6" fill="#15406b"/><path d="M12 14h5"/></svg>
+            </span>
+            <h3>1. Book a free chat</h3>
+            <p>Pick a topic and a time that suits you. The first 20-minute chat is free, friendly, and completely no-obligation.</p>
+          </div>
+          <div class="step reveal">
+            <span class="num" aria-hidden="true"></span>
+            <span class="badge" aria-hidden="true">
+              <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#c44a31" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>
+            </span>
+            <h3>2. Learn together</h3>
+            <p>We meet by phone or video — whichever feels easier — and go at <em>your</em> pace. We share our screen and walk through every tap.</p>
+          </div>
+          <div class="step reveal">
+            <span class="num" aria-hidden="true"></span>
+            <span class="badge" aria-hidden="true">
+              <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#2f8f6e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s8-4 8-10V5l-8-3-8 3v6c0 6 8 10 8 10z"/><polyline points="9 11 11 13 15 9"/></svg>
+            </span>
+            <h3>3. Feel confident</h3>
+            <p>You leave with simple written notes in large print, and you can always book a friendly refresher whenever you need one.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LESSONS ============ -->
+    <section id="lessons" aria-labelledby="lessons-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">Popular lessons</span>
+          <h2 id="lessons-title">What would you like to learn?</h2>
+          <p>Choose just one, or work through a few over time. Every lesson is hands-on, gentle, and explained in plain English.</p>
+        </div>
+        <div class="lessons">
+          <article class="lesson reveal">
+            <span class="ic" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><line x1="11" y1="18" x2="13" y2="18"/></svg></span>
+            <h3>Smartphone Basics</h3>
+            <p>Turning it on, making calls, texting, volume, the camera, and finding the buttons that keep hiding from you.</p>
+            <span class="tag">Most popular first lesson</span>
+          </article>
+          <article class="lesson reveal">
+            <span class="ic" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="3"/></svg></span>
+            <h3>Video Calling Family</h3>
+            <p>See your grandchildren's faces. We set up FaceTime, WhatsApp, or Zoom and practise until it feels easy.</p>
+            <span class="tag">Family favourite</span>
+          </article>
+          <article class="lesson reveal">
+            <span class="ic" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg></span>
+            <h3>Email &amp; Photos</h3>
+            <p>Read, reply, and send. We'll also show you how to save and share the photos people send you.</p>
+            <span class="tag">Stay in touch</span>
+          </article>
+          <article class="lesson reveal">
+            <span class="ic" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4M12 16h.01"/></svg></span>
+            <h3>Staying Safe from Scams</h3>
+            <p>Spot fake calls, texts, and emails with confidence. Learn the simple "stop and check" habit that protects your money.</p>
+            <span class="tag">Peace of mind</span>
+          </article>
+          <article class="lesson reveal">
+            <span class="ic" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/><path d="M6 15h4"/></svg></span>
+            <h3>Online Banking Confidence</h3>
+            <p>Check your balance and pay a bill safely, without worry. We focus on what's secure and what to never click.</p>
+            <span class="tag">Calm &amp; secure</span>
+          </article>
+          <article class="lesson reveal">
+            <span class="ic" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8" cy="8" r="1.6" fill="currentColor"/><circle cx="16" cy="8" r="1.6" fill="currentColor"/><circle cx="8" cy="16" r="1.6" fill="currentColor"/><circle cx="16" cy="16" r="1.6" fill="currentColor"/></svg></span>
+            <h3>Tablet &amp; Apps</h3>
+            <p>Find, download, and tidy up apps. From the weather to the news to your favourite card games — all in one place.</p>
+            <span class="tag">Make it yours</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BOOKING WIDGET (THE STAR) ============ -->
+    <section id="book" class="alt" aria-labelledby="book-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">No cost, no pressure</span>
+          <h2 id="book-title">Book a free 20-minute chat</h2>
+          <p>Three gentle questions and you're done. There's no payment, no account, and no rush — just pick what feels right and tap the big button.</p>
+        </div>
+
+        <div class="booking-shell reveal">
+          <div class="booking-head">
+            <div>
+              <h3>Let's find a time that suits you</h3>
+              <p>A friendly call to say hello and answer your questions.</p>
+            </div>
+            <span class="free-pill">Always free</span>
+          </div>
+
+          <div class="booking-body">
+            <div class="progress" aria-hidden="true">
+              <span class="pstep active" data-p="1"></span>
+              <span class="pstep" data-p="2"></span>
+              <span class="pstep" data-p="3"></span>
+            </div>
+
+            <!-- live region announces step changes for screen readers -->
+            <p class="visually-hidden" id="bookingStatus" role="status" aria-live="polite"></p>
+
+            <form id="bookingForm" novalidate>
+              <!-- STEP 1: TOPIC -->
+              <div class="bk-step" data-step="1">
+                <fieldset>
+                  <legend>1. What would you like help with?</legend>
+                  <p class="field-hint">Pick the one that's on your mind. You can always change it later.</p>
+                  <div class="choice-grid" role="radiogroup" aria-label="Choose a topic">
+                    <button type="button" class="choice" role="radio" aria-checked="false" data-topic="Smartphone Basics"><span class="emoji" aria-hidden="true">📱</span> Smartphone Basics <span class="check" aria-hidden="true">✓</span></button>
+                    <button type="button" class="choice" role="radio" aria-checked="false" data-topic="Video Calling Family"><span class="emoji" aria-hidden="true">📹</span> Video Calling Family <span class="check" aria-hidden="true">✓</span></button>
+                    <button type="button" class="choice" role="radio" aria-checked="false" data-topic="Email & Photos"><span class="emoji" aria-hidden="true">✉️</span> Email &amp; Photos <span class="check" aria-hidden="true">✓</span></button>
+                    <button type="button" class="choice" role="radio" aria-checked="false" data-topic="Staying Safe from Scams"><span class="emoji" aria-hidden="true">🛡️</span> Staying Safe from Scams <span class="check" aria-hidden="true">✓</span></button>
+                    <button type="button" class="choice" role="radio" aria-checked="false" data-topic="Online Banking Confidence"><span class="emoji" aria-hidden="true">🏦</span> Online Banking <span class="check" aria-hidden="true">✓</span></button>
+                    <button type="button" class="choice" role="radio" aria-checked="false" data-topic="Something else"><span class="emoji" aria-hidden="true">💬</span> Something else <span class="check" aria-hidden="true">✓</span></button>
+                  </div>
+                </fieldset>
+                <div class="booking-nav">
+                  <span class="spacer"></span>
+                  <button type="button" class="btn btn-blue btn-lg" data-next aria-disabled="true">Next &rarr;</button>
+                </div>
+              </div>
+
+              <!-- STEP 2: DAY -->
+              <div class="bk-step" data-step="2" hidden>
+                <fieldset>
+                  <legend>2. Which day works best?</legend>
+                  <p class="field-hint">These are the next few days we have open. Mornings and afternoons both available.</p>
+                  <div class="day-grid" id="dayGrid" role="radiogroup" aria-label="Choose a day"></div>
+                </fieldset>
+
+                <fieldset style="margin-top:1.8rem;">
+                  <legend>And what time of day?</legend>
+                  <p class="field-hint">Pick whichever you prefer — we'll confirm the exact time when we call.</p>
+                  <div class="choice-grid" role="radiogroup" aria-label="Choose morning or afternoon">
+                    <button type="button" class="choice" role="radio" aria-checked="false" data-time="Morning"><span class="emoji" aria-hidden="true">🌅</span> Morning (9am–12pm) <span class="check" aria-hidden="true">✓</span></button>
+                    <button type="button" class="choice" role="radio" aria-checked="false" data-time="Afternoon"><span class="emoji" aria-hidden="true">☀️</span> Afternoon (1pm–4pm) <span class="check" aria-hidden="true">✓</span></button>
+                  </div>
+                </fieldset>
+
+                <div class="booking-nav">
+                  <button type="button" class="btn btn-ghost btn-lg" data-back>&larr; Back</button>
+                  <span class="spacer"></span>
+                  <button type="button" class="btn btn-blue btn-lg" data-next aria-disabled="true">Next &rarr;</button>
+                </div>
+              </div>
+
+              <!-- STEP 3: REVIEW -->
+              <div class="bk-step" data-step="3" hidden>
+                <fieldset>
+                  <legend>3. Does this look right?</legend>
+                  <p class="field-hint">Have a quick look. If anything's not quite right, just tap Back.</p>
+                  <div class="recap-box" style="background:var(--paper);border:2px solid var(--line);border-radius:var(--radius);padding:1.3rem 1.5rem;">
+                    <div class="summary-line"><span class="lbl">Topic</span> <span class="val" id="sumTopic">—</span></div>
+                    <div class="summary-line"><span class="lbl">Day</span> <span class="val" id="sumDay">—</span></div>
+                    <div class="summary-line"><span class="lbl">Time</span> <span class="val" id="sumTime">—</span></div>
+                  </div>
+                </fieldset>
+                <div class="booking-nav">
+                  <button type="button" class="btn btn-ghost btn-lg" data-back>&larr; Back</button>
+                  <span class="spacer"></span>
+                  <button type="submit" class="btn btn-primary btn-lg">Confirm my free chat</button>
+                </div>
+              </div>
+
+              <!-- CONFIRMATION -->
+              <div class="bk-step confirm" data-step="4" hidden>
+                <span class="tick" aria-hidden="true">
+                  <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <h3>Wonderful — you're all set!</h3>
+                <p style="font-size:1.12rem;color:var(--ink-soft);max-width:46ch;margin:0 auto;">We can't wait to chat. A real person will call you to confirm. Here's what you picked:</p>
+                <div class="recap">
+                  <div class="summary-line"><span class="lbl">Topic</span> <span class="val" id="cTopic">—</span></div>
+                  <div class="summary-line"><span class="lbl">Day</span> <span class="val" id="cDay">—</span></div>
+                  <div class="summary-line"><span class="lbl">Time</span> <span class="val" id="cTime">—</span></div>
+                </div>
+                <div>
+                  <button type="button" class="btn btn-ghost btn-lg" id="bookAgain">Book another chat</button>
+                </div>
+                <p style="margin-top:1.2rem;color:var(--ink-soft);">Prefer to talk now? Call us any time at <a href="tel:+16045550148"><b>(604) 555-0148</b></a>.</p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <section id="stories" aria-labelledby="stories-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">Kind words</span>
+          <h2 id="stories-title">Stories from our learners</h2>
+          <p>From seniors who surprised themselves — and the families who love seeing them thrive.</p>
+        </div>
+        <div class="quotes">
+          <figure class="quote reveal">
+            <div class="stars" aria-label="Five out of five stars">★★★★★</div>
+            <blockquote>"I was terrified of my new phone. Margaret showed me, slowly, how to video call my daughter in Halifax. I cried the first time I saw her face. Now we talk every Sunday."</blockquote>
+            <figcaption class="who">
+              <span class="avatar" style="background:var(--blue)" aria-hidden="true">EW</span>
+              <span><b>Eleanor W., 78</b><span>Burnaby, BC</span></span>
+            </figcaption>
+          </figure>
+          <figure class="quote reveal">
+            <div class="stars" aria-label="Five out of five stars">★★★★★</div>
+            <blockquote>"My dad nearly sent $2,000 to a 'bank' that called him. After his scam-awareness lesson he hung up, called me, and we laughed about it. This service is worth its weight in gold."</blockquote>
+            <figcaption class="who">
+              <span class="avatar" style="background:var(--coral)" aria-hidden="true">RP</span>
+              <span><b>Raj P.</b><span>Son of a learner</span></span>
+            </figcaption>
+          </figure>
+          <figure class="quote reveal">
+            <div class="stars" aria-label="Five out of five stars">★★★★★</div>
+            <blockquote>"They never once made me feel silly. I can now order my groceries, check my pension, and even sent my first emoji. My grandson says I'm 'basically a hacker' now."</blockquote>
+            <figcaption class="who">
+              <span class="avatar" style="background:var(--leaf)" aria-hidden="true">GT</span>
+              <span><b>George T., 81</b><span>Victoria, BC</span></span>
+            </figcaption>
+          </figure>
+          <figure class="quote reveal">
+            <div class="stars" aria-label="Five out of five stars">★★★★★</div>
+            <blockquote>"We live three provinces away and worried about Mum being lonely. The large-print notes she keeps by the kettle changed everything — she texts us photos of her garden daily now."</blockquote>
+            <figcaption class="who">
+              <span class="avatar" style="background:var(--amber);color:var(--ink)" aria-hidden="true">SM</span>
+              <span><b>Sophie M.</b><span>Daughter of a learner</span></span>
+            </figcaption>
+          </figure>
+          <figure class="quote reveal">
+            <div class="stars" aria-label="Five out of five stars">★★★★★</div>
+            <blockquote>"At 84 I thought it was too late for me. Twenty minutes in, I'd joined my book club's online meeting. The patience these folks have — I've never been rushed once."</blockquote>
+            <figcaption class="who">
+              <span class="avatar" style="background:var(--blue-deep)" aria-hidden="true">DH</span>
+              <span><b>Doris H., 84</b><span>Kelowna, BC</span></span>
+            </figcaption>
+          </figure>
+          <figure class="quote reveal">
+            <div class="stars" aria-label="Five out of five stars">★★★★★</div>
+            <blockquote>"The same kind teacher every time, who remembers what we covered last week. That continuity made all the difference for my father, who finds new faces tiring."</blockquote>
+            <figcaption class="who">
+              <span class="avatar" style="background:var(--coral-deep)" aria-hidden="true">AL</span>
+              <span><b>Anita L.</b><span>Daughter of a learner</span></span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRICING ============ -->
+    <section id="pricing" class="alt" aria-labelledby="pricing-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">Honest &amp; simple pricing</span>
+          <h2 id="pricing-title">Fair prices, no surprises</h2>
+          <p>All prices are in Canadian dollars. No subscriptions, no hidden fees, and no contracts — pay only for what helps you.</p>
+        </div>
+        <div class="prices">
+          <article class="price reveal">
+            <h3>Free Intro Chat</h3>
+            <div class="amt">$0</div>
+            <div class="per">A friendly 20-minute hello</div>
+            <ul>
+              <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Get to know your teacher</li>
+              <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Ask anything, no pressure</li>
+              <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Decide if we're a good fit</li>
+            </ul>
+            <a class="btn btn-ghost btn-lg" href="#book">Book my free chat</a>
+          </article>
+
+          <article class="price featured reveal">
+            <h3>Single Session</h3>
+            <div class="amt">$39 <small>/ hour</small></div>
+            <div class="per">One-to-one, at your own pace</div>
+            <ul>
+              <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> A full hour by phone or video</li>
+              <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Large-print notes to keep</li>
+              <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> A week of follow-up by text</li>
+              <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> No commitment to book again</li>
+            </ul>
+            <a class="btn btn-primary btn-lg" href="#book">Get started</a>
+          </article>
+
+          <article class="price reveal">
+            <h3>Confidence Package</h3>
+            <div class="amt">$149 <small>/ 5 sessions</small></div>
+            <div class="per">Our most popular for steady progress</div>
+            <ul>
+              <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Five hour-long sessions (save $46)</li>
+              <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> The same teacher every time</li>
+              <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> A printed "my devices" handbook</li>
+              <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Use any time within 6 months</li>
+            </ul>
+            <a class="btn btn-ghost btn-lg" href="#book">Choose package</a>
+          </article>
+        </div>
+        <p class="price-note">Family member arranging this for someone you love? Just mention it on your free chat — we're happy to keep you in the loop.</p>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section id="faq" aria-labelledby="faq-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">You asked, we answered</span>
+          <h2 id="faq-title">Common questions</h2>
+          <p>If your question isn't here, just call us — we love a good chat and there's no such thing as a silly question.</p>
+        </div>
+        <div class="faq">
+          <div class="faq-item reveal">
+            <button class="faq-q" aria-expanded="false" aria-controls="fa1" id="fq1">
+              Do I need to install anything?
+              <span class="plus" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </button>
+            <div class="faq-a" id="fa1" role="region" aria-labelledby="fq1"><div class="inner">No — not a thing. For your free chat we simply ring you on the phone you already have. If you'd like to video call, we'll gently walk you through the one app that comes with your device, step by step, with no downloads or passwords to puzzle over.</div></div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-q" aria-expanded="false" aria-controls="fa2" id="fq2">
+              Can my family join the lesson?
+              <span class="plus" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </button>
+            <div class="faq-a" id="fa2" role="region" aria-labelledby="fq2"><div class="inner">Absolutely, and many people love this. A son, daughter, or neighbour is welcome to sit in or join by video. We'll also send them the same large-print notes so everyone's on the same page and your helper at home knows exactly what we covered.</div></div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-q" aria-expanded="false" aria-controls="fa3" id="fq3">
+              What device do I need?
+              <span class="plus" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </button>
+            <div class="faq-a" id="fa3" role="region" aria-labelledby="fq3"><div class="inner">Whatever you already have is perfect — an iPhone, an Android phone, an iPad or tablet, or a laptop. We teach all of them. Not sure what yours is? That's a wonderful first question to bring to your free chat, and we'll figure it out together.</div></div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-q" aria-expanded="false" aria-controls="fa4" id="fq4">
+              I'm really not "good with computers." Is that okay?
+              <span class="plus" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </button>
+            <div class="faq-a" id="fa4" role="region" aria-labelledby="fq4"><div class="inner">That is exactly who we're here for. Most of our learners started by saying the very same thing. We never use jargon, we never rush, and we're happy to explain something three times with a smile. You set the pace, always.</div></div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-q" aria-expanded="false" aria-controls="fa5" id="fq5">
+              How do I pay, and is it safe?
+              <span class="plus" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </button>
+            <div class="faq-a" id="fa5" role="region" aria-labelledby="fq5"><div class="inner">Your first chat is free, so there's nothing to pay to begin. After that you can pay by card or e-transfer, and we'll only ever ask after a lesson — never before, and never over a surprise phone call. We'll show you exactly how to spot a real request versus a scam.</div></div>
+          </div>
+        </div>
+
+        <div class="wrap" style="padding:0;margin-top:3rem;">
+          <div class="cta-band reveal">
+            <h2>Ready when you are</h2>
+            <p>The hardest part is saying hello. Book your free, friendly 20-minute chat and let's take that first gentle step together.</p>
+            <a class="btn btn-primary btn-lg" href="#book">Book a free chat</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand" href="#top" aria-label="TeachingGrandma home">
+            <span class="mark" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 44 44" fill="none" role="img">
+                <rect x="2" y="3" width="40" height="32" rx="11" fill="#1c5d99"/>
+                <path d="M14 33 L14 41 L23 33 Z" fill="#1c5d99"/>
+                <path d="M22 13.8c2.2-3 7.6-2.2 7.6 2.2 0 3.3-4.4 6.2-7.6 8.4-3.2-2.2-7.6-5.1-7.6-8.4 0-4.4 5.4-5.2 7.6-2.2Z" fill="#f4a836"/>
+              </svg>
+            </span>
+            <span class="name">Teaching<b style="color:var(--amber)">Grandma</b></span>
+          </a>
+          <p>Warm, patient, large-type technology lessons for seniors across British Columbia. No question too small.</p>
+          <div class="socials" aria-label="Social media">
+            <a href="#" aria-label="TeachingGrandma on Facebook">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#d8dbe4" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>
+            </a>
+            <a href="#" aria-label="TeachingGrandma on YouTube">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#d8dbe4" aria-hidden="true"><path d="M23 7.5a3 3 0 0 0-2.1-2.1C19 5 12 5 12 5s-7 0-8.9.4A3 3 0 0 0 1 7.5 31 31 0 0 0 .6 12 31 31 0 0 0 1 16.5a3 3 0 0 0 2.1 2.1C5 19 12 19 12 19s7 0 8.9-.4a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .4-4.5 31 31 0 0 0-.4-4.5zM9.8 15.3V8.7l5.7 3.3z"/></svg>
+            </a>
+            <a href="#" aria-label="Email TeachingGrandma">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d8dbe4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Lessons</h4>
+          <ul class="foot-list">
+            <li><a href="#lessons">Smartphone Basics</a></li>
+            <li><a href="#lessons">Video Calling Family</a></li>
+            <li><a href="#lessons">Email &amp; Photos</a></li>
+            <li><a href="#lessons">Staying Safe from Scams</a></li>
+            <li><a href="#lessons">Online Banking</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Company</h4>
+          <ul class="foot-list">
+            <li><a href="#how">How it works</a></li>
+            <li><a href="#stories">Stories</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">Questions</a></li>
+            <li><a href="#book">Book a chat</a></li>
+          </ul>
+        </div>
+
+        <div class="foot-contact">
+          <h4>Say hello</h4>
+          <ul class="foot-list">
+            <li><a href="tel:+16045550148"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d8dbe4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1 .36 1.94.7 2.85a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.85.7A2 2 0 0 1 22 16.92z"/></svg> (604) 555-0148</a></li>
+            <li><a href="mailto:hello@teachinggrandma.ca"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d8dbe4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg> hello@teachinggrandma.ca</a></li>
+            <li style="display:flex;gap:.55rem;align-items:flex-start;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d8dbe4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:0 0 auto;margin-top:3px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Serving all of British Columbia, online</li>
+            <li style="display:flex;gap:.55rem;align-items:flex-start;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d8dbe4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:0 0 auto;margin-top:3px;"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg> Phone lines: Mon–Sat, 9am–6pm PT</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="foot-bottom">
+        <span>© 2026 TeachingGrandma Learning Co. · Made with patience in British Columbia.</span>
+        <span class="maple-credit">Concept site crafted by <a href="../index.html">Maple</a> · sample design</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      "use strict";
+
+      /* ---------- Sticky header shadow on scroll ---------- */
+      var header = document.querySelector("header.site");
+      var onScroll = function () {
+        if (window.scrollY > 8) header.classList.add("scrolled");
+        else header.classList.remove("scrolled");
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      /* ---------- Text-size control ---------- */
+      var sizeClasses = { md: "text-md", lg: "text-lg", xl: "text-xl" };
+      var tsButtons = document.querySelectorAll(".ts-btn");
+      function setTextSize(size) {
+        var root = document.documentElement;
+        root.classList.remove("text-md", "text-lg", "text-xl");
+        root.classList.add(sizeClasses[size] || "text-md");
+        tsButtons.forEach(function (b) {
+          b.setAttribute("aria-pressed", b.getAttribute("data-size") === size ? "true" : "false");
+        });
+      }
+      // start at normal
+      document.documentElement.classList.add("text-md");
+      tsButtons.forEach(function (b) {
+        b.addEventListener("click", function () { setTextSize(b.getAttribute("data-size")); });
+      });
+
+      /* ---------- Mobile menu ---------- */
+      var hamburger = document.getElementById("hamburger");
+      var mobileMenu = document.getElementById("mobileMenu");
+      function closeMenu() {
+        mobileMenu.classList.remove("open");
+        hamburger.setAttribute("aria-expanded", "false");
+        hamburger.setAttribute("aria-label", "Open menu");
+      }
+      hamburger.addEventListener("click", function () {
+        var open = mobileMenu.classList.toggle("open");
+        hamburger.setAttribute("aria-expanded", open ? "true" : "false");
+        hamburger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      });
+      mobileMenu.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", closeMenu);
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && mobileMenu.classList.contains("open")) { closeMenu(); hamburger.focus(); }
+      });
+
+      /* ---------- Scroll reveal ---------- */
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var revealEls = document.querySelectorAll(".reveal");
+      if (reduce || !("IntersectionObserver" in window)) {
+        revealEls.forEach(function (el) { el.classList.add("in"); });
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) { entry.target.classList.add("in"); io.unobserve(entry.target); }
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+        revealEls.forEach(function (el) { io.observe(el); });
+      }
+
+      /* ---------- FAQ accordion ---------- */
+      document.querySelectorAll(".faq-q").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var expanded = btn.getAttribute("aria-expanded") === "true";
+          var panel = document.getElementById(btn.getAttribute("aria-controls"));
+          btn.setAttribute("aria-expanded", expanded ? "false" : "true");
+          panel.style.maxHeight = expanded ? null : panel.scrollHeight + "px";
+        });
+      });
+
+      /* ============================================================
+         THE STAR FEATURE — friendly booking widget
+         ============================================================ */
+      var form = document.getElementById("bookingForm");
+      var steps = form.querySelectorAll(".bk-step");
+      var pSteps = document.querySelectorAll(".progress .pstep");
+      var statusLive = document.getElementById("bookingStatus");
+      var state = { topic: null, day: null, dayLabel: null, time: null };
+      var current = 1;
+
+      var stepTitles = {
+        1: "Step 1 of 3: choose a topic.",
+        2: "Step 2 of 3: choose a day and time.",
+        3: "Step 3 of 3: review your booking.",
+        4: "All done. Your free chat is booked."
+      };
+
+      /* Build the next few available days (skip nothing — just rolling dates) */
+      var dayGrid = document.getElementById("dayGrid");
+      var dows = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      var dowShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+      var mons = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      (function buildDays() {
+        var today = new Date();
+        var added = 0, offset = 1;
+        while (added < 5) {
+          var d = new Date(today.getFullYear(), today.getMonth(), today.getDate() + offset);
+          offset++;
+          if (d.getDay() === 0) continue; // closed Sundays, keep it gentle
+          var btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "day";
+          btn.setAttribute("role", "radio");
+          btn.setAttribute("aria-checked", "false");
+          var label = dows[d.getDay()] + ", " + mons[d.getMonth()] + " " + d.getDate();
+          btn.setAttribute("aria-label", label);
+          btn.dataset.daylabel = label;
+          btn.innerHTML =
+            '<span class="dow" aria-hidden="true">' + dowShort[d.getDay()] + '</span>' +
+            '<span class="dnum" aria-hidden="true">' + d.getDate() + '</span>' +
+            '<span class="dmon" aria-hidden="true">' + mons[d.getMonth()] + '</span>';
+          btn.addEventListener("click", function () {
+            dayGrid.querySelectorAll(".day").forEach(function (x) { x.classList.remove("selected"); x.setAttribute("aria-checked", "false"); });
+            this.classList.add("selected");
+            this.setAttribute("aria-checked", "true");
+            state.dayLabel = this.dataset.daylabel;
+            refreshNext();
+          });
+          dayGrid.appendChild(btn);
+          added++;
+        }
+      })();
+
+      /* Single-select groups for buttons carrying data-topic / data-time */
+      function wireChoiceGroup(selector, key) {
+        var group = form.querySelectorAll(selector);
+        group.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            group.forEach(function (x) { x.classList.remove("selected"); x.setAttribute("aria-checked", "false"); });
+            btn.classList.add("selected");
+            btn.setAttribute("aria-checked", "true");
+            state[key] = btn.getAttribute("data-" + key);
+            refreshNext();
+          });
+        });
+      }
+      wireChoiceGroup("[data-topic]", "topic");
+      wireChoiceGroup("[data-time]", "time");
+
+      /* Enable/disable Next based on the current step's required choices */
+      function refreshNext() {
+        var stepEl = form.querySelector('.bk-step[data-step="' + current + '"]');
+        if (!stepEl) return;
+        var nextBtn = stepEl.querySelector("[data-next]");
+        if (!nextBtn) return;
+        var ready = false;
+        if (current === 1) ready = !!state.topic;
+        if (current === 2) ready = !!state.dayLabel && !!state.time;
+        nextBtn.setAttribute("aria-disabled", ready ? "false" : "true");
+        nextBtn.style.opacity = ready ? "1" : ".55";
+        nextBtn.style.cursor = ready ? "pointer" : "not-allowed";
+      }
+
+      function showStep(n) {
+        current = n;
+        steps.forEach(function (s) { s.hidden = parseInt(s.getAttribute("data-step"), 10) !== n; });
+        pSteps.forEach(function (p) {
+          var idx = parseInt(p.getAttribute("data-p"), 10);
+          p.classList.toggle("done", idx < n);
+          p.classList.toggle("active", idx === n);
+        });
+        statusLive.textContent = stepTitles[n] || "";
+        refreshNext();
+        // move focus to the new step's heading for screen-reader + keyboard users
+        var legend = steps[n - 1] && steps[n - 1].querySelector("legend, h3");
+        if (legend) { legend.setAttribute("tabindex", "-1"); legend.focus({ preventScroll: false }); }
+      }
+
+      form.querySelectorAll("[data-next]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          if (btn.getAttribute("aria-disabled") === "true") {
+            statusLive.textContent = current === 1
+              ? "Please choose a topic first."
+              : "Please choose both a day and a time.";
+            return;
+          }
+          if (current === 2) {
+            // fill review summary
+            document.getElementById("sumTopic").textContent = state.topic;
+            document.getElementById("sumDay").textContent = state.dayLabel;
+            document.getElementById("sumTime").textContent = state.time;
+          }
+          showStep(current + 1);
+        });
+      });
+      form.querySelectorAll("[data-back]").forEach(function (btn) {
+        btn.addEventListener("click", function () { showStep(current - 1); });
+      });
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        document.getElementById("cTopic").textContent = state.topic;
+        document.getElementById("cDay").textContent = state.dayLabel;
+        document.getElementById("cTime").textContent = state.time;
+        showStep(4);
+      });
+
+      document.getElementById("bookAgain").addEventListener("click", function () {
+        state = { topic: null, day: null, dayLabel: null, time: null };
+        form.reset();
+        form.querySelectorAll(".choice, .day").forEach(function (x) { x.classList.remove("selected"); x.setAttribute("aria-checked", "false"); });
+        showStep(1);
+      });
+
+      // init
+      refreshNext();
+    })();
+  </script>
+</body>
+</html>

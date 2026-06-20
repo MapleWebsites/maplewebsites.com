@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mainland Physio — Move Pain-Free | Physiotherapy & Rehab in Vancouver, BC</title>
+  <meta name="description" content="Mainland Physio is a modern physiotherapy and rehab clinic in Vancouver, BC. Sports injury, back &amp; neck, post-surgical rehab, ICBC/MVA recovery, IMS dry needling and pelvic health. Direct billing, easy online booking." />
+  <meta name="theme-color" content="#0e7490" />
+  <meta name="author" content="Mainland Physio" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Mainland Physio — Move Pain-Free" />
+  <meta property="og:description" content="A calm, modern physiotherapy clinic in Vancouver. Expert care, direct billing, easy online booking." />
+
+  <!-- Fonts: Manrope for body/UI, Fraunces as the warmer display face for headings -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       Mainland Physio — design tokens
+       Calming clinical teal/blue, mint accent, soft slate text.
+       ============================================================ */
+    :root {
+      --teal-900: #0b4a5c;
+      --teal-700: #0e7490;
+      --teal-600: #1593b0;
+      --teal-500: #2cb1cc;
+      --teal-100: #d7eef3;
+      --teal-50:  #eef8fa;
+
+      --mint:     #34d1a3;
+      --mint-600: #1fae85;
+      --mint-100: #d6f7ec;
+
+      --coral:    #ff7a66;
+
+      --ink:      #1d2b33;   /* primary slate text */
+      --slate:    #44606c;   /* secondary text */
+      --slate-2:  #6b8590;   /* muted text */
+      --line:     #e2edf0;
+      --paper:    #ffffff;
+      --paper-2:  #f6fbfc;   /* faint section wash */
+      --cream:    #f0f8fa;
+
+      --shadow-sm: 0 1px 2px rgba(11,74,92,.06), 0 2px 6px rgba(11,74,92,.05);
+      --shadow:    0 6px 24px -8px rgba(11,74,92,.16), 0 2px 8px rgba(11,74,92,.06);
+      --shadow-lg: 0 24px 60px -20px rgba(11,74,92,.30), 0 8px 24px -12px rgba(11,74,92,.18);
+
+      --r-sm: 10px;
+      --r:    16px;
+      --r-lg: 22px;
+      --r-xl: 30px;
+      --r-pill: 999px;
+
+      --maxw: 1180px;
+      --gut: clamp(18px, 5vw, 56px);
+
+      --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --font-head: 'Fraunces', Georgia, 'Times New Roman', serif;
+
+      --ease: cubic-bezier(.22,.61,.36,1);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-head);
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--teal-900);
+      letter-spacing: -.01em;
+      margin: 0 0 .4em;
+    }
+
+    p { margin: 0 0 1em; }
+    a { color: var(--teal-700); text-decoration: none; }
+    img, svg { max-width: 100%; display: block; }
+
+    .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gut); }
+
+    /* Visually hidden but accessible */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    .skip-link {
+      position: absolute; left: 12px; top: -60px; z-index: 200;
+      background: var(--teal-900); color: #fff; padding: 10px 16px;
+      border-radius: var(--r-sm); transition: top .2s var(--ease); font-weight: 600;
+    }
+    .skip-link:focus { top: 12px; }
+
+    :focus-visible {
+      outline: 3px solid var(--teal-500);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .5em;
+      font-family: var(--font-body); font-weight: 700; font-size: .98rem;
+      padding: .85em 1.5em; border-radius: var(--r-pill);
+      border: 1.5px solid transparent; cursor: pointer;
+      transition: transform .2s var(--ease), box-shadow .25s var(--ease),
+                  background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
+      text-align: center; line-height: 1.1; white-space: nowrap;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--teal-700), var(--teal-600) 60%, var(--teal-500));
+      color: #fff; box-shadow: 0 10px 24px -10px rgba(14,116,144,.7);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -10px rgba(14,116,144,.65); }
+    .btn-mint {
+      background: linear-gradient(135deg, var(--mint), var(--mint-600));
+      color: #053f30; box-shadow: 0 10px 24px -10px rgba(31,174,133,.6);
+    }
+    .btn-mint:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -10px rgba(31,174,133,.55); }
+    .btn-ghost {
+      background: #fff; color: var(--teal-900); border-color: var(--line);
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-ghost:hover { border-color: var(--teal-500); color: var(--teal-700); transform: translateY(-2px); }
+    .btn-lg { padding: 1.05em 1.9em; font-size: 1.05rem; }
+    .btn-block { width: 100%; }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .55em;
+      font-family: var(--font-body); font-weight: 700; font-size: .8rem;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--teal-700);
+    }
+    .eyebrow::before {
+      content: ""; width: 26px; height: 2px; border-radius: 2px;
+      background: linear-gradient(90deg, var(--mint), var(--teal-500));
+    }
+
+    /* ---------- Header ---------- */
+    header.site {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.72);
+      backdrop-filter: saturate(160%) blur(14px);
+      -webkit-backdrop-filter: saturate(160%) blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: box-shadow .3s var(--ease), border-color .3s var(--ease), background .3s var(--ease);
+    }
+    header.site.scrolled {
+      box-shadow: 0 6px 24px -14px rgba(11,74,92,.4);
+      border-bottom-color: var(--line);
+      background: rgba(255,255,255,.86);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 74px; gap: 1rem;
+    }
+    .brand { display: flex; align-items: center; gap: .65rem; font-weight: 800; font-size: 1.18rem; color: var(--teal-900); letter-spacing: -.02em; }
+    .brand .mark { width: 38px; height: 38px; flex: none; }
+    .brand b { font-weight: 800; }
+    .brand span { color: var(--teal-600); }
+
+    .nav-links { display: flex; align-items: center; gap: 1.7rem; list-style: none; margin: 0; padding: 0; }
+    .nav-links a {
+      color: var(--slate); font-weight: 600; font-size: .96rem; position: relative; padding: 4px 0;
+    }
+    .nav-links a::after {
+      content: ""; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0;
+      background: linear-gradient(90deg, var(--teal-600), var(--mint)); border-radius: 2px;
+      transition: width .25s var(--ease);
+    }
+    .nav-links a:hover { color: var(--teal-900); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta { display: flex; align-items: center; gap: .7rem; }
+
+    .hamburger {
+      display: none; width: 46px; height: 46px; border: 1px solid var(--line); background: #fff;
+      border-radius: var(--r-sm); cursor: pointer; align-items: center; justify-content: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .hamburger span, .hamburger span::before, .hamburger span::after {
+      content: ""; display: block; width: 20px; height: 2px; background: var(--teal-900); border-radius: 2px;
+      transition: transform .25s var(--ease), opacity .2s var(--ease);
+    }
+    .hamburger span { position: relative; }
+    .hamburger span::before { position: absolute; top: -6px; }
+    .hamburger span::after { position: absolute; top: 6px; }
+    .nav-open .hamburger span { background: transparent; }
+    .nav-open .hamburger span::before { transform: translateY(6px) rotate(45deg); }
+    .nav-open .hamburger span::after { transform: translateY(-6px) rotate(-45deg); }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative; overflow: hidden;
+      background:
+        radial-gradient(120% 90% at 88% -10%, var(--teal-100) 0%, rgba(215,238,243,0) 55%),
+        radial-gradient(90% 70% at -5% 8%, var(--mint-100) 0%, rgba(214,247,236,0) 50%),
+        linear-gradient(180deg, #fbfeff 0%, #fff 100%);
+      padding: clamp(48px, 8vw, 96px) 0 clamp(56px, 8vw, 104px);
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(28px, 5vw, 64px); align-items: center;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 5.4vw, 4rem); line-height: 1.04; margin-bottom: .35em;
+    }
+    .hero h1 .grad {
+      background: linear-gradient(115deg, var(--teal-700), var(--mint-600));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero .lede { font-size: clamp(1.08rem, 1.6vw, 1.28rem); color: var(--slate); max-width: 36ch; }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: .8rem; margin: 1.6rem 0 1.3rem; }
+    .hero-trust {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 1.3rem 1.6rem; color: var(--slate-2);
+      font-size: .92rem; font-weight: 600;
+    }
+    .hero-trust .ht { display: flex; align-items: center; gap: .5rem; }
+    .hero-trust svg { width: 20px; height: 20px; flex: none; color: var(--mint-600); }
+
+    /* Hero illustration */
+    .hero-art { position: relative; }
+    .hero-art .art-card {
+      background: #fff; border-radius: var(--r-xl); box-shadow: var(--shadow-lg);
+      border: 1px solid var(--line); overflow: hidden;
+    }
+    .hero-art svg { width: 100%; height: auto; display: block; }
+    .floaty {
+      position: absolute; background: #fff; border: 1px solid var(--line);
+      border-radius: var(--r); box-shadow: var(--shadow); padding: .7rem .9rem;
+      display: flex; align-items: center; gap: .6rem; font-weight: 700; font-size: .85rem; color: var(--teal-900);
+    }
+    .floaty small { display: block; font-weight: 600; color: var(--slate-2); font-size: .72rem; }
+    .floaty .ic { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; flex: none; }
+    .floaty-1 { top: 18px; left: -18px; }
+    .floaty-2 { bottom: 22px; right: -14px; }
+    @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+    .floaty-1 { animation: floaty 6s var(--ease) infinite; }
+    .floaty-2 { animation: floaty 7s var(--ease) infinite .8s; }
+
+    /* ---------- Section scaffolding ---------- */
+    section { padding: clamp(56px, 8vw, 104px) 0; position: relative; }
+    .sec-head { max-width: 660px; margin: 0 auto clamp(34px, 4vw, 56px); text-align: center; }
+    .sec-head.left { text-align: left; margin-left: 0; }
+    .sec-head h2 { font-size: clamp(1.9rem, 3.6vw, 2.8rem); margin-top: .3em; }
+    .sec-head p { color: var(--slate); font-size: 1.08rem; margin-bottom: 0; }
+    .wash { background: var(--paper-2); }
+    .wash-teal {
+      background: linear-gradient(180deg, var(--teal-900), #0d3f4f);
+      color: #cfeaf1;
+    }
+    .wash-teal h2, .wash-teal h3 { color: #fff; }
+
+    /* ---------- Stats strip ---------- */
+    .stats {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+      background: var(--line); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .stat { background: #fff; padding: 1.7rem 1.2rem; text-align: center; }
+    .stat .num {
+      font-family: var(--font-head); font-weight: 600; font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+      color: var(--teal-700); line-height: 1; letter-spacing: -.02em;
+    }
+    .stat .lbl { color: var(--slate); font-size: .92rem; font-weight: 600; margin-top: .35rem; }
+
+    /* ---------- Service cards ---------- */
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2vw, 24px); }
+    .card {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 1.7rem;
+      box-shadow: var(--shadow-sm); transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
+      position: relative; overflow: hidden;
+    }
+    .card::after {
+      content: ""; position: absolute; inset: 0 0 auto 0; height: 3px;
+      background: linear-gradient(90deg, var(--mint), var(--teal-500));
+      transform: scaleX(0); transform-origin: left; transition: transform .3s var(--ease);
+    }
+    .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--teal-100); }
+    .card:hover::after { transform: scaleX(1); }
+    .card .ic {
+      width: 54px; height: 54px; border-radius: 14px; display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--teal-50), var(--mint-100)); margin-bottom: 1rem;
+      color: var(--teal-700);
+    }
+    .card .ic svg { width: 28px; height: 28px; }
+    .card h3 { font-size: 1.25rem; margin-bottom: .35em; }
+    .card p { color: var(--slate); font-size: .97rem; margin-bottom: .9rem; }
+    .card .tag { font-size: .82rem; font-weight: 700; color: var(--teal-700); display: inline-flex; align-items: center; gap: .35em; }
+
+    /* ---------- Booking widget (the star) ---------- */
+    .booking-shell {
+      display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(20px, 3vw, 40px); align-items: stretch;
+    }
+    .booking-intro h2 { font-size: clamp(1.9rem, 3.6vw, 2.7rem); }
+    .booking-intro p { color: var(--slate); }
+    .booking-perks { list-style: none; padding: 0; margin: 1.4rem 0 0; display: grid; gap: .85rem; }
+    .booking-perks li { display: flex; gap: .7rem; align-items: flex-start; font-weight: 600; color: var(--ink); }
+    .booking-perks svg { width: 22px; height: 22px; color: var(--mint-600); flex: none; margin-top: 1px; }
+    .booking-perks small { display: block; font-weight: 500; color: var(--slate-2); }
+
+    .booker {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--r-xl);
+      box-shadow: var(--shadow-lg); overflow: hidden; display: flex; flex-direction: column;
+    }
+    .booker-top { padding: 1.3rem clamp(1.2rem, 3vw, 1.9rem) 0; }
+    .progress {
+      display: flex; align-items: center; gap: .4rem; margin-bottom: .4rem;
+    }
+    .pstep { display: flex; align-items: center; gap: .4rem; flex: 1; }
+    .pstep:last-child { flex: 0; }
+    .pdot {
+      width: 30px; height: 30px; flex: none; border-radius: 50%; display: grid; place-items: center;
+      background: var(--teal-50); color: var(--slate-2); font-weight: 800; font-size: .85rem;
+      border: 2px solid var(--line); transition: all .3s var(--ease);
+    }
+    .pline { height: 3px; flex: 1; background: var(--line); border-radius: 3px; overflow: hidden; }
+    .pline i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--teal-600), var(--mint)); transition: width .4s var(--ease); }
+    .pstep.done .pdot, .pstep.active .pdot {
+      background: linear-gradient(135deg, var(--teal-700), var(--teal-500)); color: #fff; border-color: transparent;
+    }
+    .pstep.done .pline i, .pstep.active .pline i { width: 100%; }
+    .pstep.active.partial .pline i { width: 50%; }
+    .pdot svg { width: 15px; height: 15px; }
+    .plabel { font-size: .78rem; font-weight: 700; color: var(--slate-2); margin-bottom: 1.1rem; letter-spacing: .02em; }
+    .plabel b { color: var(--teal-700); }
+
+    .booker-body { padding: .4rem clamp(1.2rem, 3vw, 1.9rem) 1.3rem; flex: 1; }
+    .step { display: none; animation: fade .4s var(--ease); }
+    .step.active { display: block; }
+    @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+    .step h3 { font-size: 1.3rem; margin-bottom: .15em; }
+    .step .hint { color: var(--slate-2); font-size: .92rem; margin-bottom: 1.1rem; }
+
+    .opt-grid { display: grid; gap: .65rem; }
+    .opt-grid.two { grid-template-columns: 1fr 1fr; }
+    .opt {
+      display: flex; align-items: center; gap: .8rem; width: 100%; text-align: left;
+      background: #fff; border: 1.5px solid var(--line); border-radius: var(--r); padding: .85rem 1rem;
+      cursor: pointer; font-family: inherit; font-size: .96rem; color: var(--ink); font-weight: 600;
+      transition: border-color .2s var(--ease), background .2s var(--ease), transform .15s var(--ease), box-shadow .2s var(--ease);
+    }
+    .opt:hover { border-color: var(--teal-500); background: var(--teal-50); }
+    .opt[aria-pressed="true"] {
+      border-color: var(--teal-600); background: var(--teal-50);
+      box-shadow: 0 0 0 3px rgba(44,177,204,.18);
+    }
+    .opt .oic {
+      width: 40px; height: 40px; flex: none; border-radius: 11px; display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--teal-50), var(--mint-100)); color: var(--teal-700);
+    }
+    .opt .oic svg { width: 22px; height: 22px; }
+    .opt .ometa { display: flex; flex-direction: column; line-height: 1.25; }
+    .opt .ometa small { font-weight: 600; color: var(--slate-2); font-size: .8rem; }
+    .opt .check {
+      margin-left: auto; width: 22px; height: 22px; border-radius: 50%; flex: none;
+      border: 2px solid var(--line); display: grid; place-items: center; color: #fff;
+      transition: all .2s var(--ease);
+    }
+    .opt[aria-pressed="true"] .check { background: var(--mint-600); border-color: var(--mint-600); }
+    .opt[aria-pressed="true"] .check svg { opacity: 1; }
+    .opt .check svg { width: 13px; height: 13px; opacity: 0; }
+
+    /* avatar option for practitioners */
+    .opt .avatar { width: 44px; height: 44px; flex: none; }
+
+    /* date + time pickers */
+    .day-row { display: flex; gap: .55rem; overflow-x: auto; padding-bottom: .5rem; margin-bottom: 1rem; scrollbar-width: thin; }
+    .day {
+      flex: none; min-width: 76px; text-align: center; border: 1.5px solid var(--line);
+      background: #fff; border-radius: var(--r); padding: .7rem .4rem; cursor: pointer; font-family: inherit;
+      transition: border-color .2s var(--ease), background .2s var(--ease), box-shadow .2s var(--ease);
+    }
+    .day:hover { border-color: var(--teal-500); }
+    .day[aria-pressed="true"] { border-color: var(--teal-600); background: var(--teal-50); box-shadow: 0 0 0 3px rgba(44,177,204,.18); }
+    .day .dow { font-size: .74rem; font-weight: 700; color: var(--slate-2); text-transform: uppercase; letter-spacing: .04em; }
+    .day .dnum { font-family: var(--font-head); font-size: 1.4rem; color: var(--teal-900); font-weight: 600; line-height: 1.1; }
+    .day .dmon { font-size: .72rem; color: var(--slate-2); font-weight: 600; }
+
+    .slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
+    .slot {
+      border: 1.5px solid var(--line); background: #fff; border-radius: var(--r-sm); padding: .6rem .3rem;
+      cursor: pointer; font-family: inherit; font-weight: 700; font-size: .9rem; color: var(--ink);
+      transition: border-color .2s var(--ease), background .2s var(--ease), color .2s var(--ease);
+    }
+    .slot:hover { border-color: var(--teal-500); }
+    .slot[aria-pressed="true"] { background: var(--teal-700); border-color: var(--teal-700); color: #fff; }
+    .slot[disabled] { opacity: .4; cursor: not-allowed; text-decoration: line-through; }
+
+    .field { margin-bottom: .9rem; }
+    .field label { display: block; font-weight: 700; font-size: .85rem; margin-bottom: .35rem; color: var(--teal-900); }
+    .field input {
+      width: 100%; padding: .8rem 1rem; border: 1.5px solid var(--line); border-radius: var(--r-sm);
+      font-family: inherit; font-size: .96rem; color: var(--ink); background: #fff; transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+    }
+    .field input:focus { outline: none; border-color: var(--teal-600); box-shadow: 0 0 0 3px rgba(44,177,204,.2); }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+
+    .booker-foot {
+      display: flex; align-items: center; justify-content: space-between; gap: .8rem;
+      padding: 1rem clamp(1.2rem, 3vw, 1.9rem); border-top: 1px solid var(--line); background: var(--paper-2);
+    }
+    .booker-foot .summary { font-size: .85rem; color: var(--slate); font-weight: 600; min-height: 1.2em; }
+    .booker-foot .summary b { color: var(--teal-700); }
+    .link-back {
+      background: none; border: none; color: var(--slate-2); font-family: inherit; font-weight: 700;
+      font-size: .92rem; cursor: pointer; padding: .5em .2em; display: inline-flex; align-items: center; gap: .3em;
+    }
+    .link-back:hover { color: var(--teal-700); }
+    .link-back[hidden] { visibility: hidden; }
+
+    /* confirmation */
+    .confirm { text-align: center; padding: 1rem 0 .4rem; }
+    .confirm .seal {
+      width: 78px; height: 78px; margin: 0 auto 1rem; border-radius: 50%;
+      background: linear-gradient(135deg, var(--mint), var(--mint-600)); display: grid; place-items: center;
+      box-shadow: 0 14px 30px -10px rgba(31,174,133,.6); color: #fff;
+    }
+    .confirm .seal svg { width: 38px; height: 38px; }
+    .seal.pop { animation: pop .5s var(--ease); }
+    @keyframes pop { 0% { transform: scale(.4); opacity: 0; } 60% { transform: scale(1.12); } 100% { transform: scale(1); opacity: 1; } }
+    .recap {
+      text-align: left; background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--r);
+      padding: 1.1rem 1.3rem; margin: 1.1rem 0; display: grid; gap: .65rem;
+    }
+    .recap .row { display: flex; align-items: center; gap: .8rem; }
+    .recap .row .k { font-size: .8rem; color: var(--slate-2); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; width: 92px; flex: none; }
+    .recap .row .v { font-weight: 700; color: var(--teal-900); }
+    .recap .row .av { width: 32px; height: 32px; flex: none; }
+
+    /* ---------- Practitioners ---------- */
+    .team { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2vw, 24px); }
+    .member {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 1.6rem 1.4rem; text-align: center;
+      box-shadow: var(--shadow-sm); transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+    }
+    .member:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .member .avatar { width: 88px; height: 88px; margin: 0 auto .9rem; }
+    .member h3 { font-size: 1.15rem; margin-bottom: .1em; }
+    .member .cred { font-size: .82rem; font-weight: 700; color: var(--teal-700); margin-bottom: .6rem; letter-spacing: .01em; }
+    .member p { font-size: .9rem; color: var(--slate); margin-bottom: .7rem; }
+    .member .chips { display: flex; flex-wrap: wrap; gap: .35rem; justify-content: center; }
+    .chip {
+      font-size: .73rem; font-weight: 700; color: var(--teal-700); background: var(--teal-50);
+      border: 1px solid var(--teal-100); border-radius: var(--r-pill); padding: .2em .7em;
+    }
+
+    /* CSS avatar circle component */
+    .avatar { border-radius: 50%; position: relative; overflow: hidden; display: grid; place-items: center; flex: none; }
+    .avatar svg { width: 100%; height: 100%; }
+
+    /* ---------- Insurance ---------- */
+    .ins-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
+    .ins-copy h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
+    .ins-copy p { color: var(--slate); }
+    .ins-list { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1.3rem 0; }
+    .ins-pill {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--r-pill);
+      padding: .55em 1.05em; font-weight: 700; font-size: .9rem; color: var(--teal-900);
+      box-shadow: var(--shadow-sm); display: inline-flex; align-items: center; gap: .5em;
+      transition: transform .2s var(--ease), border-color .2s var(--ease);
+    }
+    .ins-pill:hover { transform: translateY(-2px); border-color: var(--teal-500); }
+    .ins-pill .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--mint-600); }
+    .ins-card {
+      background: linear-gradient(150deg, var(--teal-700), var(--teal-900));
+      color: #dff1f6; border-radius: var(--r-xl); padding: clamp(1.6rem, 3vw, 2.6rem);
+      box-shadow: var(--shadow-lg); position: relative; overflow: hidden;
+    }
+    .ins-card::before {
+      content: ""; position: absolute; width: 280px; height: 280px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(52,209,163,.35), transparent 70%);
+      top: -90px; right: -70px;
+    }
+    .ins-card h3 { color: #fff; font-size: 1.45rem; position: relative; }
+    .ins-card ul { list-style: none; padding: 0; margin: 1.1rem 0 0; display: grid; gap: .9rem; position: relative; }
+    .ins-card li { display: flex; gap: .7rem; align-items: flex-start; font-weight: 600; }
+    .ins-card li svg { width: 22px; height: 22px; flex: none; color: var(--mint); margin-top: 1px; }
+    .ins-card li b { color: #fff; }
+    .ins-card li small { display: block; font-weight: 500; opacity: .8; color: #cfeaf1; }
+
+    /* ---------- Testimonials ---------- */
+    .quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2vw, 24px); }
+    .quote {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 1.7rem;
+      box-shadow: var(--shadow-sm); display: flex; flex-direction: column;
+    }
+    .stars { display: flex; gap: 3px; margin-bottom: .9rem; color: #f6b73c; }
+    .stars svg { width: 19px; height: 19px; }
+    .quote blockquote { margin: 0 0 1.1rem; font-size: 1.02rem; color: var(--ink); line-height: 1.55; }
+    .quote .who { display: flex; align-items: center; gap: .75rem; margin-top: auto; }
+    .quote .who .avatar { width: 46px; height: 46px; }
+    .quote .who b { color: var(--teal-900); display: block; font-size: .95rem; }
+    .quote .who small { color: var(--slate-2); font-size: .85rem; }
+
+    /* ---------- FAQ ---------- */
+    .faq { max-width: 800px; margin: 0 auto; display: grid; gap: .8rem; }
+    .qa {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--r); overflow: hidden;
+      box-shadow: var(--shadow-sm); transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+    }
+    .qa.open { border-color: var(--teal-100); box-shadow: var(--shadow); }
+    .qa-q {
+      width: 100%; text-align: left; background: none; border: none; cursor: pointer; font-family: inherit;
+      font-weight: 700; font-size: 1.04rem; color: var(--teal-900); padding: 1.15rem 1.3rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .qa-q .ico { width: 26px; height: 26px; flex: none; border-radius: 50%; background: var(--teal-50);
+      display: grid; place-items: center; color: var(--teal-700); transition: transform .3s var(--ease), background .25s var(--ease); }
+    .qa.open .qa-q .ico { transform: rotate(45deg); background: var(--teal-700); color: #fff; }
+    .qa-q .ico svg { width: 14px; height: 14px; }
+    .qa-a { max-height: 0; overflow: hidden; transition: max-height .35s var(--ease); }
+    .qa-a-inner { padding: 0 1.3rem 1.2rem; color: var(--slate); }
+    .qa-a-inner p { margin: 0; }
+
+    /* ---------- Locations / hours ---------- */
+    .loc-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(22px, 3vw, 44px); }
+    .loc-cards { display: grid; gap: 1rem; }
+    .loc {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 1.5rem;
+      box-shadow: var(--shadow-sm); display: grid; grid-template-columns: auto 1fr; gap: 1.1rem; align-items: start;
+    }
+    .loc .pin { width: 50px; height: 50px; flex: none; border-radius: 14px; display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--teal-50), var(--mint-100)); color: var(--teal-700); }
+    .loc .pin svg { width: 26px; height: 26px; }
+    .loc h3 { font-size: 1.15rem; margin-bottom: .15em; }
+    .loc p { font-size: .92rem; color: var(--slate); margin: 0 0 .3em; }
+    .loc .meta { font-size: .85rem; color: var(--slate-2); font-weight: 600; display: flex; flex-wrap: wrap; gap: .3rem 1rem; }
+    .loc .meta a { font-weight: 700; }
+
+    .hours-card {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 1.7rem; box-shadow: var(--shadow);
+      align-self: start;
+    }
+    .hours-card h3 { font-size: 1.2rem; margin-bottom: 1rem; display: flex; align-items: center; gap: .5rem; }
+    .hours-card h3 svg { width: 22px; height: 22px; color: var(--teal-600); }
+    .hours-row { display: flex; justify-content: space-between; padding: .55rem 0; border-bottom: 1px dashed var(--line); font-size: .95rem; }
+    .hours-row:last-of-type { border-bottom: none; }
+    .hours-row .d { color: var(--slate); font-weight: 600; }
+    .hours-row .t { color: var(--teal-900); font-weight: 700; }
+    .hours-row.today { color: var(--teal-700); }
+    .hours-row.today .d, .hours-row.today .t { color: var(--teal-700); }
+    .hours-badge {
+      display: inline-flex; align-items: center; gap: .45em; margin-top: 1rem; font-weight: 700; font-size: .85rem;
+      background: var(--mint-100); color: var(--mint-600); padding: .4em .9em; border-radius: var(--r-pill);
+    }
+    .hours-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--mint-600); box-shadow: 0 0 0 4px rgba(31,174,133,.25); }
+
+    /* ---------- CTA band ---------- */
+    .cta-band {
+      background: linear-gradient(135deg, var(--teal-900), #0c5366 55%, var(--teal-700));
+      color: #fff; border-radius: var(--r-xl); padding: clamp(2rem, 5vw, 3.6rem); text-align: center;
+      box-shadow: var(--shadow-lg); position: relative; overflow: hidden;
+    }
+    .cta-band::before, .cta-band::after {
+      content: ""; position: absolute; border-radius: 50%;
+      background: radial-gradient(circle, rgba(52,209,163,.4), transparent 70%);
+    }
+    .cta-band::before { width: 340px; height: 340px; top: -130px; left: -90px; }
+    .cta-band::after { width: 280px; height: 280px; bottom: -120px; right: -60px; background: radial-gradient(circle, rgba(44,177,204,.4), transparent 70%); }
+    .cta-band h2 { color: #fff; font-size: clamp(1.8rem, 3.6vw, 2.7rem); position: relative; }
+    .cta-band p { color: #d4eef4; max-width: 46ch; margin: 0 auto 1.6rem; position: relative; }
+    .cta-band .btn-row { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; position: relative; }
+
+    /* ---------- Footer ---------- */
+    footer.site {
+      background: #082c38; color: #9fc4cf; padding: clamp(48px, 6vw, 72px) 0 0;
+    }
+    .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.2fr; gap: clamp(24px, 4vw, 48px); padding-bottom: 48px; }
+    footer.site .brand { color: #fff; margin-bottom: .9rem; }
+    footer.site .brand span { color: var(--mint); }
+    .foot-about p { color: #8fb8c4; font-size: .94rem; max-width: 34ch; }
+    .foot-col h4 { color: #fff; font-size: .82rem; text-transform: uppercase; letter-spacing: .1em; font-family: var(--font-body); font-weight: 800; margin-bottom: 1rem; }
+    .foot-col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .65rem; }
+    .foot-col a, .foot-col li { color: #9fc4cf; font-size: .94rem; }
+    .foot-col a:hover { color: #fff; }
+    .foot-contact li { display: flex; gap: .6rem; align-items: flex-start; }
+    .foot-contact svg { width: 18px; height: 18px; color: var(--mint); flex: none; margin-top: 3px; }
+    .socials { display: flex; gap: .6rem; margin-top: 1.1rem; }
+    .socials a {
+      width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); color: #cfe6ec;
+      transition: background .2s var(--ease), transform .2s var(--ease), color .2s var(--ease);
+    }
+    .socials a:hover { background: var(--mint-600); color: #053f30; transform: translateY(-2px); }
+    .socials svg { width: 19px; height: 19px; }
+    .foot-bottom {
+      border-top: 1px solid rgba(255,255,255,.1); padding: 22px 0; display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: space-between; gap: .8rem; font-size: .85rem; color: #7ea7b3;
+    }
+    .foot-bottom a { color: #cfe6ec; }
+    .credit { font-weight: 600; }
+    .credit a { color: var(--mint); font-weight: 700; }
+
+    /* ---------- Scroll reveal ---------- */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; }
+      .floaty-1, .floaty-2 { animation: none; }
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 980px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-art { max-width: 480px; margin: 0 auto; }
+      .booking-shell { grid-template-columns: 1fr; }
+      .ins-grid { grid-template-columns: 1fr; }
+      .loc-grid { grid-template-columns: 1fr; }
+      .team { grid-template-columns: repeat(2, 1fr); }
+      .cards { grid-template-columns: repeat(2, 1fr); }
+      .quotes { grid-template-columns: 1fr; }
+      .foot-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 720px) {
+      .nav-links, .nav-cta .btn { display: none; }
+      .hamburger { display: inline-flex; }
+      .mobile-menu {
+        position: fixed; inset: 74px 0 auto 0; background: rgba(255,255,255,.98);
+        backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); box-shadow: var(--shadow-lg);
+        padding: 1.2rem var(--gut) 1.6rem; display: none; flex-direction: column; gap: .3rem; z-index: 99;
+      }
+      .nav-open .mobile-menu { display: flex; }
+      .mobile-menu a { padding: .85rem .4rem; font-weight: 700; color: var(--teal-900); border-bottom: 1px solid var(--line); }
+      .mobile-menu .btn { margin-top: .8rem; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .cards { grid-template-columns: 1fr; }
+      .opt-grid.two { grid-template-columns: 1fr; }
+      .slots { grid-template-columns: repeat(3, 1fr); }
+      .field-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 460px) {
+      .team { grid-template-columns: 1fr; }
+      .foot-grid { grid-template-columns: 1fr; }
+      .floaty-1 { left: -6px; }
+      .floaty-2 { right: -4px; }
+    }
+    .mobile-menu { display: none; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site" id="top">
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Mainland Physio home">
+        <svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <rect width="48" height="48" rx="13" fill="url(#bg)"/>
+          <path d="M14 30c2.5-6 5-9 10-9s7.5 3 10 9" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="24" cy="15" r="4.4" fill="#fff"/>
+          <path d="M24 21v6" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="bg" x1="0" y1="0" x2="48" y2="48">
+              <stop stop-color="#1593b0"/><stop offset="1" stop-color="#0b4a5c"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span><b>Mainland</b> Physio</span>
+      </a>
+
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#book">Book</a></li>
+          <li><a href="#team">Our Team</a></li>
+          <li><a href="#insurance">Billing</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#locations">Locations</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-primary" href="#book">Book online</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#services">Services</a>
+      <a href="#book">Book an appointment</a>
+      <a href="#team">Our Team</a>
+      <a href="#insurance">Insurance &amp; Billing</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#locations">Locations &amp; Hours</a>
+      <a class="btn btn-primary btn-block" href="#book">Book online</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-labelledby="hero-h">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Vancouver physiotherapy &amp; rehab</span>
+          <h1 id="hero-h">Move <span class="grad">pain-free</span> &mdash; and stay that way.</h1>
+          <p class="lede">Evidence-based physiotherapy, hands-on care and a recovery plan built around your life. We get you back to the things you love, faster.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary btn-lg" href="#book">Book online</a>
+            <a class="btn btn-ghost btn-lg" href="#insurance">Direct billing info</a>
+          </div>
+          <div class="hero-trust">
+            <span class="ht">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12.5l2 2 4-4.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg>
+              Direct billing to most insurers
+            </span>
+            <span class="ht">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12.5l2 2 4-4.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg>
+              No doctor referral needed
+            </span>
+            <span class="ht">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12.5l2 2 4-4.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg>
+              Same-week appointments
+            </span>
+          </div>
+        </div>
+
+        <div class="hero-art">
+          <div class="art-card">
+            <!-- Calm wellness illustration: a figure mid-stretch beside a spine motif -->
+            <svg viewBox="0 0 520 460" role="img" aria-labelledby="art-t">
+              <title id="art-t">A calm illustration of a person stretching beside a stylised spine, set against soft wellness shapes.</title>
+              <defs>
+                <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#eef8fa"/><stop offset="1" stop-color="#d7eef3"/>
+                </linearGradient>
+                <linearGradient id="fig" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#1593b0"/><stop offset="1" stop-color="#0b4a5c"/>
+                </linearGradient>
+                <linearGradient id="acc" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#34d1a3"/><stop offset="1" stop-color="#1fae85"/>
+                </linearGradient>
+              </defs>
+              <rect width="520" height="460" fill="url(#sky)"/>
+              <!-- soft blobs -->
+              <circle cx="120" cy="110" r="80" fill="#fff" opacity=".55"/>
+              <circle cx="430" cy="350" r="100" fill="#34d1a3" opacity=".14"/>
+              <ellipse cx="270" cy="408" rx="190" ry="26" fill="#0b4a5c" opacity=".08"/>
+
+              <!-- stylised spine motif (right side) -->
+              <g transform="translate(388 80)" opacity=".9">
+                <path d="M20 0 C 60 40, -20 80, 20 120 C 60 160, -20 200, 20 240 C 50 272, 0 300, 24 320"
+                      stroke="url(#acc)" stroke-width="7" fill="none" stroke-linecap="round"/>
+                <g fill="#1593b0">
+                  <circle cx="20" cy="20" r="7"/><circle cx="6" cy="60" r="7"/>
+                  <circle cx="34" cy="100" r="7"/><circle cx="6" cy="140" r="7"/>
+                  <circle cx="34" cy="180" r="7"/><circle cx="6" cy="220" r="7"/>
+                  <circle cx="30" cy="258" r="7"/><circle cx="18" cy="300" r="7"/>
+                </g>
+              </g>
+
+              <!-- yoga / stretch mat -->
+              <rect x="78" y="356" width="300" height="26" rx="13" fill="#1fae85" opacity=".55"/>
+
+              <!-- figure mid-stretch (lunge reach) -->
+              <g>
+                <!-- back leg -->
+                <path d="M150 356 L196 300 L206 250" stroke="url(#fig)" stroke-width="26" stroke-linecap="round" fill="none"/>
+                <!-- front leg -->
+                <path d="M300 356 L276 300 L240 262" stroke="url(#fig)" stroke-width="26" stroke-linecap="round" fill="none"/>
+                <!-- torso -->
+                <path d="M222 256 C 232 220, 252 196, 286 176" stroke="url(#fig)" stroke-width="28" stroke-linecap="round" fill="none"/>
+                <!-- reaching arm -->
+                <path d="M286 176 C 312 158, 332 142, 352 120" stroke="url(#acc)" stroke-width="18" stroke-linecap="round" fill="none"/>
+                <!-- trailing arm -->
+                <path d="M262 200 C 240 196, 222 200, 206 214" stroke="url(#fig)" stroke-width="16" stroke-linecap="round" fill="none"/>
+                <!-- head -->
+                <circle cx="300" cy="150" r="26" fill="url(#fig)"/>
+                <circle cx="352" cy="116" r="9" fill="#34d1a3"/>
+              </g>
+
+              <!-- motion arcs -->
+              <path d="M120 150 q 30 -40 70 -30" stroke="#1593b0" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="2 9" opacity=".5"/>
+            </svg>
+          </div>
+
+          <div class="floaty floaty-1">
+            <span class="ic" style="background:var(--mint-100);color:var(--mint-600)">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span>Booked in 60 sec<small>No phone tag</small></span>
+          </div>
+          <div class="floaty floaty-2">
+            <span class="ic" style="background:var(--teal-50);color:var(--teal-700)">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true"><path d="M12 3l2.5 5.2 5.7.8-4.1 4 1 5.6L12 21l-5.1 2.6 1-5.6-4.1-4 5.7-.8z" fill="#f6b73c" stroke="none"/></svg>
+            </span>
+            <span>4.9 / 5 rating<small>620+ reviews</small></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STATS STRIP ============ -->
+    <section style="padding-top:0" aria-label="Clinic at a glance">
+      <div class="wrap">
+        <div class="stats reveal">
+          <div class="stat"><div class="num" data-count="12" data-suffix="">12</div><div class="lbl">Years in the Lower Mainland</div></div>
+          <div class="stat"><div class="num" data-count="18000" data-suffix="+">18,000+</div><div class="lbl">Patients helped</div></div>
+          <div class="stat"><div class="num" data-count="620" data-suffix="+">620+</div><div class="lbl">Five-star reviews</div></div>
+          <div class="stat"><div class="num">2</div><div class="lbl">Vancouver locations</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section id="services" aria-labelledby="serv-h">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow">What we treat</span>
+          <h2 id="serv-h">Care for every stage of recovery</h2>
+          <p>From a weekend tweak to a major surgery, our registered physiotherapists build a plan that meets you where you are.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <span class="ic">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 12a6 6 0 1112 0 6 6 0 01-12 0z" stroke="currentColor" stroke-width="2"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </span>
+            <h3>Sports injury</h3>
+            <p>Sprains, strains, runner's knee and return-to-sport programs. We rebuild strength so the injury doesn't come back.</p>
+            <span class="tag">Most common &middot; ACL, ankle, shoulder</span>
+          </article>
+
+          <article class="card reveal">
+            <span class="ic">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c2 4-2 6 0 10s-2 5 0 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="5" r="2" fill="currentColor"/></svg>
+            </span>
+            <h3>Back &amp; neck pain</h3>
+            <p>Disc irritation, sciatica, tension headaches and posture-related pain. Hands-on relief plus a plan to keep it away.</p>
+            <span class="tag">Manual therapy &middot; mobility work</span>
+          </article>
+
+          <article class="card reveal">
+            <span class="ic">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l3 3 4-9 3 12 2-4h2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <h3>Post-surgical rehab</h3>
+            <p>Structured recovery after joint replacement, ACL repair, rotator cuff and more &mdash; coordinated with your surgeon's protocol.</p>
+            <span class="tag">Guided &middot; milestone-based</span>
+          </article>
+
+          <article class="card reveal">
+            <span class="ic">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 17l4-1 6-6 3 3-6 6-1 4-3-3-3-3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 10l3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </span>
+            <h3>ICBC &amp; MVA recovery</h3>
+            <p>Pre-approved care after a motor-vehicle accident. We handle the ICBC paperwork so you can focus on healing.</p>
+            <span class="tag">Direct ICBC billing &middot; no upfront cost</span>
+          </article>
+
+          <article class="card reveal">
+            <span class="ic">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19L19 5M14 5h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="16" r="2.5" stroke="currentColor" stroke-width="2"/></svg>
+            </span>
+            <h3>Dry needling / IMS</h3>
+            <p>Intramuscular stimulation to release deep muscular knots and calm chronic tension that stretching alone won't reach.</p>
+            <span class="tag">Performed by certified physios</span>
+          </article>
+
+          <article class="card reveal">
+            <span class="ic">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="11" r="2.4" fill="currentColor"/></svg>
+            </span>
+            <h3>Pelvic health</h3>
+            <p>Discreet, expert care for pre/postnatal recovery, incontinence and pelvic pain in our private treatment rooms.</p>
+            <span class="tag">Private rooms &middot; all genders</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BOOKING WIDGET (THE STAR) ============ -->
+    <section id="book" class="wash" aria-labelledby="book-h">
+      <div class="wrap">
+        <div class="booking-shell">
+          <div class="booking-intro reveal">
+            <span class="eyebrow">Book in under a minute</span>
+            <h2 id="book-h">Your appointment, your way</h2>
+            <p>Pick a service, choose your physio, and grab a time that works. No accounts, no phone tag &mdash; you'll get a confirmation right here.</p>
+            <ul class="booking-perks">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12.5l2 2 4-4.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg>
+                <span>Same-week openings<small>Including early mornings &amp; evenings</small></span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12.5l2 2 4-4.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg>
+                <span>Direct billing handled for you<small>We bill your extended health provider</small></span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12.5l2 2 4-4.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg>
+                <span>Free 10-minute discovery call<small>Not sure what you need? Just ask.</small></span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- the booker -->
+          <div class="booker reveal" role="region" aria-label="Appointment booking">
+            <div class="booker-top">
+              <div class="progress" aria-hidden="true">
+                <div class="pstep active" data-pstep="1"><span class="pdot">1</span><span class="pline"><i></i></span></div>
+                <div class="pstep" data-pstep="2"><span class="pdot">2</span><span class="pline"><i></i></span></div>
+                <div class="pstep" data-pstep="3"><span class="pdot">3</span><span class="pline"><i></i></span></div>
+                <div class="pstep" data-pstep="4"><span class="pdot">4</span></div>
+              </div>
+              <div class="plabel" aria-live="polite">Step <b id="stepNow">1</b> of 4 &middot; <span id="stepName">Choose a service</span></div>
+            </div>
+
+            <form class="booker-body" id="bookForm" novalidate>
+              <!-- Step 1: service -->
+              <fieldset class="step active" data-step="1" style="border:0;margin:0;padding:0">
+                <legend class="sr-only">Choose a service</legend>
+                <h3>What brings you in?</h3>
+                <p class="hint">Choose the area that fits best &mdash; we'll fine-tune it at your visit.</p>
+                <div class="opt-grid" id="serviceList" role="group" aria-label="Services">
+                  <button type="button" class="opt" data-value="Sports Injury" data-dur="45 min">
+                    <span class="oic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="6" stroke="currentColor" stroke-width="2"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+                    <span class="ometa">Sports injury<small>Assessment &amp; treatment &middot; 45 min</small></span>
+                    <span class="check"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </button>
+                  <button type="button" class="opt" data-value="Back &amp; Neck" data-dur="45 min">
+                    <span class="oic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c2 4-2 6 0 10s-2 5 0 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+                    <span class="ometa">Back &amp; neck pain<small>Manual therapy &middot; 45 min</small></span>
+                    <span class="check"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </button>
+                  <button type="button" class="opt" data-value="Post-Surgical Rehab" data-dur="60 min">
+                    <span class="oic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l3 3 4-9 3 12 2-4h2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="ometa">Post-surgical rehab<small>Guided recovery &middot; 60 min</small></span>
+                    <span class="check"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </button>
+                  <button type="button" class="opt" data-value="ICBC / MVA Recovery" data-dur="45 min">
+                    <span class="oic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 17l4-1 6-6 3 3-6 6-1 4-3-3-3-3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
+                    <span class="ometa">ICBC / MVA recovery<small>Pre-approved care &middot; 45 min</small></span>
+                    <span class="check"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </button>
+                  <button type="button" class="opt" data-value="Dry Needling / IMS" data-dur="30 min">
+                    <span class="oic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19L19 5M14 5h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="ometa">Dry needling / IMS<small>Targeted release &middot; 30 min</small></span>
+                    <span class="check"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </button>
+                  <button type="button" class="opt" data-value="Pelvic Health" data-dur="60 min">
+                    <span class="oic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
+                    <span class="ometa">Pelvic health<small>Private room &middot; 60 min</small></span>
+                    <span class="check"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </button>
+                </div>
+              </fieldset>
+
+              <!-- Step 2: practitioner -->
+              <fieldset class="step" data-step="2" style="border:0;margin:0;padding:0">
+                <legend class="sr-only">Choose a practitioner</legend>
+                <h3>Who would you like to see?</h3>
+                <p class="hint">Any of our registered physiotherapists can help &mdash; or let us match you.</p>
+                <div class="opt-grid" id="practitionerList" role="group" aria-label="Practitioners">
+                  <button type="button" class="opt" data-value="No preference" data-role="First available">
+                    <span class="oic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19c1.5-4 4-6 7-6s5.5 2 7 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="8" r="3.4" stroke="currentColor" stroke-width="2"/></svg></span>
+                    <span class="ometa">First available<small>We'll match you to the soonest fit</small></span>
+                    <span class="check"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </button>
+                  <button type="button" class="opt" data-value="Dr. Priya Sandhu" data-role="Registered Physiotherapist, MPT" data-av="sandhu">
+                    <span class="avatar" data-avatar="sandhu" aria-hidden="true"></span>
+                    <span class="ometa">Priya Sandhu<small>Registered Physiotherapist, MPT &middot; Sports</small></span>
+                    <span class="check"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </button>
+                  <button type="button" class="opt" data-value="Marcus Lee" data-role="Registered Physiotherapist, BScPT" data-av="lee">
+                    <span class="avatar" data-avatar="lee" aria-hidden="true"></span>
+                    <span class="ometa">Marcus Lee<small>Registered Physiotherapist, BScPT &middot; Spine</small></span>
+                    <span class="check"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </button>
+                  <button type="button" class="opt" data-value="Hannah Okafor" data-role="Registered Physiotherapist, MPT" data-av="okafor">
+                    <span class="avatar" data-avatar="okafor" aria-hidden="true"></span>
+                    <span class="ometa">Hannah Okafor<small>Registered Physiotherapist, MPT &middot; Pelvic</small></span>
+                    <span class="check"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </button>
+                </div>
+              </fieldset>
+
+              <!-- Step 3: day + time -->
+              <fieldset class="step" data-step="3" style="border:0;margin:0;padding:0">
+                <legend class="sr-only">Choose a day and time</legend>
+                <h3>Pick a day &amp; time</h3>
+                <p class="hint">Times shown for our Kitsilano clinic, Pacific time.</p>
+                <div class="day-row" id="dayRow" role="group" aria-label="Available days"></div>
+                <div class="slots" id="slotGrid" role="group" aria-label="Available times"></div>
+              </fieldset>
+
+              <!-- Step 4: details + confirmation -->
+              <fieldset class="step" data-step="4" style="border:0;margin:0;padding:0">
+                <legend class="sr-only">Your details and confirmation</legend>
+                <div id="detailsPane">
+                  <h3>Almost there</h3>
+                  <p class="hint">We'll send a confirmation and a quick intake form to your email.</p>
+                  <div class="field-row">
+                    <div class="field">
+                      <label for="fName">First name</label>
+                      <input type="text" id="fName" name="fName" autocomplete="given-name" placeholder="Jordan" required>
+                    </div>
+                    <div class="field">
+                      <label for="lName">Last name</label>
+                      <input type="text" id="lName" name="lName" autocomplete="family-name" placeholder="Reyes" required>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" autocomplete="email" placeholder="you@email.com" required>
+                  </div>
+                  <div class="field">
+                    <label for="phone">Mobile (for reminders)</label>
+                    <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(604) 555-0142">
+                  </div>
+                </div>
+
+                <div id="confirmPane" class="confirm" hidden>
+                  <div class="seal" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <h3 id="confirmName">You're booked!</h3>
+                  <p class="hint" id="confirmBlurb">A confirmation is on its way to your inbox.</p>
+                  <div class="recap" id="recap"></div>
+                  <p class="hint" style="margin-bottom:0">Need to change something? Just reply to your confirmation email or call us &mdash; no fees to reschedule.</p>
+                </div>
+              </fieldset>
+            </form>
+
+            <div class="booker-foot">
+              <button type="button" class="link-back" id="backBtn" hidden>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Back
+              </button>
+              <span class="summary" id="bookSummary" aria-live="polite">Select a service to begin</span>
+              <button type="button" class="btn btn-primary" id="nextBtn" disabled>Continue</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRACTITIONERS ============ -->
+    <section id="team" aria-labelledby="team-h">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow">Meet your physios</span>
+          <h2 id="team-h">A team you'll actually look forward to seeing</h2>
+          <p>Registered, experienced, and genuinely invested in getting you better &mdash; not just booking the next visit.</p>
+        </div>
+
+        <div class="team">
+          <article class="member reveal">
+            <span class="avatar" data-avatar="sandhu" aria-hidden="true"></span>
+            <h3>Priya Sandhu</h3>
+            <div class="cred">Registered Physiotherapist, MPT</div>
+            <p>Twelve years working with weekend warriors and varsity athletes. Believes strong is the best painkiller.</p>
+            <div class="chips"><span class="chip">Sports</span><span class="chip">ACL rehab</span><span class="chip">Running</span></div>
+          </article>
+
+          <article class="member reveal">
+            <span class="avatar" data-avatar="lee" aria-hidden="true"></span>
+            <h3>Marcus Lee</h3>
+            <div class="cred">Registered Physiotherapist, BScPT</div>
+            <p>Spine and posture specialist with a knack for desk-worker necks and stubborn lower-back pain. Certified in IMS.</p>
+            <div class="chips"><span class="chip">Spine</span><span class="chip">IMS</span><span class="chip">Manual therapy</span></div>
+          </article>
+
+          <article class="member reveal">
+            <span class="avatar" data-avatar="okafor" aria-hidden="true"></span>
+            <h3>Hannah Okafor</h3>
+            <div class="cred">Registered Physiotherapist, MPT</div>
+            <p>Pelvic health lead supporting pre/postnatal recovery with warmth and zero judgment. Patients call her a calm in the storm.</p>
+            <div class="chips"><span class="chip">Pelvic health</span><span class="chip">Prenatal</span></div>
+          </article>
+
+          <article class="member reveal">
+            <span class="avatar" data-avatar="tran" aria-hidden="true"></span>
+            <h3>David Tran</h3>
+            <div class="cred">Registered Physiotherapist, MPT, CAFCI</div>
+            <p>Post-surgical rehab and ICBC recovery. Methodical, encouraging, and fluent in the small wins that add up.</p>
+            <div class="chips"><span class="chip">Post-surgical</span><span class="chip">ICBC</span><span class="chip">Dry needling</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INSURANCE & DIRECT BILLING ============ -->
+    <section id="insurance" class="wash" aria-labelledby="ins-h">
+      <div class="wrap">
+        <div class="ins-grid">
+          <div class="ins-copy reveal">
+            <span class="eyebrow">Insurance &amp; direct billing</span>
+            <h2 id="ins-h">We bill your insurer directly &mdash; not your patience</h2>
+            <p>Most of our patients pay little or nothing out of pocket. We submit your claim electronically at the front desk, so you only cover what your plan doesn't. ICBC and MVA claims are pre-approved &mdash; bring your claim number and we handle the rest.</p>
+            <div class="ins-list" aria-label="Insurers we direct-bill">
+              <span class="ins-pill"><span class="dot"></span>ICBC</span>
+              <span class="ins-pill"><span class="dot"></span>Pacific Blue Cross</span>
+              <span class="ins-pill"><span class="dot"></span>Sun Life</span>
+              <span class="ins-pill"><span class="dot"></span>Manulife</span>
+              <span class="ins-pill"><span class="dot"></span>Canada Life</span>
+              <span class="ins-pill"><span class="dot"></span>Green Shield</span>
+              <span class="ins-pill"><span class="dot"></span>Desjardins</span>
+              <span class="ins-pill"><span class="dot"></span>SSQ / Beneva</span>
+              <span class="ins-pill"><span class="dot"></span>WorkSafeBC</span>
+            </div>
+            <a class="btn btn-primary btn-lg" href="#book">Book with direct billing</a>
+          </div>
+
+          <aside class="ins-card reveal" aria-label="How direct billing works">
+            <h3>How it works</h3>
+            <ul>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><text x="12" y="16" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor">1</text></svg>
+                <span><b>Bring your details.</b><small>Plan name, policy &amp; member ID &mdash; or your ICBC claim number.</small></span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><text x="12" y="16" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor">2</text></svg>
+                <span><b>We submit on the spot.</b><small>Claims go through electronically before you leave.</small></span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><text x="12" y="16" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor">3</text></svg>
+                <span><b>Pay only the gap.</b><small>You cover any remainder your plan doesn't &mdash; often $0.</small></span>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <section id="reviews" aria-labelledby="rev-h">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow">Patient stories</span>
+          <h2 id="rev-h">People get better here &mdash; and they tell us</h2>
+          <p>A few words from patients across our Kitsilano and Mount Pleasant clinics.</p>
+        </div>
+
+        <div class="quotes">
+          <figure class="quote reveal">
+            <div class="stars" aria-label="Rated 5 out of 5">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.8 6.1 20.9l1.2-6.5L2.5 8.9 9.1 8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.8 6.1 20.9l1.2-6.5L2.5 8.9 9.1 8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.8 6.1 20.9l1.2-6.5L2.5 8.9 9.1 8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.8 6.1 20.9l1.2-6.5L2.5 8.9 9.1 8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.8 6.1 20.9l1.2-6.5L2.5 8.9 9.1 8z"/></svg>
+            </div>
+            <blockquote>"Tore my ACL skiing at Cypress and was sure my season was over. Priya's rehab plan had me back on the slopes in five months &mdash; stronger than before the injury."</blockquote>
+            <figcaption class="who">
+              <span class="avatar" data-avatar="quote1" aria-hidden="true"></span>
+              <span><b>Cameron W.</b><small>Sports injury &middot; Kitsilano</small></span>
+            </figcaption>
+          </figure>
+
+          <figure class="quote reveal">
+            <div class="stars" aria-label="Rated 5 out of 5">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.8 6.1 20.9l1.2-6.5L2.5 8.9 9.1 8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.8 6.1 20.9l1.2-6.5L2.5 8.9 9.1 8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.8 6.1 20.9l1.2-6.5L2.5 8.9 9.1 8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.8 6.1 20.9l1.2-6.5L2.5 8.9 9.1 8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.8 6.1 20.9l1.2-6.5L2.5 8.9 9.1 8z"/></svg>
+            </div>
+            <blockquote>"After my rear-end collision I dreaded the ICBC paperwork. Mainland filed everything for me. I just showed up and did the work &mdash; zero stress, zero invoices."</blockquote>
+            <figcaption class="who">
+              <span class="avatar" data-avatar="quote2" aria-hidden="true"></span>
+              <span><b>Aisha R.</b><small>ICBC recovery &middot; Mount Pleasant</small></span>
+            </figcaption>
+          </figure>
+
+          <figure class="quote reveal">
+            <div class="stars" aria-label="Rated 5 out of 5">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.8 6.1 20.9l1.2-6.5L2.5 8.9 9.1 8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.8 6.1 20.9l1.2-6.5L2.5 8.9 9.1 8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.8 6.1 20.9l1.2-6.5L2.5 8.9 9.1 8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.8 6.1 20.9l1.2-6.5L2.5 8.9 9.1 8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.8 6.1 20.9l1.2-6.5L2.5 8.9 9.1 8z"/></svg>
+            </div>
+            <blockquote>"Hannah made postpartum pelvic care feel completely normal and safe. Six weeks in I can run after my toddler again without wincing. I recommend her to every new mom I meet."</blockquote>
+            <figcaption class="who">
+              <span class="avatar" data-avatar="quote3" aria-hidden="true"></span>
+              <span><b>Megan T.</b><small>Pelvic health &middot; Kitsilano</small></span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="wash" aria-labelledby="faq-h">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow">Good to know</span>
+          <h2 id="faq-h">Questions, answered</h2>
+          <p>If you don't see yours here, send us a note &mdash; we reply the same day.</p>
+        </div>
+
+        <div class="faq" id="faq">
+          <div class="qa reveal">
+            <button class="qa-q" aria-expanded="false">What should I wear to my appointment?<span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+            <div class="qa-a"><div class="qa-a-inner"><p>Comfortable, loose clothing you can move in &mdash; athletic wear is perfect. If we're assessing a knee or shoulder, bring shorts or a tank so we can see the joint. We keep clean shorts and gowns on hand just in case.</p></div></div>
+          </div>
+          <div class="qa reveal">
+            <button class="qa-q" aria-expanded="false">Do I need a doctor's referral?<span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+            <div class="qa-a"><div class="qa-a-inner"><p>No. In BC you can see a physiotherapist directly without a referral. Some extended-health plans <em>request</em> a referral for reimbursement, so it's worth a quick check with your provider &mdash; but you're welcome to book today either way.</p></div></div>
+          </div>
+          <div class="qa reveal">
+            <button class="qa-q" aria-expanded="false">How many visits will I need?<span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+            <div class="qa-a"><div class="qa-a-inner"><p>It depends on the injury, but most patients notice meaningful change within 3&ndash;6 visits. Your physio will give you an honest estimate at your first assessment and re-check progress as you go &mdash; we never sell you sessions you don't need.</p></div></div>
+          </div>
+          <div class="qa reveal">
+            <button class="qa-q" aria-expanded="false">What happens at my first visit?<span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+            <div class="qa-a"><div class="qa-a-inner"><p>We start with a thorough assessment &mdash; your history, movement, and goals &mdash; then begin hands-on treatment and send you home with a clear, doable plan. First visits run 45&ndash;60 minutes depending on the service.</p></div></div>
+          </div>
+          <div class="qa reveal">
+            <button class="qa-q" aria-expanded="false">Can you bill ICBC directly after a car accident?<span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+            <div class="qa-a"><div class="qa-a-inner"><p>Yes. ICBC pre-approves a set number of physiotherapy visits after a motor-vehicle accident, and we bill them directly &mdash; no upfront cost to you. Just bring your claim number and we'll take care of the paperwork.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LOCATIONS & HOURS ============ -->
+    <section id="locations" aria-labelledby="loc-h">
+      <div class="wrap">
+        <div class="sec-head left reveal">
+          <span class="eyebrow">Visit us</span>
+          <h2 id="loc-h">Two calm clinics across Vancouver</h2>
+        </div>
+
+        <div class="loc-grid">
+          <div class="loc-cards">
+            <article class="loc reveal">
+              <span class="pin"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="11" r="2.5" stroke="currentColor" stroke-width="2"/></svg></span>
+              <div>
+                <h3>Kitsilano (flagship)</h3>
+                <p>2148 West 4th Avenue, Unit 200<br>Vancouver, BC V6K 1N6</p>
+                <div class="meta"><span>Free 90-min street parking</span><a href="tel:+16045550142">(604) 555-0142</a></div>
+              </div>
+            </article>
+            <article class="loc reveal">
+              <span class="pin"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="11" r="2.5" stroke="currentColor" stroke-width="2"/></svg></span>
+              <div>
+                <h3>Mount Pleasant</h3>
+                <p>110 East Broadway, Suite 305<br>Vancouver, BC V5T 1V6</p>
+                <div class="meta"><span>Steps from Main St &mdash; Science World</span><a href="tel:+16045550188">(604) 555-0188</a></div>
+              </div>
+            </article>
+            <article class="loc reveal" style="grid-template-columns:auto 1fr;background:linear-gradient(135deg,var(--teal-50),var(--mint-100));border-color:var(--teal-100)">
+              <span class="pin" style="background:#fff"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <div>
+                <h3 style="margin-bottom:.25em">Telehealth, BC-wide</h3>
+                <p style="margin-bottom:0">Can't make it in? Secure video sessions for assessments, exercise coaching and follow-ups &mdash; available across British Columbia.</p>
+              </div>
+            </article>
+          </div>
+
+          <aside class="hours-card reveal" aria-label="Clinic hours">
+            <h3><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Clinic hours</h3>
+            <div class="hours-row" data-day="1"><span class="d">Monday</span><span class="t">7:00 AM &ndash; 8:00 PM</span></div>
+            <div class="hours-row" data-day="2"><span class="d">Tuesday</span><span class="t">7:00 AM &ndash; 8:00 PM</span></div>
+            <div class="hours-row" data-day="3"><span class="d">Wednesday</span><span class="t">7:00 AM &ndash; 8:00 PM</span></div>
+            <div class="hours-row" data-day="4"><span class="d">Thursday</span><span class="t">7:00 AM &ndash; 8:00 PM</span></div>
+            <div class="hours-row" data-day="5"><span class="d">Friday</span><span class="t">7:00 AM &ndash; 6:00 PM</span></div>
+            <div class="hours-row" data-day="6"><span class="d">Saturday</span><span class="t">8:00 AM &ndash; 4:00 PM</span></div>
+            <div class="hours-row" data-day="0"><span class="d">Sunday</span><span class="t">Closed</span></div>
+            <div class="hours-badge" id="openBadge"><span class="dot"></span><span>Checking hours&hellip;</span></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA BAND ============ -->
+    <section style="padding-top:0">
+      <div class="wrap">
+        <div class="cta-band reveal">
+          <h2>Ready to feel like yourself again?</h2>
+          <p>Book your assessment today &mdash; most patients are seen within the same week, and we'll bill your insurer directly.</p>
+          <div class="btn-row">
+            <a class="btn btn-mint btn-lg" href="#book">Book online</a>
+            <a class="btn btn-ghost btn-lg" href="tel:+16045550142">Call (604) 555-0142</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-about">
+          <a class="brand" href="#top" aria-label="Mainland Physio home">
+            <svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <rect width="48" height="48" rx="13" fill="url(#bgf)"/>
+              <path d="M14 30c2.5-6 5-9 10-9s7.5 3 10 9" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="24" cy="15" r="4.4" fill="#fff"/>
+              <path d="M24 21v6" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+              <defs><linearGradient id="bgf" x1="0" y1="0" x2="48" y2="48"><stop stop-color="#34d1a3"/><stop offset="1" stop-color="#0e7490"/></linearGradient></defs>
+            </svg>
+            <span><b>Mainland</b> <span>Physio</span></span>
+          </a>
+          <p>Modern, evidence-based physiotherapy and rehab in Vancouver, BC. We help you move pain-free &mdash; and keep you that way.</p>
+          <div class="socials">
+            <a href="#" aria-label="Mainland Physio on Instagram"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/></svg></a>
+            <a href="#" aria-label="Mainland Physio on Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></a>
+            <a href="#" aria-label="Mainland Physio on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.5 8A1.5 1.5 0 106.5 5a1.5 1.5 0 000 3zM5 10h3v9H5zM10 10h3v1.3c.5-.9 1.6-1.5 2.8-1.5 2.3 0 3.2 1.5 3.2 4V19h-3v-4.5c0-1.2-.4-2-1.5-2s-1.5.8-1.5 2V19h-3z"/></svg></a>
+          </div>
+        </div>
+
+        <div class="foot-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Sports injury</a></li>
+            <li><a href="#services">Back &amp; neck pain</a></li>
+            <li><a href="#services">Post-surgical rehab</a></li>
+            <li><a href="#services">ICBC / MVA recovery</a></li>
+            <li><a href="#services">Dry needling / IMS</a></li>
+            <li><a href="#services">Pelvic health</a></li>
+          </ul>
+        </div>
+
+        <div class="foot-col">
+          <h4>Clinic</h4>
+          <ul>
+            <li><a href="#team">Our team</a></li>
+            <li><a href="#insurance">Insurance &amp; billing</a></li>
+            <li><a href="#reviews">Patient reviews</a></li>
+            <li><a href="#locations">Locations &amp; hours</a></li>
+            <li><a href="#book">Book online</a></li>
+          </ul>
+        </div>
+
+        <div class="foot-col">
+          <h4>Get in touch</h4>
+          <ul class="foot-contact">
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span>2148 West 4th Ave, Unit 200<br>Vancouver, BC V6K 1N6</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5l4-1 2 5-2 1c1 2 3 4 5 5l1-2 5 2-1 4c-9 1-19-9-14-18z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><a href="tel:+16045550142">(604) 555-0142</a></li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><a href="mailto:hello@mainlandphysio.ca">hello@mainlandphysio.ca</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="foot-bottom">
+        <span>&copy; <span id="year">2026</span> Mainland Physio. Registered physiotherapists of BC. &middot; Privacy &middot; Terms</span>
+        <span class="credit">Concept site crafted by <a href="../index.html">Maple</a> &middot; sample design</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    "use strict";
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ---------- Year ---------- */
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* ---------- Sticky header shadow ---------- */
+    var header = document.querySelector('header.site');
+    var onScroll = function () {
+      if (window.scrollY > 8) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* ---------- Mobile menu ---------- */
+    var burger = document.getElementById('hamburger');
+    var body = document.body;
+    burger.addEventListener('click', function () {
+      var open = body.classList.toggle('nav-open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    document.querySelectorAll('.mobile-menu a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        body.classList.remove('nav-open');
+        burger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* ---------- CSS-drawn avatars (deterministic gradient + initials) ---------- */
+    var avatarDefs = {
+      sandhu: { initials: 'PS', c1: '#1593b0', c2: '#0b4a5c' },
+      lee:    { initials: 'ML', c1: '#34d1a3', c2: '#1fae85' },
+      okafor: { initials: 'HO', c1: '#2cb1cc', c2: '#0e7490' },
+      tran:   { initials: 'DT', c1: '#5f8fb0', c2: '#0b4a5c' },
+      quote1: { initials: 'CW', c1: '#0e7490', c2: '#1593b0' },
+      quote2: { initials: 'AR', c1: '#1fae85', c2: '#0b4a5c' },
+      quote3: { initials: 'MT', c1: '#2cb1cc', c2: '#1fae85' }
+    };
+    function buildAvatar(el) {
+      var key = el.getAttribute('data-avatar');
+      var d = avatarDefs[key];
+      if (!d) return;
+      var id = 'av_' + key;
+      el.innerHTML =
+        '<svg viewBox="0 0 100 100" aria-hidden="true">' +
+        '<defs><linearGradient id="' + id + '" x1="0" y1="0" x2="1" y2="1">' +
+        '<stop offset="0" stop-color="' + d.c1 + '"/><stop offset="1" stop-color="' + d.c2 + '"/>' +
+        '</linearGradient></defs>' +
+        '<rect width="100" height="100" rx="50" fill="url(#' + id + ')"/>' +
+        '<text x="50" y="50" dy=".35em" text-anchor="middle" font-family="Manrope, sans-serif" ' +
+        'font-size="38" font-weight="800" fill="#ffffff" opacity=".95">' + d.initials + '</text>' +
+        '</svg>';
+    }
+    document.querySelectorAll('[data-avatar]').forEach(buildAvatar);
+
+    /* ---------- Scroll reveal ---------- */
+    var reveals = document.querySelectorAll('.reveal');
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      reveals.forEach(function (el) { el.classList.add('in'); });
+    } else {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      reveals.forEach(function (el) { io.observe(el); });
+    }
+
+    /* ---------- Animated stat counters ---------- */
+    var counters = document.querySelectorAll('.num[data-count]');
+    function animateCount(el) {
+      var target = parseInt(el.getAttribute('data-count'), 10);
+      var suffix = el.getAttribute('data-suffix') || '';
+      if (reduceMotion) { el.textContent = target.toLocaleString() + suffix; return; }
+      var start = null, dur = 1400;
+      function frame(ts) {
+        if (!start) start = ts;
+        var p = Math.min((ts - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased).toLocaleString() + suffix;
+        if (p < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+    if ('IntersectionObserver' in window) {
+      var cio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { animateCount(e.target); cio.unobserve(e.target); }
+        });
+      }, { threshold: 0.6 });
+      counters.forEach(function (el) { cio.observe(el); });
+    } else {
+      counters.forEach(animateCount);
+    }
+
+    /* ---------- FAQ accordion ---------- */
+    document.querySelectorAll('#faq .qa').forEach(function (qa) {
+      var btn = qa.querySelector('.qa-q');
+      var panel = qa.querySelector('.qa-a');
+      btn.addEventListener('click', function () {
+        var open = qa.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        panel.style.maxHeight = open ? (panel.scrollHeight + 'px') : '0px';
+      });
+    });
+
+    /* ---------- Open / closed badge ---------- */
+    (function () {
+      var schedule = {
+        0: null, 1: [7, 20], 2: [7, 20], 3: [7, 20], 4: [7, 20], 5: [7, 18], 6: [8, 16]
+      };
+      var now = new Date();
+      var day = now.getDay();
+      var hour = now.getHours() + now.getMinutes() / 60;
+      var todayRow = document.querySelector('.hours-row[data-day="' + day + '"]');
+      if (todayRow) todayRow.classList.add('today');
+      var badge = document.getElementById('openBadge');
+      var hrs = schedule[day];
+      var open = hrs && hour >= hrs[0] && hour < hrs[1];
+      if (open) {
+        badge.innerHTML = '<span class="dot"></span><span>Open now &middot; closes ' + (hrs[1] - 12) + ' PM</span>';
+      } else {
+        badge.style.background = '#fdece8'; badge.style.color = '#c2502f';
+        badge.innerHTML = '<span class="dot" style="background:#e07a5f;box-shadow:0 0 0 4px rgba(224,122,95,.22)"></span><span>Closed now &middot; book online anytime</span>';
+      }
+    })();
+
+    /* ============================================================
+       BOOKING WIDGET — the star feature
+       ============================================================ */
+    (function () {
+      var form = document.getElementById('bookForm');
+      var steps = Array.prototype.slice.call(form.querySelectorAll('.step'));
+      var psteps = Array.prototype.slice.call(document.querySelectorAll('.pstep'));
+      var nextBtn = document.getElementById('nextBtn');
+      var backBtn = document.getElementById('backBtn');
+      var summaryEl = document.getElementById('bookSummary');
+      var stepNowEl = document.getElementById('stepNow');
+      var stepNameEl = document.getElementById('stepName');
+      var detailsPane = document.getElementById('detailsPane');
+      var confirmPane = document.getElementById('confirmPane');
+
+      var stepNames = ['Choose a service', 'Pick your physio', 'Day & time', 'Your details'];
+      var state = { current: 1, service: null, dur: null, practitioner: null, role: null, av: null, day: null, dayLabel: null, time: null, submitted: false };
+
+      /* --- generic single-select group --- */
+      function wireSelect(containerId, onPick) {
+        var container = document.getElementById(containerId);
+        container.addEventListener('click', function (e) {
+          var btn = e.target.closest('.opt');
+          if (!btn) return;
+          container.querySelectorAll('.opt').forEach(function (o) { o.setAttribute('aria-pressed', 'false'); });
+          btn.setAttribute('aria-pressed', 'true');
+          onPick(btn);
+          updateControls();
+        });
+      }
+
+      wireSelect('serviceList', function (btn) {
+        state.service = btn.getAttribute('data-value');
+        state.dur = btn.getAttribute('data-dur');
+      });
+      wireSelect('practitionerList', function (btn) {
+        state.practitioner = btn.getAttribute('data-value');
+        state.role = btn.getAttribute('data-role');
+        state.av = btn.getAttribute('data-av');
+      });
+
+      /* --- build day chips (next business days) --- */
+      var dayRow = document.getElementById('dayRow');
+      var slotGrid = document.getElementById('slotGrid');
+      var DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      var MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      var days = [];
+      (function buildDays() {
+        var d = new Date(); d.setHours(0, 0, 0, 0);
+        var added = 0, guard = 0;
+        // start tomorrow
+        d.setDate(d.getDate() + 1);
+        while (added < 6 && guard < 20) {
+          guard++;
+          if (d.getDay() !== 0) { // skip Sundays (closed)
+            days.push(new Date(d));
+            added++;
+          }
+          d.setDate(d.getDate() + 1);
+        }
+      })();
+      days.forEach(function (d, i) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'day';
+        btn.setAttribute('aria-pressed', 'false');
+        btn.setAttribute('data-i', i);
+        btn.innerHTML = '<div class="dow">' + (i === 0 ? 'Tmrw' : DOW[d.getDay()]) + '</div>' +
+                        '<div class="dnum">' + d.getDate() + '</div>' +
+                        '<div class="dmon">' + MON[d.getMonth()] + '</div>';
+        btn.addEventListener('click', function () {
+          dayRow.querySelectorAll('.day').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+          btn.setAttribute('aria-pressed', 'true');
+          state.day = d;
+          state.dayLabel = DOW[d.getDay()] + ' ' + MON[d.getMonth()] + ' ' + d.getDate();
+          state.time = null;
+          renderSlots(d);
+          updateControls();
+        });
+        dayRow.appendChild(btn);
+      });
+
+      /* --- time slots (deterministic per day so some look "taken") --- */
+      var allSlots = ['7:30', '8:30', '9:30', '10:30', '12:00', '1:30', '3:00', '4:30', '6:00'];
+      function renderSlots(d) {
+        slotGrid.innerHTML = '';
+        var seed = d.getDate();
+        allSlots.forEach(function (t, idx) {
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'slot';
+          var taken = ((seed + idx * 3) % 7 === 0) || ((seed + idx) % 5 === 0);
+          var hourNum = parseInt(t.split(':')[0], 10);
+          var meridiem = (hourNum < 7 || hourNum === 12) ? ((hourNum === 12) ? 'PM' : 'AM') : (hourNum < 12 ? 'AM' : 'PM');
+          // 7,8,9,10 -> AM ; 12,1,3,4,6 -> PM
+          meridiem = (idx <= 3) ? 'AM' : 'PM';
+          var label = t + ' ' + meridiem;
+          btn.textContent = label;
+          btn.setAttribute('aria-pressed', 'false');
+          if (taken) {
+            btn.disabled = true;
+            btn.setAttribute('aria-label', label + ' — unavailable');
+          } else {
+            btn.addEventListener('click', function () {
+              slotGrid.querySelectorAll('.slot').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+              btn.setAttribute('aria-pressed', 'true');
+              state.time = label;
+              updateControls();
+            });
+          }
+          slotGrid.appendChild(btn);
+        });
+      }
+
+      /* --- progress + footer + validation --- */
+      function stepValid(n) {
+        if (n === 1) return !!state.service;
+        if (n === 2) return !!state.practitioner;
+        if (n === 3) return !!(state.day && state.time);
+        if (n === 4) {
+          var fn = document.getElementById('fName').value.trim();
+          var em = document.getElementById('email').value.trim();
+          return fn.length > 0 && /\S+@\S+\.\S+/.test(em);
+        }
+        return false;
+      }
+
+      function updateProgress() {
+        psteps.forEach(function (ps) {
+          var n = parseInt(ps.getAttribute('data-pstep'), 10);
+          ps.classList.remove('active', 'done', 'partial');
+          var dot = ps.querySelector('.pdot');
+          if (n < state.current) {
+            ps.classList.add('done');
+            dot.innerHTML = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+          } else {
+            dot.textContent = n;
+            if (n === state.current) ps.classList.add('active');
+          }
+        });
+      }
+
+      function buildSummary() {
+        var parts = [];
+        if (state.service) parts.push(state.service);
+        if (state.practitioner) parts.push(state.practitioner === 'No preference' ? 'First available' : state.practitioner.replace('Dr. ', ''));
+        if (state.dayLabel && state.time) parts.push(state.dayLabel + ' · ' + state.time);
+        if (!parts.length) return 'Select a service to begin';
+        return parts.join('  ·  ');
+      }
+
+      function updateControls() {
+        stepNowEl.textContent = state.current;
+        stepNameEl.textContent = stepNames[state.current - 1];
+        summaryEl.innerHTML = state.submitted ? 'Confirmed — see you soon!' : buildSummary().replace(/(·)/g, '<b>·</b>');
+        backBtn.hidden = state.current === 1 || state.submitted;
+        if (state.submitted) {
+          nextBtn.textContent = 'Book another';
+          nextBtn.disabled = false;
+        } else if (state.current === 4) {
+          nextBtn.textContent = 'Confirm booking';
+          nextBtn.disabled = !stepValid(4);
+        } else {
+          nextBtn.textContent = 'Continue';
+          nextBtn.disabled = !stepValid(state.current);
+        }
+        updateProgress();
+      }
+
+      function showStep(n) {
+        steps.forEach(function (s) {
+          s.classList.toggle('active', parseInt(s.getAttribute('data-step'), 10) === n);
+        });
+        state.current = n;
+        updateControls();
+      }
+
+      /* live-validate the details inputs */
+      ['fName', 'lName', 'email', 'phone'].forEach(function (id) {
+        var inp = document.getElementById(id);
+        if (inp) inp.addEventListener('input', updateControls);
+      });
+
+      function confirmBooking() {
+        state.submitted = true;
+        var fn = document.getElementById('fName').value.trim();
+        detailsPane.hidden = true;
+        confirmPane.hidden = false;
+
+        document.getElementById('confirmName').textContent = 'You’re booked, ' + fn + '!';
+        document.getElementById('confirmBlurb').textContent =
+          'A confirmation and intake form are on the way to ' + document.getElementById('email').value.trim() + '.';
+
+        var practName = state.practitioner === 'No preference' ? 'First available physio' : state.practitioner;
+        var recap = document.getElementById('recap');
+        var avHtml = state.av ?
+          '<span class="avatar av" data-avatar="' + state.av + '" aria-hidden="true"></span>' :
+          '<span class="av" style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#34d1a3,#1fae85)"></span>';
+        recap.innerHTML =
+          '<div class="row"><span class="k">Service</span><span class="v">' + state.service + ' · ' + state.dur + '</span></div>' +
+          '<div class="row"><span class="k">With</span>' + avHtml + '<span class="v">' + practName + '</span></div>' +
+          '<div class="row"><span class="k">When</span><span class="v">' + state.dayLabel + ' · ' + state.time + '</span></div>' +
+          '<div class="row"><span class="k">Where</span><span class="v">Kitsilano · 2148 West 4th Ave</span></div>';
+
+        var newAv = recap.querySelector('[data-avatar]');
+        if (newAv) buildAvatar(newAv);
+
+        var seal = confirmPane.querySelector('.seal');
+        if (!reduceMotion) { seal.classList.remove('pop'); void seal.offsetWidth; seal.classList.add('pop'); }
+
+        showStep(4);
+      }
+
+      function resetBooking() {
+        state = { current: 1, service: null, dur: null, practitioner: null, role: null, av: null, day: null, dayLabel: null, time: null, submitted: false };
+        form.querySelectorAll('.opt[aria-pressed="true"], .day[aria-pressed="true"]').forEach(function (o) { o.setAttribute('aria-pressed', 'false'); });
+        slotGrid.innerHTML = '';
+        ['fName', 'lName', 'email', 'phone'].forEach(function (id) { var i = document.getElementById(id); if (i) i.value = ''; });
+        detailsPane.hidden = false;
+        confirmPane.hidden = true;
+        showStep(1);
+        document.getElementById('book').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      }
+
+      nextBtn.addEventListener('click', function () {
+        if (state.submitted) { resetBooking(); return; }
+        if (!stepValid(state.current)) return;
+        if (state.current === 4) { confirmBooking(); return; }
+        showStep(state.current + 1);
+      });
+      backBtn.addEventListener('click', function () {
+        if (state.current > 1) showStep(state.current - 1);
+      });
+
+      // prevent accidental form submit (e.g. Enter key)
+      form.addEventListener('submit', function (e) { e.preventDefault(); });
+
+      // init
+      showStep(1);
+    })();
+
+  })();
+  </script>
+</body>
+</html>

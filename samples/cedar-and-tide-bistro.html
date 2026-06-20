@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cedar &amp; Tide Bistro — Coast to Table | Vancouver, BC</title>
+  <meta name="description" content="Cedar & Tide is an upscale farm-to-table Pacific Northwest bistro in Vancouver, BC. Seasonal coastal cooking, a moody candlelit room, and a menu that follows the tides. Reserve your table." />
+  <meta name="theme-color" content="#0c1f24" />
+  <meta property="og:type" content="restaurant" />
+  <meta property="og:title" content="Cedar & Tide Bistro — Coast to Table" />
+  <meta property="og:description" content="Seasonal Pacific Northwest cooking in the heart of Vancouver. Reserve your table." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c1f24'/%3E%3Cpath d='M6 21c3-1 4-3 5-6m5 6c-2-5 0-10 4-13' stroke='%23e8b85f' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3Cpath d='M4 25c4 1.6 8 1.6 12 0s8-1.6 12 0' stroke='%23c8745a' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+
+  <style>
+    :root{
+      --ink:#0c1f24;          /* midnight teal */
+      --ink-2:#0f272d;
+      --ink-3:#13313a;
+      --char:#081519;         /* near-black charcoal */
+      --gold:#e8b85f;         /* candlelight gold */
+      --gold-soft:#f0d29a;
+      --cream:#f4ecdd;        /* warm cream */
+      --cream-dim:#cdc5b6;
+      --terra:#c8745a;        /* muted terracotta */
+      --terra-deep:#a85a44;
+      --line:rgba(244,236,221,0.14);
+      --line-strong:rgba(244,236,221,0.28);
+      --maxw:1200px;
+      --r-sm:8px;
+      --r-md:16px;
+      --r-lg:26px;
+      --shadow:0 24px 60px -20px rgba(0,0,0,.65);
+      --serif:'Fraunces',Georgia,serif;
+      --serif-d:'Cormorant Garamond','Fraunces',Georgia,serif;
+      --sans:'Jost',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      --ease:cubic-bezier(.2,.7,.2,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+    }
+    body{
+      font-family:var(--sans);
+      background:var(--ink);
+      color:var(--cream);
+      line-height:1.65;
+      font-weight:300;
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
+    }
+    h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.08;letter-spacing:-.01em;color:var(--cream)}
+    a{color:inherit;text-decoration:none}
+    img,svg{display:block;max-width:100%}
+    ::selection{background:var(--gold);color:var(--char)}
+    :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+    .eyebrow{
+      font-family:var(--sans);font-weight:500;font-size:.72rem;letter-spacing:.32em;
+      text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:.7em;
+    }
+    .eyebrow::before{content:"";width:26px;height:1px;background:var(--gold);opacity:.7}
+    .section{padding:clamp(72px,11vw,140px) 0;position:relative}
+    .lede{font-family:var(--serif-d);font-size:clamp(1.25rem,2.4vw,1.7rem);font-style:italic;color:var(--gold-soft);line-height:1.4;font-weight:400}
+
+    /* ---------- Buttons ---------- */
+    .btn{
+      font-family:var(--sans);font-weight:500;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+      padding:.95em 1.8em;border-radius:999px;cursor:pointer;border:1px solid transparent;
+      display:inline-flex;align-items:center;gap:.6em;transition:transform .35s var(--ease),background .35s var(--ease),color .35s var(--ease),box-shadow .35s var(--ease);
+      background:var(--gold);color:var(--char);
+    }
+    .btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px -10px rgba(232,184,95,.6)}
+    .btn-ghost{background:transparent;color:var(--cream);border-color:var(--line-strong)}
+    .btn-ghost:hover{background:rgba(244,236,221,.07);border-color:var(--gold);box-shadow:none}
+    .btn-terra{background:var(--terra);color:var(--cream)}
+    .btn-terra:hover{background:var(--terra-deep);box-shadow:0 12px 28px -10px rgba(200,116,90,.6)}
+
+    /* ---------- Header ---------- */
+    header{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      transition:background .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease),padding .4s var(--ease);
+      border-bottom:1px solid transparent;padding:.5rem 0;
+    }
+    header.scrolled{
+      background:rgba(8,21,25,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--line);box-shadow:0 10px 30px -20px rgba(0,0,0,.8);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;min-height:64px}
+    .logo{display:flex;align-items:center;gap:.7rem;font-family:var(--serif);font-size:1.32rem;letter-spacing:.01em}
+    .logo .amp{color:var(--gold);font-style:italic;font-family:var(--serif-d)}
+    .logo svg{flex:none}
+    .nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+    .nav-links a{font-family:var(--sans);font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim);position:relative;padding:.3em 0;transition:color .3s}
+    .nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;height:1px;width:0;background:var(--gold);transition:width .35s var(--ease)}
+    .nav-links a:hover{color:var(--cream)}
+    .nav-links a:hover::after{width:100%}
+    .nav-cta{display:flex;align-items:center;gap:1rem}
+    .hamburger{display:none;background:none;border:1px solid var(--line-strong);border-radius:999px;width:46px;height:46px;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+    .hamburger span{display:block;width:18px;height:1.6px;background:var(--cream);transition:transform .35s var(--ease),opacity .3s}
+    .hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(6.6px) rotate(45deg)}
+    .hamburger[aria-expanded="true"] span:nth-child(2){opacity:0}
+    .hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.6px) rotate(-45deg)}
+
+    .mobile-menu{
+      position:fixed;inset:0;z-index:99;background:rgba(8,21,25,.97);backdrop-filter:blur(8px);
+      display:flex;flex-direction:column;justify-content:center;align-items:center;gap:1.6rem;
+      opacity:0;pointer-events:none;transition:opacity .4s var(--ease);
+    }
+    .mobile-menu.open{opacity:1;pointer-events:auto}
+    .mobile-menu a{font-family:var(--serif);font-size:2rem;color:var(--cream)}
+    .mobile-menu a:hover{color:var(--gold)}
+    .mobile-menu .btn{margin-top:1rem}
+
+    /* ---------- Hero ---------- */
+    .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;
+      background:
+        radial-gradient(120% 80% at 80% 10%, rgba(19,49,58,.9), transparent 60%),
+        radial-gradient(90% 90% at 15% 90%, rgba(200,116,90,.18), transparent 55%),
+        linear-gradient(160deg,#0a1c21 0%,#0c1f24 45%,#081519 100%);
+    }
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,5rem);align-items:center;width:100%;padding-top:90px;padding-bottom:60px}
+    .hero h1{font-size:clamp(2.9rem,7vw,5.5rem);font-weight:400}
+    .hero h1 em{font-family:var(--serif-d);font-style:italic;color:var(--gold)}
+    .hero .lede{margin:1.6rem 0 2.4rem;max-width:30ch}
+    .hero-ctas{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+    .hero-meta{margin-top:2.6rem;display:flex;flex-wrap:wrap;gap:1.6rem;color:var(--cream-dim);font-size:.82rem;letter-spacing:.06em}
+    .hero-meta span{display:inline-flex;align-items:center;gap:.5em}
+    .hero-meta svg{color:var(--gold)}
+    .hero-art{position:relative}
+    .hero-art svg{width:100%;height:auto;filter:drop-shadow(0 30px 50px rgba(0,0,0,.5))}
+    .floaty{animation:floaty 7s ease-in-out infinite}
+    @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    .scroll-cue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.6rem;color:var(--cream-dim);font-size:.66rem;letter-spacing:.3em;text-transform:uppercase}
+    .scroll-cue .line{width:1px;height:42px;background:linear-gradient(var(--gold),transparent);animation:cue 2.4s ease-in-out infinite}
+    @keyframes cue{0%,100%{transform:scaleY(.5);opacity:.4;transform-origin:top}50%{transform:scaleY(1);opacity:1;transform-origin:top}}
+
+    /* ---------- Marquee strip ---------- */
+    .strip{border-block:1px solid var(--line);background:var(--ink-2);overflow:hidden}
+    .strip-track{display:flex;gap:3.5rem;white-space:nowrap;padding:1.1rem 0;animation:marquee 32s linear infinite;width:max-content}
+    .strip-track span{font-family:var(--serif-d);font-style:italic;font-size:1.15rem;color:var(--cream-dim);display:inline-flex;align-items:center;gap:3.5rem}
+    .strip-track span::after{content:"✦";color:var(--gold);font-style:normal;font-size:.7rem}
+    @keyframes marquee{to{transform:translateX(-50%)}}
+    @media (prefers-reduced-motion:reduce){.strip-track{animation:none}}
+
+    /* ---------- Story ---------- */
+    .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,6rem);align-items:center}
+    .story h2{font-size:clamp(2.2rem,4.5vw,3.4rem)}
+    .story p{color:var(--cream-dim);margin-top:1.4rem;max-width:48ch}
+    .story .sig{margin-top:2rem;font-family:var(--serif-d);font-style:italic;font-size:1.35rem;color:var(--gold-soft)}
+    .story .sig small{display:block;font-family:var(--sans);font-style:normal;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim);margin-top:.4rem}
+    .tide-card{position:relative;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line);background:linear-gradient(160deg,#0e242a,#0a1b20);box-shadow:var(--shadow);aspect-ratio:4/4.6}
+    .tide-card svg{position:absolute;inset:0;width:100%;height:100%}
+    .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.4rem}
+    .stat{border:1px solid var(--line);border-radius:var(--r-md);padding:1.2rem 1rem;text-align:center;background:rgba(244,236,221,.02)}
+    .stat b{display:block;font-family:var(--serif);font-size:1.9rem;color:var(--gold)}
+    .stat span{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-dim)}
+
+    /* ---------- Menu ---------- */
+    .menu-head{text-align:center;max-width:60ch;margin:0 auto 3rem}
+    .menu-head h2{font-size:clamp(2.4rem,5vw,3.8rem)}
+    .menu-head p{color:var(--cream-dim);margin-top:1rem}
+    .menu-filter{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-top:1.8rem}
+    .chip{
+      font-family:var(--sans);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;
+      padding:.6em 1.2em;border-radius:999px;border:1px solid var(--line-strong);background:transparent;color:var(--cream-dim);
+      cursor:pointer;transition:all .3s var(--ease);
+    }
+    .chip[aria-pressed="true"]{background:var(--gold);color:var(--char);border-color:var(--gold)}
+    .chip:hover{color:var(--cream);border-color:var(--gold)}
+    .chip[aria-pressed="true"]:hover{color:var(--char)}
+
+    .menu-cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem)}
+    .menu-section + .menu-section{margin-top:2.6rem}
+    .menu-section h3{font-family:var(--serif-d);font-size:1.7rem;color:var(--gold);font-weight:500;display:flex;align-items:center;gap:.8rem;letter-spacing:.02em}
+    .menu-section h3::after{content:"";flex:1;height:1px;background:var(--line)}
+    .dish{display:flex;justify-content:space-between;gap:1rem;padding:1.05rem 0;border-bottom:1px dashed var(--line);transition:opacity .35s var(--ease),transform .35s var(--ease)}
+    .dish:last-child{border-bottom:none}
+    .dish.is-hidden{display:none}
+    .dish-name{font-family:var(--serif);font-size:1.12rem;display:flex;align-items:center;gap:.55rem;flex-wrap:wrap}
+    .dish-desc{color:var(--cream-dim);font-size:.9rem;margin-top:.25rem;max-width:42ch}
+    .dish-price{font-family:var(--serif-d);font-size:1.25rem;color:var(--gold-soft);white-space:nowrap;font-weight:500}
+    .tag{font-family:var(--sans);font-size:.56rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.28em .6em;border-radius:5px;border:1px solid currentColor;line-height:1}
+    .tag.v{color:#9fd0a0}
+    .tag.gf{color:var(--gold)}
+    .menu-note{text-align:center;color:var(--cream-dim);font-size:.82rem;margin-top:3rem;font-style:italic;font-family:var(--serif-d)}
+
+    /* ---------- Reserve widget ---------- */
+    .reserve{background:linear-gradient(180deg,#081519,#0c1f24)}
+    .reserve-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+    .reserve-intro h2{font-size:clamp(2.2rem,4.5vw,3.4rem)}
+    .reserve-intro p{color:var(--cream-dim);margin-top:1.2rem;max-width:40ch}
+    .reserve-intro .lede{margin-top:1.4rem;max-width:34ch}
+    .widget{
+      background:linear-gradient(160deg,#11292f,#0c1f24);border:1px solid var(--line-strong);
+      border-radius:var(--r-lg);padding:clamp(1.6rem,3vw,2.4rem);box-shadow:var(--shadow);position:relative;
+    }
+    .widget-corner{position:absolute;top:18px;right:18px;color:var(--gold);opacity:.45}
+    .field{margin-bottom:1.5rem}
+    .field > label{display:block;font-family:var(--sans);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:.7rem}
+    .field input[type="date"]{
+      width:100%;background:rgba(244,236,221,.05);border:1px solid var(--line-strong);color:var(--cream);
+      font-family:var(--sans);font-size:1rem;padding:.85em 1em;border-radius:var(--r-sm);color-scheme:dark;
+    }
+    .field input[type="date"]:focus{outline:none;border-color:var(--gold)}
+    .stepper{display:flex;align-items:center;gap:0;border:1px solid var(--line-strong);border-radius:var(--r-sm);width:max-content;overflow:hidden}
+    .stepper button{width:50px;height:50px;background:rgba(244,236,221,.04);border:none;color:var(--cream);font-size:1.4rem;cursor:pointer;transition:background .25s,color .25s;line-height:1}
+    .stepper button:hover:not(:disabled){background:var(--gold);color:var(--char)}
+    .stepper button:disabled{opacity:.3;cursor:not-allowed}
+    .stepper output{min-width:88px;text-align:center;font-family:var(--serif);font-size:1.25rem;padding:0 .5rem}
+    .stepper output small{display:block;font-family:var(--sans);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-dim);margin-top:-.2rem}
+    .slots{display:flex;flex-wrap:wrap;gap:.55rem}
+    .slot{
+      font-family:var(--sans);font-size:.86rem;letter-spacing:.04em;padding:.6em 1.1em;border-radius:999px;
+      border:1px solid var(--line-strong);background:transparent;color:var(--cream);cursor:pointer;transition:all .25s var(--ease);
+    }
+    .slot:hover{border-color:var(--gold)}
+    .slot[aria-pressed="true"]{background:var(--gold);color:var(--char);border-color:var(--gold);font-weight:500}
+    .widget .btn{width:100%;justify-content:center;margin-top:.4rem}
+    .confirm{
+      margin-top:1.4rem;border:1px solid var(--gold);border-radius:var(--r-md);
+      background:radial-gradient(120% 140% at 0% 0%,rgba(232,184,95,.16),rgba(232,184,95,.04));
+      padding:1.4rem 1.5rem;display:none;animation:rise .5s var(--ease)
+    }
+    .confirm.show{display:block}
+    @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+    .confirm h4{font-family:var(--serif-d);font-style:italic;color:var(--gold);font-size:1.5rem;display:flex;align-items:center;gap:.6rem}
+    .confirm p{color:var(--cream);font-size:.95rem;margin-top:.6rem}
+    .confirm .detail{margin-top:1rem;display:flex;flex-wrap:wrap;gap:.5rem 1.6rem;font-size:.82rem;color:var(--cream-dim)}
+    .confirm .detail b{color:var(--cream);font-weight:500}
+    .confirm .ref{margin-top:.9rem;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+    .err{color:var(--terra);font-size:.82rem;margin-top:.4rem;min-height:1.2em}
+
+    /* ---------- Chef / press ---------- */
+    .chef-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+    .chef-portrait{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line);background:linear-gradient(160deg,#13313a,#0a1b20);box-shadow:var(--shadow);aspect-ratio:5/6;position:relative}
+    .chef-portrait svg{position:absolute;inset:0;width:100%;height:100%}
+    .chef-copy h2{font-size:clamp(2rem,4vw,3rem)}
+    .chef-copy p{color:var(--cream-dim);margin-top:1.3rem;max-width:48ch}
+    .chef-copy .sig{margin-top:1.6rem;font-family:var(--serif-d);font-style:italic;font-size:1.3rem;color:var(--gold-soft)}
+    .press{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;margin-top:clamp(3rem,6vw,5rem)}
+    .quote{border:1px solid var(--line);border-radius:var(--r-md);padding:1.6rem;background:rgba(244,236,221,.02);transition:border-color .35s,transform .35s var(--ease)}
+    .quote:hover{border-color:var(--line-strong);transform:translateY(-4px)}
+    .quote .stars{color:var(--gold);letter-spacing:.2em;font-size:.85rem}
+    .quote p{font-family:var(--serif-d);font-style:italic;font-size:1.15rem;color:var(--cream);margin-top:.8rem;line-height:1.4}
+    .quote cite{display:block;margin-top:1rem;font-style:normal;font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+
+    /* ---------- Gallery ---------- */
+    .gallery{background:var(--ink-2)}
+    .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;grid-auto-rows:200px}
+    .gal-tile{border-radius:var(--r-md);overflow:hidden;position:relative;border:1px solid var(--line);transition:transform .5s var(--ease)}
+    .gal-tile:hover{transform:scale(1.02)}
+    .gal-tile svg{width:100%;height:100%}
+    .gal-tile .cap{position:absolute;left:0;right:0;bottom:0;padding:1.4rem 1rem .9rem;background:linear-gradient(transparent,rgba(8,21,25,.85));font-family:var(--serif-d);font-style:italic;font-size:1.05rem;color:var(--cream);opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s var(--ease)}
+    .gal-tile:hover .cap{opacity:1;transform:none}
+    .gal-tile.tall{grid-row:span 2}
+    .gal-tile.wide{grid-column:span 2}
+
+    /* ---------- Find us ---------- */
+    .find-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+    .find-copy h2{font-size:clamp(2rem,4.5vw,3.2rem)}
+    .hours-list{margin-top:1.8rem;border-top:1px solid var(--line)}
+    .hours-list .row{display:flex;justify-content:space-between;padding:.85rem 0;border-bottom:1px solid var(--line);font-size:.95rem}
+    .hours-list .row.today{color:var(--gold)}
+    .hours-list .row span:first-child{letter-spacing:.04em}
+    .hours-list .row .closed{color:var(--terra)}
+    .find-info{display:flex;flex-wrap:wrap;gap:1.6rem 2.4rem;margin-top:1.8rem;font-size:.92rem;color:var(--cream-dim)}
+    .find-info a{color:var(--cream);border-bottom:1px solid var(--line-strong);transition:border-color .3s}
+    .find-info a:hover{border-color:var(--gold)}
+    .map-card{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);position:relative;aspect-ratio:1/1;background:#0a1b20}
+    .map-card svg{position:absolute;inset:0;width:100%;height:100%}
+
+    /* ---------- Newsletter ---------- */
+    .news{background:linear-gradient(160deg,#11292f,#081519);border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(2.4rem,6vw,4.5rem);text-align:center;position:relative;overflow:hidden}
+    .news::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 80% at 50% 0%,rgba(232,184,95,.12),transparent 60%);pointer-events:none}
+    .news h2{font-size:clamp(2rem,4.5vw,3.2rem);position:relative}
+    .news p{color:var(--cream-dim);margin:1rem auto 2rem;max-width:46ch;position:relative}
+    .news-form{display:flex;gap:.7rem;max-width:480px;margin:0 auto;position:relative;flex-wrap:wrap}
+    .news-form input{flex:1;min-width:200px;background:rgba(244,236,221,.06);border:1px solid var(--line-strong);color:var(--cream);font-family:var(--sans);font-size:1rem;padding:.95em 1.2em;border-radius:999px}
+    .news-form input:focus{outline:none;border-color:var(--gold)}
+    .news-form input::placeholder{color:var(--cream-dim)}
+    .news-msg{margin-top:1rem;color:var(--gold);font-family:var(--serif-d);font-style:italic;font-size:1.1rem;min-height:1.4em;position:relative}
+
+    /* ---------- Footer ---------- */
+    footer{background:var(--char);border-top:1px solid var(--line);padding:clamp(3rem,6vw,5rem) 0 2rem}
+    .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2.5rem}
+    .foot-brand .logo{margin-bottom:1rem}
+    .foot-brand p{color:var(--cream-dim);font-size:.92rem;max-width:32ch}
+    .socials{display:flex;gap:.8rem;margin-top:1.4rem}
+    .socials a{width:42px;height:42px;border:1px solid var(--line-strong);border-radius:999px;display:flex;align-items:center;justify-content:center;color:var(--cream-dim);transition:all .3s var(--ease)}
+    .socials a:hover{color:var(--char);background:var(--gold);border-color:var(--gold);transform:translateY(-3px)}
+    .foot-col h4{font-family:var(--sans);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem;font-weight:600}
+    .foot-col ul{list-style:none}
+    .foot-col li{margin-bottom:.6rem}
+    .foot-col a,.foot-col span{color:var(--cream-dim);font-size:.92rem;transition:color .3s}
+    .foot-col a:hover{color:var(--cream)}
+    .foot-bottom{margin-top:3rem;padding-top:1.6rem;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;font-size:.8rem;color:var(--cream-dim)}
+    .foot-bottom a{color:var(--gold)}
+    .credit{font-family:var(--serif-d);font-style:italic}
+
+    /* ---------- Scroll reveal ---------- */
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+    .reveal.in{opacity:1;transform:none}
+    @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+
+    /* ---------- Responsive ---------- */
+    @media (max-width:980px){
+      .hero-grid,.story-grid,.reserve-grid,.chef-grid,.find-grid{grid-template-columns:1fr}
+      .hero-art{order:-1;max-width:440px;margin:0 auto}
+      .menu-cols{grid-template-columns:1fr;gap:1rem}
+      .gal-grid{grid-template-columns:repeat(2,1fr)}
+      .foot-grid{grid-template-columns:1fr 1fr}
+      .tide-card{aspect-ratio:16/10}
+      .chef-portrait{aspect-ratio:16/11;max-width:520px}
+    }
+    @media (max-width:760px){
+      .nav-links,.nav-cta .btn{display:none}
+      .hamburger{display:flex}
+      .scroll-cue{display:none}
+      .stat-row{grid-template-columns:1fr 1fr}
+      .gal-grid{grid-auto-rows:160px}
+      .gal-tile.wide{grid-column:span 1}
+      .foot-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:480px){
+      .foot-grid{grid-template-columns:1fr}
+      .gal-grid{grid-template-columns:1fr;grid-auto-rows:200px}
+      .gal-tile.tall{grid-row:span 1}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header id="header">
+    <div class="wrap nav">
+      <a class="logo" href="#top" aria-label="Cedar & Tide Bistro, home">
+        <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+          <rect width="34" height="34" rx="8" fill="#0e242a" stroke="#e8b85f" stroke-opacity=".4"/>
+          <path d="M9 22c3-1.5 4.5-4 6-8" stroke="#e8b85f" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M17 22c-2.5-6 0-11 5-14" stroke="#e8b85f" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M6 26c4 1.8 8.5 1.8 12.5 0s8.5-1.8 12.5 0" stroke="#c8745a" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        </svg>
+        <span>Cedar <span class="amp">&amp;</span> Tide</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="#story">Our Story</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#chef">The Kitchen</a></li>
+          <li><a href="#visit">Visit</a></li>
+        </ul>
+      </nav>
+      <div class="nav-cta">
+        <a href="#reserve" class="btn">Reserve a Table</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#story">Our Story</a>
+    <a href="#menu">Menu</a>
+    <a href="#chef">The Kitchen</a>
+    <a href="#visit">Visit</a>
+    <a href="#reserve" class="btn">Reserve a Table</a>
+  </div>
+
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div class="hero-copy reveal in">
+          <span class="eyebrow">Pacific Northwest · Vancouver, BC</span>
+          <h1 id="hero-title">Coast to table,<br><em>tide by tide.</em></h1>
+          <p class="lede">A candlelit room where the menu follows the season, the boats, and the morning's catch — wild, local, and quietly extraordinary.</p>
+          <div class="hero-ctas">
+            <a href="#reserve" class="btn">Reserve a Table</a>
+            <a href="#menu" class="btn btn-ghost">View the Menu</a>
+          </div>
+          <div class="hero-meta">
+            <span aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l2 4.5 5 .5-3.7 3.4L12.5 15 8 12.3 3.5 15l1.2-5.6L1 6l5-.5z" fill="currentColor"/></svg>
+            </span>
+            <span>Michelin-recommended 2025</span>
+            <span aria-hidden="true">·</span>
+            <span>Gastown waterfront</span>
+            <span aria-hidden="true">·</span>
+            <span>Dinner nightly from 5pm</span>
+          </div>
+        </div>
+
+        <div class="hero-art reveal in" aria-hidden="true">
+          <svg viewBox="0 0 460 520" class="floaty" role="img" aria-label="An elegant plated coastal dish under a stylized sun and tide">
+            <defs>
+              <radialGradient id="sun" cx="50%" cy="40%" r="60%">
+                <stop offset="0%" stop-color="#f0d29a"/>
+                <stop offset="60%" stop-color="#e8b85f"/>
+                <stop offset="100%" stop-color="#c8745a"/>
+              </radialGradient>
+              <linearGradient id="plate" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#f4ecdd"/>
+                <stop offset="100%" stop-color="#cdc5b6"/>
+              </linearGradient>
+              <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#13313a"/>
+                <stop offset="100%" stop-color="#0a1b20"/>
+              </linearGradient>
+            </defs>
+            <!-- sky panel -->
+            <rect x="40" y="20" width="380" height="320" rx="190" fill="url(#water)" stroke="#e8b85f" stroke-opacity=".25"/>
+            <!-- sun -->
+            <circle cx="230" cy="150" r="62" fill="url(#sun)"/>
+            <circle cx="230" cy="150" r="86" fill="none" stroke="#e8b85f" stroke-opacity=".3" stroke-width="1"/>
+            <!-- coastline silhouette -->
+            <path d="M40 230c40-26 70-14 110 4s78 14 120-6 90-20 130 8v96H40z" fill="#0c1f24" opacity=".9"/>
+            <path d="M120 200c4-12 8-20 14-30m26 32c5-16 6-30 4-46" stroke="#0e242a" stroke-width="6" fill="none" stroke-linecap="round" opacity=".7"/>
+            <!-- birds -->
+            <path d="M150 110c6-5 10-5 16 0m6-8c6-5 10-5 16 0" stroke="#f4ecdd" stroke-width="2" fill="none" stroke-linecap="round" opacity=".7"/>
+            <!-- plate -->
+            <ellipse cx="230" cy="408" rx="170" ry="58" fill="#081519" opacity=".5"/>
+            <ellipse cx="230" cy="396" rx="160" ry="56" fill="url(#plate)"/>
+            <ellipse cx="230" cy="396" rx="120" ry="40" fill="none" stroke="#cdc5b6" stroke-width="2" opacity=".6"/>
+            <!-- food: seared fish -->
+            <path d="M165 392c14-26 60-34 96-18 26 12 30 30 8 40-28 13-78 10-100-4-10-7-10-12-4-18z" fill="#c8745a"/>
+            <path d="M178 388c12-14 44-18 70-8" stroke="#a85a44" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M182 396c14-10 46-12 66-2M186 402c14-7 42-8 60-1" stroke="#f0d29a" stroke-width="2" fill="none" stroke-linecap="round" opacity=".7"/>
+            <!-- garnish sprigs -->
+            <path d="M255 372c8-16 6-30-2-42m10 40c10-12 14-26 12-40" stroke="#6f9a6a" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <circle cx="160" cy="392" r="5" fill="#9a3b3b"/>
+            <circle cx="300" cy="404" r="4" fill="#9a3b3b"/>
+            <!-- sauce dots -->
+            <circle cx="130" cy="404" r="3" fill="#e8b85f"/>
+            <circle cx="322" cy="392" r="3" fill="#e8b85f"/>
+            <!-- steam -->
+            <path d="M210 350c-6-12 6-18 0-30m26 30c-6-12 6-18 0-30" stroke="#f4ecdd" stroke-width="2" fill="none" stroke-linecap="round" opacity=".35"/>
+          </svg>
+        </div>
+      </div>
+      <div class="scroll-cue" aria-hidden="true"><span>Scroll</span><span class="line"></span></div>
+    </section>
+
+    <!-- ============ STRIP ============ -->
+    <div class="strip" aria-hidden="true">
+      <div class="strip-track">
+        <span>Line-caught daily</span><span>Foraged &amp; foraged-again</span><span>Sourced within 100 miles</span><span>Wood-fired &amp; brined</span><span>Natural wine cellar</span>
+        <span>Line-caught daily</span><span>Foraged &amp; foraged-again</span><span>Sourced within 100 miles</span><span>Wood-fired &amp; brined</span><span>Natural wine cellar</span>
+      </div>
+    </div>
+
+    <!-- ============ STORY ============ -->
+    <section class="section story" id="story" aria-labelledby="story-title">
+      <div class="wrap story-grid">
+        <div class="reveal">
+          <span class="eyebrow">Our Story</span>
+          <h2 id="story-title">We cook to the rhythm of the water.</h2>
+          <p>Cedar &amp; Tide began with a simple promise: that the best meal in Vancouver should taste like the coast it comes from. Each morning our chefs meet the boats at False Creek, walk the stalls at Granville Island, and trade with the same farmers, divers, and foragers we've known for a decade.</p>
+          <p>The tide chart hangs in our kitchen for a reason. When the water pulls back, we harvest sea asparagus and gooseneck barnacles from the rocks. When it returns, the spot prawns run and the menu simply changes. Nothing travels far. Nothing waits long. What lands on your table this evening was very likely swimming, growing, or foraging this morning.</p>
+          <p class="sig">Salt, smoke, cedar, and patience.
+            <small>— The Cedar &amp; Tide kitchen</small>
+          </p>
+          <div class="stat-row">
+            <div class="stat reveal"><b>100<span style="font-size:1rem"> mi</span></b><span>Sourcing radius</span></div>
+            <div class="stat reveal"><b>14</b><span>Coastal partners</span></div>
+            <div class="stat reveal"><b>Daily</b><span>Menu rewrite</span></div>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="tide-card">
+            <svg viewBox="0 0 400 460" role="img" aria-label="A stylized scene of cedar trees rising above layered ocean tides">
+              <defs>
+                <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#13313a"/>
+                  <stop offset="100%" stop-color="#0c1f24"/>
+                </linearGradient>
+                <linearGradient id="moon" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#f0d29a"/>
+                  <stop offset="100%" stop-color="#e8b85f"/>
+                </linearGradient>
+              </defs>
+              <rect width="400" height="460" fill="url(#sky2)"/>
+              <circle cx="300" cy="100" r="46" fill="url(#moon)" opacity=".9"/>
+              <circle cx="300" cy="100" r="46" fill="#0c1f24" opacity=".18"/>
+              <!-- cedar trees -->
+              <g stroke="#0a1b20" stroke-width="2">
+                <path d="M70 300c0-70 12-150 18-180 6 30 18 110 18 180z" fill="#0e242a"/>
+                <path d="M120 320c0-90 16-190 22-228 6 38 22 138 22 228z" fill="#102b31"/>
+                <path d="M180 300c0-70 12-150 18-180 6 30 18 110 18 180z" fill="#0e242a"/>
+              </g>
+              <line x1="88" y1="300" x2="88" y2="330" stroke="#081519" stroke-width="6"/>
+              <line x1="142" y1="320" x2="142" y2="352" stroke="#081519" stroke-width="7"/>
+              <line x1="198" y1="300" x2="198" y2="330" stroke="#081519" stroke-width="6"/>
+              <!-- tide layers -->
+              <path d="M0 330c60-18 120-18 200 4s140 18 200-2v140H0z" fill="#102b31"/>
+              <path d="M0 360c60-14 120 0 200 10s140 0 200-12v102H0z" fill="#0c252b"/>
+              <path d="M0 392c70-12 140 6 200 12s130-6 200-14v70H0z" fill="#0a1f24"/>
+              <!-- gold tide highlights -->
+              <path d="M40 348c40-8 80-4 120 4" stroke="#e8b85f" stroke-width="1.4" fill="none" opacity=".5" stroke-linecap="round"/>
+              <path d="M220 376c50-6 100 2 140 8" stroke="#c8745a" stroke-width="1.4" fill="none" opacity=".5" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MENU ============ -->
+    <section class="section" id="menu" aria-labelledby="menu-title">
+      <div class="wrap">
+        <div class="menu-head reveal">
+          <span class="eyebrow">The Menu</span>
+          <h2 id="menu-title">This evening's table</h2>
+          <p>Our à la carte changes with the tide; a five-course chef's tasting ($118) is offered nightly. Prices in CAD. Please tell us about allergies — most dishes can be adapted.</p>
+          <div class="menu-filter" role="group" aria-label="Filter menu by dietary preference">
+            <button class="chip" data-filter="all" aria-pressed="true">All dishes</button>
+            <button class="chip" data-filter="v" aria-pressed="false">Vegetarian</button>
+            <button class="chip" data-filter="gf" aria-pressed="false">Gluten-free</button>
+          </div>
+        </div>
+
+        <div class="menu-cols">
+          <div class="menu-col">
+            <div class="menu-section reveal">
+              <h3>Starters</h3>
+              <div class="dish" data-diet="gf">
+                <div>
+                  <div class="dish-name">Tide Pool Crudo <span class="tag gf">GF</span></div>
+                  <div class="dish-desc">Albacore &amp; scallop, finger lime, sea asparagus, frozen buttermilk, cold-pressed dill oil.</div>
+                </div>
+                <div class="dish-price">$26</div>
+              </div>
+              <div class="dish" data-diet="v gf">
+                <div>
+                  <div class="dish-name">Ember Beets <span class="tag v">VEG</span> <span class="tag gf">GF</span></div>
+                  <div class="dish-desc">Coal-roasted golden beets, whipped chèvre, candied hazelnut, wild honey, burnt orange.</div>
+                </div>
+                <div class="dish-price">$21</div>
+              </div>
+              <div class="dish" data-diet="">
+                <div>
+                  <div class="dish-name">Smoked Cedar Bread</div>
+                  <div class="dish-desc">Warm sourdough baked over cedar coals, cultured kelp butter, Maldon &amp; rosemary salt.</div>
+                </div>
+                <div class="dish-price">$14</div>
+              </div>
+            </div>
+
+            <div class="menu-section reveal">
+              <h3>From the Land</h3>
+              <div class="dish" data-diet="gf">
+                <div>
+                  <div class="dish-name">Fraser Valley Duck <span class="tag gf">GF</span></div>
+                  <div class="dish-desc">Honey-lacquered breast, charred chicory, sour cherry gastrique, smoked parsnip.</div>
+                </div>
+                <div class="dish-price">$44</div>
+              </div>
+              <div class="dish" data-diet="">
+                <div>
+                  <div class="dish-name">Cedar-Smoked Short Rib</div>
+                  <div class="dish-desc">48-hour braise, koji potato, charred leek, bone-marrow &amp; black-garlic jus.</div>
+                </div>
+                <div class="dish-price">$48</div>
+              </div>
+              <div class="dish" data-diet="v">
+                <div>
+                  <div class="dish-name">Forager's Risotto <span class="tag v">VEG</span></div>
+                  <div class="dish-desc">Pine-mushroom &amp; barley, fermented squash, aged Comox, crisp sage, truffle pecorino.</div>
+                </div>
+                <div class="dish-price">$32</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-col">
+            <div class="menu-section reveal">
+              <h3>From the Sea</h3>
+              <div class="dish" data-diet="gf">
+                <div>
+                  <div class="dish-name">Line-Caught Halibut <span class="tag gf">GF</span></div>
+                  <div class="dish-desc">Haida Gwaii halibut, brown-butter kelp dashi, spring peas, preserved lemon, sea herbs.</div>
+                </div>
+                <div class="dish-price">$46</div>
+              </div>
+              <div class="dish" data-diet="gf">
+                <div>
+                  <div class="dish-name">Spot Prawn &amp; Saffron <span class="tag gf">GF</span></div>
+                  <div class="dish-desc">Pacific spot prawns, saffron-fennel bisque, charred sourdough crumb, chive oil.</div>
+                </div>
+                <div class="dish-price">$42</div>
+              </div>
+              <div class="dish" data-diet="">
+                <div>
+                  <div class="dish-name">Tide &amp; Smoke Chowder</div>
+                  <div class="dish-desc">Smoked sablefish, littleneck clams, alder cream, fingerling, crisp pancetta.</div>
+                </div>
+                <div class="dish-price">$29</div>
+              </div>
+            </div>
+
+            <div class="menu-section reveal">
+              <h3>Dessert</h3>
+              <div class="dish" data-diet="v">
+                <div>
+                  <div class="dish-name">Burnt Honey Custard <span class="tag v">VEG</span></div>
+                  <div class="dish-desc">Wildflower honey crème, sea-salt caramel, toasted cedar shortbread, bee pollen.</div>
+                </div>
+                <div class="dish-price">$16</div>
+              </div>
+              <div class="dish" data-diet="v gf">
+                <div>
+                  <div class="dish-name">Coastal Sorbet <span class="tag v">VEG</span> <span class="tag gf">GF</span></div>
+                  <div class="dish-desc">Salmonberry, Douglas-fir tip, &amp; sea-buckthorn sorbets, frozen meringue shards.</div>
+                </div>
+                <div class="dish-price">$14</div>
+              </div>
+              <div class="dish" data-diet="v">
+                <div>
+                  <div class="dish-name">Dark Cedar Torte <span class="tag v">VEG</span></div>
+                  <div class="dish-desc">Smoked-chocolate ganache, spruce-tip ice cream, malt soil, cacao nib brittle.</div>
+                </div>
+                <div class="dish-price">$17</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="menu-note" id="menuNote">A 5% kitchen-appreciation charge supports our cooks and dishwashers equally.</p>
+      </div>
+    </section>
+
+    <!-- ============ RESERVE ============ -->
+    <section class="section reserve" id="reserve" aria-labelledby="reserve-title">
+      <div class="wrap reserve-grid">
+        <div class="reserve-intro reveal">
+          <span class="eyebrow">Reservations</span>
+          <h2 id="reserve-title">Hold your table by candlelight.</h2>
+          <p>We seat in two services each evening. The bar welcomes walk-ins, but the dining room books quickly on weekends — we recommend reserving a week ahead for parties of four or more.</p>
+          <p class="lede">Choose an evening, your party, and a time. We'll do the rest.</p>
+        </div>
+
+        <div class="widget reveal">
+          <svg class="widget-corner" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+            <path d="M10 30c4-2 6-6 8-12m6 12c-3-8 0-15 7-19" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+          <form id="resForm" novalidate>
+            <div class="field">
+              <label for="resDate">Choose a date</label>
+              <input type="date" id="resDate" name="date" required />
+            </div>
+
+            <div class="field">
+              <label id="partyLabel">Party size</label>
+              <div class="stepper" role="group" aria-labelledby="partyLabel">
+                <button type="button" id="partyMinus" aria-label="Decrease party size">−</button>
+                <output id="partyOut" aria-live="polite">2<small>Guests</small></output>
+                <button type="button" id="partyPlus" aria-label="Increase party size">+</button>
+              </div>
+            </div>
+
+            <div class="field">
+              <label id="slotLabel">Available times</label>
+              <div class="slots" id="slots" role="group" aria-labelledby="slotLabel">
+                <button type="button" class="slot" data-time="5:00 PM">5:00</button>
+                <button type="button" class="slot" data-time="5:45 PM">5:45</button>
+                <button type="button" class="slot" data-time="6:30 PM">6:30</button>
+                <button type="button" class="slot" data-time="7:15 PM">7:15</button>
+                <button type="button" class="slot" data-time="8:00 PM">8:00</button>
+                <button type="button" class="slot" data-time="8:45 PM">8:45</button>
+                <button type="button" class="slot" data-time="9:30 PM">9:30</button>
+              </div>
+            </div>
+
+            <div class="err" id="resErr" role="alert"></div>
+            <button type="submit" class="btn btn-terra">Confirm Reservation</button>
+          </form>
+
+          <div class="confirm" id="confirm" role="status" aria-live="polite">
+            <h4>
+              <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="none" stroke="#e8b85f" stroke-width="1.6"/><path d="M6 11.5l3.2 3L16 8" stroke="#e8b85f" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Your table is held.
+            </h4>
+            <p id="confirmText"></p>
+            <div class="detail" id="confirmDetail"></div>
+            <p class="ref" id="confirmRef"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CHEF ============ -->
+    <section class="section" id="chef" aria-labelledby="chef-title">
+      <div class="wrap">
+        <div class="chef-grid">
+          <div class="reveal">
+            <div class="chef-portrait">
+              <svg viewBox="0 0 420 504" role="img" aria-label="Stylized portrait of executive chef Maren Halloway in toque against a teal backdrop">
+                <defs>
+                  <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#13313a"/>
+                    <stop offset="100%" stop-color="#0a1b20"/>
+                  </linearGradient>
+                </defs>
+                <rect width="420" height="504" fill="url(#bg3)"/>
+                <circle cx="210" cy="180" r="120" fill="#e8b85f" opacity=".1"/>
+                <!-- shoulders / chef coat -->
+                <path d="M70 504c0-90 60-150 140-150s140 60 140 150z" fill="#f4ecdd"/>
+                <path d="M210 354v150" stroke="#cdc5b6" stroke-width="2"/>
+                <circle cx="180" cy="430" r="4" fill="#cdc5b6"/><circle cx="180" cy="466" r="4" fill="#cdc5b6"/>
+                <!-- neck -->
+                <rect x="186" y="300" width="48" height="70" rx="20" fill="#c8745a"/>
+                <!-- face -->
+                <circle cx="210" cy="240" r="78" fill="#d98e6f"/>
+                <!-- hair -->
+                <path d="M132 230c-6-60 40-100 78-100s84 40 78 100c-14-28-30-40-78-40s-64 12-78 40z" fill="#3a2a22"/>
+                <!-- toque -->
+                <path d="M138 150c-22-4-34-26-22-44 6-26 36-36 58-26 12-22 46-22 58 0 22-10 52 0 58 26 12 18 0 40-22 44z" fill="#f4ecdd"/>
+                <rect x="138" y="148" width="144" height="20" rx="6" fill="#eadfca"/>
+                <!-- features -->
+                <circle cx="186" cy="238" r="5" fill="#3a2a22"/><circle cx="234" cy="238" r="5" fill="#3a2a22"/>
+                <path d="M196 266c8 8 20 8 28 0" stroke="#3a2a22" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <path d="M178 224c6-5 14-5 18 0m30 0c4-5 12-5 18 0" stroke="#3a2a22" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="chef-copy reveal">
+            <span class="eyebrow">The Kitchen</span>
+            <h2 id="chef-title">Chef Maren Halloway</h2>
+            <p>Raised on Lasqueti Island and trained between Copenhagen and the kitchens of the Sunshine Coast, Maren cooks the way she grew up eating — close to the water, generous, and unhurried. After a decade leading celebrated kitchens abroad, she came home to open Cedar &amp; Tide in 2019.</p>
+            <p>"I'm not trying to reinvent the coast," she says. "I'm trying to get out of its way." Her kitchen is run as a true co-op: every cook reads the tide chart, every dishwasher tastes the menu, and the day's best ingredient writes the night's best dish.</p>
+            <p class="sig">— Maren Halloway, Executive Chef &amp; Owner</p>
+          </div>
+        </div>
+
+        <div class="press">
+          <div class="quote reveal">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>"The most honest food in the city. You can taste the morning's tide in every plate."</p>
+            <cite>— The Vancouver Plate</cite>
+          </div>
+          <div class="quote reveal">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>"A candlelit room that feels like a secret. Worth the week-long wait for a table."</p>
+            <cite>— Westcoast Tables</cite>
+          </div>
+          <div class="quote reveal">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>"Halloway's halibut is a quiet masterpiece. The best seafood dish in British Columbia."</p>
+            <cite>— EnRoute Magazine, Best New Restaurants</cite>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GALLERY ============ -->
+    <section class="section gallery" aria-labelledby="gallery-title">
+      <div class="wrap">
+        <div class="menu-head reveal" style="margin-bottom:2.4rem">
+          <span class="eyebrow">In the Room</span>
+          <h2 id="gallery-title">An evening at Cedar &amp; Tide</h2>
+        </div>
+        <div class="gal-grid">
+          <div class="gal-tile tall reveal">
+            <svg viewBox="0 0 200 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="200" height="400" fill="#0e242a"/>
+              <rect x="40" y="60" width="120" height="240" rx="60" fill="#13313a"/>
+              <circle cx="100" cy="120" r="34" fill="#e8b85f" opacity=".9"/>
+              <path d="M70 220c20-6 40-6 60 0" stroke="#c8745a" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <ellipse cx="100" cy="320" rx="78" ry="22" fill="#f4ecdd"/>
+              <path d="M64 318c12-12 60-12 72 0" stroke="#c8745a" stroke-width="4" fill="none" stroke-linecap="round"/>
+            </svg>
+            <span class="cap">Wood-fired open kitchen</span>
+          </div>
+          <div class="gal-tile wide reveal">
+            <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="400" height="200" fill="#102b31"/>
+              <rect x="30" y="40" width="160" height="120" rx="12" fill="#0c1f24"/>
+              <rect x="210" y="40" width="160" height="120" rx="12" fill="#0c1f24"/>
+              <circle cx="110" cy="100" r="30" fill="#e8b85f" opacity=".85"/>
+              <circle cx="290" cy="100" r="30" fill="#c8745a" opacity=".85"/>
+              <path d="M70 150c30-8 50-8 80 0m130 0c30-8 50-8 80 0" stroke="#f4ecdd" stroke-width="3" fill="none" stroke-linecap="round" opacity=".5"/>
+            </svg>
+            <span class="cap">Candlelit two-tops by the window</span>
+          </div>
+          <div class="gal-tile reveal">
+            <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="200" height="200" fill="#0c1f24"/>
+              <ellipse cx="100" cy="120" rx="74" ry="26" fill="#f4ecdd"/>
+              <path d="M60 116c14-18 66-18 80 0" stroke="#c8745a" stroke-width="6" fill="none" stroke-linecap="round"/>
+              <path d="M120 96c8-12 6-24-2-32" stroke="#6f9a6a" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <circle cx="70" cy="118" r="4" fill="#9a3b3b"/>
+            </svg>
+            <span class="cap">The day's crudo</span>
+          </div>
+          <div class="gal-tile reveal">
+            <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="200" height="200" fill="#102b31"/>
+              <rect x="70" y="40" width="60" height="120" rx="8" fill="#7a1f2b"/>
+              <rect x="78" y="30" width="44" height="20" rx="4" fill="#3a2a22"/>
+              <path d="M82 80h36M82 100h36" stroke="#e8b85f" stroke-width="2" opacity=".5"/>
+              <ellipse cx="100" cy="172" rx="40" ry="8" fill="#0a1b20"/>
+            </svg>
+            <span class="cap">Natural wine, poured low</span>
+          </div>
+          <div class="gal-tile reveal">
+            <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="200" height="200" fill="#0e242a"/>
+              <path d="M0 140c40-16 80-16 120 0s80 0 80 0v60H0z" fill="#13313a"/>
+              <path d="M0 160c40-12 80 0 120 6s80-6 80-6v40H0z" fill="#0c1f24"/>
+              <circle cx="150" cy="60" r="26" fill="#e8b85f" opacity=".8"/>
+            </svg>
+            <span class="cap">Low tide at dusk</span>
+          </div>
+          <div class="gal-tile wide reveal">
+            <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="400" height="200" fill="#0c1f24"/>
+              <ellipse cx="200" cy="120" rx="150" ry="40" fill="#f4ecdd"/>
+              <path d="M120 116c40-22 120-22 160 0" stroke="#c8745a" stroke-width="8" fill="none" stroke-linecap="round"/>
+              <path d="M210 86c12-16 10-34-2-46" stroke="#6f9a6a" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <circle cx="140" cy="120" r="6" fill="#9a3b3b"/><circle cx="262" cy="124" r="5" fill="#9a3b3b"/>
+              <circle cx="100" cy="120" r="4" fill="#e8b85f"/><circle cx="300" cy="118" r="4" fill="#e8b85f"/>
+            </svg>
+            <span class="cap">Cedar-smoked short rib</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VISIT / FIND US ============ -->
+    <section class="section" id="visit" aria-labelledby="visit-title">
+      <div class="wrap find-grid">
+        <div class="find-copy reveal">
+          <span class="eyebrow">Find Us</span>
+          <h2 id="visit-title">On the Gastown waterfront.</h2>
+          <div class="hours-list" id="hoursList">
+            <div class="row" data-day="0"><span>Sunday</span><span>5:00 – 9:00 PM</span></div>
+            <div class="row" data-day="1"><span>Monday</span><span class="closed">Closed</span></div>
+            <div class="row" data-day="2"><span>Tuesday</span><span>5:00 – 10:00 PM</span></div>
+            <div class="row" data-day="3"><span>Wednesday</span><span>5:00 – 10:00 PM</span></div>
+            <div class="row" data-day="4"><span>Thursday</span><span>5:00 – 10:00 PM</span></div>
+            <div class="row" data-day="5"><span>Friday</span><span>5:00 – 11:00 PM</span></div>
+            <div class="row" data-day="6"><span>Saturday</span><span>4:30 – 11:00 PM</span></div>
+          </div>
+          <div class="find-info">
+            <div>
+              <strong style="color:var(--cream)">Address</strong><br>
+              <a href="https://maps.google.com/?q=Water+Street+Gastown+Vancouver" target="_blank" rel="noopener">227 Water Street<br>Gastown, Vancouver, BC</a>
+            </div>
+            <div>
+              <strong style="color:var(--cream)">Reservations</strong><br>
+              <a href="tel:+16045550199">(604) 555-0199</a><br>
+              <a href="mailto:hello@cedarandtide.ca">hello@cedarandtide.ca</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="map-card">
+            <svg viewBox="0 0 440 440" role="img" aria-label="Stylized map showing Cedar & Tide on the Gastown waterfront">
+              <defs>
+                <linearGradient id="land" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#102b31"/>
+                  <stop offset="100%" stop-color="#0c1f24"/>
+                </linearGradient>
+              </defs>
+              <rect width="440" height="440" fill="url(#land)"/>
+              <!-- water -->
+              <path d="M0 0h440v150c-80 24-160 24-230 6S60 140 0 168z" fill="#0a1f26"/>
+              <path d="M0 150c60-22 130-18 210 0s150 18 230-6" stroke="#e8b85f" stroke-opacity=".35" stroke-width="1.4" fill="none"/>
+              <path d="M0 178c60-18 130-6 210 8s150 6 230-12" stroke="#c8745a" stroke-opacity=".3" stroke-width="1.4" fill="none"/>
+              <!-- streets -->
+              <g stroke="#13313a" stroke-width="10">
+                <line x1="0" y1="250" x2="440" y2="230"/>
+                <line x1="0" y1="330" x2="440" y2="318"/>
+                <line x1="120" y1="180" x2="150" y2="440"/>
+                <line x1="280" y1="190" x2="300" y2="440"/>
+              </g>
+              <g stroke="#0e242a" stroke-width="2" stroke-dasharray="6 8">
+                <line x1="0" y1="250" x2="440" y2="230"/>
+                <line x1="0" y1="330" x2="440" y2="318"/>
+              </g>
+              <!-- blocks -->
+              <g fill="#0e272d" opacity=".8">
+                <rect x="160" y="250" width="100" height="60" rx="4"/>
+                <rect x="310" y="240" width="90" height="64" rx="4"/>
+                <rect x="160" y="340" width="100" height="70" rx="4"/>
+              </g>
+              <!-- pin -->
+              <g transform="translate(210,210)">
+                <ellipse cx="0" cy="58" rx="22" ry="6" fill="#081519" opacity=".5"/>
+                <path d="M0 56c0 0-26-30-26-52a26 26 0 1 1 52 0C26 26 0 56 0 56z" fill="#c8745a"/>
+                <circle cx="0" cy="4" r="11" fill="#f4ecdd"/>
+                <path d="M-5 6c2-4 8-4 10 0" stroke="#c8745a" stroke-width="2" fill="none" stroke-linecap="round"/>
+              </g>
+              <text x="210" y="298" text-anchor="middle" fill="#e8b85f" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="22">Cedar &amp; Tide</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NEWSLETTER ============ -->
+    <section class="section" aria-labelledby="news-title">
+      <div class="wrap">
+        <div class="news reveal">
+          <span class="eyebrow" style="justify-content:center">The Tide Letter</span>
+          <h2 id="news-title">First to know when the menu turns.</h2>
+          <p>A short note each season — new dishes, the night we open the cellar, and the rare evenings a table opens up. No noise, just the tide.</p>
+          <form class="news-form" id="newsForm" novalidate>
+            <label for="newsEmail" class="visually-hidden" style="position:absolute;left:-9999px">Email address</label>
+            <input type="email" id="newsEmail" name="email" placeholder="you@email.com" required autocomplete="email" />
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+          <p class="news-msg" id="newsMsg" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="logo" href="#top" aria-label="Cedar & Tide Bistro, home">
+            <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+              <rect width="34" height="34" rx="8" fill="#0e242a" stroke="#e8b85f" stroke-opacity=".4"/>
+              <path d="M9 22c3-1.5 4.5-4 6-8" stroke="#e8b85f" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+              <path d="M17 22c-2.5-6 0-11 5-14" stroke="#e8b85f" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+              <path d="M6 26c4 1.8 8.5 1.8 12.5 0s8.5-1.8 12.5 0" stroke="#c8745a" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+            </svg>
+            <span>Cedar <span class="amp">&amp;</span> Tide</span>
+          </a>
+          <p>Coastal Pacific Northwest cooking, written nightly by the tide. Gastown, Vancouver, BC.</p>
+          <div class="socials">
+            <a href="#" aria-label="Cedar & Tide on Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.7"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/></svg>
+            </a>
+            <a href="#" aria-label="Cedar & Tide on Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 8h2.5V5H14c-2 0-3.5 1.5-3.5 3.5V10H8v3h2.5v6h3v-6H16l.5-3h-3V8.8c0-.5.4-.8 1-.8z" fill="currentColor"/></svg>
+            </a>
+            <a href="#" aria-label="Cedar & Tide on TikTok">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 4v9.5a3 3 0 1 1-3-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M14 4c.6 2.4 2.3 3.8 4.5 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="foot-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#menu">The Menu</a></li>
+            <li><a href="#chef">The Kitchen</a></li>
+            <li><a href="#reserve">Reserve</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Visit</h4>
+          <ul>
+            <li><span>227 Water Street</span></li>
+            <li><span>Gastown, Vancouver</span></li>
+            <li><a href="tel:+16045550199">(604) 555-0199</a></li>
+            <li><a href="mailto:hello@cedarandtide.ca">hello@cedarandtide.ca</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Hours</h4>
+          <ul>
+            <li><span>Tue – Thu · 5–10 PM</span></li>
+            <li><span>Fri · 5–11 PM</span></li>
+            <li><span>Sat · 4:30–11 PM</span></li>
+            <li><span>Sun · 5–9 PM</span></li>
+            <li><span style="color:var(--terra)">Monday · Closed</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 Cedar &amp; Tide Bistro · Proudly on the unceded territories of the Coast Salish peoples.</span>
+        <span class="credit">Concept site crafted by <a href="../index.html">Maple</a> · sample design</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function(){
+    "use strict";
+    var rmQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var reduceMotion = rmQuery.matches;
+
+    /* ---- Sticky header shadow ---- */
+    var header = document.getElementById('header');
+    function onScroll(){
+      if(window.scrollY > 24){ header.classList.add('scrolled'); }
+      else { header.classList.remove('scrolled'); }
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+
+    /* ---- Mobile menu ---- */
+    var hamburger = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobileMenu');
+    function setMenu(open){
+      hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      mobileMenu.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+    hamburger.addEventListener('click', function(){
+      setMenu(hamburger.getAttribute('aria-expanded') !== 'true');
+    });
+    mobileMenu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ setMenu(false); });
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && mobileMenu.classList.contains('open')){ setMenu(false); hamburger.focus(); }
+    });
+
+    /* ---- Scroll reveal ---- */
+    var reveals = document.querySelectorAll('.reveal:not(.in)');
+    if('IntersectionObserver' in window && !reduceMotion){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+        });
+      }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+      reveals.forEach(function(el){ io.observe(el); });
+    } else {
+      reveals.forEach(function(el){ el.classList.add('in'); });
+    }
+
+    /* ---- Menu filter ---- */
+    var chips = document.querySelectorAll('.chip');
+    var dishes = document.querySelectorAll('.dish');
+    var menuNote = document.getElementById('menuNote');
+    chips.forEach(function(chip){
+      chip.addEventListener('click', function(){
+        chips.forEach(function(c){ c.setAttribute('aria-pressed','false'); });
+        chip.setAttribute('aria-pressed','true');
+        var f = chip.getAttribute('data-filter');
+        var shown = 0;
+        dishes.forEach(function(d){
+          var diet = d.getAttribute('data-diet') || '';
+          var match = (f === 'all') || diet.split(' ').indexOf(f) !== -1;
+          d.classList.toggle('is-hidden', !match);
+          if(match) shown++;
+        });
+        if(f === 'v'){ menuNote.textContent = 'Showing ' + shown + ' vegetarian dishes. Many others adapt beautifully — just ask.'; }
+        else if(f === 'gf'){ menuNote.textContent = 'Showing ' + shown + ' gluten-free dishes. Our kitchen takes cross-contact seriously.'; }
+        else { menuNote.textContent = 'A 5% kitchen-appreciation charge supports our cooks and dishwashers equally.'; }
+      });
+    });
+
+    /* ---- Reserve widget ---- */
+    var dateInput = document.getElementById('resDate');
+    var today = new Date();
+    var pad = function(n){ return (n<10?'0':'') + n; };
+    var iso = function(d){ return d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate()); };
+    dateInput.min = iso(today);
+    var def = new Date(today.getTime()); def.setDate(def.getDate()+1);
+    dateInput.value = iso(def);
+    var maxD = new Date(today.getTime()); maxD.setDate(maxD.getDate()+90);
+    dateInput.max = iso(maxD);
+
+    var party = 2, MINP = 1, MAXP = 10;
+    var partyOut = document.getElementById('partyOut');
+    var minusBtn = document.getElementById('partyMinus');
+    var plusBtn = document.getElementById('partyPlus');
+    function renderParty(){
+      partyOut.innerHTML = party + '<small>' + (party === 1 ? 'Guest' : 'Guests') + '</small>';
+      minusBtn.disabled = party <= MINP;
+      plusBtn.disabled = party >= MAXP;
+    }
+    minusBtn.addEventListener('click', function(){ if(party>MINP){ party--; renderParty(); } });
+    plusBtn.addEventListener('click', function(){ if(party<MAXP){ party++; renderParty(); } });
+    renderParty();
+
+    var slots = document.querySelectorAll('.slot');
+    var chosenTime = null;
+    slots.forEach(function(s){
+      s.addEventListener('click', function(){
+        slots.forEach(function(x){ x.setAttribute('aria-pressed','false'); });
+        s.setAttribute('aria-pressed','true');
+        chosenTime = s.getAttribute('data-time');
+        document.getElementById('resErr').textContent = '';
+      });
+    });
+
+    var form = document.getElementById('resForm');
+    var errEl = document.getElementById('resErr');
+    var confirm = document.getElementById('confirm');
+    var monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    var dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      errEl.textContent = '';
+      if(!dateInput.value){ errEl.textContent = 'Please choose a date for your visit.'; dateInput.focus(); return; }
+      var parts = dateInput.value.split('-');
+      var d = new Date(parts[0], parts[1]-1, parts[2]);
+      if(d.getDay() === 1){ errEl.textContent = 'We rest on Mondays — please choose another evening.'; dateInput.focus(); return; }
+      if(!chosenTime){ errEl.textContent = 'Please select an available time.'; return; }
+
+      var pretty = dayNames[d.getDay()] + ', ' + monthNames[d.getMonth()] + ' ' + d.getDate();
+      document.getElementById('confirmText').textContent =
+        'Thank you. We look forward to welcoming your party of ' + party + ' by candlelight.';
+      document.getElementById('confirmDetail').innerHTML =
+        '<span>Date · <b>' + pretty + '</b></span>' +
+        '<span>Time · <b>' + chosenTime + '</b></span>' +
+        '<span>Guests · <b>' + party + '</b></span>';
+      var ref = 'CT-' + parts[1] + parts[2] + '-' + Math.floor(1000 + Math.random()*9000);
+      document.getElementById('confirmRef').textContent = 'Confirmation ' + ref + ' · a note is on its way to your inbox';
+      confirm.classList.add('show');
+      if(!reduceMotion){ confirm.scrollIntoView({behavior:'smooth', block:'nearest'}); }
+      confirm.setAttribute('tabindex','-1');
+      confirm.focus({preventScroll:true});
+    });
+
+    /* ---- Highlight today's hours ---- */
+    var todayRow = document.querySelector('.hours-list .row[data-day="' + today.getDay() + '"]');
+    if(todayRow){
+      todayRow.classList.add('today');
+      var label = todayRow.querySelector('span:first-child');
+      if(label){ label.textContent = label.textContent + ' · Today'; }
+    }
+
+    /* ---- Newsletter ---- */
+    var newsForm = document.getElementById('newsForm');
+    var newsMsg = document.getElementById('newsMsg');
+    var newsEmail = document.getElementById('newsEmail');
+    newsForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var v = newsEmail.value.trim();
+      if(!v || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){
+        newsMsg.style.color = 'var(--terra)';
+        newsMsg.textContent = 'Please enter a valid email so we can find you.';
+        newsEmail.focus();
+        return;
+      }
+      newsMsg.style.color = 'var(--gold)';
+      newsMsg.textContent = 'Welcome aboard — watch your inbox when the tide turns.';
+      newsForm.reset();
+    });
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harvest Moon Bistro — Gather. Feast. Linger. | Neighbourhood Bistro &amp; Wine Bar</title>
+  <meta name="description" content="Harvest Moon Bistro is a cozy, seasonal neighbourhood bistro and wine bar — comfort food made with local ingredients, a warm room, and weekend brunch. Reserve your table." />
+  <meta name="theme-color" content="#fbf3e6" />
+  <meta property="og:type" content="restaurant" />
+  <meta property="og:title" content="Harvest Moon Bistro — Gather. Feast. Linger." />
+  <meta property="og:description" content="A cozy seasonal bistro &amp; wine bar serving comfort food, local ingredients, and weekend brunch. Reserve a table." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Bitter:ital,wght@0,400;0,500;1,400&family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23c7561f'/%3E%3Ccircle cx='16' cy='14' r='7' fill='%23f4c95d'/%3E%3Cpath d='M19 11a7 7 0 0 1-7 9 7 7 0 1 0 7-9z' fill='%23e8a93a'/%3E%3Cpath d='M6 26c4-1.6 6-1.6 10 0s6 1.6 10 0' stroke='%237a2e3f' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+
+  <style>
+    :root{
+      --cream:#fbf3e6;        /* warm light background */
+      --cream-2:#f6e9d4;      /* card cream */
+      --cream-3:#f0ddc0;      /* deeper cream */
+      --paper:#fffaf2;        /* lightest paper */
+      --ink:#3a2417;          /* warm cocoa ink */
+      --ink-soft:#6b4a36;     /* soft brown text */
+      --ink-mute:#8a6a54;     /* muted brown */
+      --orange:#c7561f;       /* burnt orange */
+      --orange-deep:#a8420f;
+      --amber:#e8a93a;        /* mustard / amber */
+      --amber-soft:#f4c95d;
+      --plum:#7a2e3f;         /* deep plum / burgundy */
+      --plum-deep:#5e2030;
+      --olive:#6e7340;        /* harvest olive accent */
+      --line:rgba(58,36,23,0.12);
+      --line-strong:rgba(58,36,23,0.22);
+      --maxw:1200px;
+      --r-sm:10px;
+      --r-md:18px;
+      --r-lg:28px;
+      --shadow-sm:0 8px 22px -14px rgba(74,40,20,.5);
+      --shadow:0 26px 60px -28px rgba(74,40,20,.55);
+      --serif:'Fraunces',Georgia,serif;
+      --slab:'Bitter',Georgia,serif;
+      --sans:'Nunito Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      --ease:cubic-bezier(.2,.7,.2,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+    }
+    body{
+      font-family:var(--sans);
+      background:var(--cream);
+      color:var(--ink);
+      line-height:1.68;
+      font-weight:400;
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
+    }
+    h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.08;letter-spacing:-.012em;color:var(--ink)}
+    a{color:inherit;text-decoration:none}
+    img,svg{display:block;max-width:100%}
+    ::selection{background:var(--amber);color:var(--ink)}
+    :focus-visible{outline:2.5px solid var(--orange);outline-offset:3px;border-radius:5px}
+
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+    .eyebrow{
+      font-family:var(--sans);font-weight:700;font-size:.74rem;letter-spacing:.24em;
+      text-transform:uppercase;color:var(--orange);display:inline-flex;align-items:center;gap:.7em;
+    }
+    .eyebrow::before{content:"";width:24px;height:2px;border-radius:2px;background:var(--amber)}
+    .section{padding:clamp(70px,10vw,128px) 0;position:relative}
+    .lede{font-family:var(--slab);font-size:clamp(1.18rem,2.3vw,1.6rem);font-style:italic;color:var(--plum);line-height:1.45;font-weight:400}
+    .center{text-align:center}
+    .center .eyebrow{justify-content:center}
+    h2.h-xl{font-size:clamp(2.1rem,5.2vw,3.5rem)}
+    .sec-intro{max-width:620px}
+    .sec-intro.center{margin:0 auto}
+
+    /* ---------- Buttons ---------- */
+    .btn{
+      font-family:var(--sans);font-weight:700;font-size:.86rem;letter-spacing:.04em;
+      padding:.92em 1.7em;border-radius:999px;cursor:pointer;border:2px solid transparent;
+      display:inline-flex;align-items:center;gap:.55em;text-align:center;
+      transition:transform .3s var(--ease),background .3s var(--ease),color .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease);
+      background:var(--orange);color:var(--paper);
+    }
+    .btn:hover{transform:translateY(-2px);background:var(--orange-deep);box-shadow:0 14px 26px -12px rgba(168,66,15,.6)}
+    .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+    .btn-ghost:hover{background:rgba(199,86,31,.08);border-color:var(--orange);color:var(--orange-deep);box-shadow:none;transform:translateY(-2px)}
+    .btn-plum{background:var(--plum);color:var(--paper)}
+    .btn-plum:hover{background:var(--plum-deep);box-shadow:0 14px 26px -12px rgba(122,46,63,.6)}
+    .btn svg{flex:none}
+
+    /* ---------- Header ---------- */
+    header{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      transition:background .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease);
+      border-bottom:1px solid transparent;padding:.45rem 0;
+    }
+    header.scrolled{
+      background:rgba(251,243,230,.85);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);
+      border-bottom:1px solid var(--line);box-shadow:0 10px 30px -22px rgba(74,40,20,.7);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;min-height:62px}
+    .logo{display:flex;align-items:center;gap:.6rem;font-family:var(--serif);font-weight:600;font-size:1.3rem;letter-spacing:0}
+    .logo .b{color:var(--plum)}
+    .logo svg{flex:none}
+    .nav-links{display:flex;align-items:center;gap:1.9rem;list-style:none}
+    .nav-links a{font-family:var(--sans);font-weight:600;font-size:.9rem;color:var(--ink-soft);position:relative;padding:.3em 0;transition:color .3s}
+    .nav-links a::after{content:"";position:absolute;left:0;bottom:-1px;height:2px;border-radius:2px;width:0;background:var(--orange);transition:width .35s var(--ease)}
+    .nav-links a:hover{color:var(--ink)}
+    .nav-links a:hover::after{width:100%}
+    .nav-cta{display:flex;align-items:center;gap:1rem}
+    .hamburger{display:none;background:none;border:1.6px solid var(--line-strong);border-radius:14px;width:46px;height:46px;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+    .hamburger span{display:block;width:18px;height:2px;border-radius:2px;background:var(--ink);transition:transform .35s var(--ease),opacity .3s}
+    .hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger[aria-expanded="true"] span:nth-child(2){opacity:0}
+    .hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+    .mobile-menu{
+      position:fixed;inset:0;z-index:99;background:rgba(246,233,212,.98);backdrop-filter:blur(8px);
+      display:flex;flex-direction:column;justify-content:center;align-items:center;gap:1.4rem;
+      opacity:0;pointer-events:none;transition:opacity .4s var(--ease);
+    }
+    .mobile-menu.open{opacity:1;pointer-events:auto}
+    .mobile-menu a{font-family:var(--serif);font-size:1.9rem;color:var(--ink)}
+    .mobile-menu a:hover{color:var(--orange)}
+    .mobile-menu .btn{margin-top:.8rem}
+
+    /* ---------- Hero ---------- */
+    .hero{position:relative;padding-top:clamp(120px,16vw,180px);padding-bottom:clamp(40px,7vw,80px);overflow:hidden}
+    .hero::before{
+      content:"";position:absolute;inset:0;z-index:-2;
+      background:
+        radial-gradient(1100px 540px at 78% 8%, rgba(244,201,93,.45), transparent 60%),
+        radial-gradient(900px 600px at 12% 90%, rgba(199,86,31,.16), transparent 60%),
+        linear-gradient(180deg,#fdf6ea 0%, var(--cream) 55%, var(--cream-2) 100%);
+    }
+    .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+    .hero-tag{display:inline-flex;align-items:center;gap:.6rem;background:var(--paper);border:1px solid var(--line);
+      border-radius:999px;padding:.45em 1em .45em .55em;font-size:.78rem;font-weight:600;color:var(--ink-soft);box-shadow:var(--shadow-sm)}
+    .hero-tag .dot{width:9px;height:9px;border-radius:50%;background:var(--olive);box-shadow:0 0 0 4px rgba(110,115,64,.18)}
+    .hero h1{font-size:clamp(2.9rem,7.4vw,5.4rem);margin:1.1rem 0 .2rem;letter-spacing:-.02em}
+    .hero h1 em{font-style:italic;color:var(--orange);font-weight:500}
+    .hero .lede{margin:1.1rem 0 0;max-width:30ch}
+    .hero-sub{margin-top:1.2rem;font-size:1.06rem;color:var(--ink-soft);max-width:46ch}
+    .hero-cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:1.9rem}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:1.4rem 2rem;margin-top:2.2rem;padding-top:1.6rem;border-top:1px solid var(--line)}
+    .hero-meta .m{display:flex;flex-direction:column;gap:.1rem}
+    .hero-meta .m b{font-family:var(--serif);font-size:1.35rem;font-weight:600;color:var(--plum)}
+    .hero-meta .m span{font-size:.82rem;color:var(--ink-mute);letter-spacing:.02em}
+
+    /* Hero SVG scene */
+    .hero-art{position:relative}
+    .hero-art .scene{width:100%;height:auto;border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden;display:block;background:#2a1626}
+    .float-badge{
+      position:absolute;left:-14px;bottom:24px;background:var(--paper);border-radius:18px;padding:.75rem 1rem;
+      box-shadow:var(--shadow);display:flex;align-items:center;gap:.7rem;border:1px solid var(--line);max-width:230px;
+    }
+    .float-badge .ic{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--amber),var(--orange));display:flex;align-items:center;justify-content:center;flex:none}
+    .float-badge b{font-family:var(--serif);font-size:.98rem;display:block;line-height:1.2}
+    .float-badge span{font-size:.76rem;color:var(--ink-mute)}
+
+    /* ---------- Marquee strip ---------- */
+    .strip{background:var(--plum);color:var(--cream);overflow:hidden;border-top:3px solid var(--amber);border-bottom:3px solid var(--amber)}
+    .strip-track{display:flex;gap:0;white-space:nowrap;animation:slide 38s linear infinite;will-change:transform}
+    @media (prefers-reduced-motion:reduce){.strip-track{animation:none;flex-wrap:wrap;white-space:normal;justify-content:center}}
+    .strip-track .it{display:inline-flex;align-items:center;gap:.9rem;padding:.85rem 1.6rem;font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--amber-soft)}
+    .strip-track .it span{color:var(--cream);opacity:.5;font-style:normal}
+    @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* ---------- Story ---------- */
+    .story-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+    .story-art{position:relative}
+    .story-art svg{width:100%;height:auto;border-radius:var(--r-lg);box-shadow:var(--shadow)}
+    .pill-list{display:flex;flex-direction:column;gap:1.25rem;margin-top:1.8rem}
+    .pill{display:flex;gap:1rem;align-items:flex-start}
+    .pill .ic{width:46px;height:46px;flex:none;border-radius:14px;background:var(--cream-2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--orange)}
+    .pill h4{font-size:1.1rem;margin-bottom:.15rem}
+    .pill p{font-size:.95rem;color:var(--ink-soft)}
+    .story-stats{display:flex;gap:2.4rem;flex-wrap:wrap;margin-top:2.2rem;padding-top:1.7rem;border-top:1px dashed var(--line-strong)}
+    .story-stats .s b{font-family:var(--serif);font-size:2rem;font-weight:600;color:var(--orange);display:block;line-height:1}
+    .story-stats .s span{font-size:.82rem;color:var(--ink-mute)}
+
+    /* ---------- Menu ---------- */
+    #menu{background:linear-gradient(180deg,var(--cream) 0%, var(--cream-2) 100%)}
+    .menu-tabs{display:inline-flex;gap:.4rem;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:.4rem;margin:1.6rem auto 0;box-shadow:var(--shadow-sm)}
+    .tab{font-family:var(--sans);font-weight:700;font-size:.92rem;letter-spacing:.02em;color:var(--ink-soft);background:none;border:none;cursor:pointer;
+      padding:.65em 1.4em;border-radius:999px;transition:color .3s,background .3s,box-shadow .3s;display:inline-flex;align-items:center;gap:.5em}
+    .tab:hover{color:var(--ink)}
+    .tab[aria-selected="true"]{background:var(--orange);color:var(--paper);box-shadow:0 10px 22px -12px rgba(199,86,31,.7)}
+    .menu-note{margin-top:1rem;font-size:.9rem;color:var(--ink-mute)}
+
+    .menu-panel{display:none;margin-top:3rem}
+    .menu-panel.active{display:block;animation:fade .45s var(--ease)}
+    @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+    .menu-cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem)}
+    .menu-block h3{font-size:1.5rem;display:flex;align-items:baseline;gap:.7rem;margin-bottom:.3rem;color:var(--plum)}
+    .menu-block h3 .k{font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)}
+    .menu-block + .menu-block{margin-top:2.6rem}
+    .dish{padding:1rem 0;border-bottom:1px dashed var(--line-strong)}
+    .dish:last-child{border-bottom:none}
+    .dish-top{display:flex;align-items:baseline;gap:.6rem}
+    .dish-name{font-family:var(--serif);font-weight:600;font-size:1.12rem;color:var(--ink)}
+    .dish-dots{flex:1;border-bottom:1.5px dotted var(--line-strong);transform:translateY(-4px);min-width:18px}
+    .dish-price{font-family:var(--slab);font-weight:500;color:var(--orange);white-space:nowrap;font-size:1.02rem}
+    .dish-desc{font-size:.92rem;color:var(--ink-soft);margin-top:.2rem;max-width:52ch}
+    .tag-v{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);border:1px solid rgba(110,115,64,.4);
+      border-radius:6px;padding:.05em .45em;margin-left:.5rem;vertical-align:middle}
+    .tag-c{color:var(--plum);border-color:rgba(122,46,63,.4)}
+
+    /* ---------- Reserve widget (STAR) ---------- */
+    #reserve{background:
+        radial-gradient(800px 480px at 85% 0%, rgba(244,201,93,.32), transparent 60%),
+        linear-gradient(180deg,var(--cream-2),var(--cream-3))}
+    .reserve-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+    .reserve-copy .lede{margin-top:1rem}
+    .reserve-copy ul{list-style:none;margin-top:1.6rem;display:flex;flex-direction:column;gap:.85rem}
+    .reserve-copy li{display:flex;gap:.7rem;align-items:flex-start;font-size:.98rem;color:var(--ink-soft)}
+    .reserve-copy li svg{flex:none;margin-top:3px;color:var(--olive)}
+    .widget{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);
+      padding:clamp(1.5rem,3vw,2.4rem);position:relative;overflow:hidden}
+    .widget::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--orange),var(--amber),var(--plum))}
+    .widget h3{font-size:1.5rem;margin-bottom:.2rem}
+    .widget .wsub{font-size:.92rem;color:var(--ink-mute);margin-bottom:1.5rem}
+    .field{margin-bottom:1.3rem}
+    .field > label{display:block;font-weight:700;font-size:.82rem;letter-spacing:.04em;color:var(--ink);margin-bottom:.55rem}
+    .field input[type=date],.field select{
+      width:100%;font-family:var(--sans);font-size:1rem;color:var(--ink);background:var(--cream);
+      border:1.6px solid var(--line-strong);border-radius:12px;padding:.8em .9em;cursor:pointer;transition:border-color .25s,box-shadow .25s;
+    }
+    .field input[type=date]:focus,.field select:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 4px rgba(199,86,31,.14)}
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    @media(max-width:480px){.field-row{grid-template-columns:1fr}}
+
+    .stepper{display:flex;align-items:center;gap:0;border:1.6px solid var(--line-strong);border-radius:12px;overflow:hidden;background:var(--cream);width:fit-content}
+    .stepper button{width:48px;height:48px;border:none;background:var(--cream-2);color:var(--orange);font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s}
+    .stepper button:hover{background:var(--orange);color:var(--paper)}
+    .stepper button:disabled{opacity:.35;cursor:not-allowed;background:var(--cream-2);color:var(--ink-mute)}
+    .stepper .count{min-width:84px;text-align:center;font-family:var(--serif);font-weight:600;font-size:1.15rem}
+    .stepper .count small{font-family:var(--sans);font-weight:600;font-size:.7rem;color:var(--ink-mute);display:block;letter-spacing:.06em;text-transform:uppercase}
+
+    .slots{display:flex;flex-wrap:wrap;gap:.55rem}
+    .slot{font-family:var(--sans);font-weight:600;font-size:.9rem;color:var(--ink-soft);background:var(--cream);
+      border:1.6px solid var(--line-strong);border-radius:999px;padding:.55em 1.1em;cursor:pointer;transition:all .22s var(--ease)}
+    .slot:hover{border-color:var(--orange);color:var(--orange-deep)}
+    .slot[aria-pressed="true"]{background:var(--plum);border-color:var(--plum);color:var(--paper);box-shadow:0 8px 18px -10px rgba(122,46,63,.7)}
+    .slot.soldout{opacity:.4;text-decoration:line-through;cursor:not-allowed}
+    .slot.soldout:hover{border-color:var(--line-strong);color:var(--ink-soft)}
+    .widget .btn{width:100%;justify-content:center;margin-top:.4rem;font-size:.95rem;padding:1em}
+
+    .confirm{text-align:center;padding:1rem .5rem .3rem}
+    .confirm .seal{width:84px;height:84px;margin:0 auto 1.1rem;border-radius:50%;
+      background:radial-gradient(circle at 35% 30%,var(--amber-soft),var(--amber) 55%,var(--orange) 100%);
+      display:flex;align-items:center;justify-content:center;box-shadow:0 16px 34px -16px rgba(199,86,31,.7);animation:pop .5s var(--ease)}
+    @keyframes pop{0%{transform:scale(.4);opacity:0}60%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+    .confirm h3{font-size:1.7rem;margin-bottom:.3rem}
+    .confirm p{color:var(--ink-soft);max-width:38ch;margin:0 auto}
+    .confirm .recap{margin:1.5rem auto;max-width:340px;background:var(--cream);border:1px dashed var(--line-strong);border-radius:16px;padding:1.1rem 1.3rem;text-align:left}
+    .confirm .recap .rr{display:flex;justify-content:space-between;gap:1rem;padding:.4rem 0;font-size:.95rem;border-bottom:1px dashed var(--line)}
+    .confirm .recap .rr:last-child{border-bottom:none}
+    .confirm .recap .rr b{font-family:var(--slab);color:var(--ink)}
+    .confirm .code{font-family:var(--slab);letter-spacing:.18em;color:var(--orange);font-weight:500}
+    .confirm .btn{width:auto;display:inline-flex;margin-top:.4rem}
+    .err{color:var(--orange-deep);font-size:.85rem;font-weight:600;margin-top:-.7rem;margin-bottom:1rem;display:none}
+    .err.show{display:block}
+
+    /* ---------- Events strip ---------- */
+    .events-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+    .event{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:1.6rem;position:relative;overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+    .event:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .event .day{font-family:var(--sans);font-weight:700;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:.7rem}
+    .event h3{font-size:1.4rem;margin-bottom:.4rem}
+    .event p{font-size:.92rem;color:var(--ink-soft)}
+    .event .when{margin-top:1rem;font-family:var(--slab);font-style:italic;color:var(--plum);font-size:.95rem}
+    .event .glyph{position:absolute;top:-10px;right:-10px;opacity:.12;color:var(--plum)}
+
+    /* ---------- Testimonials ---------- */
+    #reviews{background:var(--plum);color:var(--cream)}
+    #reviews h2,#reviews h3,#reviews h4{color:var(--cream)}
+    #reviews .eyebrow{color:var(--amber-soft)}
+    #reviews .eyebrow::before{background:var(--amber)}
+    .reviews-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
+    .award{display:flex;align-items:center;gap:1rem;background:rgba(251,243,230,.08);border:1px solid rgba(244,201,93,.4);
+      border-radius:18px;padding:1rem 1.3rem}
+    .award .ribbon{width:54px;height:54px;flex:none}
+    .award b{font-family:var(--serif);font-size:1.05rem;display:block;color:var(--amber-soft)}
+    .award span{font-size:.82rem;color:rgba(251,243,230,.75)}
+    .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+    .quote{background:rgba(251,243,230,.06);border:1px solid rgba(251,243,230,.14);border-radius:var(--r-md);padding:1.7rem;display:flex;flex-direction:column}
+    .stars{display:flex;gap:3px;margin-bottom:.9rem;color:var(--amber-soft)}
+    .quote p{font-family:var(--slab);font-style:italic;font-size:1.04rem;line-height:1.55;color:var(--cream);flex:1}
+    .quote .who{margin-top:1.2rem;display:flex;align-items:center;gap:.8rem}
+    .quote .av{width:42px;height:42px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:600;color:var(--plum-deep);background:linear-gradient(135deg,var(--amber-soft),var(--amber))}
+    .quote .who b{font-family:var(--sans);font-size:.92rem;color:var(--cream)}
+    .quote .who span{font-size:.8rem;color:rgba(251,243,230,.65)}
+
+    /* ---------- Find us / hours ---------- */
+    .find-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:stretch}
+    .hours-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(1.6rem,3vw,2.4rem);box-shadow:var(--shadow-sm)}
+    .hours-card h3{font-size:1.4rem;margin-bottom:1.2rem}
+    .hours-list{list-style:none}
+    .hours-list .row{display:flex;justify-content:space-between;gap:1rem;padding:.62rem 0;border-bottom:1px dashed var(--line);font-size:.96rem}
+    .hours-list .row:last-child{border-bottom:none}
+    .hours-list .row.today{font-weight:700;color:var(--orange-deep)}
+    .hours-list .row .open-now{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--olive);color:var(--paper);border-radius:6px;padding:.1em .5em;margin-left:.5rem}
+    .find-info{margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:.9rem}
+    .find-info .row{display:flex;gap:.8rem;align-items:flex-start;font-size:.96rem;color:var(--ink-soft)}
+    .find-info .row svg{flex:none;margin-top:2px;color:var(--orange)}
+    .map-card{position:relative;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow);min-height:320px;border:1px solid var(--line)}
+    .map-card svg{width:100%;height:100%;display:block}
+    .map-pin-label{position:absolute;left:50%;top:42%;transform:translate(-50%,-100%);background:var(--paper);border-radius:12px;padding:.5rem .8rem;box-shadow:var(--shadow);font-size:.82rem;font-weight:700;color:var(--ink);white-space:nowrap}
+    .map-pin-label::after{content:"";position:absolute;left:50%;bottom:-6px;transform:translateX(-50%) rotate(45deg);width:12px;height:12px;background:var(--paper)}
+
+    /* ---------- Catering / private events ---------- */
+    .catering{margin-top:clamp(2rem,4vw,3.2rem);background:linear-gradient(120deg,var(--plum),var(--plum-deep));color:var(--cream);
+      border-radius:var(--r-lg);padding:clamp(1.8rem,4vw,3rem);display:grid;grid-template-columns:1.4fr .9fr;gap:2rem;align-items:center;overflow:hidden;position:relative}
+    .catering h3{color:var(--cream);font-size:clamp(1.5rem,3vw,2rem);margin-bottom:.6rem}
+    .catering p{color:rgba(251,243,230,.85);max-width:48ch}
+    .catering .c-cta{display:flex;flex-direction:column;gap:.7rem;align-items:flex-start}
+    .catering .c-cta .btn{background:var(--amber);color:var(--ink)}
+    .catering .c-cta .btn:hover{background:var(--amber-soft)}
+    .catering .c-note{font-size:.84rem;color:rgba(251,243,230,.7)}
+
+    /* ---------- Newsletter ---------- */
+    .news{background:var(--cream-3);border-radius:var(--r-lg);padding:clamp(2rem,4vw,3.2rem);text-align:center;border:1px solid var(--line)}
+    .news h3{font-size:clamp(1.6rem,3.4vw,2.3rem)}
+    .news p{color:var(--ink-soft);max-width:46ch;margin:.6rem auto 1.6rem}
+    .news form{display:flex;gap:.7rem;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+    .news input{flex:1;min-width:200px;font-family:var(--sans);font-size:1rem;padding:.85em 1.1em;border:1.6px solid var(--line-strong);border-radius:999px;background:var(--paper);color:var(--ink)}
+    .news input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 4px rgba(199,86,31,.14)}
+    .news .ok{margin-top:1rem;color:var(--olive);font-weight:700;font-size:.95rem;display:none}
+    .news .ok.show{display:block}
+
+    /* ---------- Footer ---------- */
+    footer{background:#2b1a10;color:#e9d6bf;padding:clamp(3rem,6vw,4.5rem) 0 1.8rem}
+    .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.4rem}
+    .foot-brand .logo{color:#fbf3e6;margin-bottom:1rem}
+    .foot-brand .logo .b{color:var(--amber-soft)}
+    .foot-brand p{font-size:.92rem;color:#bda287;max-width:34ch}
+    .socials{display:flex;gap:.7rem;margin-top:1.3rem}
+    .socials a{width:42px;height:42px;border-radius:12px;border:1px solid rgba(233,214,191,.2);display:flex;align-items:center;justify-content:center;color:#e9d6bf;transition:background .3s,color .3s,transform .3s,border-color .3s}
+    .socials a:hover{background:var(--orange);color:#fff;transform:translateY(-3px);border-color:var(--orange)}
+    .foot-col h4{font-family:var(--sans);font-weight:700;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-soft);margin-bottom:1.1rem}
+    .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:.65rem}
+    .foot-col a,.foot-col li{font-size:.92rem;color:#bda287;transition:color .3s}
+    .foot-col a:hover{color:#fbf3e6}
+    .foot-bottom{margin-top:3rem;padding-top:1.6rem;border-top:1px solid rgba(233,214,191,.16);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:center;font-size:.84rem;color:#a08868}
+    .foot-bottom a{color:var(--amber-soft)}
+    .foot-bottom a:hover{text-decoration:underline}
+
+    /* ---------- Reveal ---------- */
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+    .reveal.in{opacity:1;transform:none}
+    @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+
+    /* ---------- Responsive ---------- */
+    @media(max-width:980px){
+      .hero-grid,.story-grid,.reserve-grid,.find-grid{grid-template-columns:1fr}
+      .hero-art{order:-1;max-width:520px;margin:0 auto}
+      .story-art{max-width:520px;margin:0 auto}
+      .events-grid,.quotes{grid-template-columns:1fr 1fr}
+      .menu-cols{grid-template-columns:1fr;gap:2.4rem}
+      .catering{grid-template-columns:1fr}
+    }
+    @media(max-width:760px){
+      .nav-links,.nav-cta .btn{display:none}
+      .hamburger{display:flex}
+      .events-grid,.quotes{grid-template-columns:1fr}
+      .foot-grid{grid-template-columns:1fr 1fr;gap:2rem}
+      .reviews-head{flex-direction:column;align-items:flex-start}
+      .float-badge{left:50%;transform:translateX(-50%);bottom:-22px}
+    }
+    @media(max-width:460px){
+      .foot-grid{grid-template-columns:1fr}
+      .hero-meta{gap:1rem 1.4rem}
+      .menu-tabs{flex-wrap:wrap;border-radius:20px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header id="header">
+    <div class="wrap nav">
+      <a href="#top" class="logo" aria-label="Harvest Moon Bistro home">
+        <svg width="34" height="34" viewBox="0 0 34 34" role="img" aria-hidden="true">
+          <rect width="34" height="34" rx="9" fill="#c7561f"/>
+          <circle cx="17" cy="15" r="7.5" fill="#f4c95d"/>
+          <path d="M20.5 11.5a7.5 7.5 0 0 1-7.5 9.6 7.5 7.5 0 1 0 7.5-9.6z" fill="#e8a93a"/>
+          <path d="M6.5 27.5c4.3-1.7 6.4-1.7 10.5 0s6.2 1.7 10.5 0" stroke="#7a2e3f" stroke-width="1.9" fill="none" stroke-linecap="round"/>
+        </svg>
+        <span>Harvest&nbsp;Moon <span class="b">Bistro</span></span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="#story">Our Story</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#reserve">Reserve</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#find">Find Us</a></li>
+        </ul>
+      </nav>
+      <div class="nav-cta">
+        <a href="#reserve" class="btn">Reserve a table</a>
+        <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="Open menu" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#story">Our Story</a>
+    <a href="#menu">Menu</a>
+    <a href="#reserve">Reserve</a>
+    <a href="#events">Events</a>
+    <a href="#find">Find Us</a>
+    <a href="#reserve" class="btn">Reserve a table</a>
+  </div>
+
+  <main id="top">
+
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <span class="hero-tag"><span class="dot" aria-hidden="true"></span>Open for weekend brunch &amp; nightly dinner</span>
+          <h1>Gather.<br><em>Feast.</em> Linger.</h1>
+          <p class="lede">A cozy little corner of the neighbourhood where the wine is poured generously and the seasons set the menu.</p>
+          <p class="hero-sub">Harvest Moon is a seasonal bistro &amp; wine bar on Commercial Drive — comfort food cooked from what's good right now, in a room that feels like coming home.</p>
+          <div class="hero-cta">
+            <a href="#reserve" class="btn">Reserve a table
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#menu" class="btn btn-ghost">View menu</a>
+          </div>
+          <div class="hero-meta">
+            <div class="m"><b>2014</b><span>Pouring on the Drive</span></div>
+            <div class="m"><b>4.9★</b><span>Across 1,300+ reviews</span></div>
+            <div class="m"><b>Local</b><span>Farms &amp; makers, always</span></div>
+          </div>
+        </div>
+
+        <div class="hero-art reveal">
+          <!-- Harvest moon / autumn scene -->
+          <svg class="scene" viewBox="0 0 520 480" role="img" aria-label="Illustration of a harvest moon rising over a warm-lit bistro with autumn trees and a table set for dinner">
+            <defs>
+              <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#3a1c33"/>
+                <stop offset="0.5" stop-color="#6e2740"/>
+                <stop offset="1" stop-color="#a8420f"/>
+              </linearGradient>
+              <radialGradient id="moon" cx="50%" cy="40%" r="60%">
+                <stop offset="0" stop-color="#fde9b8"/>
+                <stop offset="0.55" stop-color="#f4c95d"/>
+                <stop offset="1" stop-color="#e8a93a"/>
+              </radialGradient>
+              <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#5e2030"/>
+                <stop offset="1" stop-color="#3a1410"/>
+              </linearGradient>
+              <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+                <stop offset="0" stop-color="#f4c95d" stop-opacity="0.55"/>
+                <stop offset="1" stop-color="#f4c95d" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <rect width="520" height="480" fill="url(#sky)"/>
+            <!-- stars -->
+            <g fill="#fde9b8" opacity="0.8">
+              <circle cx="70" cy="60" r="1.6"/><circle cx="120" cy="110" r="1.1"/><circle cx="200" cy="50" r="1.3"/>
+              <circle cx="430" cy="70" r="1.5"/><circle cx="470" cy="140" r="1.1"/><circle cx="350" cy="40" r="1"/>
+              <circle cx="40" cy="160" r="1.2"/><circle cx="490" cy="40" r="1.3"/>
+            </g>
+            <!-- harvest moon -->
+            <circle cx="370" cy="135" r="92" fill="url(#glow)"/>
+            <circle cx="370" cy="135" r="62" fill="url(#moon)"/>
+            <circle cx="345" cy="115" r="9" fill="#e8a93a" opacity="0.5"/>
+            <circle cx="392" cy="150" r="6" fill="#e8a93a" opacity="0.5"/>
+            <circle cx="385" cy="110" r="4" fill="#e8a93a" opacity="0.4"/>
+            <!-- rolling hills -->
+            <path d="M0 320 Q130 270 260 312 T520 300 V480 H0 Z" fill="#7a2e3f"/>
+            <path d="M0 360 Q160 320 320 358 T520 350 V480 H0 Z" fill="url(#ground)"/>
+            <!-- autumn trees (left) -->
+            <g>
+              <rect x="60" y="280" width="9" height="60" rx="3" fill="#3a2417"/>
+              <circle cx="64" cy="268" r="34" fill="#c7561f"/>
+              <circle cx="44" cy="282" r="22" fill="#a8420f"/>
+              <circle cx="86" cy="284" r="20" fill="#e8a93a"/>
+            </g>
+            <!-- bistro building -->
+            <g>
+              <rect x="180" y="248" width="200" height="112" rx="6" fill="#4a2a18"/>
+              <rect x="180" y="248" width="200" height="20" fill="#3a2014"/>
+              <!-- awning -->
+              <path d="M174 268 H386 L374 296 H186 Z" fill="#7a2e3f"/>
+              <g fill="#f6e9d4" opacity="0.9">
+                <path d="M186 296 l8-22 8 22z" transform="translate(0,0)"/>
+              </g>
+              <path d="M174 268 H386 L380 282 H180 Z" fill="#a8420f"/>
+              <!-- warm windows -->
+              <rect x="198" y="302" width="44" height="48" rx="4" fill="#f4c95d"/>
+              <rect x="318" y="302" width="44" height="48" rx="4" fill="#f4c95d"/>
+              <!-- door -->
+              <rect x="262" y="298" width="36" height="62" rx="4" fill="#fde9b8"/>
+              <circle cx="291" cy="330" r="2" fill="#a8420f"/>
+              <!-- little figures at window (silhouettes) -->
+              <circle cx="214" cy="326" r="6" fill="#7a2e3f"/>
+              <circle cx="228" cy="328" r="6" fill="#7a2e3f"/>
+              <circle cx="334" cy="327" r="6" fill="#7a2e3f"/>
+            </g>
+            <!-- autumn trees (right) -->
+            <g>
+              <rect x="430" y="276" width="10" height="70" rx="3" fill="#3a2417"/>
+              <circle cx="435" cy="262" r="38" fill="#e8a93a"/>
+              <circle cx="412" cy="278" r="24" fill="#c7561f"/>
+              <circle cx="458" cy="280" r="22" fill="#a8420f"/>
+            </g>
+            <!-- foreground table -->
+            <g>
+              <ellipse cx="260" cy="430" rx="150" ry="22" fill="#2b1410"/>
+              <ellipse cx="260" cy="418" rx="150" ry="26" fill="#6b4a36"/>
+              <!-- plates -->
+              <circle cx="200" cy="416" r="22" fill="#f6e9d4"/><circle cx="200" cy="416" r="13" fill="#e8a93a"/>
+              <circle cx="320" cy="416" r="22" fill="#f6e9d4"/><circle cx="320" cy="416" r="13" fill="#c7561f"/>
+              <!-- candle -->
+              <rect x="254" y="396" width="12" height="22" rx="3" fill="#fbf3e6"/>
+              <ellipse cx="260" cy="392" rx="5" ry="9" fill="#f4c95d"/>
+              <ellipse cx="260" cy="388" rx="2.6" ry="5" fill="#fde9b8"/>
+              <!-- wine glasses -->
+              <path d="M150 416 q6 -14 12 0 q-6 6 -6 14 v6 m-6 0 h12" stroke="#fde9b8" stroke-width="2" fill="#7a2e3f" fill-opacity="0.7"/>
+              <path d="M358 416 q6 -14 12 0 q-6 6 -6 14 v6 m-6 0 h12" stroke="#fde9b8" stroke-width="2" fill="#7a2e3f" fill-opacity="0.7"/>
+            </g>
+            <!-- floating leaves -->
+            <g fill="#e8a93a" opacity="0.85">
+              <path d="M120 200 q10 -8 18 0 q-8 10 -18 0z"/>
+              <path d="M420 210 q8 -7 15 0 q-7 9 -15 0z" fill="#c7561f"/>
+              <path d="M300 180 q7 -6 13 0 q-6 8 -13 0z" fill="#7a2e3f"/>
+            </g>
+          </svg>
+          <div class="float-badge">
+            <div class="ic" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <b>The hearth is lit</b>
+              <span>Walk-ins welcome at the wine bar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Marquee strip ===== -->
+    <div class="strip" aria-hidden="true">
+      <div class="strip-track" id="strip">
+        <div class="it">Seasonal &amp; local <span>✦</span></div>
+        <div class="it">Wood-fired comfort food <span>✦</span></div>
+        <div class="it">Natural wines on tap <span>✦</span></div>
+        <div class="it">Weekend brunch til 2 <span>✦</span></div>
+        <div class="it">Dog-friendly patio <span>✦</span></div>
+        <div class="it">Voted best brunch 2025 <span>✦</span></div>
+        <div class="it">Seasonal &amp; local <span>✦</span></div>
+        <div class="it">Wood-fired comfort food <span>✦</span></div>
+        <div class="it">Natural wines on tap <span>✦</span></div>
+        <div class="it">Weekend brunch til 2 <span>✦</span></div>
+        <div class="it">Dog-friendly patio <span>✦</span></div>
+        <div class="it">Voted best brunch 2025 <span>✦</span></div>
+      </div>
+    </div>
+
+    <!-- ===== Story ===== -->
+    <section class="section" id="story">
+      <div class="wrap story-grid">
+        <div class="story-art reveal">
+          <svg viewBox="0 0 460 440" role="img" aria-label="Illustration of a rustic kitchen pass with a cook plating dishes, hanging copper pots, and a basket of seasonal produce">
+            <defs>
+              <linearGradient id="kbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6e9d4"/><stop offset="1" stop-color="#f0ddc0"/></linearGradient>
+              <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8a5a36"/><stop offset="1" stop-color="#6b4226"/></linearGradient>
+            </defs>
+            <rect width="460" height="440" rx="24" fill="url(#kbg)"/>
+            <!-- shelf -->
+            <rect x="40" y="74" width="380" height="10" rx="5" fill="url(#wood)"/>
+            <!-- hanging copper pots -->
+            <g stroke="#3a2417" stroke-width="2">
+              <line x1="120" y1="84" x2="120" y2="104"/><line x1="230" y1="84" x2="230" y2="98"/><line x1="330" y1="84" x2="330" y2="110"/>
+            </g>
+            <ellipse cx="120" cy="120" rx="26" ry="20" fill="#c7561f"/><rect x="142" y="112" width="22" height="6" rx="3" fill="#a8420f"/>
+            <ellipse cx="230" cy="116" rx="22" ry="17" fill="#e8a93a"/><rect x="250" y="110" width="20" height="5" rx="3" fill="#c7561f"/>
+            <ellipse cx="330" cy="128" rx="28" ry="22" fill="#a8420f"/><rect x="354" y="120" width="22" height="6" rx="3" fill="#7a2e3f"/>
+            <!-- counter / pass -->
+            <rect x="0" y="300" width="460" height="140" fill="url(#wood)"/>
+            <rect x="0" y="300" width="460" height="14" fill="#9a6a40"/>
+            <!-- produce basket -->
+            <path d="M52 300 h84 l-10 -44 h-64 z" fill="#7a4a2a"/>
+            <circle cx="74" cy="252" r="14" fill="#c7561f"/><circle cx="96" cy="246" r="13" fill="#e8a93a"/>
+            <circle cx="116" cy="254" r="12" fill="#6e7340"/><circle cx="92" cy="262" r="11" fill="#a8420f"/>
+            <!-- cook silhouette -->
+            <g>
+              <rect x="300" y="150" width="70" height="90" rx="20" fill="#7a2e3f"/>
+              <circle cx="335" cy="138" r="22" fill="#e8b98f"/>
+              <path d="M313 124 a22 16 0 0 1 44 0 q0 -26 -22 -26 t-22 26z" fill="#fbf3e6"/>
+              <!-- plating arm -->
+              <path d="M308 200 q-30 18 -50 56" stroke="#7a2e3f" stroke-width="16" fill="none" stroke-linecap="round"/>
+            </g>
+            <!-- plate being garnished -->
+            <ellipse cx="230" cy="300" rx="58" ry="14" fill="#fffaf2"/>
+            <ellipse cx="230" cy="296" rx="44" ry="11" fill="#f0ddc0"/>
+            <circle cx="220" cy="294" r="9" fill="#c7561f"/><circle cx="240" cy="296" r="7" fill="#6e7340"/><circle cx="232" cy="290" r="5" fill="#e8a93a"/>
+            <!-- steam -->
+            <g stroke="#fff" stroke-width="3" fill="none" opacity="0.5" stroke-linecap="round">
+              <path d="M214 280 q-6 -14 4 -26 q-6 -10 2 -22"/>
+              <path d="M246 282 q6 -14 -4 -26 q6 -10 -2 -22"/>
+            </g>
+          </svg>
+        </div>
+        <div class="story-copy reveal">
+          <span class="eyebrow">From our kitchen</span>
+          <h2 class="h-xl">Food that tastes<br>like where you live</h2>
+          <p class="lede">We cook the way you'd want to be cooked for — slowly, generously, and with whatever the season is handing us.</p>
+          <p style="margin-top:1rem;color:var(--ink-soft)">Harvest Moon started as a tiny supper club run out of a borrowed kitchen. A decade on, we're still chasing the same thing: a room where neighbours become regulars and a plate of braised short rib makes a Tuesday feel like an occasion. The menu shifts with the markets, the wine list leans natural and a little wild, and the bread is always warm.</p>
+          <div class="pill-list">
+            <div class="pill">
+              <span class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 2C8 6 8 10 12 14c4-4 4-8 0-12z"/><path d="M12 14v8M8 18l4-2 4 2" stroke-linecap="round"/></svg></span>
+              <div><h4>Sourced within the valley</h4><p>We buy direct from twelve nearby farms, a fisher in Steveston, and a baker two doors down.</p></div>
+            </div>
+            <div class="pill">
+              <span class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <div><h4>A neighbourhood table</h4><p>Forty-two seats, one long communal bench, and a wine bar built for lingering past last call.</p></div>
+            </div>
+            <div class="pill">
+              <span class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 21V10l8-6 8 6v11M4 21h16M9 14h6v7H9z" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="8" r="0"/></svg></span>
+              <div><h4>Nothing goes to waste</h4><p>Trim becomes stock, bruised fruit becomes the cocktail shrub, and the scraps feed the farm's pigs.</p></div>
+            </div>
+          </div>
+          <div class="story-stats">
+            <div class="s"><b>12</b><span>Local farm partners</span></div>
+            <div class="s"><b>42</b><span>Seats by candlelight</span></div>
+            <div class="s"><b>~30km</b><span>Average ingredient radius</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Menu ===== -->
+    <section class="section" id="menu">
+      <div class="wrap">
+        <div class="center sec-intro">
+          <span class="eyebrow">What we're cooking</span>
+          <h2 class="h-xl">A menu that follows the season</h2>
+          <p style="margin-top:.8rem;color:var(--ink-soft)">Everything is made in-house and changes as the markets do. Flip between brunch, dinner, and the bar list below.</p>
+          <div class="menu-tabs" role="tablist" aria-label="Menu sections">
+            <button class="tab" id="tab-brunch" role="tab" aria-selected="true" aria-controls="panel-brunch" data-panel="brunch">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="13" r="4"/><path d="M12 4v3M5 7l1.5 1.5M19 7l-1.5 1.5" stroke-linecap="round"/></svg>
+              Brunch
+            </button>
+            <button class="tab" id="tab-dinner" role="tab" aria-selected="false" aria-controls="panel-dinner" data-panel="dinner" tabindex="-1">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3v8a2 2 0 0 0 2 2v8M6 3v6M18 3c-1.5 0-2 2-2 4s.5 4 2 4v9" stroke-linecap="round"/></svg>
+              Dinner
+            </button>
+            <button class="tab" id="tab-drinks" role="tab" aria-selected="false" aria-controls="panel-drinks" data-panel="drinks" tabindex="-1">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 3h8l-1 5a3 3 0 0 1-6 0zM12 8v9M9 21h6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Wine &amp; Cocktails
+            </button>
+          </div>
+          <p class="menu-note">All prices in CAD. Please tell us about allergies — we're happy to adapt.</p>
+        </div>
+
+        <!-- BRUNCH -->
+        <div class="menu-panel active" id="panel-brunch" role="tabpanel" aria-labelledby="tab-brunch">
+          <div class="menu-cols">
+            <div class="menu-block">
+              <div class="reveal">
+                <h3>To start <span class="k">Sat &amp; Sun · til 2pm</span></h3>
+                <div class="dish"><div class="dish-top"><span class="dish-name">Warm Cinnamon Morning Buns</span><span class="dish-dots"></span><span class="dish-price">$9</span></div><p class="dish-desc">Pulled-apart sourdough buns, brown-butter glaze, candied pecans. Order two.</p></div>
+                <div class="dish"><div class="dish-top"><span class="dish-name">Maple-Roast Squash &amp; Yogurt<span class="tag-v">VEG</span></span><span class="dish-dots"></span><span class="dish-price">$13</span></div><p class="dish-desc">Honeynut squash, labneh, toasted seeds, sage honey, grilled levain.</p></div>
+                <div class="dish"><div class="dish-top"><span class="dish-name">House Granola &amp; Stewed Plums</span><span class="dish-dots"></span><span class="dish-price">$11</span></div><p class="dish-desc">Oats, hazelnut, orchard plums, whipped ricotta, a drizzle of buckwheat honey.</p></div>
+              </div>
+            </div>
+            <div class="menu-block">
+              <div class="reveal">
+                <h3>The mains <span class="k">comfort, fed</span></h3>
+                <div class="dish"><div class="dish-top"><span class="dish-name">Harvest Moon Big Breakfast</span><span class="dish-dots"></span><span class="dish-price">$22</span></div><p class="dish-desc">Two farm eggs, maple breakfast sausage, smashed potatoes, blistered tomato, sourdough toast.</p></div>
+                <div class="dish"><div class="dish-top"><span class="dish-name">Braised Short Rib Hash</span><span class="dish-dots"></span><span class="dish-price">$24</span></div><p class="dish-desc">Slow-cooked short rib, crispy potato, charred onion, two poached eggs, hollandaise.</p></div>
+                <div class="dish"><div class="dish-top"><span class="dish-name">Buttermilk Pancake Stack</span><span class="dish-dots"></span><span class="dish-price">$17</span></div><p class="dish-desc">Three fluffy pancakes, whipped maple butter, cinnamon apples, a snowfall of icing sugar.</p></div>
+                <div class="dish"><div class="dish-top"><span class="dish-name">Wild Mushroom Toast<span class="tag-v">VEG</span></span><span class="dish-dots"></span><span class="dish-price">$18</span></div><p class="dish-desc">Garlic-cream forest mushrooms, thyme, soft-poached egg, shaved aged cheddar on grilled levain.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DINNER -->
+        <div class="menu-panel" id="panel-dinner" role="tabpanel" aria-labelledby="tab-dinner" hidden>
+          <div class="menu-cols">
+            <div class="menu-block">
+              <div class="reveal">
+                <h3>Small plates <span class="k">for the table</span></h3>
+                <div class="dish"><div class="dish-top"><span class="dish-name">Wood-Oven Focaccia &amp; Whipped Lardo</span><span class="dish-dots"></span><span class="dish-price">$10</span></div><p class="dish-desc">Rosemary focaccia torn warm from the oven, cultured butter, flaky salt.</p></div>
+                <div class="dish"><div class="dish-top"><span class="dish-name">Charred Brassicas &amp; Hazelnut<span class="tag-v">VEG</span></span><span class="dish-dots"></span><span class="dish-price">$15</span></div><p class="dish-desc">Romanesco &amp; broccolini, brown-butter hazelnut, chili, lemon, grana.</p></div>
+                <div class="dish"><div class="dish-top"><span class="dish-name">Steelhead Crudo</span><span class="dish-dots"></span><span class="dish-price">$19</span></div><p class="dish-desc">Steveston steelhead, blood orange, fennel, dill oil, crisp shallot.</p></div>
+                <div class="dish"><div class="dish-top"><span class="dish-name">Duck Liver Parfait</span><span class="dish-dots"></span><span class="dish-price">$16</span></div><p class="dish-desc">Silky parfait, plum &amp; port jam, toasted brioche, pickled walnut.</p></div>
+              </div>
+            </div>
+            <div class="menu-block">
+              <div class="reveal">
+                <h3>Mains <span class="k">the long table</span></h3>
+                <div class="dish"><div class="dish-top"><span class="dish-name">Red-Wine Braised Short Rib<span class="tag-c">SIGNATURE</span></span><span class="dish-dots"></span><span class="dish-price">$36</span></div><p class="dish-desc">Six-hour braise, roasted root mash, charred carrot, bone-marrow jus.</p></div>
+                <div class="dish"><div class="dish-top"><span class="dish-name">Roast Chicken for the Table</span><span class="dish-dots"></span><span class="dish-price">$58</span></div><p class="dish-desc">Whole brined chicken, bread &amp; herb dressing, schmaltz potatoes, gravy. Serves two.</p></div>
+                <div class="dish"><div class="dish-top"><span class="dish-name">Squash &amp; Sage Agnolotti<span class="tag-v">VEG</span></span><span class="dish-dots"></span><span class="dish-price">$27</span></div><p class="dish-desc">Hand-folded pasta, brown butter, crisp sage, amaretti crumble, aged grana.</p></div>
+                <div class="dish"><div class="dish-top"><span class="dish-name">Cider-Glazed Pork Chop</span><span class="dish-dots"></span><span class="dish-price">$34</span></div><p class="dish-desc">Berkshire chop, orchard-cider glaze, braised greens, mustard spätzle.</p></div>
+                <div class="dish"><div class="dish-top"><span class="dish-name">Warm Apple &amp; Bourbon Crumble</span><span class="dish-dots"></span><span class="dish-price">$12</span></div><p class="dish-desc">To finish: orchard apples, oat crumble, brown-sugar bourbon, vanilla-bean cream.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DRINKS -->
+        <div class="menu-panel" id="panel-drinks" role="tabpanel" aria-labelledby="tab-drinks" hidden>
+          <div class="menu-cols">
+            <div class="menu-block">
+              <div class="reveal">
+                <h3>Cocktails <span class="k">from the bar</span></h3>
+                <div class="dish"><div class="dish-top"><span class="dish-name">The Harvest Moon</span><span class="dish-dots"></span><span class="dish-price">$16</span></div><p class="dish-desc">Rye, spiced apple shrub, amaro, lemon, a float of sparkling cider. The house pour.</p></div>
+                <div class="dish"><div class="dish-top"><span class="dish-name">Smoked Maple Old Fashioned</span><span class="dish-dots"></span><span class="dish-price">$17</span></div><p class="dish-desc">Bourbon, grade-A maple, black-walnut bitters, applewood smoke under glass.</p></div>
+                <div class="dish"><div class="dish-top"><span class="dish-name">Plum &amp; Thyme Spritz</span><span class="dish-dots"></span><span class="dish-price">$14</span></div><p class="dish-desc">Orchard plum, thyme, prosecco, soda. Bright and easy.</p></div>
+                <div class="dish"><div class="dish-top"><span class="dish-name">Orchard Shrub Soda<span class="tag-v">N/A</span></span><span class="dish-dots"></span><span class="dish-price">$8</span></div><p class="dish-desc">Zero-proof: house apple-cider shrub, ginger, soda, rosemary.</p></div>
+              </div>
+            </div>
+            <div class="menu-block">
+              <div class="reveal">
+                <h3>Wine <span class="k">by the glass</span></h3>
+                <div class="dish"><div class="dish-top"><span class="dish-name">Okanagan Skin-Contact Riesling</span><span class="dish-dots"></span><span class="dish-price">$15</span></div><p class="dish-desc">Naramata, BC. Apricot, orange peel, a little funk. Our favourite right now.</p></div>
+                <div class="dish"><div class="dish-top"><span class="dish-name">Côtes du Rhône Rouge</span><span class="dish-dots"></span><span class="dish-price">$14</span></div><p class="dish-desc">Grenache &amp; syrah. Blackberry, garrigue, dangerously drinkable.</p></div>
+                <div class="dish"><div class="dish-top"><span class="dish-name">Pét-Nat, Similkameen</span><span class="dish-dots"></span><span class="dish-price">$16</span></div><p class="dish-desc">Cloudy, joyful sparkling. Green apple and brioche.</p></div>
+              </div>
+              <div class="menu-block reveal">
+                <h3>On tap <span class="k">local pours</span></h3>
+                <div class="dish"><div class="dish-top"><span class="dish-name">Drive Amber Ale</span><span class="dish-dots"></span><span class="dish-price">$8</span></div><p class="dish-desc">Caramel-malt amber from the brewery up the block.</p></div>
+                <div class="dish"><div class="dish-top"><span class="dish-name">Dry Heritage Cider</span><span class="dish-dots"></span><span class="dish-price">$9</span></div><p class="dish-desc">Fraser Valley apples, crisp and barely sweet.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Reserve (STAR) ===== -->
+    <section class="section" id="reserve">
+      <div class="wrap reserve-grid">
+        <div class="reserve-copy reveal">
+          <span class="eyebrow">Pull up a chair</span>
+          <h2 class="h-xl">Reserve your table</h2>
+          <p class="lede">Pick a night, tell us who's coming, and we'll keep the candle lit.</p>
+          <ul>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Tables of up to 8 online — larger parties, just call us.</li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>The wine bar keeps a few seats for walk-ins every night.</li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Celebrating something? Let us know and we'll make a fuss.</li>
+          </ul>
+          <div class="float-badge" style="position:static;margin-top:2rem;max-width:none;box-shadow:var(--shadow-sm)">
+            <div class="ic" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2l2.4 5 5.5.8-4 3.9 1 5.5L12 19.8 7.1 22.2l1-5.5-4-3.9 5.5-.8z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <b>Voted Best Brunch — East Van Eats 2025</b>
+              <span>Reader's Choice, two years running</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="widget reveal">
+          <form id="reserveForm" novalidate>
+            <div id="formView">
+              <h3>Book a table</h3>
+              <p class="wsub">It takes about thirty seconds. No deposit needed.</p>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="resDate">Date</label>
+                  <input type="date" id="resDate" required />
+                </div>
+                <div class="field">
+                  <label for="resOccasion">Occasion</label>
+                  <select id="resOccasion">
+                    <option value="Just dinner">Just dinner</option>
+                    <option value="Weekend brunch">Weekend brunch</option>
+                    <option value="Birthday">Birthday</option>
+                    <option value="Anniversary">Anniversary</option>
+                    <option value="Date night">Date night</option>
+                    <option value="Catching up with friends">Catching up with friends</option>
+                    <option value="Celebration">A celebration</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <label id="partyLabel">Party size</label>
+                <div class="stepper" role="group" aria-labelledby="partyLabel">
+                  <button type="button" id="minus" aria-label="Fewer guests">−</button>
+                  <span class="count" aria-live="polite"><span id="partyNum">2</span><small id="partyWord">guests</small></span>
+                  <button type="button" id="plus" aria-label="More guests">+</button>
+                </div>
+              </div>
+
+              <div class="field">
+                <label id="slotLabel">Choose a time</label>
+                <div class="slots" role="group" aria-labelledby="slotLabel" id="slots">
+                  <button type="button" class="slot" data-time="9:00 AM">9:00</button>
+                  <button type="button" class="slot" data-time="10:30 AM">10:30</button>
+                  <button type="button" class="slot" data-time="12:00 PM">12:00</button>
+                  <button type="button" class="slot soldout" data-time="5:30 PM" aria-disabled="true">5:30</button>
+                  <button type="button" class="slot" data-time="6:00 PM">6:00</button>
+                  <button type="button" class="slot" data-time="6:30 PM">6:30</button>
+                  <button type="button" class="slot" data-time="7:00 PM">7:00</button>
+                  <button type="button" class="slot" data-time="7:30 PM">7:30</button>
+                  <button type="button" class="slot" data-time="8:00 PM">8:00</button>
+                  <button type="button" class="slot soldout" data-time="8:30 PM" aria-disabled="true">8:30</button>
+                </div>
+              </div>
+
+              <p class="err" id="formErr" role="alert">Please pick a date and a time so we can hold your table.</p>
+
+              <button type="submit" class="btn btn-plum">Reserve our table
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+
+            <div class="confirm" id="confirmView" hidden>
+              <div class="seal" aria-hidden="true">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#7a2e3f" stroke-width="2.6"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <h3>Your table's set!</h3>
+              <p>We can't wait to feed you. A confirmation is on its way to your inbox.</p>
+              <div class="recap" id="recap"></div>
+              <button type="button" class="btn btn-ghost" id="editRes">Change my booking</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Events ===== -->
+    <section class="section" id="events">
+      <div class="wrap">
+        <div class="center sec-intro">
+          <span class="eyebrow">Every week at the bistro</span>
+          <h2 class="h-xl">There's always a reason to come back</h2>
+        </div>
+        <div class="events-grid">
+          <div class="event reveal">
+            <svg class="glyph" width="90" height="90" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4h16v3H4zM4 9h10v11H4zM16 9h4v11h-4z"/></svg>
+            <div class="day">Every Tuesday</div>
+            <h3>Trivia &amp; Tap Takeover</h3>
+            <p>Bring a team of four, win the bar tab. Half-price local pours all night and questions that get harder as the room gets louder.</p>
+            <div class="when">7:30pm · No cover</div>
+          </div>
+          <div class="event reveal">
+            <svg class="glyph" width="90" height="90" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm12-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/></svg>
+            <div class="day">Every Friday</div>
+            <h3>Live Jazz on the Drive</h3>
+            <p>A rotating trio plays from the corner while the kitchen sends out late-night snacks. Candles low, volume just right.</p>
+            <div class="when">8:00–11:00pm · Reservations wise</div>
+          </div>
+          <div class="event reveal">
+            <svg class="glyph" width="90" height="90" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+            <div class="day">Every Sunday</div>
+            <h3>The Sunday Roast</h3>
+            <p>Our weekly family-style feast: a great hunk of roast, Yorkshire puddings, all the trimmings, served til it's gone. Bring the whole crew.</p>
+            <div class="when">From 4:00pm · $42 per person</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Reviews ===== -->
+    <section class="section" id="reviews">
+      <div class="wrap">
+        <div class="reviews-head reveal">
+          <div class="sec-intro">
+            <span class="eyebrow">Word around the neighbourhood</span>
+            <h2 class="h-xl">Loved by the people next door</h2>
+          </div>
+          <div class="award">
+            <svg class="ribbon" viewBox="0 0 60 60" role="img" aria-label="Best Brunch award badge">
+              <circle cx="30" cy="24" r="20" fill="none" stroke="#f4c95d" stroke-width="2.5"/>
+              <circle cx="30" cy="24" r="14" fill="#7a2e3f" stroke="#e8a93a" stroke-width="1.5"/>
+              <path d="M30 14l2.6 5.4 5.9.8-4.3 4.1 1 5.9L30 33.4 24.8 30.2l1-5.9-4.3-4.1 5.9-.8z" fill="#f4c95d"/>
+              <path d="M22 42l-5 14 8-4 5 9 4-12z" fill="#c7561f"/>
+              <path d="M38 42l5 14-8-4-5 9-4-12z" fill="#a8420f"/>
+            </svg>
+            <div>
+              <b>Voted Best Brunch 2025</b>
+              <span>East Van Eats — Reader's Choice</span>
+            </div>
+          </div>
+        </div>
+        <div class="quotes">
+          <figure class="quote reveal">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>"The short rib hash ruined every other brunch for me. We've made it our Sunday ritual — they know our table and our coffee order."</p>
+            <figcaption class="who"><span class="av" aria-hidden="true">M</span><span><b>Maya R.</b><span>Two blocks away, here weekly</span></span></figcaption>
+          </figure>
+          <figure class="quote reveal">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>"Came for a glass of wine, stayed three hours. The staff treat you like you've been coming for years, even the first time. That's rare."</p>
+            <figcaption class="who"><span class="av" aria-hidden="true">D</span><span><b>Devon &amp; Priya</b><span>Friday jazz regulars</span></span></figcaption>
+          </figure>
+          <figure class="quote reveal">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>"We booked the back room for my mum's 60th. They built a whole menu around her favourites and made her cry happy tears. Unforgettable."</p>
+            <figcaption class="who"><span class="av" aria-hidden="true">T</span><span><b>Theo L.</b><span>Private event, October</span></span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Find us / hours / catering ===== -->
+    <section class="section" id="find">
+      <div class="wrap">
+        <div class="center sec-intro" style="margin-bottom:clamp(2rem,4vw,3rem)">
+          <span class="eyebrow">Come find us</span>
+          <h2 class="h-xl">On the Drive, with the warm windows</h2>
+        </div>
+        <div class="find-grid">
+          <div class="hours-card reveal">
+            <h3>Hours &amp; details</h3>
+            <ul class="hours-list" id="hoursList">
+              <li class="row" data-day="1"><span>Monday</span><span>Closed</span></li>
+              <li class="row" data-day="2"><span>Tuesday</span><span>5:00pm – 11:00pm</span></li>
+              <li class="row" data-day="3"><span>Wednesday</span><span>5:00pm – 11:00pm</span></li>
+              <li class="row" data-day="4"><span>Thursday</span><span>5:00pm – 11:00pm</span></li>
+              <li class="row" data-day="5"><span>Friday</span><span>5:00pm – 12:00am</span></li>
+              <li class="row" data-day="6"><span>Saturday</span><span>10:00am – 12:00am</span></li>
+              <li class="row" data-day="0"><span>Sunday</span><span>10:00am – 10:00pm</span></li>
+            </ul>
+            <div class="find-info">
+              <div class="row"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>1184 Commercial Drive, Vancouver, BC V5L 3X2</span></div>
+              <div class="row"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span>(604) 555-0142 · we answer the phone</span></div>
+              <div class="row"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 7l8 6 8-6"/></svg><span>hello@harvestmoonbistro.ca</span></div>
+            </div>
+          </div>
+
+          <div class="map-card reveal" role="img" aria-label="Stylized map showing Harvest Moon Bistro on Commercial Drive">
+            <svg viewBox="0 0 480 360" preserveAspectRatio="xMidYMid slice">
+              <rect width="480" height="360" fill="#f0ddc0"/>
+              <!-- park block -->
+              <rect x="30" y="40" width="120" height="110" rx="8" fill="#dfe3c2"/>
+              <circle cx="70" cy="80" r="12" fill="#6e7340" opacity="0.6"/><circle cx="110" cy="110" r="14" fill="#6e7340" opacity="0.55"/>
+              <!-- blocks -->
+              <rect x="330" y="30" width="120" height="90" rx="8" fill="#e8d6b6"/>
+              <rect x="330" y="220" width="120" height="110" rx="8" fill="#e8d6b6"/>
+              <rect x="30" y="220" width="120" height="110" rx="8" fill="#e8d6b6"/>
+              <!-- roads -->
+              <rect x="170" y="0" width="46" height="360" fill="#fffaf2"/>
+              <rect x="0" y="170" width="480" height="40" fill="#fffaf2"/>
+              <line x1="193" y1="0" x2="193" y2="360" stroke="#e8a93a" stroke-width="2.5" stroke-dasharray="14 12"/>
+              <line x1="0" y1="190" x2="480" y2="190" stroke="#e8a93a" stroke-width="2.5" stroke-dasharray="14 12"/>
+              <!-- street label -->
+              <text x="150" y="150" font-family="Bitter, serif" font-size="13" fill="#8a6a54" transform="rotate(-90 150 150)" font-style="italic">Commercial Dr</text>
+              <!-- pin -->
+              <g transform="translate(216 150)">
+                <ellipse cx="0" cy="34" rx="14" ry="5" fill="#7a2e3f" opacity="0.25"/>
+                <path d="M0 34C-12 16 -16 9 -16 0a16 16 0 0 1 32 0c0 9-4 16-16 34z" fill="#c7561f"/>
+                <circle cx="0" cy="0" r="7" fill="#f4c95d"/>
+              </g>
+            </svg>
+            <div class="map-pin-label">Harvest Moon Bistro</div>
+          </div>
+        </div>
+
+        <!-- Catering / private events -->
+        <div class="catering reveal">
+          <div>
+            <h3>Private events &amp; catering</h3>
+            <p>Birthdays, rehearsal dinners, holiday parties, or just an excuse to gather your favourite people — our back room seats up to 24, and our team will cook anything from family-style feasts to a full tasting menu. We cater off-site too.</p>
+          </div>
+          <div class="c-cta">
+            <a href="mailto:events@harvestmoonbistro.ca" class="btn">Plan an event</a>
+            <span class="c-note">Buy-outs available for the whole room · events@harvestmoonbistro.ca</span>
+          </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="news reveal" style="margin-top:clamp(2rem,4vw,3.2rem)">
+          <h3>Join the table</h3>
+          <p>A short, friendly note once a month — what's new on the menu, who's playing Friday jazz, and the odd recipe from the kitchen.</p>
+          <form id="newsForm" novalidate>
+            <label for="newsEmail" class="visually-hidden" style="position:absolute;left:-9999px">Email address</label>
+            <input type="email" id="newsEmail" placeholder="you@neighbourhood.ca" required />
+            <button type="submit" class="btn">Sign me up</button>
+          </form>
+          <p class="ok" id="newsOk" role="status">Lovely — see you at the table. 🍂</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a href="#top" class="logo" aria-label="Harvest Moon Bistro home">
+            <svg width="32" height="32" viewBox="0 0 34 34" role="img" aria-hidden="true">
+              <rect width="34" height="34" rx="9" fill="#c7561f"/>
+              <circle cx="17" cy="15" r="7.5" fill="#f4c95d"/>
+              <path d="M20.5 11.5a7.5 7.5 0 0 1-7.5 9.6 7.5 7.5 0 1 0 7.5-9.6z" fill="#e8a93a"/>
+              <path d="M6.5 27.5c4.3-1.7 6.4-1.7 10.5 0s6.2 1.7 10.5 0" stroke="#7a2e3f" stroke-width="1.9" fill="none" stroke-linecap="round"/>
+            </svg>
+            <span>Harvest&nbsp;Moon <span class="b">Bistro</span></span>
+          </a>
+          <p>A cozy seasonal bistro &amp; wine bar on Commercial Drive. Gather, feast, and linger a little longer.</p>
+          <div class="socials">
+            <a href="#" aria-label="Harvest Moon on Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="#" aria-label="Harvest Moon on Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h-3a4 4 0 0 0-4 4v3H5v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke-linejoin="round"/></svg></a>
+            <a href="#" aria-label="Harvest Moon on TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a href="#" aria-label="Harvest Moon newsletter"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 7l8 6 8-6"/></svg></a>
+          </div>
+        </div>
+        <div class="foot-col">
+          <h4>Visit</h4>
+          <ul>
+            <li><a href="#menu">The menu</a></li>
+            <li><a href="#reserve">Reserve a table</a></li>
+            <li><a href="#events">Weekly events</a></li>
+            <li><a href="#find">Find us</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Find us</h4>
+          <ul>
+            <li>1184 Commercial Drive</li>
+            <li>Vancouver, BC V5L 3X2</li>
+            <li><a href="tel:+16045550142">(604) 555-0142</a></li>
+            <li><a href="mailto:hello@harvestmoonbistro.ca">hello@harvestmoonbistro.ca</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Hours</h4>
+          <ul>
+            <li>Tue–Thu · 5pm–11pm</li>
+            <li>Fri · 5pm–12am</li>
+            <li>Sat · 10am–12am</li>
+            <li>Sun · 10am–10pm</li>
+            <li>Mondays · resting</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 Harvest Moon Bistro. Made with butter &amp; candlelight in Vancouver, BC.</span>
+        <span>Concept site crafted by <a href="../index.html">Maple</a> · sample design</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      'use strict';
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ---- Sticky header shadow ---- */
+      var header = document.getElementById('header');
+      function onScroll(){
+        if(window.scrollY > 24){ header.classList.add('scrolled'); }
+        else { header.classList.remove('scrolled'); }
+      }
+      onScroll();
+      window.addEventListener('scroll', onScroll, {passive:true});
+
+      /* ---- Mobile menu ---- */
+      var hamburger = document.getElementById('hamburger');
+      var mobileMenu = document.getElementById('mobileMenu');
+      function setMenu(open){
+        hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+        hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        mobileMenu.classList.toggle('open', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+      hamburger.addEventListener('click', function(){
+        setMenu(hamburger.getAttribute('aria-expanded') !== 'true');
+      });
+      mobileMenu.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', function(){ setMenu(false); });
+      });
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape' && mobileMenu.classList.contains('open')){ setMenu(false); hamburger.focus(); }
+      });
+
+      /* ---- Scroll reveal ---- */
+      var reveals = document.querySelectorAll('.reveal');
+      if('IntersectionObserver' in window && !reduceMotion){
+        var io = new IntersectionObserver(function(entries){
+          entries.forEach(function(en){
+            if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+          });
+        }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+        reveals.forEach(function(el){ io.observe(el); });
+      } else {
+        reveals.forEach(function(el){ el.classList.add('in'); });
+      }
+
+      /* ---- Menu tab switcher ---- */
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+      var panels = {
+        brunch: document.getElementById('panel-brunch'),
+        dinner: document.getElementById('panel-dinner'),
+        drinks: document.getElementById('panel-drinks')
+      };
+      function selectTab(tab){
+        tabs.forEach(function(t){
+          var on = t === tab;
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+          t.tabIndex = on ? 0 : -1;
+        });
+        Object.keys(panels).forEach(function(k){
+          var active = (k === tab.dataset.panel);
+          panels[k].classList.toggle('active', active);
+          if(active){ panels[k].removeAttribute('hidden'); }
+          else { panels[k].setAttribute('hidden',''); }
+        });
+        /* re-reveal any panels not yet shown */
+        panels[tab.dataset.panel].querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+      }
+      tabs.forEach(function(tab, i){
+        tab.addEventListener('click', function(){ selectTab(tab); });
+        tab.addEventListener('keydown', function(e){
+          var dir = e.key === 'ArrowRight' ? 1 : (e.key === 'ArrowLeft' ? -1 : 0);
+          if(dir){
+            e.preventDefault();
+            var next = tabs[(i + dir + tabs.length) % tabs.length];
+            next.focus(); selectTab(next);
+          }
+        });
+      });
+
+      /* ---- Reservation widget ---- */
+      var form = document.getElementById('reserveForm');
+      var formView = document.getElementById('formView');
+      var confirmView = document.getElementById('confirmView');
+      var dateInput = document.getElementById('resDate');
+      var minusBtn = document.getElementById('minus');
+      var plusBtn = document.getElementById('plus');
+      var partyNum = document.getElementById('partyNum');
+      var partyWord = document.getElementById('partyWord');
+      var slotWrap = document.getElementById('slots');
+      var slots = Array.prototype.slice.call(slotWrap.querySelectorAll('.slot'));
+      var formErr = document.getElementById('formErr');
+      var recap = document.getElementById('recap');
+      var editRes = document.getElementById('editRes');
+
+      /* default date = next Saturday, min = today */
+      var today = new Date();
+      function fmtISO(d){ return d.toISOString().split('T')[0]; }
+      dateInput.min = fmtISO(today);
+      var sat = new Date(today);
+      sat.setDate(sat.getDate() + ((6 - sat.getDay() + 7) % 7 || 7));
+      dateInput.value = fmtISO(sat);
+
+      var MINP = 1, MAXP = 8, party = 2, selectedSlot = null;
+      function renderParty(){
+        partyNum.textContent = party >= MAXP ? '8+' : String(party);
+        partyWord.textContent = party === 1 ? 'guest' : 'guests';
+        minusBtn.disabled = party <= MINP;
+        plusBtn.disabled = party >= MAXP;
+      }
+      renderParty();
+      minusBtn.addEventListener('click', function(){ if(party > MINP){ party--; renderParty(); } });
+      plusBtn.addEventListener('click', function(){ if(party < MAXP){ party++; renderParty(); } });
+
+      slots.forEach(function(s){
+        if(s.classList.contains('soldout')) return;
+        s.setAttribute('aria-pressed','false');
+        s.addEventListener('click', function(){
+          slots.forEach(function(o){ o.setAttribute('aria-pressed','false'); });
+          s.setAttribute('aria-pressed','true');
+          selectedSlot = s.dataset.time;
+          formErr.classList.remove('show');
+        });
+      });
+
+      function prettyDate(iso){
+        var parts = iso.split('-');
+        var d = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+        return d.toLocaleDateString('en-CA', {weekday:'long', month:'long', day:'numeric'});
+      }
+      function makeCode(){
+        var letters = 'ABCDEFGHJKMNPQRSTUVWXYZ';
+        var c = 'HM-';
+        for(var i=0;i<2;i++){ c += letters.charAt(Math.floor(Math.random()*letters.length)); }
+        c += '-' + String(Math.floor(1000 + Math.random()*9000));
+        return c;
+      }
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        if(!dateInput.value || !selectedSlot){
+          formErr.classList.add('show');
+          return;
+        }
+        var occasion = document.getElementById('resOccasion').value;
+        var guests = party >= MAXP ? '8+' : party;
+        recap.innerHTML =
+          '<div class="rr"><span>Date</span><b>' + prettyDate(dateInput.value) + '</b></div>' +
+          '<div class="rr"><span>Time</span><b>' + selectedSlot + '</b></div>' +
+          '<div class="rr"><span>Party</span><b>' + guests + (party === 1 ? ' guest' : ' guests') + '</b></div>' +
+          '<div class="rr"><span>Occasion</span><b>' + occasion + '</b></div>' +
+          '<div class="rr"><span>Confirmation</span><b class="code">' + makeCode() + '</b></div>';
+        formView.hidden = true;
+        confirmView.hidden = false;
+        confirmView.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', block:'center'});
+      });
+
+      editRes.addEventListener('click', function(){
+        confirmView.hidden = true;
+        formView.hidden = false;
+      });
+
+      /* ---- Highlight today's hours + open-now badge ---- */
+      var todayRow = document.querySelector('.hours-list .row[data-day="' + today.getDay() + '"]');
+      if(todayRow){
+        todayRow.classList.add('today');
+        var dayTxt = (todayRow.querySelector('span:last-child').textContent || '').toLowerCase();
+        if(dayTxt.indexOf('closed') === -1){
+          var badge = document.createElement('span');
+          badge.className = 'open-now';
+          badge.textContent = 'Today';
+          todayRow.querySelector('span:first-child').appendChild(badge);
+        }
+      }
+
+      /* ---- Newsletter ---- */
+      var newsForm = document.getElementById('newsForm');
+      var newsOk = document.getElementById('newsOk');
+      newsForm.addEventListener('submit', function(e){
+        e.preventDefault();
+        var email = document.getElementById('newsEmail');
+        if(email.value && /\S+@\S+\.\S+/.test(email.value)){
+          newsOk.classList.add('show');
+          newsForm.reset();
+        } else {
+          email.focus();
+        }
+      });
+
+      /* ---- Duplicate marquee already in markup; pause on hover handled by CSS ---- */
+    })();
+  </script>
+</body>
+</html>

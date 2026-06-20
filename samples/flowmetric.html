@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FlowMetric — See what your product really does</title>
+<meta name="description" content="FlowMetric is the product-analytics platform for teams who ship. Track users, funnels, retention cohorts and real-time events, then explore it all with SQL. Start free or book a demo." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#06070c;
+    --bg-2:#0b0d16;
+    --bg-3:#11141f;
+    --panel:#131726;
+    --panel-2:#171c2e;
+    --line:rgba(140,160,220,.12);
+    --line-2:rgba(140,160,220,.22);
+    --ink:#f4f6ff;
+    --mute:#aeb6d4;
+    --mute-2:#7c84a6;
+    --violet:#8b5cff;
+    --violet-2:#a987ff;
+    --cyan:#22e0ff;
+    --cyan-2:#6df0ff;
+    --lime:#c6ff3d;
+    --pink:#ff5db1;
+    --light:#f3f4fb;
+    --light-2:#e8eaf6;
+    --ink-d:#0a0c14;
+    --radius:14px;
+    --radius-lg:22px;
+    --radius-sm:9px;
+    --maxw:1200px;
+    --shadow:0 24px 70px rgba(0,0,0,.55);
+    --shadow-glow:0 0 0 1px rgba(139,92,255,.35), 0 22px 60px rgba(139,92,255,.22);
+    --sp:clamp(72px,9.5vw,132px);
+    --ease:cubic-bezier(.16,1,.3,1);
+    --grad-accent:linear-gradient(120deg,var(--violet) 0%,var(--cyan) 100%);
+    --grad-accent-3:linear-gradient(120deg,var(--violet) 0%,var(--pink) 45%,var(--cyan) 100%);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  }
+
+  body{
+    font-family:'Space Grotesk',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    letter-spacing:-.011em;
+  }
+
+  a{color:inherit;text-decoration:none}
+  ul{list-style:none}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+  .mono{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:0}
+
+  ::selection{background:rgba(139,92,255,.4);color:#fff}
+
+  :focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:4px}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  section{position:relative}
+
+  /* ---------- Type scale ---------- */
+  h1,h2,h3,h4{line-height:1.04;font-weight:600;letter-spacing:-.03em}
+  h1{font-size:clamp(2.6rem,6.4vw,4.7rem);font-weight:700}
+  h2{font-size:clamp(2rem,4vw,3.1rem)}
+  h3{font-size:clamp(1.2rem,1.6vw,1.4rem)}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--cyan);display:inline-flex;align-items:center;gap:9px;
+  }
+  .eyebrow::before{content:"";width:18px;height:1px;background:var(--cyan);opacity:.7;display:inline-block}
+  .lead{font-size:clamp(1.05rem,1.5vw,1.22rem);color:var(--mute);max-width:54ch}
+  .grad-text{background:var(--grad-accent-3);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    font-weight:600;font-size:.96rem;padding:.85rem 1.5rem;border-radius:11px;
+    transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s,border-color .25s;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--grad-accent);color:#07060f;
+    box-shadow:0 8px 30px rgba(80,150,255,.32);
+    position:relative;
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(80,180,255,.45)}
+  .btn-ghost{
+    background:rgba(255,255,255,.03);color:var(--ink);
+    border:1px solid var(--line-2);
+  }
+  .btn-ghost:hover{transform:translateY(-2px);border-color:var(--cyan);background:rgba(34,224,255,.07)}
+  .btn-dark{background:#0a0c14;color:#fff;border:1px solid rgba(255,255,255,.12)}
+  .btn-dark:hover{transform:translateY(-2px);border-color:var(--violet)}
+  .btn-sm{padding:.6rem 1.05rem;font-size:.88rem}
+  .btn svg{width:16px;height:16px}
+
+  /* ---------- Header ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    transition:background .35s,backdrop-filter .35s,border-color .35s,box-shadow .35s;
+    border-bottom:1px solid transparent;
+  }
+  header.scrolled{
+    background:rgba(8,9,16,.72);
+    backdrop-filter:blur(18px) saturate(150%);
+    -webkit-backdrop-filter:blur(18px) saturate(150%);
+    border-bottom:1px solid var(--line);
+    box-shadow:0 10px 40px rgba(0,0,0,.4);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .logo{display:flex;align-items:center;gap:11px;font-weight:700;font-size:1.18rem;letter-spacing:-.04em}
+  .logo .mark{width:32px;height:32px;flex:none;filter:drop-shadow(0 4px 12px rgba(139,92,255,.5))}
+  .nav-links{display:flex;align-items:center;gap:6px}
+  .nav-links a{
+    color:var(--mute);font-size:.93rem;font-weight:500;padding:.5rem .8rem;border-radius:8px;
+    transition:color .2s,background .2s;
+  }
+  .nav-links a:hover{color:var(--ink);background:rgba(255,255,255,.04)}
+  .nav-cta{display:flex;align-items:center;gap:12px}
+  .nav-login{color:var(--mute);font-weight:500;font-size:.93rem;padding:.5rem .4rem;transition:color .2s}
+  .nav-login:hover{color:var(--ink)}
+
+  .hamburger{display:none;width:42px;height:42px;border-radius:10px;border:1px solid var(--line-2);
+    background:rgba(255,255,255,.03);align-items:center;justify-content:center;flex-direction:column;gap:5px}
+  .hamburger span{display:block;width:18px;height:2px;background:var(--ink);border-radius:2px;transition:transform .3s,opacity .3s}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .hamburger.open span:nth-child(2){opacity:0}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  .mobile-menu{
+    position:fixed;inset:70px 0 auto 0;z-index:99;
+    background:rgba(8,9,16,.97);backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--line);
+    padding:18px 24px 26px;
+    transform:translateY(-130%);transition:transform .4s var(--ease);
+  }
+  .mobile-menu.open{transform:translateY(0)}
+  .mobile-menu a{display:block;padding:.85rem .4rem;font-size:1.05rem;color:var(--mute);border-bottom:1px solid var(--line);font-weight:500}
+  .mobile-menu a:last-of-type{border-bottom:none}
+  .mobile-menu .btn{margin-top:18px;width:100%}
+
+  /* ---------- Background fx ---------- */
+  .glow{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;pointer-events:none;z-index:0}
+  .grid-bg{
+    position:absolute;inset:0;z-index:0;pointer-events:none;
+    background-image:linear-gradient(rgba(140,160,220,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(140,160,220,.05) 1px,transparent 1px);
+    background-size:46px 46px;
+    -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 0%,transparent 78%);
+    mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 0%,transparent 78%);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{padding:148px 0 96px;position:relative;overflow:hidden}
+  .hero .glow.g1{top:-180px;left:-120px;width:520px;height:520px;background:radial-gradient(circle,var(--violet),transparent 65%)}
+  .hero .glow.g2{top:40px;right:-160px;width:560px;height:560px;background:radial-gradient(circle,var(--cyan),transparent 62%);opacity:.32}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 1.12fr;gap:54px;align-items:center;position:relative;z-index:2}
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:9px;padding:.4rem .85rem .4rem .55rem;
+    background:rgba(255,255,255,.04);border:1px solid var(--line-2);border-radius:100px;
+    font-size:.8rem;color:var(--mute);font-weight:500;margin-bottom:26px;
+  }
+  .hero-badge b{
+    background:var(--grad-accent);color:#07060f;font-weight:700;font-size:.68rem;letter-spacing:.06em;
+    padding:.18rem .5rem;border-radius:100px;text-transform:uppercase;font-family:'JetBrains Mono',monospace;
+  }
+  .hero h1{margin:0 0 22px}
+  .hero h1 span{display:block}
+  .hero .lead{margin-bottom:34px;max-width:50ch;font-size:clamp(1.08rem,1.5vw,1.25rem)}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+  .hero-meta{display:flex;align-items:center;gap:22px;flex-wrap:wrap;color:var(--mute-2);font-size:.86rem}
+  .hero-meta .dot{display:inline-flex;align-items:center;gap:8px}
+  .hero-meta svg{width:15px;height:15px;color:var(--lime)}
+
+  /* ---------- Dashboard mock ---------- */
+  .dash{
+    background:linear-gradient(165deg,var(--panel-2),var(--bg-3) 90%);
+    border:1px solid var(--line-2);border-radius:var(--radius-lg);
+    box-shadow:var(--shadow);overflow:hidden;position:relative;
+  }
+  .dash::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;
+    background:linear-gradient(160deg,rgba(139,92,255,.5),transparent 40%,transparent 60%,rgba(34,224,255,.35));
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+  .dash-bar{display:flex;align-items:center;gap:8px;padding:13px 16px;border-bottom:1px solid var(--line)}
+  .dash-bar .dots{display:flex;gap:6px}
+  .dash-bar .dots i{width:11px;height:11px;border-radius:50%;display:block}
+  .dash-bar .dots i:nth-child(1){background:#ff5f57}
+  .dash-bar .dots i:nth-child(2){background:#febc2e}
+  .dash-bar .dots i:nth-child(3){background:#28c840}
+  .dash-bar .url{
+    margin-left:8px;flex:1;background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:7px;
+    font-size:.72rem;padding:.32rem .7rem;color:var(--mute-2);
+  }
+  .dash-bar .url b{color:var(--cyan-2)}
+  .dash-live{display:inline-flex;align-items:center;gap:6px;font-size:.7rem;color:var(--lime);font-weight:600}
+  .dash-live i{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px var(--lime);animation:pulse 1.8s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+
+  .dash-body{padding:18px}
+  .kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+  .kpi{background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:12px;padding:13px 14px}
+  .kpi .lbl{font-size:.68rem;color:var(--mute-2);text-transform:uppercase;letter-spacing:.1em;font-family:'JetBrains Mono',monospace}
+  .kpi .val{font-size:1.5rem;font-weight:700;margin:5px 0 3px;letter-spacing:-.03em}
+  .kpi .chg{font-size:.74rem;font-weight:600;display:inline-flex;align-items:center;gap:4px}
+  .kpi .chg.up{color:var(--lime)}
+  .kpi .chg.dn{color:var(--pink)}
+  .kpi .chg svg{width:11px;height:11px}
+
+  .dash-charts{display:grid;grid-template-columns:1.6fr 1fr;gap:12px}
+  .chart-card{background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:12px;padding:14px}
+  .chart-card .ch-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+  .chart-card .ch-head .t{font-size:.82rem;font-weight:600}
+  .chart-card .ch-head .legend{display:flex;gap:10px;font-size:.66rem;color:var(--mute-2)}
+  .chart-card .ch-head .legend span{display:inline-flex;align-items:center;gap:5px}
+  .chart-card .ch-head .legend i{width:8px;height:8px;border-radius:2px;display:inline-block}
+  .spark line,.spark path{vector-effect:non-scaling-stroke}
+  .area-line{stroke-dasharray:900;stroke-dashoffset:900;animation:draw 2.4s var(--ease) forwards}
+  .area-line.l2{animation-delay:.35s}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .funnel-row{display:flex;align-items:center;gap:8px;margin-bottom:9px;font-size:.7rem}
+  .funnel-row .fb{flex:1;height:22px;border-radius:5px;background:rgba(139,92,255,.15);position:relative;overflow:hidden}
+  .funnel-row .fb i{position:absolute;inset:0;width:0;border-radius:5px;background:var(--grad-accent);animation:grow 1.8s var(--ease) forwards}
+  .funnel-row .pct{width:34px;text-align:right;color:var(--mute);font-family:'JetBrains Mono',monospace;font-weight:500}
+  @keyframes grow{to{width:var(--w)}}
+
+  /* ---------- Logo cloud ---------- */
+  .logos{padding:50px 0 8px;text-align:center;position:relative;z-index:2}
+  .logos p{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mute-2);font-family:'JetBrains Mono',monospace;margin-bottom:26px}
+  .logo-strip{display:flex;flex-wrap:wrap;gap:18px 46px;align-items:center;justify-content:center;opacity:.72}
+  .logo-strip .cust{display:flex;align-items:center;gap:9px;color:var(--mute);font-weight:600;font-size:1.04rem;letter-spacing:-.02em;transition:color .25s,opacity .25s}
+  .logo-strip .cust:hover{color:var(--ink)}
+  .logo-strip .cust svg{width:22px;height:22px;flex:none}
+
+  /* ---------- Section header ---------- */
+  .sec-head{max-width:720px;margin:0 auto 54px;text-align:center}
+  .sec-head .eyebrow{justify-content:center;display:flex;margin-bottom:18px}
+  .sec-head .eyebrow::after{content:"";width:18px;height:1px;background:var(--cyan);opacity:.7;display:inline-block}
+  .sec-head h2{margin-bottom:16px}
+  .sec-head p{color:var(--mute);font-size:1.08rem}
+
+  /* ---------- Features ---------- */
+  .features{padding:var(--sp) 0;background:var(--bg-2);position:relative}
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .feat{
+    background:linear-gradient(165deg,var(--panel),var(--bg-3));
+    border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px 28px;
+    transition:transform .35s var(--ease),border-color .35s,box-shadow .35s;position:relative;overflow:hidden;
+  }
+  .feat::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad-accent);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+  .feat:hover{transform:translateY(-5px);border-color:var(--line-2);box-shadow:var(--shadow)}
+  .feat:hover::after{transform:scaleX(1)}
+  .feat .ic{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;
+    background:rgba(139,92,255,.12);border:1px solid rgba(139,92,255,.25)}
+  .feat .ic svg{width:23px;height:23px;color:var(--violet-2)}
+  .feat:nth-child(2n) .ic{background:rgba(34,224,255,.1);border-color:rgba(34,224,255,.25)}
+  .feat:nth-child(2n) .ic svg{color:var(--cyan-2)}
+  .feat:nth-child(3n) .ic{background:rgba(198,255,61,.1);border-color:rgba(198,255,61,.22)}
+  .feat:nth-child(3n) .ic svg{color:var(--lime)}
+  .feat h3{margin-bottom:9px}
+  .feat p{color:var(--mute);font-size:.95rem}
+  .feat .tag{display:inline-block;margin-top:14px;font-size:.7rem;font-family:'JetBrains Mono',monospace;color:var(--mute-2);border:1px solid var(--line);border-radius:6px;padding:.2rem .5rem}
+
+  /* ---------- Interactive demo ---------- */
+  .explorer{padding:var(--sp) 0;position:relative;overflow:hidden}
+  .explorer .glow{top:20%;left:50%;transform:translateX(-50%);width:680px;height:420px;background:radial-gradient(circle,var(--violet),transparent 70%);opacity:.18}
+  .demo{
+    background:linear-gradient(165deg,var(--panel-2),var(--bg-3));
+    border:1px solid var(--line-2);border-radius:var(--radius-lg);box-shadow:var(--shadow);
+    position:relative;z-index:2;overflow:hidden;max-width:1000px;margin:0 auto;
+  }
+  .demo-top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .demo-tabs{display:flex;gap:6px;background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:11px;padding:4px}
+  .demo-tabs button{
+    padding:.5rem .95rem;border-radius:8px;font-size:.86rem;font-weight:600;color:var(--mute);
+    transition:background .25s,color .25s;display:inline-flex;align-items:center;gap:7px;
+  }
+  .demo-tabs button svg{width:15px;height:15px}
+  .demo-tabs button[aria-selected="true"]{background:var(--grad-accent);color:#07060f}
+  .demo-range{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;color:var(--mute-2);font-family:'JetBrains Mono',monospace}
+  .demo-range b{color:var(--lime);display:inline-flex;align-items:center;gap:6px}
+  .demo-range b i{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px var(--lime);animation:pulse 1.8s infinite}
+
+  .demo-body{padding:24px 24px 28px;min-height:380px}
+  .panel-view{display:none;animation:fade .5s var(--ease)}
+  .panel-view.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  .pv-grid{display:grid;grid-template-columns:1fr 240px;gap:24px;align-items:start}
+  .pv-stats{display:flex;flex-direction:column;gap:12px}
+  .pv-stat{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:15px 16px}
+  .pv-stat .l{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mute-2);font-family:'JetBrains Mono',monospace}
+  .pv-stat .v{font-size:1.85rem;font-weight:700;letter-spacing:-.03em;margin-top:4px}
+  .pv-stat .s{font-size:.78rem;color:var(--lime);font-weight:600;margin-top:2px}
+  .pv-stat .s.dn{color:var(--pink)}
+
+  /* funnel viz */
+  .fnl{display:flex;flex-direction:column;gap:14px}
+  .fnl-step{display:grid;grid-template-columns:170px 1fr auto;gap:14px;align-items:center}
+  .fnl-step .name{font-size:.9rem;font-weight:500}
+  .fnl-step .name .mono{display:block;font-size:.7rem;color:var(--mute-2)}
+  .fnl-bar{height:38px;border-radius:8px;background:rgba(255,255,255,.04);overflow:hidden;position:relative}
+  .fnl-bar i{position:absolute;inset:0;border-radius:8px;background:var(--grad-accent);width:var(--w,0%);transition:width 1s var(--ease);display:flex;align-items:center;padding-left:12px;color:#07060f;font-weight:700;font-size:.82rem}
+  .fnl-step .drop{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--mute);min-width:60px;text-align:right;font-weight:500}
+
+  /* retention heatmap */
+  .heat{overflow-x:auto}
+  .heat table{border-collapse:separate;border-spacing:5px;width:100%;min-width:520px}
+  .heat th{font-size:.66rem;color:var(--mute-2);font-weight:500;font-family:'JetBrains Mono',monospace;padding:2px;text-align:center}
+  .heat td.lbl{font-size:.78rem;color:var(--mute);font-family:'JetBrains Mono',monospace;white-space:nowrap;padding-right:8px;text-align:left}
+  .heat td.cell{border-radius:7px;text-align:center;font-size:.72rem;font-weight:600;color:#06070c;height:36px;font-family:'JetBrains Mono',monospace;transition:transform .2s}
+  .heat td.cell:hover{transform:scale(1.08)}
+
+  /* events stream */
+  .stream{display:flex;flex-direction:column;gap:8px;font-family:'JetBrains Mono',monospace}
+  .ev{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:10px 14px;
+    background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:9px;font-size:.8rem;
+    animation:evIn .45s var(--ease)}
+  @keyframes evIn{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
+  .ev .tname{color:var(--cyan-2);font-weight:500}
+  .ev .meta{color:var(--mute-2);font-size:.72rem}
+  .ev .ts{color:var(--mute-2);font-size:.7rem}
+  .ev .badge{display:inline-block;font-size:.62rem;padding:.12rem .4rem;border-radius:5px;background:rgba(139,92,255,.18);color:var(--violet-2);margin-left:8px}
+
+  .bars{display:flex;align-items:flex-end;gap:8px;height:150px;padding-top:10px}
+  .bars .bar{flex:1;border-radius:6px 6px 0 0;background:var(--grad-accent);min-height:6px;transition:height 1s var(--ease);position:relative}
+  .bars .bar::after{content:attr(data-day);position:absolute;bottom:-20px;left:0;right:0;text-align:center;font-size:.62rem;color:var(--mute-2);font-family:'JetBrains Mono',monospace}
+  .demo-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 24px;border-top:1px solid var(--line);flex-wrap:wrap}
+  .demo-foot .q{font-family:'JetBrains Mono',monospace;font-size:.76rem;color:var(--mute-2)}
+  .demo-foot .q b{color:var(--cyan-2)}
+
+  /* ---------- Use cases ---------- */
+  .usecases{padding:var(--sp) 0;background:var(--bg-2)}
+  .uc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .uc{background:linear-gradient(165deg,var(--panel),var(--bg-3));border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;transition:transform .35s var(--ease),border-color .35s}
+  .uc:hover{transform:translateY(-5px);border-color:var(--line-2)}
+  .uc .role{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px}
+  .uc h3{font-size:1.18rem;margin-bottom:10px}
+  .uc p{color:var(--mute);font-size:.93rem;margin-bottom:18px}
+  .uc ul li{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;color:var(--mute);margin-bottom:9px}
+  .uc ul li svg{width:16px;height:16px;color:var(--lime);flex:none;margin-top:3px}
+
+  /* ---------- Testimonials ---------- */
+  .testi{padding:var(--sp) 0;position:relative;overflow:hidden}
+  .testi .glow{bottom:-160px;right:-120px;width:480px;height:480px;background:radial-gradient(circle,var(--cyan),transparent 65%);opacity:.16}
+  .testi-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:18px}
+  .quote-big{background:linear-gradient(165deg,var(--panel-2),var(--bg-3));border:1px solid var(--line-2);border-radius:var(--radius-lg);padding:38px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+  .quote-big .qm{font-size:5rem;line-height:.5;color:var(--violet);opacity:.35;font-family:Georgia,serif;height:34px}
+  .quote-big blockquote{font-size:clamp(1.25rem,2.1vw,1.7rem);font-weight:500;letter-spacing:-.02em;line-height:1.3;margin:18px 0 26px}
+  .quote-big blockquote b{background:var(--grad-accent-3);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .qauthor{display:flex;align-items:center;gap:13px}
+  .qauthor .av{width:46px;height:46px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-weight:700;color:#07060f;font-size:1rem}
+  .qauthor .n{font-weight:600;font-size:.95rem}
+  .qauthor .r{font-size:.82rem;color:var(--mute-2)}
+  .testi-side{display:flex;flex-direction:column;gap:18px}
+  .testi-small{background:linear-gradient(165deg,var(--panel),var(--bg-3));border:1px solid var(--line);border-radius:var(--radius);padding:24px;flex:1}
+  .testi-small p{font-size:.96rem;color:var(--ink);margin-bottom:16px;letter-spacing:-.01em}
+  .stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px;text-align:center}
+  .stat-strip .st .num{font-size:clamp(2rem,3.4vw,2.9rem);font-weight:700;letter-spacing:-.04em;background:var(--grad-accent);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat-strip .st .cap{font-size:.84rem;color:var(--mute-2);margin-top:2px}
+
+  /* ---------- Integrations ---------- */
+  .integ{padding:var(--sp) 0;background:var(--bg-2)}
+  .integ-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .ig{display:flex;align-items:center;gap:13px;background:linear-gradient(165deg,var(--panel),var(--bg-3));border:1px solid var(--line);border-radius:12px;padding:18px 18px;transition:transform .3s var(--ease),border-color .3s}
+  .ig:hover{transform:translateY(-4px);border-color:var(--line-2)}
+  .ig .glyph{width:40px;height:40px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.04);border:1px solid var(--line)}
+  .ig .glyph svg{width:22px;height:22px}
+  .ig .nm{font-weight:600;font-size:.95rem}
+  .ig .ty{font-size:.74rem;color:var(--mute-2);font-family:'JetBrains Mono',monospace}
+
+  /* ---------- Pricing ---------- */
+  .pricing{padding:var(--sp) 0;position:relative;overflow:hidden}
+  .pricing .glow{top:0;left:50%;transform:translateX(-50%);width:600px;height:360px;background:radial-gradient(circle,var(--violet),transparent 70%);opacity:.16}
+  .toggle-wrap{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:46px;position:relative;z-index:2}
+  .toggle-wrap span{font-size:.92rem;color:var(--mute-2);font-weight:500;transition:color .25s}
+  .toggle-wrap span.on{color:var(--ink)}
+  .save-pill{font-size:.68rem;font-family:'JetBrains Mono',monospace;background:rgba(198,255,61,.14);color:var(--lime);border:1px solid rgba(198,255,61,.3);padding:.2rem .5rem;border-radius:100px;font-weight:600}
+  .switch{width:54px;height:30px;border-radius:100px;background:rgba(255,255,255,.08);border:1px solid var(--line-2);position:relative;transition:background .3s}
+  .switch[aria-checked="true"]{background:var(--grad-accent)}
+  .switch i{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:transform .3s var(--ease)}
+  .switch[aria-checked="true"] i{transform:translateX(24px)}
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;position:relative;z-index:2;align-items:stretch}
+  .tier{background:linear-gradient(165deg,var(--panel),var(--bg-3));border:1px solid var(--line);border-radius:var(--radius-lg);padding:30px 26px;display:flex;flex-direction:column;position:relative;transition:transform .3s var(--ease),border-color .3s}
+  .tier:hover{transform:translateY(-5px)}
+  .tier.feat-tier{border-color:transparent;box-shadow:var(--shadow-glow)}
+  .tier.feat-tier::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:var(--grad-accent);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+  .tier .pop{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--grad-accent);color:#07060f;font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-family:'JetBrains Mono',monospace;padding:.3rem .8rem;border-radius:100px}
+  .tier .tname{font-size:1.05rem;font-weight:600;margin-bottom:6px}
+  .tier .tdesc{font-size:.85rem;color:var(--mute-2);margin-bottom:20px;min-height:38px}
+  .tier .price{display:flex;align-items:baseline;gap:5px;margin-bottom:4px}
+  .tier .price .amt{font-size:2.9rem;font-weight:700;letter-spacing:-.04em}
+  .tier .price .per{font-size:.85rem;color:var(--mute-2)}
+  .tier .billed{font-size:.76rem;color:var(--mute-2);font-family:'JetBrains Mono',monospace;margin-bottom:22px;min-height:18px}
+  .tier .btn{width:100%;margin-bottom:24px}
+  .tier ul li{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;color:var(--mute);margin-bottom:12px}
+  .tier ul li svg{width:16px;height:16px;color:var(--lime);flex:none;margin-top:3px}
+  .tier ul li.muted{color:var(--mute-2)}
+  .tier ul li.muted svg{color:var(--mute-2)}
+
+  /* ---------- FAQ ---------- */
+  .faq{padding:var(--sp) 0;background:var(--bg-2)}
+  .faq-list{max-width:780px;margin:0 auto}
+  .faq-item{border:1px solid var(--line);border-radius:var(--radius);margin-bottom:12px;background:linear-gradient(165deg,var(--panel),var(--bg-3));overflow:hidden;transition:border-color .3s}
+  .faq-item.open{border-color:var(--line-2)}
+  .faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 22px;text-align:left;font-size:1.02rem;font-weight:600}
+  .faq-q .ic{width:28px;height:28px;flex:none;border-radius:8px;border:1px solid var(--line-2);display:flex;align-items:center;justify-content:center;transition:transform .35s var(--ease),background .3s}
+  .faq-q .ic svg{width:14px;height:14px;color:var(--cyan)}
+  .faq-item.open .faq-q .ic{transform:rotate(45deg);background:var(--grad-accent)}
+  .faq-item.open .faq-q .ic svg{color:#07060f}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
+  .faq-a p{padding:0 22px 22px;color:var(--mute);font-size:.95rem;max-width:64ch}
+
+  /* ---------- Final CTA ---------- */
+  .cta-band{padding:var(--sp) 0}
+  .cta-inner{position:relative;overflow:hidden;border-radius:var(--radius-lg);padding:clamp(40px,6vw,72px);text-align:center;
+    background:linear-gradient(150deg,#10081f,#06070c 70%);border:1px solid var(--line-2)}
+  .cta-inner .glow{top:-100px;left:50%;transform:translateX(-50%);width:560px;height:360px;background:radial-gradient(circle,var(--violet),transparent 68%);opacity:.4}
+  .cta-inner .glow.c2{top:auto;bottom:-160px;left:20%;background:radial-gradient(circle,var(--cyan),transparent 68%);opacity:.22}
+  .cta-inner h2{position:relative;z-index:2;margin-bottom:16px}
+  .cta-inner p{position:relative;z-index:2;color:var(--mute);font-size:1.1rem;max-width:46ch;margin:0 auto 30px}
+  .cta-inner .hero-cta{position:relative;z-index:2;justify-content:center}
+  .cta-inner .note{position:relative;z-index:2;margin-top:18px;font-size:.82rem;color:var(--mute-2);font-family:'JetBrains Mono',monospace}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--bg);border-top:1px solid var(--line);padding:64px 0 34px}
+  .foot-grid{display:grid;grid-template-columns:1.6fr repeat(4,1fr);gap:34px;margin-bottom:48px}
+  .foot-brand .logo{margin-bottom:16px}
+  .foot-brand p{color:var(--mute-2);font-size:.9rem;max-width:30ch;margin-bottom:20px}
+  .socials{display:flex;gap:10px}
+  .socials a{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--mute);transition:color .25s,border-color .25s,transform .25s}
+  .socials a:hover{color:var(--ink);border-color:var(--cyan);transform:translateY(-3px)}
+  .socials svg{width:17px;height:17px}
+  .foot-col h4{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--mute-2);font-family:'JetBrains Mono',monospace;font-weight:500;margin-bottom:16px}
+  .foot-col a{display:block;color:var(--mute);font-size:.9rem;padding:.32rem 0;transition:color .2s}
+  .foot-col a:hover{color:var(--ink)}
+  .foot-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:26px;border-top:1px solid var(--line);flex-wrap:wrap}
+  .foot-bottom .legal{font-size:.82rem;color:var(--mute-2)}
+  .foot-bottom .legal a{color:var(--mute)}
+  .foot-status{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;color:var(--mute);font-family:'JetBrains Mono',monospace}
+  .foot-status i{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px var(--lime)}
+  .credit{text-align:center;margin-top:30px;font-size:.84rem;color:var(--mute-2)}
+  .credit a{color:var(--violet-2);font-weight:600}
+  .credit a:hover{text-decoration:underline}
+
+  /* ---------- Reveal ---------- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}
+  .reveal.d2{transition-delay:.16s}
+  .reveal.d3{transition-delay:.24s}
+  .reveal.d4{transition-delay:.32s}
+  .reveal.d5{transition-delay:.4s}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:42px}
+    .hero{padding-top:120px}
+    .feat-grid,.uc-grid,.price-grid,.integ-grid{grid-template-columns:repeat(2,1fr)}
+    .testi-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr;gap:30px}
+    .foot-brand{grid-column:1/-1}
+    .pv-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:760px){
+    .nav-links,.nav-login{display:none}
+    .hamburger{display:flex}
+    .stat-strip{grid-template-columns:repeat(2,1fr);gap:30px 18px}
+    .kpi-row{grid-template-columns:1fr}
+    .dash-charts{grid-template-columns:1fr}
+  }
+  @media (max-width:560px){
+    .feat-grid,.uc-grid,.price-grid,.integ-grid{grid-template-columns:1fr}
+    .price-grid{gap:30px}
+    .tier.feat-tier{order:-1}
+    .fnl-step{grid-template-columns:1fr;gap:6px}
+    .fnl-step .drop{text-align:left}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .demo-tabs button span{display:none}
+    .demo-tabs button{padding:.5rem .7rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="FlowMetric home">
+      <svg class="mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="30" height="30" rx="8" fill="#0b0d16" stroke="url(#lg1)" stroke-width="1.5"/>
+        <path d="M7 22 L13 14 L18 18 L25 8" stroke="url(#lg1)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="25" cy="8" r="2.6" fill="#22e0ff"/>
+        <circle cx="13" cy="14" r="2" fill="#8b5cff"/>
+        <defs><linearGradient id="lg1" x1="4" y1="26" x2="28" y2="6" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#8b5cff"/><stop offset="1" stop-color="#22e0ff"/></linearGradient></defs>
+      </svg>
+      FlowMetric
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#features">Product</a>
+      <a href="#explore">Live demo</a>
+      <a href="#usecases">Solutions</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#top" class="nav-login">Sign in</a>
+      <a href="#pricing" class="btn btn-primary btn-sm">Start free</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#features">Product</a>
+  <a href="#explore">Live demo</a>
+  <a href="#usecases">Solutions</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#faq">FAQ</a>
+  <a href="#top" class="nav-login" style="border-bottom:none">Sign in</a>
+  <a href="#pricing" class="btn btn-primary">Start free</a>
+</div>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="grid-bg"></div>
+  <div class="glow g1"></div>
+  <div class="glow g2"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="hero-badge"><b>New</b> Warehouse-native sync for Snowflake &amp; BigQuery</span>
+      <h1><span>See what your</span><span>product <span class="grad-text">really does.</span></span></h1>
+      <p class="lead">FlowMetric is the product-analytics platform for teams who ship. Track every user, build funnels in seconds, watch retention cohorts mature, and explore raw events with SQL — all in one fast, no-sampling workspace.</p>
+      <div class="hero-cta">
+        <a href="#pricing" class="btn btn-primary">Start free
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#explore" class="btn btn-ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 5v14l11-7z" stroke-linejoin="round"/></svg>
+          Book a demo
+        </a>
+      </div>
+      <div class="hero-meta">
+        <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> No credit card</span>
+        <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> SOC 2 Type II</span>
+        <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> 5-minute SDK</span>
+      </div>
+    </div>
+
+    <!-- Dashboard mock -->
+    <div class="dash" role="img" aria-label="FlowMetric analytics dashboard showing KPI tiles, a dual-line active-users chart, and a signup funnel">
+      <div class="dash-bar">
+        <div class="dots"><i></i><i></i><i></i></div>
+        <div class="url"><b>app.flowmetric.io</b>/dashboards/growth</div>
+        <span class="dash-live"><i></i> LIVE</span>
+      </div>
+      <div class="dash-body">
+        <div class="kpi-row">
+          <div class="kpi">
+            <div class="lbl">Active users</div>
+            <div class="val">48,210</div>
+            <div class="chg up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M21 7v6m0-6h-6" stroke-linecap="round" stroke-linejoin="round"/></svg> 12.4%</div>
+          </div>
+          <div class="kpi">
+            <div class="lbl">D7 retention</div>
+            <div class="val">41.8%</div>
+            <div class="chg up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M21 7v6m0-6h-6" stroke-linecap="round" stroke-linejoin="round"/></svg> 3.1pt</div>
+          </div>
+          <div class="kpi">
+            <div class="lbl">Activation</div>
+            <div class="val">63.2%</div>
+            <div class="chg dn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 7l6 6 4-4 8 8M21 17v-6m0 6h-6" stroke-linecap="round" stroke-linejoin="round"/></svg> 0.8%</div>
+          </div>
+        </div>
+        <div class="dash-charts">
+          <div class="chart-card">
+            <div class="ch-head">
+              <span class="t">Active users · 30d</span>
+              <span class="legend">
+                <span><i style="background:#8b5cff"></i>This period</span>
+                <span><i style="background:#22e0ff"></i>Previous</span>
+              </span>
+            </div>
+            <svg class="spark" viewBox="0 0 320 120" preserveAspectRatio="none" width="100%" height="120" aria-hidden="true">
+              <defs>
+                <linearGradient id="fill1" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#8b5cff" stop-opacity=".4"/><stop offset="1" stop-color="#8b5cff" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <g stroke="rgba(140,160,220,.1)" stroke-width="1">
+                <line x1="0" y1="30" x2="320" y2="30"/><line x1="0" y1="60" x2="320" y2="60"/><line x1="0" y1="90" x2="320" y2="90"/>
+              </g>
+              <path d="M0,92 L40,84 L80,88 L120,66 L160,72 L200,48 L240,54 L280,30 L320,22 L320,120 L0,120 Z" fill="url(#fill1)"/>
+              <path class="area-line" d="M0,92 L40,84 L80,88 L120,66 L160,72 L200,48 L240,54 L280,30 L320,22" fill="none" stroke="#8b5cff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path class="area-line l2" d="M0,102 L40,98 L80,94 L120,86 L160,90 L200,76 L240,80 L280,66 L320,58" fill="none" stroke="#22e0ff" stroke-width="2" stroke-dasharray="4 4" opacity=".8" stroke-linecap="round"/>
+              <circle cx="320" cy="22" r="3.5" fill="#8b5cff"/>
+            </svg>
+          </div>
+          <div class="chart-card">
+            <div class="ch-head"><span class="t">Signup funnel</span></div>
+            <div class="funnel-row"><span class="fb"><i style="--w:100%;animation-delay:.2s"></i></span><span class="pct">100%</span></div>
+            <div class="funnel-row"><span class="fb"><i style="--w:72%;animation-delay:.35s"></i></span><span class="pct">72%</span></div>
+            <div class="funnel-row"><span class="fb"><i style="--w:54%;animation-delay:.5s"></i></span><span class="pct">54%</span></div>
+            <div class="funnel-row"><span class="fb"><i style="--w:38%;animation-delay:.65s"></i></span><span class="pct">38%</span></div>
+            <div class="funnel-row"><span class="fb"><i style="--w:26%;animation-delay:.8s"></i></span><span class="pct">26%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOGO CLOUD ============ -->
+<section class="logos">
+  <div class="wrap">
+    <p>Trusted by product teams shipping fast</p>
+    <div class="logo-strip reveal">
+      <span class="cust"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l3 6 6 .8-4.5 4.2 1.2 6L12 16.8 6.3 19l1.2-6L3 8.8 9 8z" fill="#a987ff"/></svg>Nimbus</span>
+      <span class="cust"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2" fill="#22e0ff"/><rect x="13" y="3" width="8" height="8" rx="2" fill="#8b5cff"/><rect x="3" y="13" width="8" height="8" rx="2" fill="#8b5cff"/><rect x="13" y="13" width="8" height="8" rx="2" fill="#22e0ff"/></svg>Quadra</span>
+      <span class="cust"><svg viewBox="0 0 24 24" fill="none" stroke="#c6ff3d" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18" stroke-linecap="round"/></svg>Orbital</span>
+      <span class="cust"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 14c4-9 12-9 16 0-4 9-12 9-16 0z" fill="#a987ff"/><circle cx="12" cy="14" r="3" fill="#06070c"/></svg>Lumen</span>
+      <span class="cust"><svg viewBox="0 0 24 24" fill="none" stroke="#22e0ff" stroke-width="2.4" aria-hidden="true"><path d="M5 19V8l7-5 7 5v11" stroke-linejoin="round"/><path d="M9 19v-6h6v6" stroke-linejoin="round"/></svg>Hearth</span>
+      <span class="cust"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l9 5v10l-9 5-9-5V7z" stroke="#a987ff" stroke-width="2" stroke-linejoin="round"/><path d="M12 7v10M7.5 9.5l9 5" stroke="#22e0ff" stroke-width="1.6"/></svg>Cortex</span>
+      <span class="cust"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="8" cy="12" r="5" fill="#8b5cff" opacity=".85"/><circle cx="16" cy="12" r="5" fill="#22e0ff" opacity=".85"/></svg>Mosaic</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section class="features" id="features">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The platform</span>
+      <h2>Every answer about your product, in one place</h2>
+      <p>Stop stitching dashboards together. FlowMetric unifies behavioural analytics, retention science and raw event access — so the whole team works from one source of truth.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 4h18l-7 8v6l-4 2v-8z" stroke-linejoin="round"/></svg></div>
+        <h3>Funnels</h3>
+        <p>Map any multi-step flow and see exactly where users drop. Compare segments, change the conversion window, and break down by any property.</p>
+        <span class="tag">conversion · drop-off · time-to-convert</span>
+      </div>
+      <div class="feat reveal d1">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="11" y="3" width="6" height="6" rx="1"/><rect x="3" y="11" width="6" height="6" rx="1"/><rect x="11" y="11" width="6" height="6" rx="1"/></svg></div>
+        <h3>Retention cohorts</h3>
+        <p>Watch how each weekly cohort behaves over time with N-day and unbounded retention. Find the "aha" moment that makes users stick.</p>
+        <span class="tag">N-day · rolling · stickiness</span>
+      </div>
+      <div class="feat reveal d2">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z" stroke-linejoin="round"/></svg></div>
+        <h3>Real-time events</h3>
+        <p>Events stream in under a second — no sampling, no overnight jobs. Debug a release the moment it ships with the live event console.</p>
+        <span class="tag">&lt;1s latency · 100% sampled</span>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9" stroke-linejoin="round"/></svg></div>
+        <h3>Dashboards</h3>
+        <p>Drag-and-drop boards that update live and load instantly. Share a read-only link or embed a tile straight into Notion or your wiki.</p>
+        <span class="tag">live · embeddable · shareable</span>
+      </div>
+      <div class="feat reveal d1">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 0 1-3.4 0" stroke-linecap="round"/></svg></div>
+        <h3>Alerts</h3>
+        <p>Set thresholds and anomaly detection on any metric. Get pinged in Slack, PagerDuty or email the moment activation dips or signups spike.</p>
+        <span class="tag">anomaly · threshold · Slack</span>
+      </div>
+      <div class="feat reveal d2">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6" stroke-linejoin="round"/></svg></div>
+        <h3>SQL &amp; Explore</h3>
+        <p>Hit the raw event table with full SQL when you need to go deep, or pivot in the visual explorer. Export to CSV, the API, or your warehouse.</p>
+        <span class="tag">SQL · API · warehouse sync</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTERACTIVE EXPLORER ============ -->
+<section class="explorer" id="explore">
+  <div class="glow"></div>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Live demo</span>
+      <h2>Play with real-feeling data</h2>
+      <p>This is the actual FlowMetric workspace, running on sample data. Switch reports, watch the numbers move, and stream live events — no signup required.</p>
+    </div>
+
+    <div class="demo reveal" id="demo">
+      <div class="demo-top">
+        <div class="demo-tabs" role="tablist" aria-label="Report type">
+          <button role="tab" aria-selected="true" aria-controls="pv-funnel" id="tab-funnel" data-panel="funnel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 4h18l-7 8v6l-4 2v-8z" stroke-linejoin="round"/></svg><span>Funnel</span>
+          </button>
+          <button role="tab" aria-selected="false" aria-controls="pv-retention" id="tab-retention" data-panel="retention" tabindex="-1">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg><span>Retention</span>
+          </button>
+          <button role="tab" aria-selected="false" aria-controls="pv-events" id="tab-events" data-panel="events" tabindex="-1">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z" stroke-linejoin="round"/></svg><span>Events</span>
+          </button>
+        </div>
+        <div class="demo-range">
+          <span>Last 30 days</span> · <b id="liveTag"><i></i> streaming</b>
+        </div>
+      </div>
+
+      <div class="demo-body">
+        <!-- FUNNEL -->
+        <div class="panel-view active" id="pv-funnel" role="tabpanel" aria-labelledby="tab-funnel">
+          <div class="pv-grid">
+            <div class="fnl" id="funnelViz">
+              <div class="fnl-step">
+                <div class="name">Visited landing page<span class="mono">pageview</span></div>
+                <div class="fnl-bar"><i style="--w:100%" data-base="100">100%</i></div>
+                <div class="drop" data-users>54,300</div>
+              </div>
+              <div class="fnl-step">
+                <div class="name">Started signup<span class="mono">signup_started</span></div>
+                <div class="fnl-bar"><i style="--w:71%" data-base="71">71%</i></div>
+                <div class="drop" data-users>38,553</div>
+              </div>
+              <div class="fnl-step">
+                <div class="name">Verified email<span class="mono">email_verified</span></div>
+                <div class="fnl-bar"><i style="--w:53%" data-base="53">53%</i></div>
+                <div class="drop" data-users>28,779</div>
+              </div>
+              <div class="fnl-step">
+                <div class="name">Created project<span class="mono">project_created</span></div>
+                <div class="fnl-bar"><i style="--w:37%" data-base="37">37%</i></div>
+                <div class="drop" data-users>20,091</div>
+              </div>
+              <div class="fnl-step">
+                <div class="name">Invited a teammate<span class="mono">activation</span></div>
+                <div class="fnl-bar"><i style="--w:24%" data-base="24">24%</i></div>
+                <div class="drop" data-users>13,032</div>
+              </div>
+            </div>
+            <div class="pv-stats">
+              <div class="pv-stat"><div class="l">Overall conversion</div><div class="v" data-count="24" data-suffix="%">24%</div><div class="s">+2.6pt vs prev</div></div>
+              <div class="pv-stat"><div class="l">Biggest drop-off</div><div class="v" style="font-size:1.15rem;line-height:1.3;margin-top:8px">Email&nbsp;→&nbsp;Project</div><div class="s dn">−16pt step loss</div></div>
+              <div class="pv-stat"><div class="l">Median time to convert</div><div class="v" data-count="8" data-suffix="m">8m</div><div class="s">−42s faster</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RETENTION -->
+        <div class="panel-view" id="pv-retention" role="tabpanel" aria-labelledby="tab-retention" hidden>
+          <div class="heat">
+            <table>
+              <thead>
+                <tr><th style="text-align:left">Weekly cohort</th><th>W0</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th></tr>
+              </thead>
+              <tbody id="heatBody"><!-- generated by JS --></tbody>
+            </table>
+          </div>
+          <div class="pv-stats" style="flex-direction:row;flex-wrap:wrap;margin-top:20px">
+            <div class="pv-stat" style="flex:1;min-width:160px"><div class="l">Week-4 retention</div><div class="v" data-count="38" data-suffix="%">38%</div><div class="s">+4pt vs Q1 avg</div></div>
+            <div class="pv-stat" style="flex:1;min-width:160px"><div class="l">Power users (W5)</div><div class="v" data-count="29" data-suffix="%">29%</div><div class="s">stable cohort</div></div>
+            <div class="pv-stat" style="flex:1;min-width:160px"><div class="l">Cohorts tracked</div><div class="v" data-count="142">142</div><div class="s">since launch</div></div>
+          </div>
+        </div>
+
+        <!-- EVENTS -->
+        <div class="panel-view" id="pv-events" role="tabpanel" aria-labelledby="tab-events" hidden>
+          <div class="pv-grid">
+            <div>
+              <div class="bars" id="eventBars" aria-hidden="true"></div>
+              <div style="height:22px"></div>
+              <div class="stream" id="eventStream" aria-live="polite" aria-label="Live event stream"></div>
+            </div>
+            <div class="pv-stats">
+              <div class="pv-stat"><div class="l">Events / sec</div><div class="v" id="evRate">1,284</div><div class="s">live · no sampling</div></div>
+              <div class="pv-stat"><div class="l">Today</div><div class="v" data-count="94" data-suffix="M">94M</div><div class="s">+11% vs yesterday</div></div>
+              <div class="pv-stat"><div class="l">Unique users</div><div class="v" data-count="48" data-suffix="K">48K</div><div class="s">last hour</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-foot">
+        <span class="q">SELECT step, count(*) FROM <b>events</b> WHERE ts &gt; now() - interval '30d' GROUP BY 1</span>
+        <a href="#pricing" class="btn btn-ghost btn-sm">Open in workspace
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ USE CASES ============ -->
+<section class="usecases" id="usecases">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">How teams use FlowMetric</span>
+      <h2>One workspace, every team</h2>
+      <p>Product, growth and engineering finally look at the same numbers — and ask better questions because of it.</p>
+    </div>
+    <div class="uc-grid">
+      <div class="uc reveal">
+        <div class="role">Product managers</div>
+        <h3>Ship features that actually get used</h3>
+        <p>Define what activation means, then watch each release move the curve. Kill the guesswork in your roadmap reviews.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Feature adoption tracking</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Release impact analysis</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>A/B test readouts</li>
+        </ul>
+      </div>
+      <div class="uc reveal d1">
+        <div class="role">Growth &amp; marketing</div>
+        <h3>Find the levers that move the metric</h3>
+        <p>Trace every signup back to its source, watch conversion by channel, and double down on the experiments that compound.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Acquisition attribution</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Conversion funnels by channel</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Lifecycle messaging triggers</li>
+        </ul>
+      </div>
+      <div class="uc reveal d2">
+        <div class="role">Engineering &amp; data</div>
+        <h3>Debug behaviour, not just errors</h3>
+        <p>Stream raw events the second they fire, query the full table with SQL, and pipe everything into your warehouse on a schedule.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Live event debugging</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Full SQL access</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Reverse-ETL &amp; warehouse sync</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testi">
+  <div class="glow"></div>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Customer stories</span>
+      <h2>The numbers do the talking</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="quote-big reveal">
+        <div>
+          <div class="qm" aria-hidden="true">&ldquo;</div>
+          <blockquote>We cut our activation drop-off in half in one quarter. FlowMetric showed us the exact step where users gave up — something three dashboards had hidden for <b>two years</b>.</blockquote>
+        </div>
+        <div class="qauthor">
+          <div class="av" style="background:linear-gradient(135deg,#8b5cff,#22e0ff)">DR</div>
+          <div><div class="n">Dana Reyes</div><div class="r">VP Product · Quadra</div></div>
+        </div>
+      </div>
+      <div class="testi-side">
+        <div class="testi-small reveal d1">
+          <p>"The live event console replaced our entire 'is the tracking broken?' Slack channel. We catch instrumentation bugs before the PR even merges."</p>
+          <div class="qauthor">
+            <div class="av" style="background:linear-gradient(135deg,#22e0ff,#c6ff3d)">MO</div>
+            <div><div class="n">Marcus Oduya</div><div class="r">Staff Engineer · Cortex</div></div>
+          </div>
+        </div>
+        <div class="testi-small reveal d2">
+          <p>"Onboarding took an afternoon. By the next week our growth team was running their own retention cohorts without bugging data eng."</p>
+          <div class="qauthor">
+            <div class="av" style="background:linear-gradient(135deg,#ff5db1,#8b5cff)">SL</div>
+            <div><div class="n">Sofia Lindqvist</div><div class="r">Head of Growth · Lumen</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stat-strip">
+      <div class="st reveal"><div class="num" data-count="3200" data-suffix="+">3,200+</div><div class="cap">product teams</div></div>
+      <div class="st reveal d1"><div class="num" data-count="9" data-suffix="T+">9T+</div><div class="cap">events ingested</div></div>
+      <div class="st reveal d2"><div class="num" data-count="99.98" data-suffix="%" data-decimals="2">99.98%</div><div class="cap">uptime SLA</div></div>
+      <div class="st reveal d3"><div class="num" data-count="38" data-suffix="%">38%</div><div class="cap">avg. lift in activation</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTEGRATIONS ============ -->
+<section class="integ">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Integrations</span>
+      <h2>Plugs into the stack you already run</h2>
+      <p>Thirteen-line SDKs, no-code connectors and warehouse sync. Get data flowing in an afternoon, not a quarter.</p>
+    </div>
+    <div class="integ-grid">
+      <div class="ig reveal"><span class="glyph"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 16l7-12 7 12-7 4z" fill="#22e0ff"/></svg></span><span><span class="nm">Snowflake</span><br><span class="ty">warehouse</span></span></div>
+      <div class="ig reveal d1"><span class="glyph"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" fill="#8b5cff"/><path d="M8 12h8M12 8v8" stroke="#06070c" stroke-width="2" stroke-linecap="round"/></svg></span><span><span class="nm">BigQuery</span><br><span class="ty">warehouse</span></span></div>
+      <div class="ig reveal d2"><span class="glyph"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="#c6ff3d"/><circle cx="16" cy="16" r="4" fill="#8b5cff"/><path d="M8 12v0a4 4 0 0 0 4 4" stroke="#22e0ff" stroke-width="2"/></svg></span><span><span class="nm">Segment</span><br><span class="ty">CDP</span></span></div>
+      <div class="ig reveal d3"><span class="glyph"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12l4-4 4 4 4-4 4 4-4 4-4-4-4 4z" fill="#ff5db1"/></svg></span><span><span class="nm">Slack</span><br><span class="ty">alerts</span></span></div>
+      <div class="ig reveal"><span class="glyph"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4" fill="#22e0ff"/><circle cx="12" cy="12" r="4" fill="#06070c"/></svg></span><span><span class="nm">Stripe</span><br><span class="ty">revenue</span></span></div>
+      <div class="ig reveal d1"><span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#a987ff" stroke-width="2" aria-hidden="true"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></span><span><span class="nm">JavaScript</span><br><span class="ty">web SDK</span></span></div>
+      <div class="ig reveal d2"><span class="glyph"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="3" stroke="#c6ff3d" stroke-width="2"/><circle cx="12" cy="17" r="1.4" fill="#c6ff3d"/></svg></span><span><span class="nm">iOS / Android</span><br><span class="ty">mobile SDK</span></span></div>
+      <div class="ig reveal d3"><span class="glyph"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z" stroke="#8b5cff" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.6" fill="#22e0ff"/></svg></span><span><span class="nm">REST &amp; Webhooks</span><br><span class="ty">server API</span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="pricing" id="pricing">
+  <div class="glow"></div>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Pricing</span>
+      <h2>Start free. Scale when you do.</h2>
+      <p>Every plan includes unlimited dashboards, the full SDK suite and no event sampling. Prices in CAD.</p>
+    </div>
+    <div class="toggle-wrap reveal">
+      <span id="lblMonthly" class="on">Monthly</span>
+      <button class="switch" id="billSwitch" role="switch" aria-checked="false" aria-label="Toggle annual billing"><i></i></button>
+      <span id="lblAnnual">Annual <span class="save-pill">Save 20%</span></span>
+    </div>
+    <div class="price-grid">
+      <div class="tier reveal">
+        <div class="tname">Starter</div>
+        <div class="tdesc">For side projects and early-stage products finding their footing.</div>
+        <div class="price"><span class="amt" data-m="0" data-a="0">$0</span><span class="per">/mo</span></div>
+        <div class="billed" data-billed>Free forever</div>
+        <a href="#top" class="btn btn-dark">Get started</a>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Up to 1M events / mo</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Funnels &amp; retention</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>3 seats · 60-day history</li>
+          <li class="muted"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>SQL &amp; warehouse sync</li>
+        </ul>
+      </div>
+      <div class="tier feat-tier reveal d1">
+        <span class="pop">Most popular</span>
+        <div class="tname">Scale</div>
+        <div class="tdesc">For growing teams that live in the data every single day.</div>
+        <div class="price"><span class="amt" data-m="129" data-a="103">$129</span><span class="per">/mo</span></div>
+        <div class="billed" data-billed>Billed monthly</div>
+        <a href="#top" class="btn btn-primary">Start 14-day trial</a>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Up to 25M events / mo</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Full SQL &amp; Explore</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited seats &amp; alerts</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Warehouse sync · 2yr history</li>
+        </ul>
+      </div>
+      <div class="tier reveal d2">
+        <div class="tname">Enterprise</div>
+        <div class="tdesc">For organisations with scale, compliance and security needs.</div>
+        <div class="price"><span class="amt" data-custom="Custom">Custom</span></div>
+        <div class="billed" data-billed>Annual contract</div>
+        <a href="#top" class="btn btn-dark">Talk to sales</a>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited events &amp; history</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>SSO/SAML · audit logs</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Data residency &amp; HIPAA</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Dedicated success engineer</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Questions, answered</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">How does FlowMetric handle data privacy and compliance?
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="faq-a"><p>FlowMetric is SOC 2 Type II certified and GDPR/CCPA compliant. You control PII collection at the SDK level, can hash or drop identifiers before they leave the device, and Enterprise plans support EU/CA data residency, HIPAA BAAs and full audit logging. We never sell data and never use your events to train anything.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">Is it really self-serve, or do I need to talk to sales?
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="faq-a"><p>Completely self-serve. Sign up, drop in the SDK, and you'll see live events within minutes — no demo gate, no credit card on the free plan. Sales is there if you want it (Enterprise, procurement, security review), but most teams are running funnels the same afternoon they sign up.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">Which SDKs and platforms do you support?
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="faq-a"><p>First-party SDKs for JavaScript/TypeScript, React, React Native, iOS (Swift), Android (Kotlin), Node, Python, Go and Ruby — plus a REST ingest API and webhooks for anything else. We also have no-code connectors for Segment, Stripe, and reverse-ETL into Snowflake and BigQuery.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">How is pricing calculated, and what happens if I go over?
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="faq-a"><p>Pricing is based on monthly tracked events, not seats — invite the whole company. If you exceed your plan we'll never silently drop data or stop your dashboards; we email you, keep ingesting, and you can upgrade or set a soft cap. Annual billing saves 20%, and unused events don't roll over.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">Will FlowMetric slow down my app?
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="faq-a"><p>No. The web SDK is under 9KB gzipped, loads async, and batches events so it never blocks rendering. Ingestion runs on edge endpoints worldwide, so the round-trip is measured in milliseconds no matter where your users are.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="cta-band">
+  <div class="wrap">
+    <div class="cta-inner reveal">
+      <div class="glow"></div>
+      <div class="glow c2"></div>
+      <h2>Ready to see what your product really does?</h2>
+      <p>Join 3,200+ teams who stopped guessing. Free to start, five minutes to first insight.</p>
+      <div class="hero-cta">
+        <a href="#top" class="btn btn-primary">Start free
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#explore" class="btn btn-ghost">Book a demo</a>
+      </div>
+      <div class="note">$ npm i @flowmetric/sdk &nbsp;·&nbsp; live in 5 minutes</div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#top" class="logo">
+          <svg class="mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <rect x="1" y="1" width="30" height="30" rx="8" fill="#0b0d16" stroke="url(#lg2)" stroke-width="1.5"/>
+            <path d="M7 22 L13 14 L18 18 L25 8" stroke="url(#lg2)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="25" cy="8" r="2.6" fill="#22e0ff"/><circle cx="13" cy="14" r="2" fill="#8b5cff"/>
+            <defs><linearGradient id="lg2" x1="4" y1="26" x2="28" y2="6" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#8b5cff"/><stop offset="1" stop-color="#22e0ff"/></linearGradient></defs>
+          </svg>
+          FlowMetric
+        </a>
+        <p>Product analytics for teams who ship. Track, understand and grow — without the sampling, the silos, or the guesswork.</p>
+        <div class="socials">
+          <a href="#top" aria-label="FlowMetric on X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-7.3 8.3L23 22h-6.6l-5.2-6.8L5.3 22H2.2l7.8-9L1.6 2h6.8l4.7 6.2zM17.7 20h1.7L7.4 4H5.6z"/></svg></a>
+          <a href="#top" aria-label="FlowMetric on GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85l-.01 2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg></a>
+          <a href="#top" aria-label="FlowMetric on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.64h.05c.53-1 1.83-2.06 3.77-2.06C20.4 8.58 22 10.7 22 14.06V21h-4v-6.2c0-1.48-.03-3.38-2.06-3.38-2.06 0-2.38 1.6-2.38 3.27V21H9z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <a href="#features">Funnels</a>
+        <a href="#features">Retention</a>
+        <a href="#explore">Live events</a>
+        <a href="#features">Dashboards</a>
+        <a href="#features">SQL &amp; Explore</a>
+      </div>
+      <div class="foot-col">
+        <h4>Solutions</h4>
+        <a href="#usecases">For Product</a>
+        <a href="#usecases">For Growth</a>
+        <a href="#usecases">For Engineering</a>
+        <a href="#pricing">Pricing</a>
+      </div>
+      <div class="foot-col">
+        <h4>Developers</h4>
+        <a href="#top">Documentation</a>
+        <a href="#top">SDK reference</a>
+        <a href="#top">API status</a>
+        <a href="#top">Changelog</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="#top">About</a>
+        <a href="#top">Careers</a>
+        <a href="#top">Security</a>
+        <a href="#top">Contact</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="legal">© 2026 FlowMetric Analytics Inc. · Vancouver, BC · <a href="#top">Privacy</a> · <a href="#top">Terms</a></span>
+      <span class="foot-status"><i></i> All systems operational</span>
+    </div>
+    <p class="credit">Concept site crafted by <a href="../index.html">Maple</a> · sample design</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Sticky header ---------- */
+  var header = document.getElementById('header');
+  function onScroll(){
+    if(window.scrollY > 12){ header.classList.add('scrolled'); }
+    else { header.classList.remove('scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* ---------- Mobile menu ---------- */
+  var burger = document.getElementById('hamburger');
+  var menu = document.getElementById('mobileMenu');
+  function closeMenu(){ burger.classList.remove('open'); menu.classList.remove('open'); burger.setAttribute('aria-expanded','false'); }
+  burger.addEventListener('click', function(){
+    var open = burger.classList.toggle('open');
+    menu.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+
+  /* ---------- Smooth scroll w/ header offset ---------- */
+  document.querySelectorAll('a[href^="#"]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      var id = link.getAttribute('href');
+      if(id === '#' || id.length < 2) return;
+      var target = document.querySelector(id);
+      if(!target) return;
+      e.preventDefault();
+      var y = target.getBoundingClientRect().top + window.scrollY - 64;
+      window.scrollTo({top:y, behavior: reduceMotion ? 'auto' : 'smooth'});
+    });
+  });
+
+  /* ---------- Scroll reveal ---------- */
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !reduceMotion){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- Count-up numbers ---------- */
+  function animateCount(el){
+    var target = parseFloat(el.getAttribute('data-count'));
+    var suffix = el.getAttribute('data-suffix') || '';
+    var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+    if(reduceMotion){ el.textContent = formatNum(target, decimals) + suffix; return; }
+    var dur = 1400, start = null;
+    function fmtStart(){ return 0; }
+    function step(ts){
+      if(start === null) start = ts;
+      var p = Math.min((ts - start)/dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      var val = target * eased;
+      el.textContent = formatNum(val, decimals) + suffix;
+      if(p < 1) requestAnimationFrame(step);
+      else el.textContent = formatNum(target, decimals) + suffix;
+    }
+    requestAnimationFrame(step);
+  }
+  function formatNum(n, decimals){
+    if(decimals > 0) return n.toFixed(decimals);
+    return Math.round(n).toLocaleString('en-US');
+  }
+  var counters = document.querySelectorAll('[data-count]');
+  if('IntersectionObserver' in window){
+    var cio = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ animateCount(en.target); cio.unobserve(en.target); }
+      });
+    }, {threshold:0.6});
+    counters.forEach(function(c){ cio.observe(c); });
+  } else {
+    counters.forEach(function(c){ animateCount(c); });
+  }
+
+  /* ---------- Pricing toggle ---------- */
+  var sw = document.getElementById('billSwitch');
+  var lblM = document.getElementById('lblMonthly');
+  var lblA = document.getElementById('lblAnnual');
+  var amounts = document.querySelectorAll('.tier .amt');
+  var billedEls = document.querySelectorAll('[data-billed]');
+  function setBilling(annual){
+    sw.setAttribute('aria-checked', annual ? 'true' : 'false');
+    lblM.classList.toggle('on', !annual);
+    lblA.classList.toggle('on', annual);
+    amounts.forEach(function(a){
+      if(a.hasAttribute('data-custom')){ a.textContent = a.getAttribute('data-custom'); return; }
+      var v = annual ? a.getAttribute('data-a') : a.getAttribute('data-m');
+      a.textContent = '$' + v;
+    });
+    billedEls.forEach(function(b){
+      var t = b.textContent;
+      if(t.indexOf('Free') === 0 || t.indexOf('Annual contract') === 0) return;
+      b.textContent = annual ? 'Billed annually · per mo' : 'Billed monthly';
+    });
+  }
+  sw.addEventListener('click', function(){ setBilling(sw.getAttribute('aria-checked') !== 'true'); });
+  sw.addEventListener('keydown', function(e){
+    if(e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); setBilling(sw.getAttribute('aria-checked') !== 'true'); }
+  });
+
+  /* ---------- FAQ accordion ---------- */
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.querySelector('.faq-q');
+    var a = item.querySelector('.faq-a');
+    q.addEventListener('click', function(){
+      var open = item.classList.toggle('open');
+      q.setAttribute('aria-expanded', open ? 'true' : 'false');
+      a.style.maxHeight = open ? (a.scrollHeight + 'px') : '0px';
+    });
+  });
+
+  /* ---------- Demo tabs ---------- */
+  var demoStarted = {funnel:false, retention:false, events:false};
+  var tabs = document.querySelectorAll('.demo-tabs [role="tab"]');
+  var liveTag = document.getElementById('liveTag');
+  function selectTab(tab){
+    tabs.forEach(function(t){
+      var sel = t === tab;
+      t.setAttribute('aria-selected', sel ? 'true' : 'false');
+      t.tabIndex = sel ? 0 : -1;
+    });
+    document.querySelectorAll('.panel-view').forEach(function(p){ p.classList.remove('active'); p.hidden = true; });
+    var panel = document.getElementById(tab.getAttribute('aria-controls'));
+    panel.hidden = false; panel.classList.add('active');
+    var which = tab.getAttribute('data-panel');
+    liveTag.parentNode.previousSibling; // noop
+    if(which === 'events'){ startEvents(); }
+    if(which === 'retention'){ buildHeatmap(); }
+  }
+  tabs.forEach(function(tab, i){
+    tab.addEventListener('click', function(){ selectTab(tab); });
+    tab.addEventListener('keydown', function(e){
+      var idx = i;
+      if(e.key === 'ArrowRight'){ idx = (i+1) % tabs.length; tabs[idx].focus(); selectTab(tabs[idx]); }
+      else if(e.key === 'ArrowLeft'){ idx = (i-1+tabs.length) % tabs.length; tabs[idx].focus(); selectTab(tabs[idx]); }
+    });
+  });
+
+  /* ---------- Funnel: subtle live jitter ---------- */
+  var funnelViz = document.getElementById('funnelViz');
+  function jitterFunnel(){
+    if(reduceMotion) return;
+    var bases = funnelViz ? funnelViz.querySelectorAll('.fnl-bar i') : [];
+    var totalEl = funnelViz ? funnelViz.querySelectorAll('.drop') : [];
+    bases.forEach(function(bar, idx){
+      var base = parseFloat(bar.getAttribute('data-base'));
+      var jit = (Math.random() - 0.5) * 1.4;
+      var v = Math.max(2, Math.min(100, base + jit));
+      bar.style.setProperty('--w', v.toFixed(1) + '%');
+      bar.textContent = Math.round(v) + '%';
+    });
+  }
+
+  /* ---------- Retention heatmap ---------- */
+  var heatBuilt = false;
+  function colorFor(v){
+    // v 0..100 -> violet->cyan gradient w/ opacity by value
+    var t = v/100;
+    var r = Math.round(139 + (34-139)*t);
+    var g = Math.round(92 + (224-92)*t);
+    var b = Math.round(255 + (255-255)*t);
+    var alpha = 0.18 + t*0.82;
+    return 'rgba('+r+','+g+','+b+','+alpha.toFixed(2)+')';
+  }
+  function buildHeatmap(){
+    if(heatBuilt) return;
+    heatBuilt = true;
+    var body = document.getElementById('heatBody');
+    if(!body) return;
+    var cohorts = ['May 12','May 19','May 26','Jun 02','Jun 09','Jun 16'];
+    // realistic decaying retention rows
+    var rows = [
+      [100, 62, 51, 46, 41, 38],
+      [100, 64, 53, 47, 42, null],
+      [100, 60, 49, 44, null, null],
+      [100, 66, 55, null, null, null],
+      [100, 63, null, null, null, null],
+      [100, null, null, null, null, null]
+    ];
+    cohorts.forEach(function(c, i){
+      var tr = document.createElement('tr');
+      var td0 = document.createElement('td');
+      td0.className = 'lbl'; td0.textContent = c;
+      tr.appendChild(td0);
+      rows[i].forEach(function(v){
+        var td = document.createElement('td');
+        if(v === null){ td.style.background='transparent'; td.innerHTML='&nbsp;'; }
+        else {
+          td.className = 'cell';
+          td.style.background = colorFor(v);
+          td.style.color = v > 55 ? '#06070c' : '#dfe6ff';
+          td.textContent = v + '%';
+          td.title = c + ' cohort · ' + v + '% retained';
+        }
+        tr.appendChild(td);
+      });
+      body.appendChild(tr);
+    });
+  }
+
+  /* ---------- Events stream + bars ---------- */
+  var eventsTimer = null, evRateTimer = null, eventsStarted = false;
+  var eventNames = [
+    ['dashboard_viewed','user_8842 · web · Toronto'],
+    ['funnel_created','user_2190 · web · Berlin'],
+    ['report_exported','user_5521 · api · Austin'],
+    ['signup_completed','user_9930 · ios · London'],
+    ['alert_triggered','D7 retention · −3.1pt'],
+    ['query_run','SELECT · 1.2M rows · 340ms'],
+    ['cohort_opened','user_3312 · web · Sydney'],
+    ['integration_synced','Snowflake · 2.4M events'],
+    ['project_created','user_7781 · web · Vancouver'],
+    ['email_verified','user_4456 · mobile · Tokyo']
+  ];
+  var badges = ['web','ios','api','sync'];
+  function pad(n){ return n < 10 ? '0'+n : ''+n; }
+  function nowStamp(){
+    var d = new Date();
+    return pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());
+  }
+  function addEvent(){
+    var stream = document.getElementById('eventStream');
+    if(!stream) return;
+    var pick = eventNames[Math.floor(Math.random()*eventNames.length)];
+    var el = document.createElement('div');
+    el.className = 'ev';
+    var badge = badges[Math.floor(Math.random()*badges.length)];
+    el.innerHTML = '<span class="tname">'+pick[0]+'<span class="badge">'+badge+'</span></span>'+
+                   '<span class="meta">'+pick[1]+'</span>'+
+                   '<span class="ts">'+nowStamp()+'</span>';
+    stream.insertBefore(el, stream.firstChild);
+    while(stream.children.length > 6){ stream.removeChild(stream.lastChild); }
+  }
+  function buildBars(){
+    var wrap = document.getElementById('eventBars');
+    if(!wrap || wrap.children.length) return;
+    var days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+    var vals = [62, 78, 71, 88, 95, 54, 60];
+    days.forEach(function(d, i){
+      var b = document.createElement('div');
+      b.className = 'bar';
+      b.setAttribute('data-day', d);
+      b.style.height = '6px';
+      wrap.appendChild(b);
+      // animate to value
+      (function(bar, v){
+        setTimeout(function(){ bar.style.height = (reduceMotion ? v : v) + '%'; }, reduceMotion ? 0 : 120 + i*70);
+      })(b, vals[i]);
+    });
+  }
+  function startEvents(){
+    buildBars();
+    if(eventsStarted) return;
+    eventsStarted = true;
+    // seed a few
+    for(var k=0;k<4;k++){ addEvent(); }
+    if(reduceMotion) return;
+    eventsTimer = setInterval(addEvent, 1700);
+    var rateEl = document.getElementById('evRate');
+    evRateTimer = setInterval(function(){
+      if(!rateEl) return;
+      var base = 1284 + Math.round((Math.random()-0.5)*180);
+      rateEl.textContent = base.toLocaleString('en-US');
+    }, 1500);
+  }
+
+  /* ---------- Funnel live jitter loop (only while funnel visible) ---------- */
+  var funnelTimer = null;
+  function startFunnelLoop(){
+    if(reduceMotion || funnelTimer) return;
+    funnelTimer = setInterval(function(){
+      var funnelPanel = document.getElementById('pv-funnel');
+      if(funnelPanel && funnelPanel.classList.contains('active')){ jitterFunnel(); }
+    }, 2600);
+  }
+
+  /* ---------- Kick off demo when it scrolls into view ---------- */
+  var demo = document.getElementById('demo');
+  if(demo && 'IntersectionObserver' in window){
+    var dio = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          startFunnelLoop();
+          dio.unobserve(en.target);
+        }
+      });
+    }, {threshold:0.3});
+    dio.observe(demo);
+  } else {
+    startFunnelLoop();
+  }
+
+  /* init pricing display */
+  setBilling(false);
+
+  /* Pause event stream when tab hidden (perf) */
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden){
+      if(eventsTimer){ clearInterval(eventsTimer); eventsTimer = null; }
+      if(evRateTimer){ clearInterval(evRateTimer); evRateTimer = null; }
+      eventsStarted = false;
+    } else {
+      var evPanel = document.getElementById('pv-events');
+      if(evPanel && evPanel.classList.contains('active')){ startEvents(); }
+    }
+  });
+})();
+</script>
+</body>
+</html>
