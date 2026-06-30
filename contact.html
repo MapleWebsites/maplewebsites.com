@@ -26,9 +26,30 @@
   <meta name="twitter:title" content="Contact Maple — Get a Free, Fixed-Price Website Quote" />
   <meta name="twitter:description" content="Tell us about your project and get a free, fixed-price quote within one business day." />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Self-hosted fonts (eliminates Google Fonts render-blocking request) -->
+  <style>
+    @font-face {
+      font-family: 'Fraunces';
+      font-style: italic;
+      font-weight: 600;
+      font-display: swap;
+      src: url(fonts/fraunces-italic-600.woff2) format('woff2');
+    }
+    @font-face {
+      font-family: 'Fraunces';
+      font-style: normal;
+      font-weight: 600 700;
+      font-display: swap;
+      src: url(fonts/fraunces-normal-600-700.woff2) format('woff2');
+    }
+    @font-face {
+      font-family: 'Outfit';
+      font-style: normal;
+      font-weight: 400 700;
+      font-display: swap;
+      src: url(fonts/outfit-400-700.woff2) format('woff2');
+    }
+  </style>
 
   <style>
     /* ============================================================
