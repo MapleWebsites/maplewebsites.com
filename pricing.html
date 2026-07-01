@@ -24,6 +24,9 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="apple-touch-icon" href="favicon.svg" />
 
+  <!-- Preload the two above-the-fold faces (body + headings) to shorten the font-display: swap window. crossorigin is required on font preloads. -->
+  <link rel="preload" href="/fonts/outfit-400-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/fraunces-normal-600-700.woff2" as="font" type="font/woff2" crossorigin />
   <!-- Self-hosted fonts (eliminates Google Fonts render-blocking request) -->
   <style>
     @font-face {
@@ -31,21 +34,21 @@
       font-style: italic;
       font-weight: 600;
       font-display: swap;
-      src: url(fonts/fraunces-italic-600.woff2) format('woff2');
+      src: url(/fonts/fraunces-italic-600.woff2) format('woff2');
     }
     @font-face {
       font-family: 'Fraunces';
       font-style: normal;
       font-weight: 600 700;
       font-display: swap;
-      src: url(fonts/fraunces-normal-600-700.woff2) format('woff2');
+      src: url(/fonts/fraunces-normal-600-700.woff2) format('woff2');
     }
     @font-face {
       font-family: 'Outfit';
       font-style: normal;
       font-weight: 400 700;
       font-display: swap;
-      src: url(fonts/outfit-400-700.woff2) format('woff2');
+      src: url(/fonts/outfit-400-700.woff2) format('woff2');
     }
   </style>
 
@@ -153,6 +156,7 @@
     .brand-accent { color: var(--brand-2); }
     .nav-links { display: flex; align-items: center; gap: 30px; list-style: none; }
     .nav-links a { color: var(--muted); font-weight: 500; transition: color 0.15s; }
+    .nav-links a:not(.nav-cta) { padding: 12px 4px; }
     .nav-links a:hover, .nav-links a.active { color: var(--text); }
     .nav-cta {
       background: var(--surface-2);

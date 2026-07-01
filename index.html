@@ -43,6 +43,9 @@
       patchy Lower-Mainland mobile connection. Headings/body still render
       instantly in a near-matching local face, then upgrade silently.
   -->
+  <!-- Preload the two above-the-fold faces (body + headings) to shorten the font-display: swap window. crossorigin is required on font preloads. -->
+  <link rel="preload" href="/fonts/outfit-400-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/fraunces-normal-600-700.woff2" as="font" type="font/woff2" crossorigin />
   <!-- Self-hosted fonts (eliminates Google Fonts render-blocking request) -->
   <style>
     @font-face {
@@ -50,21 +53,21 @@
       font-style: italic;
       font-weight: 600;
       font-display: swap;
-      src: url(fonts/fraunces-italic-600.woff2) format('woff2');
+      src: url(/fonts/fraunces-italic-600.woff2) format('woff2');
     }
     @font-face {
       font-family: 'Fraunces';
       font-style: normal;
       font-weight: 600 700;
       font-display: swap;
-      src: url(fonts/fraunces-normal-600-700.woff2) format('woff2');
+      src: url(/fonts/fraunces-normal-600-700.woff2) format('woff2');
     }
     @font-face {
       font-family: 'Outfit';
       font-style: normal;
       font-weight: 400 700;
       font-display: swap;
-      src: url(fonts/outfit-400-700.woff2) format('woff2');
+      src: url(/fonts/outfit-400-700.woff2) format('woff2');
     }
   </style>
 
@@ -282,6 +285,7 @@
 
     .nav-links { display: flex; align-items: center; gap: 26px; list-style: none; }
     .nav-links a { color: var(--body); font-weight: 500; font-size: 0.97rem; transition: color 0.15s; }
+    .nav-links a:not(.nav-cta) { padding: 12px 4px; }
     .nav-links > li > a:not(.nav-cta) { position: relative; }
     .nav-links > li > a:not(.nav-cta)::after {
       content: ""; position: absolute; left: 0; right: 0; bottom: -5px; height: 2px;

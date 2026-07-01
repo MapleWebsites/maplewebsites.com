@@ -1,0 +1,18 @@
+{
+  "name": "maplewebsites.com",
+  "version": "1.0.0",
+  "description": "A fast, modern marketing site for Maple, a Vancouver custom web-design studio. Pure HTML/CSS/JS — no build step, no dependencies, no framework. Every page is self-contained (styles and scripts are inlined), so it runs on any static host.",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:local": "playwright test --config=playwright.local.config.ts",
+    "test:mobile": "playwright test --project=mobile",
+    "test:desktop": "playwright test --project=desktop-chrome"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1"
+  }
+}
